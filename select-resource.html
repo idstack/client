@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--<![endif]-->
+<!-- BEGIN HEAD -->
+
+<head>
+    <meta charset="utf-8" />
+    <title>IDStack</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta content="IDStack | The common protocol for document verification built on Blockchain" name="description" />
+    <meta content="www.idstack.one" name="author" />
+    <!-- BEGIN GLOBAL MANDATORY STYLES -->
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css" />
+    <link href="assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css" />
+    <!-- END GLOBAL MANDATORY STYLES -->
+    <!-- BEGIN PAGE LEVEL PLUGINS -->
+    <link href="assets/pages/css/about.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/global/plugins/bootstrap-modal/css/bootstrap-modal-bs3patch.css" rel="stylesheet" type="text/css" />
+    <link href="assets/global/plugins/bootstrap-modal/css/bootstrap-modal.css" rel="stylesheet" type="text/css" />
+    <link href="assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.css" rel="stylesheet" type="text/css" />
+
+    <!-- END PAGE LEVEL PLUGINS -->
+    <!-- BEGIN THEME GLOBAL STYLES -->
+    <link href="assets/global/css/components-md.min.css" rel="stylesheet" id="style_components" type="text/css" />
+    <link href="assets/global/css/plugins-md.min.css" rel="stylesheet" type="text/css" />
+    <!-- END THEME GLOBAL STYLES -->
+    <!-- BEGIN THEME LAYOUT STYLES -->
+    <link href="assets/layout/css/layout.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/layout/css/themes/blue.min.css" rel="stylesheet" type="text/css" id="style_color" />
+    <link href="assets/layout/css/custom.min.css" rel="stylesheet" type="text/css" />
+    <!-- END THEME LAYOUT STYLES -->
+    <link rel="shortcut icon" href="assets/favicon.png" /> </head>
+<!-- END HEAD -->
+
+<body class="page-header-fixed page-sidebar-closed-hide-logo page-container-bg-solid page-sidebar-closed page-md">
+<!-- BEGIN HEADER -->
+<div id="header"></div>
+<!-- END HEADER -->
+<!-- BEGIN HEADER & CONTENT DIVIDER -->
+<div class="clearfix"> </div>
+<!-- END HEADER & CONTENT DIVIDER -->
+<!-- BEGIN CONTAINER -->
+<div class="page-container">
+    <!-- BEGIN SIDEBAR -->
+    <div id="sidebar"></div>
+    <!-- END SIDEBAR -->
+    <!-- BEGIN CONTENT -->
+    <div class="page-content-wrapper">
+        <!-- BEGIN CONTENT BODY -->
+        <div class="page-content">
+            <!-- BEGIN PAGE HEAD-->
+            <div class="page-head">
+                <!-- BEGIN PAGE TITLE -->
+                <div class="page-title">
+                    <h2>Please select a resource type
+                    </h2>
+                </div>
+                <!-- END PAGE TITLE -->
+                <div id="toolbar"></div>
+            </div>
+            <!-- END PAGE HEAD-->
+            <!-- BEGIN PAGE BASE CONTENT -->
+            <!-- BEGIN CARDS -->
+            <div class="row margin-bottom-20">
+                <div class="col-lg-4 col-md-6">
+                    <a href="javascript:window.location.href = 'extract-data.html?doctype='+getUrlParameter('doctype')+'&resource=physical.'">
+                        <div class="portlet light  bordered">
+                            <div class="card-icon">
+                                <i class="glyphicon glyphicon-hand-up font-red-sunglo theme-font"></i>
+                            </div>
+                            <div class="card-title">
+                                <span>Fill from a physical document</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <a data-toggle="modal" href="#file_modal">
+                        <div class="portlet light bordered">
+                            <div class="card-icon">
+                                <i class="icon-doc font-green-haze theme-font"></i>
+                            </div>
+                            <div class="card-title">
+                                <span>Fetch from a PDF document</span>
+                            </div>
+
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <a data-toggle="modal" href="#url_modal">
+                        <div class="portlet light bordered">
+                            <div class="card-icon">
+                                <i class="icon-globe font-purple-wisteria theme-font"></i>
+                            </div>
+                            <div class="card-title">
+                                <span>Fetch from a URL</span>
+                            </div>
+
+                        </div>
+                    </a>
+                </div>
+
+                <div id="url_modal" class="modal fade" tabindex="-1" data-width="760">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                        <h4 class="modal-title">Please define URL</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="form-group form-md-line-input">
+                                <label class="col-md-3 control-label" >URL
+                                    <span class="required">*</span>
+                                </label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control"  name="url" id="input_url">
+                                    <div class="form-control-focus"> </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" data-dismiss="modal" class="btn btn-outline dark">Cancel</button>
+                        <button type="button" class="btn green" onclick="loadURL();">Load</button>
+                    </div>
+                </div>
+
+                <div id="file_modal" class="modal fade" tabindex="-1" data-width="760">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                        <h4 class="modal-title">Please select the document file</h4>
+                    </div>
+                    <div class="modal-body">
+
+                        <div class="fileinput fileinput-new" data-provides="fileinput">
+                            <span class="btn green btn-file">
+                                <span class="fileinput-new"> File </span>
+                                <span class="fileinput-exists"> Change </span>
+                                <input type="file" name="..."  id="CertFileInput" onchange=readPDF()>
+                            </span>
+                            <span class="fileinput-filename"> </span> &nbsp;
+                            <a href="javascript:;" class="close fileinput-exists" data-dismiss="fileinput"> </a>
+
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" data-dismiss="modal" class="btn btn-outline dark">Cancel</button>
+                        <button type="button" class="btn green" onclick="loadPDF();">Load</button>
+                    </div>
+                </div>
+
+            </div>
+            <!-- END CARDS -->
+            <div class="row">
+                <div class="col-md-offset-0 col-md-1">
+                    <a href="select-template.html" class="btn default button-previous">
+                        <i class="fa fa-angle-left"></i> Back </a>
+
+                </div>
+            </div>
+        </div>
+        <!-- END PAGE BASE CONTENT -->
+    </div>
+    <!-- END CONTENT BODY -->
+</div>
+<!-- END CONTENT -->
+</div>
+<!-- END CONTAINER -->
+
+<!-- Start wrapper for jquery script imports  -->
+<script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+
+<script type="text/javascript" src="assets/global/plugins/jquery.min.js"></script>
+
+<!-- End wrapper for jquery script imports -->
+<script>if (window.module) module = window.module;</script>
+
+<script>
+    $(function(){
+        $("#header").load("layout/header.html");
+        $("#sidebar").load("layout/sidebar.html");
+    });
+
+
+    function loadURL() {
+
+        var url = "sdasdasd";
+
+        url = document.getElementById('input_url').value;
+        console.log(url)
+        window.location.href = "extract-data.html?doctype="+getUrlParameter("doctype")+"&resource=url&url="+url;
+    }
+
+    function readPDF() {
+        //write the function
+    }
+    function loadPDF() {
+        //write the function
+    }
+
+
+
+
+
+
+
+</script>
+
+<!-- BEGIN CORE PLUGINS -->
+
+<script src="assets/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="assets/global/plugins/js.cookie.min.js" type="text/javascript"></script>
+<script src="assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+<script src="assets/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
+<script src="assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
+<!-- END CORE PLUGINS -->
+<!-- BEGIN PAGE LEVEL PLUGINS -->
+<script src="assets/global/plugins/bootstrap-modal/js/bootstrap-modalmanager.js" type="text/javascript"></script>
+<script src="assets/global/plugins/bootstrap-modal/js/bootstrap-modal.js" type="text/javascript"></script>
+
+<script src="assets/global/plugins/jquery-validation/js/jquery.validate.min.js" type="text/javascript"></script>
+<script src="assets/global/plugins/jquery-validation/js/additional-methods.min.js" type="text/javascript"></script>
+<script src="assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.js" type="text/javascript"></script>
+
+
+<!-- END PAGE LEVEL PLUGINS -->
+<!-- BEGIN THEME GLOBAL SCRIPTS -->
+<script src="assets/global/scripts/app.min.js" type="text/javascript"></script>
+<!-- END THEME GLOBAL SCRIPTS -->
+<!-- BEGIN PAGE LEVEL SCRIPTS -->
+<script src="/assets/pages/scripts/form-validation-md.min.js" type="text/javascript"></script>
+<script src="assets/pages/scripts/ui-extended-modals.min.js" type="text/javascript"></script>
+<script src="assets/custom/scripts/url-paser.js" type="text/javascript" ></script>
+
+<!-- END PAGE LEVEL SCRIPTS -->
+<!-- BEGIN THEME LAYOUT SCRIPTS -->
+<script src="assets/layout/scripts/layout.min.js" type="text/javascript"></script>
+<script src="assets/layout/scripts/demo.min.js" type="text/javascript"></script>
+<script src="assets/layout/global/scripts/quick-sidebar.min.js" type="text/javascript"></script>
+<script src="assets/layout/global/scripts/quick-nav.min.js" type="text/javascript"></script>
+<!-- END THEME LAYOUT SCRIPTS -->
+
+</body>
+
+</html>
