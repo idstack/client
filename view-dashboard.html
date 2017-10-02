@@ -152,29 +152,25 @@
         $("#header").load("layout/header.html");
         $("#sidebar").load("layout/sidebar.html");
 
-        var requests = [
-            {
-                url: "www.pdf995.com/samples/pdf.pdf",
-                document_type: "passport",
-                email: "chamin.13@gmail.com",
-                timestamp: "1992-12-12"
-            },
-            {
-                url: "http://skilldrick.co.uk/tmpl/#slide2.pdf",
-                document_type: "student id",
-                email: "chaminbw@gmail.com",
-                timestamp: "1982-02-01"
-            },
-            {
-                url: "www.pdf995.com/samples/pdf.pdf",
-                document_type: "NIC",
-                email: "example@live.com",
-                timestamp: "1922-12-02"
-            }
-        ];
-
-        $("#request_template").tmpl(requests).appendTo("#request_list");
+        $.getJSON("properties.json", function(json) {
+            varProperties = json;
+            getRequestList();
+        });
     });
+    //Web service calls
+    function getRequestList() {
+        var settings = {
+            "async": true,
+            "crossDomain": true,
+            "url": "http://"+varProperties.ipAddress+"/api-relyingparty/"+varProperties.apiVersion+"/e489e5ce-e80a-4334-8864-abfa86e6014c/getdocstore/",
+            "method": "GET"
+        }
+
+        $.ajax(settings).done(function (response) {
+            console.log(response);
+            $("#request_template").tmpl(response.document_store).appendTo("#request_list");
+        });
+    }
 
 
 </script>
