@@ -232,13 +232,13 @@
         $("#sidebar").load("layout/sidebar.html");
         $.getJSON("properties.json", function(json) {
             varProperties = json;
+            getBasicDetails();
         });
-        setTimeout( getBasicDetails, 0 );
+
 
     });
     //Web service calls
     function getBasicDetails() {
-
         var settings = {
             "async": true,
             "crossDomain": true,
