@@ -109,7 +109,7 @@
                                             </div>
                                         <div class="form-actions right">
                                             <button type="reset" class="btn default">Reset</button>
-                                            <button type="button" class="btn green" onclick="saveSignedPassport();">Save
+                                            <button type="button" class="btn green" onclick="setBasicDetails();">Save
                                             </button>
                                         </div>
                                     </div>
@@ -231,6 +231,27 @@
         $("#sidebar").load("layout/sidebar.html");
 
     });
+    //Web service calls
+    function setBasicDetails() {
+        var settings = {
+            "async": true,
+            "crossDomain": true,
+            "url": "http://139.59.74.146:8080/api-extractor/v1/8742b79d-08d7-4e1b-a4ce-27b4817348a1/saveconfig/basic",
+            "method": "POST",
+            "headers": {
+                "content-type": "application/json",
+                "cache-control": "no-cache",
+                "postman-token": "8835d1ef-be99-bb2a-8d9a-da62e9c26798"
+            },
+            "processData": false,
+            "data": "{\n  \"organization\": \"University of Moratuwa\",\n  \"email\": \"info@mrt.ac.lk\",\n  \"web\": \"http://www.mrt.ac.lk\"\n}"
+        }
+
+        $.ajax(settings).done(function (response) {
+            console.log(response);
+        });
+    }
+
 
 
     function loadFile() {
