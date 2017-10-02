@@ -152,6 +152,10 @@
         $("#header").load("layout/header.html");
         $("#sidebar").load("layout/sidebar.html");
 
+        $.getJSON("properties.json", function(json) {
+            varProperties = json;
+            getRequestList();
+        });
         var requests = [
             {
                 url: "www.pdf995.com/samples/pdf.pdf",
@@ -173,8 +177,24 @@
             }
         ];
 
-        $("#request_template").tmpl(requests).appendTo("#request_list");
+
+//        $("#request_template").tmpl(requests).appendTo("#request_list");
     });
+
+    //Web service calls
+    function getRequestList() {
+        var settings = {
+            "async": true,
+            "crossDomain": true,
+            "url": "http://"+varProperties.ipAddress+"/api-extractor/"+varProperties.apiVersion+"/"+varProperties.apiKey+"/getdocstore/",
+            "method": "GET"
+        }
+
+        $.ajax(settings).done(function (response) {
+            console.log(response);
+            $("#request_template").tmpl(response.document_store).appendTo("#request_list");
+        });
+    }
 
 
 </script>
