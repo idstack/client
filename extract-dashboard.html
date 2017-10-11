@@ -162,8 +162,11 @@
         var settings = {
             "async": true,
             "crossDomain": true,
-            "url": "http://"+varProperties.ipAddress+"/api-extractor/"+varProperties.apiVersion+"/"+varProperties.apiKey+"/getdocstore/",
-            "method": "GET"
+            "url": "http://"+varProperties.extractor.host+"/api-extractor/"+varProperties.extractor.apiVersion+"/"+varProperties.extractor.apiKey+"/getdocstore/",
+            "method": "GET",
+            "headers": {
+                "Authorization": "Basic " + btoa(varProperties.extractor.userName + ":" + varProperties.extractor.password)
+            }
         }
 
         $.ajax(settings).done(function (response) {
