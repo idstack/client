@@ -91,7 +91,7 @@
 
 
                             <script id="request_template" type="text/html">
-                                <a href="view-doc.html?type=auto">
+                                <a href="view-doc.html?type=auto&requestId=${request_id}">
                                     <div class="col1">
                                         <div class="cont">
                                             <div class="cont-col1">
@@ -100,10 +100,11 @@
                                                 </div>
                                             </div>
                                             <div class="cont-col2">
-                                                <div class="desc"> ${requestId}
-
+                                                <div class="desc"> ${request_id}
                                                     <span class="label label-sm label-warning "> ${email}</span>
-
+                                                    {{each files}}
+                                                    <span class="label label-sm label-info "> ${files[$index].document_type} </span>
+                                                    {{/each}}
                                                 </div>
                                             </div>
                                         </div>
