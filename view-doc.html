@@ -4,34 +4,37 @@
 <!-- BEGIN HEAD -->
 
 <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8"/>
     <title>IDStack</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta content="width=device-width, initial-scale=1" name="viewport" />
-    <meta content="IDStack | The common protocol for document verification built on Blockchain" name="description" />
-    <meta content="www.idstack.one" name="author" />
+    <meta content="width=device-width, initial-scale=1" name="viewport"/>
+    <meta content="IDStack | The common protocol for document verification built on Blockchain" name="description"/>
+    <meta content="www.idstack.one" name="author"/>
     <!-- BEGIN GLOBAL MANDATORY STYLES -->
-    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css" />
-    <link href="assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-    <link href="assets/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
-    <link href="assets/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <link href="assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css" />
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet"
+          type="text/css"/>
+    <link href="assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+    <link href="assets/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css"/>
+    <link href="assets/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <link href="assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css"/>
     <!-- END GLOBAL MANDATORY STYLES -->
     <!-- BEGIN PAGE LEVEL PLUGINS -->
-    <link href="assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.css" rel="stylesheet" type="text/css" />
-    <link href="assets/global/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.css" rel="stylesheet" type="text/css"/>
+    <link href="assets/global/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet" type="text/css"/>
+    <link href="assets/global/plugins/bootstrap-toastr/toastr.min.css" rel="stylesheet" type="text/css" />
 
     <!-- END PAGE LEVEL PLUGINS -->
     <!-- BEGIN THEME GLOBAL STYLES -->
-    <link href="assets/global/css/components-md.min.css" rel="stylesheet" id="style_components" type="text/css" />
-    <link href="assets/global/css/plugins-md.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/global/css/components-md.min.css" rel="stylesheet" id="style_components" type="text/css"/>
+    <link href="assets/global/css/plugins-md.min.css" rel="stylesheet" type="text/css"/>
     <!-- END THEME GLOBAL STYLES -->
     <!-- BEGIN THEME LAYOUT STYLES -->
-    <link href="assets/layout/css/layout.min.css" rel="stylesheet" type="text/css" />
-    <link href="assets/layout/css/themes/blue.min.css" rel="stylesheet" type="text/css" id="style_color" />
-    <link href="assets/layout/css/custom.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/layout/css/layout.min.css" rel="stylesheet" type="text/css"/>
+    <link href="assets/layout/css/themes/blue.min.css" rel="stylesheet" type="text/css" id="style_color"/>
+    <link href="assets/layout/css/custom.min.css" rel="stylesheet" type="text/css"/>
     <!-- END THEME LAYOUT STYLES -->
-    <link rel="shortcut icon" href="assets/favicon.png" /> </head>
+    <link rel="shortcut icon" href="assets/favicon.png"/>
+</head>
 <!-- END HEAD -->
 
 <body class="page-header-fixed page-sidebar-closed-hide-logo page-container-bg-solid page-sidebar-closed page-md">
@@ -39,7 +42,7 @@
 <div id="header"></div>
 <!-- END HEADER -->
 <!-- BEGIN HEADER & CONTENT DIVIDER -->
-<div class="clearfix"> </div>
+<div class="clearfix"></div>
 <!-- END HEADER & CONTENT DIVIDER -->
 <!-- BEGIN CONTAINER -->
 <div class="page-container">
@@ -54,684 +57,627 @@
             <div class="page-head">
                 <!-- BEGIN PAGE TITLE -->
                 <div class="page-title">
-                    <h1>Document view<small>View Document content, signatures and scores</small></h1>
+                    <h1>Document view
+                        <small>View Document content, signatures and scores</small>
+                    </h1>
 
                 </div>
                 <!-- END PAGE TITLE -->
                 <!-- BEGIN PAGE BASE CONTENT -->
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="tabbable-line boxless tabbable-reversed">
-                            <ul class="nav nav-tabs" >
-                                <li class="active">
-                                    <a href="#tab_0" data-toggle="tab" id="tab_passport"> Single Document </a>
-                                </li>
-                                <li>
-                                <a href="#tab_1" data-toggle="tab" id="tab_student_id"> Multiple Documents</a>
-                                </li>
-                                <!--<li>-->
-                                <!--<a href="#tab_2" data-toggle="tab"id="tab_transcript"> Multiple Document </a>-->
-                                <!--</li>-->
-                                <!--<li>-->
-                                <!--<a href="#tab_3" data-toggle="tab" id="tab_Other"> Other </a>-->
-                                <!--</li>-->
 
+                <div class="row" id="document_array">
+                    <div class="col-md-12" id="column_0" style="display: none">
+                        <div class="portlet light portlet-fit portlet-form ">
+                            <div class="portlet-title">
 
-                            </ul>
-                            <div class="tab-content">
-                                <div class="tab-pane active" id="tab_0">
-                                    <div class="portlet light portlet-fit portlet-form ">
-                                        <div class="portlet-title">
+                                <div class="form-group">
 
-                                            <div class="form-group">
-                                                <label class="control-label col-md-3">Upload Json</label>
-                                                <div class="col-md-9">
-                                                    <div class="fileinput fileinput-new" data-provides="fileinput">
-                                                        <span class="btn green btn-file">
-                                                            <span class="fileinput-new"> File </span>
-                                                            <span class="fileinput-exists"> Change </span>
-                                                            <input type="file" name="..." accept="application/json" id="fileInput-single-doc" onchange=loadContent("single-doc")>
-                                                        </span>
-                                                        <span class="fileinput-filename"> </span> &nbsp;
-                                                        <a href="javascript:;" class="close fileinput-exists" data-dismiss="fileinput"> </a>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="portlet-body">
-                                            <div id="template-single-doc"></div>
-                                        </div>
-                                    </div>
-
-                                    <div id="signature-portlet"></div>
-
-                                    <div id="individual-score-portlet"></div>
                                 </div>
-                                <div class="tab-pane" id="tab_1">
-                                    <div class="col-md-6">
-                                        <div class="portlet light portlet-fit portlet-form ">
-                                            <div class="portlet-title">
-
-                                                <div class="form-group">
-                                                    <label class="control-label col-md-3">Upload Json</label>
-                                                    <div class="col-md-9">
-                                                        <div class="fileinput fileinput-new" data-provides="fileinput">
-                                                        <span class="btn green btn-file">
-                                                            <span class="fileinput-new"> File </span>
-                                                            <span class="fileinput-exists"> Change </span>
-                                                            <input type="file" name="..." accept="application/json" id="fileInput-two-doc-left" onchange=loadContent("two-doc-left")>
-                                                        </span>
-                                                            <span class="fileinput-filename"> </span> &nbsp;
-                                                            <a href="javascript:;" class="close fileinput-exists" data-dismiss="fileinput"> </a>
-
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="portlet-body">
-                                                <div id="template-two-doc-left"></div>
-                                            </div>
-                                        </div>
-                                        <div class="portlet light" style="display:none" id="signature-portlet-two-doc-left">
-                                            <div class="portlet-title">
-                                                <div class="caption">
-                                                    <i class="icon-social-dribbble font-green hide"></i>
-                                                    <span class="caption-subject font-dark bold uppercase">Signatures</span>
-                                                </div>
-
-                                            </div>
-                                            <div class="portlet-body">
-                                                <!-- BEGIN: Signature list -->
-                                                <div class="mt-comments">
-                                                    <div class="mt-comment mt-element-ribbon">
-                                                        <div class="ribbon ribbon-vertical-left ribbon-shadow ribbon-color-primary uppercase">
-                                                            <div class="ribbon-sub ribbon-bookmark"></div>
-                                                            <i class="fa fa-pencil-square-o"></i>
-                                                        </div>
-                                                        <div class="mt-comment-body">
-                                                            <div class="mt-comment-info">
-                                                                <span class="mt-comment-author">Chamin Wickramarathna</span>
-
-                                                                <span class="mt-comment-date">12 March, 11:31AM</span>
-                                                            </div>
-                                                            <div class="mt-comment-text"> chamin@gmail.com</div>
-                                                            <div class="mt-comment-text"> Extractor </div>
-                                                            <div class="mt-comment-text"> Expire on Apr 15 14:11:11 2014 GMT</div>
-                                                            <div class="mt-comment-details">
-                                                                <span class="mt-comment-status mt-comment-status-approved">Valid</span>
-                                                                <ul class="mt-comment-actions">
-                                                                    <li>
-                                                                        <a href="#">More</a>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="mt-comment mt-element-ribbon">
-                                                        <div class="ribbon ribbon-vertical-left ribbon-shadow ribbon-color-primary uppercase">
-                                                            <div class="ribbon-sub ribbon-bookmark"></div>
-                                                            <i class="fa fa-pencil-square-o"></i>
-                                                        </div>
-                                                        <div class="mt-comment-body">
-                                                            <div class="mt-comment-info">
-                                                                <span class="mt-comment-author">Chandu Herath</span>
-
-
-                                                                <span class="mt-comment-date">26 Feb, 10:30AM</span>
-                                                            </div>
-                                                            <div class="mt-comment-text"> chanduh@gmail.com</div>
-                                                            <div class="mt-comment-text"> Validator </div>
-                                                            <div class="mt-comment-text"> Expire on Apr 25 10:31:18 2022 GMT</div>
-                                                            <div class="mt-comment-details">
-                                                                <span class="mt-comment-status mt-comment-status-approved">Valid</span>
-                                                                <ul class="mt-comment-actions">
-                                                                    <li>
-                                                                        <a href="#">More</a>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="mt-comment mt-element-ribbon">
-                                                        <div class="ribbon ribbon-vertical-left ribbon-shadow ribbon-color-primary uppercase">
-                                                            <div class="ribbon-sub ribbon-bookmark"></div>
-                                                            <i class="fa fa-pencil-square-o"></i>
-                                                        </div>
-                                                        <div class="mt-comment-body">
-                                                            <div class="mt-comment-info">
-                                                                <span class="mt-comment-author">Sachithra Dangalla</span>
-
-
-                                                                <span class="mt-comment-date">20 Jul, 01:30PM</span>
-                                                            </div>
-                                                            <div class="mt-comment-text"> sachithrad@live.com</div>
-                                                            <div class="mt-comment-text"> Validator </div>
-                                                            <div class="mt-comment-text"> Expire on Dec 23 13:33:13 2025 GMT</div>
-                                                            <div class="mt-comment-details">
-                                                                <span class="mt-comment-status mt-comment-status-approved">Valid</span>
-                                                                <ul class="mt-comment-actions">
-                                                                    <li>
-                                                                        <a href="#">More</a>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                </div>
-                                                <!-- END: Signature list -->
-                                            </div>
-                                        </div>
-                                        <div class="portlet light" style="display:none" id="score-portlet-two-doc-left">
-                                            <div class="portlet-title">
-                                                <div class="caption">
-                                                    <i class="icon-graph"></i>
-                                                    <span class="caption-subject bold uppercase font-dark">Score</span>
-                                                    <span class="caption-helper font-dark">Score for the Document. This score is generated according to the signatures and content that verify with signatures.</span>
-                                                </div>
-
-                                            </div>
-                                            <div class="portlet-body">
-                                                <div class="row">
-                                                    <div class="col-md-6">
-
-                                                        <h4 id="individual-score-two-doc-left"></h4>
-
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <div class="easy-pie-chart">
-                                                            <div class="number transactions" data-percent="55">
-                                                                <span>+77.5</span>% </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-
-                                            <div class="portlet-body" style="display:none" id="cor-score-portlet-two-doc-left">
-                                                <div class="row">
-                                                    <div class="col-md-6">
-
-                                                        <h4> Correlation document score : </h4>
-
-                                                    </div>
-                                                </div>
-
-                                                <div class="row">
-                                                    <div class="col-md-2">
-                                                        <div class="easy-pie-chart">
-                                                            <div class="number transactions" data-percent="55">
-                                                                <span>+55</span>% </div>
-                                                            <a class="title"> Name
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="margin-bottom-10 visible-sm"> </div>
-                                                    <div class="col-md-2">
-                                                        <div class="easy-pie-chart">
-                                                            <div class="number visits" data-percent="85">
-                                                                <span>+85</span>% </div>
-                                                            <a class="title" > NIC
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="margin-bottom-10 visible-sm"> </div>
-                                                    <div class="col-md-2">
-                                                        <div class="easy-pie-chart">
-                                                            <div class="number transactions" data-percent="46">
-                                                                <span>+46</span>% </div>
-                                                            <a class="title"> Address
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="margin-bottom-10 visible-sm"> </div>
-                                                    <div class="col-md-2">
-                                                        <div class="easy-pie-chart">
-                                                            <div class="number visits" data-percent="99">
-                                                                <span>+99</span>% </div>
-                                                            <a class="title"> Gender
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="margin-bottom-10 visible-sm"> </div>
-                                                    <div class="col-md-2">
-                                                        <div class="easy-pie-chart">
-                                                            <div class="number transactions" data-percent="66">
-                                                                <span>+66</span>% </div>
-                                                            <a class="title"> DOB
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="row">
-                                                    <div class="col-md-6">
-
-                                                        <div class="col-md-6">
-                                                            <div class="easy-pie-chart ">
-                                                                <div class="number bounce" data-percent="66.7">
-                                                                    <span>+66.7</span>% </div>
-                                                                <a class="title"> <b>Average</b>
-                                                                </a>
-                                                            </div>
-                                                        </div>
-
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="portlet light portlet-fit portlet-form ">
-                                            <div class="portlet-title">
-
-                                                <div class="form-group">
-                                                    <label class="control-label col-md-3">Upload Json</label>
-                                                    <div class="col-md-9">
-                                                        <div class="fileinput fileinput-new" data-provides="fileinput">
-                                                        <span class="btn green btn-file">
-                                                            <span class="fileinput-new"> File </span>
-                                                            <span class="fileinput-exists"> Change </span>
-                                                            <input type="file" name="..." accept="application/json" id="fileInput-two-doc-right" onchange=temploadContent("two-doc-right")>
-                                                        </span>
-                                                            <span class="fileinput-filename"> </span> &nbsp;
-                                                            <a href="javascript:;" class="close fileinput-exists" data-dismiss="fileinput"> </a>
-
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="portlet-body">
-                                                <div id="template-two-doc-right"></div>
-                                            </div>
-                                        </div>
-                                        <div class="portlet light" style="display:none" id="signature-portlet-two-doc-right">
-                                            <div class="portlet-title">
-                                                <div class="caption">
-                                                    <i class="icon-social-dribbble font-green hide"></i>
-                                                    <span class="caption-subject font-dark bold uppercase">Signatures</span>
-                                                </div>
-
-                                            </div>
-                                            <div class="portlet-body">
-                                                <!-- BEGIN: Signature list -->
-                                                <div class="mt-comments">
-                                                    <div class="mt-comment mt-element-ribbon">
-                                                        <div class="ribbon ribbon-vertical-left ribbon-shadow ribbon-color-primary uppercase">
-                                                            <div class="ribbon-sub ribbon-bookmark"></div>
-                                                            <i class="fa fa-pencil-square-o"></i>
-                                                        </div>
-                                                        <div class="mt-comment-body">
-                                                            <div class="mt-comment-info">
-                                                                <span class="mt-comment-author">Chanaka Lakmal</span>
-
-                                                                <span class="mt-comment-date">12 Feb, 11:34AM</span>
-                                                            </div>
-                                                            <div class="mt-comment-text"> chanaka@gmail.com</div>
-                                                            <div class="mt-comment-text"> Extractor </div>
-                                                            <div class="mt-comment-text"> Expire on Apr 14 14:11:12 2025 GMT</div>
-                                                            <div class="mt-comment-details">
-                                                                <span class="mt-comment-status mt-comment-status-approved">Valid</span>
-                                                                <ul class="mt-comment-actions">
-                                                                    <li>
-                                                                        <a href="#">More</a>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="mt-comment mt-element-ribbon">
-                                                        <div class="ribbon ribbon-vertical-left ribbon-shadow ribbon-color-primary uppercase">
-                                                            <div class="ribbon-sub ribbon-bookmark"></div>
-                                                            <i class="fa fa-pencil-square-o"></i>
-                                                        </div>
-                                                        <div class="mt-comment-body">
-                                                            <div class="mt-comment-info">
-                                                                <span class="mt-comment-author">Chandu Herath</span>
-
-
-                                                                <span class="mt-comment-date">24 Feb, 01:30AM</span>
-                                                            </div>
-                                                            <div class="mt-comment-text"> chanduh@gmail.com</div>
-                                                            <div class="mt-comment-text"> Validator </div>
-                                                            <div class="mt-comment-text"> Expire on Apr 25 10:31:18 2022 GMT</div>
-                                                            <div class="mt-comment-details">
-                                                                <span class="mt-comment-status mt-comment-status-approved">Valid</span>
-                                                                <ul class="mt-comment-actions">
-                                                                    <li>
-                                                                        <a href="#">More</a>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-
-
-                                                </div>
-                                                <!-- END: Signature list -->
-                                            </div>
-                                        </div>
-                                        <div class="portlet light" style="display:none" id="score-portlet-two-doc-right">
-                                            <div class="portlet-title">
-                                                <div class="caption">
-                                                    <i class="icon-graph"></i>
-                                                    <span class="caption-subject bold uppercase font-dark">Score</span>
-                                                    <span class="caption-helper font-dark">Score for the Document. This score is generated according to the signatures and content that verify with signatures.</span>
-                                                </div>
-
-                                            </div>
-                                            <div class="portlet-body">
-                                                <div class="row">
-                                                    <div class="col-md-6">
-
-                                                        <h4 id="individual-score-two-doc-right"></h4>
-
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <div class="easy-pie-chart">
-                                                            <div class="number transactions" data-percent="56.7">
-                                                                <span>+56.7</span>% </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-
-                                            <div class="portlet-body" style="display:none" id="cor-score-portlet-two-doc-right">
-                                                <div class="row">
-                                                    <div class="col-md-6">
-                                                        <h4> Correlation document score : </h4>
-                                                    </div>
-                                                </div>
-
-                                                <div class="row">
-                                                    <div class="col-md-2">
-                                                        <div class="easy-pie-chart">
-                                                            <div class="number transactions" data-percent="64">
-                                                                <span>+64</span>% </div>
-                                                            <a class="title"> Name
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="margin-bottom-10 visible-sm"> </div>
-                                                    <div class="col-md-2">
-                                                        <div class="easy-pie-chart">
-                                                            <div class="number visits" data-percent="90">
-                                                                <span>+90</span>% </div>
-                                                            <a class="title" > NIC
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="margin-bottom-10 visible-sm"> </div>
-                                                    <div class="col-md-2">
-                                                        <div class="easy-pie-chart">
-                                                            <div class="number transactions" data-percent="73">
-                                                                <span>+73</span>% </div>
-                                                            <a class="title"> Address
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="margin-bottom-10 visible-sm"> </div>
-                                                    <div class="col-md-2">
-                                                        <div class="easy-pie-chart">
-                                                            <div class="number visits" data-percent="2">
-                                                                <span>+2</span>% </div>
-                                                            <a class="title"> Gender
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="margin-bottom-10 visible-sm"> </div>
-                                                    <div class="col-md-2">
-                                                        <div class="easy-pie-chart">
-                                                            <div class="number transactions" data-percent="5">
-                                                                <span>+5</span>% </div>
-                                                            <a class="title"> DOB
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="row">
-                                                    <div class="col-md-6">
-
-                                                        <div class="col-md-6">
-                                                            <div class="easy-pie-chart ">
-                                                                <div class="number bounce" data-percent="41.7">
-                                                                    <span>+41.7</span>% </div>
-                                                                <a class="title"> <b>Average</b>
-                                                                </a>
-                                                            </div>
-                                                        </div>
-
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
+                            </div>
+                            <div class="portlet-body">
+                                <div id="template"></div>
                             </div>
                         </div>
 
+                        <div class="portlet light ">
+                            <div class="portlet-title">
+                                <div class="caption">
+                                    <i class="icon-pencil font-green"></i>
+                                    <span class="caption-subject font-dark bold uppercase">Signatures</span>
+                                </div>
+
+                            </div>
+                            <div class="portlet-body">
+                                <!-- BEGIN: Signature list -->
+                                <div class="mt-comments" id="signature_list">
+
+                                    <!-- BEGIN: Signature template -->
+                                    <script id="signature_template" type="text/html">
+                                        <div class="mt-comment mt-element-ribbon" id="signature-0">
+                                            <div class="ribbon ribbon-vertical-left ribbon-shadow ribbon-color-primary uppercase">
+                                                <div class="ribbon-sub ribbon-bookmark"></div>
+                                                <i class="fa fa-pencil-square-o"></i>
+                                            </div>
+                                            <div class="mt-comment-body">
+                                                <div class="mt-comment-info">
+                                                    <span class="mt-comment-author">${id}</span>
+                                                    <!--<span class="mt-comment-author">${name}</span>-->
+
+                                                    <!--<span class="mt-comment-date" id="signed_date">${signed_date}</span>-->
+                                                </div>
+                                                <!--<div class="mt-comment-text" id="email"> ${email}</div>-->
+                                                <!--<div class="mt-comment-text" id="type"> ${type}</div>-->
+                                                <!--<div class="mt-comment-text" id="expire_date"> ${expire_date}</div>-->
+                                                <div class="mt-comment-details">
+                                                    <!--<span class="mt-comment-status mt-comment-status-approved"-->
+                                                          <!--id="validity">${validity}</span>-->
+                                                    <ul class="mt-comment-actions">
+                                                        <li>
+                                                            <a href="#">More</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </script>
+                                    <!-- END: Signature list -->
+
+                                </div>
+                                <!-- END: Signature list -->
+                            </div>
+                        </div>
+
+                        <div class="portlet light">
+                            <div class="portlet-title">
+                                <div class="caption">
+                                    <i class="icon-graph"></i>
+                                    <span class="caption-subject bold uppercase font-dark">Individual Score</span>
+                                    <span class="caption-helper font-dark">Individual Score for the Document.</span>
+                                </div>
+
+                            </div>
+                            <div class="portlet-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+
+                                        <h4 id="confidence-score"></h4>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
 
                     </div>
                 </div>
 
+                <div>
+                    <div class="portlet light" style="">
+                        <div class="portlet-title">
+                            <div class="caption">
+                                <i class="icon-graph"></i>
+                                <span class="caption-subject bold uppercase font-dark">Correlation document score</span>
+                                <span class="caption-helper font-dark">Correlation Score for multiple Documents.</span>
+                            </div>
 
-                <!-- END PAGE BASE CONTENT -->
+                        </div>
+                        <div class="portlet-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="table-scrollable">
+                                        <table class="table table-hover table-bordered">
+                                            <tbody class="text-center">
+                                            <tr>
+                                                <td>
+                                                    <div class="col-md-6">
+                                                        <span>Name1</span>
+                                                    </div>
+                                                    <div class="easy-pie-chart col-md-6">
+                                                        <div class="number visits" data-percent="85">
+                                                            <span>+85</span>%
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="col-md-10">
+                                                        <span>Name1</span>
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        <span class="label label-sm label-success"> 75% </span>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="col-md-10">
+                                                        <span>Name1</span>
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        <span class="label label-sm label-success"> 75% </span>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="col-md-10">
+                                                        <span>Name1</span>
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        <span class="label label-sm label-success"> 75% </span>
+                                                    </div>
+                                                </td>
+                                            </tr>
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+
+                                    <!--<div class="row">-->
+                                        <!--<div class="col-md-2">-->
+                                            <!--<a class="title"> Name </a>-->
+                                        <!--</div>-->
+                                        <!--<div class="margin-bottom-10 visible-sm"></div>-->
+                                        <!--<div class="col-md-2">-->
+                                            <!--<div class="easy-pie-chart">-->
+                                                <!--<div class="number visits" data-percent="85">-->
+                                                    <!--<span>+85</span>%-->
+                                                <!--</div>-->
+                                                <!--<a class="title"> NIC-->
+                                                <!--</a>-->
+                                            <!--</div>-->
+                                        <!--</div>-->
+                                        <!--<div class="margin-bottom-10 visible-sm"></div>-->
+                                        <!--<div class="col-md-2">-->
+                                            <!--<div class="easy-pie-chart">-->
+                                                <!--<div class="number transactions" data-percent="46">-->
+                                                    <!--<span>+46</span>%-->
+                                                <!--</div>-->
+                                                <!--<a class="title"> Address-->
+                                                <!--</a>-->
+                                            <!--</div>-->
+                                        <!--</div>-->
+                                        <!--<div class="margin-bottom-10 visible-sm"></div>-->
+                                        <!--<div class="col-md-2">-->
+                                            <!--<div class="easy-pie-chart">-->
+                                                <!--<div class="number visits" data-percent="99">-->
+                                                    <!--<span>+99</span>%-->
+                                                <!--</div>-->
+                                                <!--<a class="title"> Gender-->
+                                                <!--</a>-->
+                                            <!--</div>-->
+                                        <!--</div>-->
+                                        <!--<div class="margin-bottom-10 visible-sm"></div>-->
+                                        <!--<div class="col-md-2">-->
+                                            <!--<div class="easy-pie-chart">-->
+                                                <!--<div class="number transactions" data-percent="66">-->
+                                                    <!--<span>+66</span>%-->
+                                                <!--</div>-->
+                                                <!--<a class="title"> DOB-->
+                                                <!--</a>-->
+                                            <!--</div>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+
+                                    <!--<div class="row">-->
+                                        <!--<div class="col-md-6">-->
+
+                                            <!--<div class="col-md-6">-->
+                                                <!--<div class="easy-pie-chart ">-->
+                                                    <!--<div class="number bounce" data-percent="66.7">-->
+                                                        <!--<span>+66.7</span>%-->
+                                                    <!--</div>-->
+                                                    <!--<a class="title"> <b>Average</b>-->
+                                                    <!--</a>-->
+                                                <!--</div>-->
+                                            <!--</div>-->
+
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+
+                    <!-- END PAGE BASE CONTENT -->
+                </div>
+                <!-- END PAGE HEAD-->
+
+
             </div>
-            <!-- END PAGE HEAD-->
-
-
+            <!-- END CONTENT BODY -->
         </div>
-        <!-- END CONTENT BODY -->
+        <!-- END CONTENT -->
     </div>
-    <!-- END CONTENT -->
-</div>
-<!-- END CONTAINER -->
+    <!-- END CONTAINER -->
 
-<!--<script type="text/javascript" src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.0.0.min.js"></script>-->
+    <!--<script type="text/javascript" src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.0.0.min.js"></script>-->
 
-<!-- Start wrapper for jquery script imports  -->
-<script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+    <!-- Start wrapper for jquery script imports  -->
+    <script>if (typeof module === 'object') {
+        window.module = module;
+        module = undefined;
+    }</script>
 
-<script type="text/javascript" src="assets/global/plugins/jquery.min.js"></script>
+    <script type="text/javascript" src="assets/global/plugins/jquery.min.js"></script>
 
-<!-- End wrapper for jquery script imports -->
-<script>if (window.module) module = window.module;</script>
+    <!-- End wrapper for jquery script imports -->
+    <script>if (window.module) module = window.module;</script>
 
-<script>
-    var jsonDoc;
-
-    $(function(){
-        $("#header").load("layout/header.html");
-        $("#sidebar").load("layout/sidebar.html");
-    });
-
-
-    function loadContent(docNum) {
-
-        $("#template-"+docNum).load("doc_templates/view/passport.html",function(){
-            loadFile(docNum);
-        });
-    }
-
-    function temploadContent(docNum) {
-
-        $("#template-"+docNum).load("doc_templates/view/student_id.html",function(){
-            loadSignature(docNum);
-            loadIndividualScore(docNum);
-        });
-    }
-
-    function loadFile(docNum) {
-
-
-        var input, file, fr;
-
-        if (typeof window.FileReader !== 'function') {
-            alert("The file API isn't supported on this browser yet.");
-            return;
+    <script>
+        var jsonDoc;
+        var docCount = 0;
+        var varProperties;
+        var docListResponse={
+            "requestId": "aa828ce7-5804-4a2f-840e-1d7be90f7de1",
+            "email": "info@avix.lk",
+            "files": [
+                {
+                    "documentType": "passport",
+                    "json": "http://www.mrt.ac.lk:8080/opt/tomcat/webapps/idstack/relyingparty/docs/info@avix.lk/aa828ce7-5804-4a2f-840e-1d7be90f7de1/passport/1.json",
+                    "pdf": "http://www.mrt.ac.lk:8080/opt/tomcat/webapps/idstack/relyingparty/docs/info@avix.lk/aa828ce7-5804-4a2f-840e-1d7be90f7de1/passport/1.pdf"
+                },
+                {
+                    "documentType": "passport",
+                    "json": "http://www.mrt.ac.lk:8080/opt/tomcat/webapps/idstack/relyingparty/docs/info@avix.lk/aa828ce7-5804-4a2f-840e-1d7be90f7de1/passport/1.json",
+                    "pdf": "http://www.mrt.ac.lk:8080/opt/tomcat/webapps/idstack/relyingparty/docs/info@avix.lk/aa828ce7-5804-4a2f-840e-1d7be90f7de1/passport/1.pdf"
+                }
+            ]
         }
-
-        input = document.getElementById("fileInput-"+docNum);
-        if (!input) {
-            alert("Um, couldn't find the fileinput element.");
-        }
-        else if (!input.files) {
-            alert("This browser doesn't seem to support the `files` property of file inputs.");
-        }
-        else if (!input.files[0]) {
-            alert("Please select a file before clicking 'Load'");
-        }
-        else {
-            file = input.files[0];
-            fr = new FileReader();
-            fr.onload = receivedText;
-            fr.readAsText(file);
-        }
-
-        function receivedText(e) {
-            lines = e.target.result;
-            jsonDoc = JSON.parse(lines);
-            console.log(jsonDoc);
-            $('div#document').loadJSON(jsonDoc.content);
-            $('div#document').loadJSON(jsonDoc.content.name);
-
-        }
-
-
-        loadSignature(docNum);
-        loadIndividualScore(docNum);
-
-    }
-
-    function loadSignature(docNum) {
-
-//            // get a reference to your element, or it's container
-//            var myElement = document.getElementById('signature-portlet-'+docNum);
-//            myElement.style.display = '';
-        $("#signature-portlet").load("doc_templates/view/signature-portlet.html");
-
-        setTimeout(function () {
-            var NUM_OF_SIGNS = 4;
-            for (var i = 1; i < NUM_OF_SIGNS; i++) {
-                var source = $('#signature-0');
-                var clone = source.clone();
-                clone.find('#name').text("Chamin Wickxxx");
-                clone.find('#signed_date').text("12 March, 11:31AMxxx");
-                clone.find('#email').text("chamin@gmail.comxxx");
-                clone.find('#type').text("Extractorxx");
-                clone.find('#expire_date').text("Expire on " + "Apr 15 14:11:11 2014 GMTxx");
-                clone.find('#validity').text("Valid");
-
-                $('#signature-list').append(clone);
+        var response = [
+            {
+                "meta_data": {
+                    "name": "IDStack",
+                    "version": "1.0",
+                    "document_id": "a8heEdgg",
+                    "document_type": "passport",
+                    "issuer": {
+                        "organization": "department of immigration and emmigration",
+                        "email": "controller@immigration.gov.lk",
+                        "url": "http://www.immigration.gov.lk/usr/local/idstack/extractor/cert/pub/9e18a0b3-45cd-41e9-81a2-073e91e0c1b0.cer"
+                    }
+                },
+                "content": {
+                    "passport_type": "PA",
+                    "country_code": "LKA",
+                    "passport_no": "N6665635",
+                    "name": {
+                        "surname": "Dangalla",
+                        "other_names": "Chamin Bhasitha"
+                    },
+                    "national_status": "Sri Lankan",
+                    "profession": "University Student",
+                    "date_of_birth": "03/10/1992",
+                    "id_no": "922770697V",
+                    "sex": "M",
+                    "palce_of_birth": "Colombo",
+                    "date_of_issue": "25/04/2016",
+                    "date_of_expiry": "25/04/2026"
+                },
+                "extractor": {
+                    "id": "2efed5eg",
+                    "signature": {
+                        "message_digest": "MIIFRjCCBC6gAwIBAgIRAMxtHV1q5YH597HXLW01nl4wDQYJKoZIhvcNAQELBQAwgZAxCzAJBgNVBATAkdCMRswGQYDVQQIExJHcmVhdGVyIE1hbmNoZXN0ZXIx",
+                        "url": "http://www.immigration.gov.lk/usr/local/idstack/extractor/cert/pub/9e18a0b3-45cd-41e9-81a2-073e91e0c1b0.cer"
+                    }
+                },
+                "validators": [
+                    {
+                        "id": "1Ued5eg",
+                        "signature": {
+                            "message_digest": "MIIFRjCCBC6gAwIBAgIRAMxtHV1q5YH597HXLW01nl4wDQYJKoZIhvcNAQELBQAwgZAxCzAJBgNVBAYTAkdCMRswGQYDVQQIExJHcmVhdGVyIE1hbmNoZ",
+                            "url": "http://www.usaembassy.gov.lk/usr/local/idstack/validator/cert/pub/9e18a0b3-45cd-41e9-81a2-073e91e0c1b0.cer"
+                        },
+                        "signed_content": "true",
+                        "signed_signatures": []
+                    },
+                    {
+                        "id": "5E8d32g",
+                        "signature": {
+                            "message_digest": "MIIFRjCCBC6gAwIBAgIRAMxtHV1q5YH597HXLW01nl4wDQYJKoZIhvcNAQELBQAwgZAxCzAJBgNVBAYTAkdCMRswGQYDVQQIExJHcmVhdGVyIE1hbmNoZ",
+                            "url": "http://www.foreignembassy.com/usr/local/idstack/validator/cert/pub/9e18a0b3-45cd-41e9-81a2-073e91e0c1b0.cer"
+                        },
+                        "signed_content": "true",
+                        "signed_signatures": [
+                            "1Ued5eg"
+                        ]
+                    },
+                    {
+                        "id": "dg4TGd6",
+                        "signature": {
+                            "message_digest": "MIIFRjCCBC6gAwIBAgIRAMxtHV1q5YH597HXLW01nl4wDQYJKoZIhvcNAQELBQAwgZAxCzAJBgNVBAYTAkdCMRswGQYDVQQIExJHcmVhdGVyIE1hbmNoZXN0ZXIxEDAOBgNVBAcTB1NhbGZvcmQxGjAYBgNVBAoTEUNPTU9ETyBDQSBMaW1pdGVkMTYwNAYDVQQDEy1DT01PRE8gUlNBIERvbWFpbiBWYWxpZGF0aW9uIFNlY3VyZSBTZXJ2ZXIgQ0EwHhcNMTcwMTI3MDAwMDAwWhcNMTgwMTI3MjM1OTU5WjBPMSEwHwYDVQQLExhEb21haW4gQ29udHJvbCBWYWxpZGF0ZWQxFDASBgNVBAsTC1Bvc2l0aXZlU1NMMRQwEgYDVQQDEwtpZHN0YWNrLm9uZTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBALs+h8tOFef8I7N0UgZscW9XGKzoicffXT5",
+                            "url": "http://www.president.us/usr/local/idstack/validator/cert/pub/9e18a0b3-45cd-41e9-81a2-073e91e0c1b0.cer"
+                        },
+                        "signed_content": "true",
+                        "signed_signatures": [
+                            "1Ued5eg",
+                            "5E8d32g"
+                        ]
+                    }
+                ]
+            },
+            {
+                "meta_data": {
+                    "name": "IDStack",
+                    "version": "1.0",
+                    "document_id": "a8heEdgg",
+                    "document_type": "student_id",
+                    "issuer": {
+                        "organization": "university of moratuwa",
+                        "email": "info@mrt.ac.lk",
+                        "url": "http://www.mrt.ac.lk/usr/local/idstack/extractor/cert/pub/9e18a0b3-45cd-41e9-81a2-073e91e0c1b0.cer"
+                    }
+                },
+                "content": {
+                    "university": "University of Moratuwa",
+                    "faculty": "Engineering",
+                    "degree": "BSc Eng Hons",
+                    "name": {
+                        "surname": "Dangalla",
+                        "initials": "DADJS"
+                    },
+                    "index_no": "130094R",
+                    "address": {
+                        "line1": "9A, De Mel Watta Road, Koswatta",
+                        "line2": "Nawala"
+                    },
+                    "nic": "937741180V",
+                    "valid_until": "Dec 2018",
+                    "card_id": "STU-1-41022060-317-130094R"
+                },
+                "extractor": {
+                    "id": "b178dad3",
+                    "signature": {
+                        "message_digest": "MIAGCSqGSIb3DQEHAqCAMIACAQExDzANBglghkgBZQMEAgEFADCABgkqhkiG9w0BBwGggCSABIIBN3sidW5pdmVyc2l0eSI6IlVuaXZlcnNpdHkgb2YgTW9yYXR1d2EiL",
+                        "url": "http://www.mrt.ac.lk/usr/local/idstack/extractor/cert/pub/9e18a0b3-45cd-41e9-81a2-073e91e0c1b0.cer"
+                    }
+                },
+                "validators": [
+                    {
+                        "id": "1Ued5eg",
+                        "signature": {
+                            "message_digest": "MIIFRjCCBC6gAwIBAgIRAMxtHV1q5YH597HXLW01nl4wDQYJKoZIhvcNAQELBQAwgZAxCzAJBgNVBAYTAkdCMRswGQYDVQQIExJHcmVhdGVyIE1hbmNoZ",
+                            "url": "http://www.ugc.ac.lk/usr/local/idstack/validator/cert/pub/9e18a0b3-45cd-41e9-81a2-073e91e0c1b0.cer"
+                        },
+                        "signed_content": "true",
+                        "signed_signatures": []
+                    }
+                ]
             }
-        },1000);
-    }
-
-
-
-
-    function loadIndividualScore(docNum) {
-        $("#individual-score-portlet").load("doc_templates/view/individual-score-portlet.html");
-
-//        var settings = {
-//            "async": true,
-//            "crossDomain": true,
-//            "url": "http://107.170.85.41:8080/api/v1/scorer/document",
-//            "method": "POST",
-//            "headers": {
-//                "content-type": "application/json",
-//                "signedattributes": "passport"
-//            },
-//            "processData": false,
-//            "data": "{\n  \"meta_data\": {\n    \"name\": \"IDStack\",\n    \"version\": \"1.0\",\n    \"document_id\": \"a8heEdgg\",\n    \"document_type\": \"passport\"\n  },\n  \"content\": {\n    \"passport_type\":\"PA\",\n    \"country_code\":\"LKA\",\n    \"passport_no\": \"N6665635\",\n    \"name\":{\n\t    \"surname\": \"Wickaramarathna\",\n\t    \"other_names\": \"Chamin Bhasitha\"\n\t},\n    \"national_status\": \"Sri Lankan\",\n    \"profession\": \"University Student\",\n    \"data_of_birth\": \"03/10/1992\",\n    \"id_no\": \"922770697V\",\n    \"sex\": \"M\",\n    \"palce_of_birth\": \"Colombo\",\n    \"data_of_issue\": \"25/04/2016\",\n    \"date_of_expiry\": \"25/04/2026\"\n  },\n  \"verifier\": {\n    \"id\": \"2efed5eg\",\n    \"signature\": {}\n  },\n  \"signers\": [\n    {\n      \"id\": \"1Ued5eg\",\n      \"signature\": {},\n      \"signed_attributes\": [\n        \"university\",\n        \"faculty\"\n      ]\n    },\n    {\n      \"id\": \"5E8d32g\",\n      \"signature\": {},\n      \"signed_attributes\": [\n        \"university\",\n        \"faculty\"\n      ],\n      \"signed_signatures\": [\n        \"1Ued5eg\"\n      ]\n    },\n    {\n      \"id\": \"dg4TGd6\",\n      \"signature\": {},\n      \"signed_attributes\": [\n        \"university\",\n        \"faculty\"\n      ],\n      \"signed_signatures\": [\n        \"1Ued5eg\",\n        \"5E8d32g\"\n      ]\n    }\n  ]\n}"
-//        }
-//
-//        var request =$.ajax(settings).done(function (response) {
-//            console.log(response);
-//            response =47.5; //for demo purpose
-//            $("#individual-score-"+docNum).append("Individual document score : <b>"+response +"% </b>");
-//            loadPie(response,docNum)
-//        });
-        setTimeout(function () {
-            response = 77.5;
-            if (docNum == "two-doc-right") {
-                response = 56.7
-            }//for demo purpose
-            $("#individual-score-" + docNum).append("Individual document score : <b>" + response + "% </b>");
-
-            loadPie(response, docNum);
-
-            if (docNum == "two-doc-right") {
-                loadCorScore(docNum);
+        ]
+        var confidenceResponse=[];
+        var correlationResponse = {
+            "name": {
+                "avgScore": 0,
+                "status": -1,
+                "values": [
+                    {
+                        "text": "Chamin Bhasitha Wickaramarathna",
+                        "score": 0
+                    },
+                    {
+                        "text": "Dangalla",
+                        "score": 0
+                    }
+                ]
+            },
+            "address": {
+                "avgScore": 0,
+                "status": -1,
+                "values": [
+                    {
+                        "text": "",
+                        "score": 0
+                    },
+                    {
+                        "text": "9A, De Mel Watta Road, Koswatta Nawala",
+                        "score": 0
+                    }
+                ]
+            },
+            "dob": {
+                "avgScore": 0,
+                "status": -1,
+                "values": [
+                    {
+                        "text": "03/10/1992",
+                        "score": 0
+                    },
+                    {
+                        "text": "",
+                        "score": 0
+                    }
+                ]
+            },
+            "gender": {
+                "avgScore": 0,
+                "status": -1,
+                "values": [
+                    {
+                        "text": "m",
+                        "score": 0
+                    },
+                    {
+                        "text": "",
+                        "score": 0
+                    }
+                ]
+            },
+            "nic": {
+                "avgScore": 50,
+                "status": 0,
+                "values": [
+                    {
+                        "text": "922770697v",
+                        "score": 100
+                    },
+                    {
+                        "text": "937741180v",
+                        "score": 0
+                    }
+                ]
             }
-        },1000);
-    }
-
-    function loadPie(score,docNum) {
-//        $("#individual-score-chart-"+docNum).append( "<input class='knob' data-angleoffset=-125 data-anglearc=250 data-fgcolor='#66EE66' value='"+score+"' readOnly='true'>" );
-
-    }
-
-    function loadCorScore(docNum) {
-        var myElement1 = document.getElementById('cor-score-portlet-'+"two-doc-left");
-        var myElement2 = document.getElementById('cor-score-portlet-'+docNum);
-        myElement1.style.display = '';
-        myElement2.style.display = '';
-    }
+        }
 
 
+        $(function () {
+            $("#header").load("layout/header.html");
+            $("#sidebar").load("layout/sidebar.html");
+            $.getJSON("properties.json", function(json) {
+                varProperties = json;
+                console.log(varProperties);
+                loadView();
+            });
 
 
-</script>
+        });
+
+        function apiCalls() {
+
+        }
 
 
-<!-- BEGIN CORE PLUGINS -->
-
-<script src="assets/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-<script src="assets/global/plugins/js.cookie.min.js" type="text/javascript"></script>
-<script src="assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
-<script src="assets/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
-<script src="assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
-<!-- END CORE PLUGINS -->
-<!-- BEGIN PAGE LEVEL PLUGINS -->
-<script src="assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.js" type="text/javascript"></script>
-<script src="https://cdn.rawgit.com/kevindb/jquery-load-json/v1.3.3/dist/jquery.loadJSON.min.js" integrity="sha384-fG4z44FEBJnIevyzvSDobSmVTsO/oVsxNvKcUl7bO1ihWYDPg2QI83Xi+7wSBzap" crossorigin="anonymous"></script>
-<script src="assets/global/plugins/bootstrap-table/bootstrap-table.min.js" type="text/javascript"></script>
-
-<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-<script src="assets/global/plugins/jquery-knob/js/jquery.knob.js" type="text/javascript"></script>
-<script src="assets/global/plugins/jquery-easypiechart/jquery.easypiechart.min.js" type="text/javascript"></script>
+        function loadView() {
+            docCount = response.length;
+            if (docCount >= 4) {
+                toastr.warning('You have exceed the maximum number of documents');
+                return;
+            }
+            for (var i = 0; i < docCount; i++) {
+                var source = $('#column_0');
+                clone = source.clone();
+                clone.removeAttr('style');
+                clone.attr('id', 'column_' + i);
+                clone.removeClass('col-md-12').addClass('col-md-' + 12 / docCount);
 
 
-<!-- END PAGE LEVEL PLUGINS -->
-<!-- BEGIN THEME GLOBAL SCRIPTS -->
-<script src="assets/global/scripts/app.min.js" type="text/javascript"></script>
+                clone.find("#template").load("doc_templates/view/"+response[i].meta_data.document_type+".html",loadContentView(i,clone) );
+                loadSignatureView(i, clone);
+                getConfidenceByUrl(docListResponse.files[i].json,clone);
+                $('#document_array').append(clone);
+            }
+        }
 
-<!-- END THEME GLOBAL SCRIPTS -->
-<!-- BEGIN PAGE LEVEL SCRIPTS -->
-<script src="assets/pages/scripts/table-bootstrap.js" type="text/javascript"></script>
-<script src="assets/pages/scripts/components-knob-dials.min.js" type="text/javascript"></script>
-<script src="assets/pages/scripts/dashboard.min.js" type="text/javascript"></script>
-
-<!-- END PAGE LEVEL SCRIPTS -->
+        function loadContentView(docNum,clone) {
+            setTimeout(function () {
+                clone.find('div#document').loadJSON(response[docNum].content);
+            },1000)
+        }
 
 
+        function loadSignatureView(docNum, clone) {
+            console.log(response[docNum].extractor);
+            $("#signature_template").tmpl(response[docNum].extractor).appendTo(clone.find("#signature_list"));
+            for (var j = 0; j < response[docNum].validators.length; j++) {
+                $("#signature_template").tmpl(response[docNum].validators[j]).appendTo(clone.find("#signature_list"));
+            }
+        }
 
-<!-- BEGIN THEME LAYOUT SCRIPTS -->
-<script src="assets/layout/scripts/layout.min.js" type="text/javascript"></script>
-<script src="assets/layout/scripts/demo.min.js" type="text/javascript"></script>
-<script src="assets/layout/global/scripts/quick-sidebar.min.js" type="text/javascript"></script>
-<script src="assets/layout/global/scripts/quick-nav.min.js" type="text/javascript"></script>
-<!-- END THEME LAYOUT SCRIPTS -->
+        function loadCorrelationScore(docNum) {
+
+        }
+
+        // web service calls
+        function getDocuments() {
+
+        }
+
+        function getConfidenceByUrl(url,clone) {
+            var form = new FormData();
+            form.append("jsonUrl", url);
+
+            var settings = {
+                "async": true,
+                "crossDomain": true,
+                "url": "http://"+varProperties.relyingparty.host+"/api-relyingparty/"+varProperties.relyingparty.apiVersion+"/"+varProperties.relyingparty.apiKey+"/confidence/url",
+                "method": "POST",
+                "headers": {
+                    "Authorization": "Basic " + btoa(varProperties.relyingparty.userName + ":" + varProperties.relyingparty.password)
+                },
+                "processData": false,
+                "contentType": false,
+                "mimeType": "multipart/form-data",
+                "data": form
+            }
+
+            $.ajax(settings).done(function (response) {
+                console.log(response);
+                clone.find("#confidence-score").text(response)
+            });
+        }
+
+        function getCorrelationByRequest(requestId) {
+            var form = new FormData();
+            form.append("requestId", requestId);
+
+            var settings = {
+                "async": true,
+                "crossDomain": true,
+                "url": "http://"+varProperties.relyingparty.host+"/api-relyingparty/"+varProperties.relyingparty.apiVersion+"/"+varProperties.relyingparty.apiKey+"/correlation/request",
+                "method": "POST",
+                "headers": {
+                    "Authorization": "Basic " + btoa(varProperties.relyingparty.userName + ":" + varProperties.relyingparty.password)
+                },
+                "processData": false,
+                "contentType": false,
+                "mimeType": "multipart/form-data",
+                "data": form
+            }
+
+            $.ajax(settings).done(function (response) {
+                console.log(response);
+            });
+
+        }
+
+
+
+
+
+
+    </script>
+
+
+    <!-- BEGIN CORE PLUGINS -->
+
+    <script src="assets/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="assets/global/plugins/js.cookie.min.js" type="text/javascript"></script>
+    <script src="assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+    <script src="assets/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
+    <script src="assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
+    <!-- END CORE PLUGINS -->
+    <!-- BEGIN PAGE LEVEL PLUGINS -->
+    <script src="assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.js" type="text/javascript"></script>
+    <script src="https://cdn.rawgit.com/kevindb/jquery-load-json/v1.3.3/dist/jquery.loadJSON.min.js"
+            integrity="sha384-fG4z44FEBJnIevyzvSDobSmVTsO/oVsxNvKcUl7bO1ihWYDPg2QI83Xi+7wSBzap"
+            crossorigin="anonymous"></script>
+    <script src="assets/global/plugins/bootstrap-table/bootstrap-table.min.js" type="text/javascript"></script>
+    <script src="assets/global/plugins/bootstrap-toastr/toastr.min.js" type="text/javascript"></script>
+
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="assets/global/plugins/jquery-knob/js/jquery.knob.js" type="text/javascript"></script>
+    <script src="assets/global/plugins/jquery-easypiechart/jquery.easypiechart.min.js" type="text/javascript"></script>
+    <script src="assets/global/plugins/jquery-tmpl/jquery.tmpl.min.js" type="text/javascript"></script>
+
+
+    <!-- END PAGE LEVEL PLUGINS -->
+    <!-- BEGIN THEME GLOBAL SCRIPTS -->
+    <script src="assets/global/scripts/app.min.js" type="text/javascript"></script>
+
+    <!-- END THEME GLOBAL SCRIPTS -->
+    <!-- BEGIN PAGE LEVEL SCRIPTS -->
+    <script src="assets/pages/scripts/table-bootstrap.js" type="text/javascript"></script>
+    <script src="assets/pages/scripts/components-knob-dials.min.js" type="text/javascript"></script>
+    <script src="assets/pages/scripts/dashboard.min.js" type="text/javascript"></script>
+    <!-- END PAGE LEVEL SCRIPTS -->
+
+
+    <!-- BEGIN THEME LAYOUT SCRIPTS -->
+    <script src="assets/layout/scripts/layout.min.js" type="text/javascript"></script>
+    <script src="assets/layout/scripts/demo.min.js" type="text/javascript"></script>
+    <script src="assets/layout/global/scripts/quick-sidebar.min.js" type="text/javascript"></script>
+    <script src="assets/layout/global/scripts/quick-nav.min.js" type="text/javascript"></script>
+    <!-- END THEME LAYOUT SCRIPTS -->
 
 </body>
 

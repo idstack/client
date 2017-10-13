@@ -4,16 +4,20 @@
 
 
 function getParameterByName(name, url) {
-    if (!url) url = window.location.href;
+    "use strict";
+    if (!url) {
+        url = window.location.href;
+    }
     name = name.replace(/[\[\]]/g, "\\$&");
     var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
         results = regex.exec(url);
-    if (!results) return null;
-    if (!results[2]) return '';
+    if (!results){ return null;}
+    if (!results[2]){ return '';}
     return decodeURIComponent(results[2].replace(/\+/g, " "));
 }
 
 var getUrlParameter = function getUrlParameter(sParam) {
+    "use strict";
     var sPageURL = decodeURIComponent(window.location.search.substring(1)),
         sURLVariables = sPageURL.split('&'),
         sParameterName,
