@@ -34,6 +34,7 @@
     <link href="assets/layout/css/themes/blue.min.css" rel="stylesheet" type="text/css" id="style_color" />
     <link href="assets/layout/css/custom.min.css" rel="stylesheet" type="text/css" />
     <!-- END THEME LAYOUT STYLES -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link rel="shortcut icon" href="assets/favicon.png" /> </head>
 <!-- END HEAD -->
 
@@ -77,27 +78,33 @@
                                 </div>
                             </div>
                             <div class="portlet-body form">
-                                <form id="fileupload" action="" method="POST" enctype="multipart/form-data">
+                                <form role="form" class="form-horizontal">
                                     <!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
                                     <div class="row fileupload-buttonbar">
-                                        <div class="col-lg-7">
+                                        <div class="col-lg-2">
                                             <!-- The fileinput-button span is used to style the file input field as button -->
                                             <span class="btn green fileinput-button">
                                             <i class="fa fa-plus"></i>
                                              <span> Add PDF </span>
-                                            <input type="file" name="files[]" multiple=""> </span>
-                                            <!-- The global file processing state -->
+                                            <input id="extFileInput" type="file" onchange="getFIle()"> </span>
+                                             <!--The global file processing state-->
                                             <span class="fileupload-process"> </span>
                                         </div>
-                                        <!-- The global progress information -->
-                                        <div class="col-lg-5 fileupload-progress fade">
-                                            <!-- The global progress bar -->
-                                            <div class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100">
-                                                <div class="progress-bar progress-bar-success" style="width:0%;"> </div>
+                                        <div class="col-lg-10">
+                                            <label class="col-md-2 control-label">Extractor URL</label>
+                                            <div class="col-md-10">
+                                                <input type="text" id="ext_url" class="form-control" placeholder="Enter the url of the extractor API">
                                             </div>
-                                            <!-- The extended global progress information -->
-                                            <div class="progress-extended"> &nbsp; </div>
                                         </div>
+                                        <!-- The global progress information -->
+                                        <!--<div class="col-lg-5 fileupload-progress fade">-->
+                                            <!--&lt;!&ndash; The global progress bar &ndash;&gt;-->
+                                            <!--<div class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100">-->
+                                                <!--<div class="progress-bar progress-bar-success" style="width:0%;"> </div>-->
+                                            <!--</div>-->
+                                            <!--&lt;!&ndash; The extended global progress information &ndash;&gt;-->
+                                            <!--<div class="progress-extended"> &nbsp; </div>-->
+                                        <!--</div>-->
                                     </div>
                                     <!-- The table listing the files available for upload/download -->
                                     <table role="presentation" class="table table-striped clearfix">
@@ -134,11 +141,11 @@
                                                         <span class="btn green fileinput-button">
                                                             <i class="fa fa-plus"></i>
                                                             <span> Choose PDF</span>
-                                                        <input id="extpdf" type="file" name="files[]" multiple="" onchange="alertPdfFilename()" > </span>
+                                                        <input id="val_pdf" type="file" name="pdf"  onchange="showPdfFilename()" > </span>
                                                 </div>
                                                 <div class="col-md-10">
                                                     <div class="input-group-control">
-                                                        <input id="extpdfname" type="text" class="form-control" placeholder="Placeholder" readonly>
+                                                        <input id="val_pdfname" type="text" class="form-control" placeholder="Placeholder" readonly>
                                                         <div class="form-control-focus"> </div>
                                                     </div>
                                                 </div>
@@ -152,22 +159,29 @@
                                                         <span class="btn green fileinput-button">
                                                             <i class="fa fa-plus"></i>
                                                             <span> Choose MRF</span>
-                                                        <input id="extmrf" type="file" name="files[]" multiple="" onchange="alertMrfFilename()"> </span>
+                                                        <input id="val_mrf" type="file" name="mrf"  onchange="showMrfFilename()"> </span>
                                                 </div>
                                                 <div class="col-md-10">
                                                     <div class="input-group-control">
-                                                        <input id="extmrfname" type="text" class="form-control" placeholder="Placeholder" readonly>
+                                                        <input id="val_mrfname" type="text" class="form-control" placeholder="Placeholder" readonly>
                                                         <div class="form-control-focus"> </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="form-group form-md-line-input">
-                                            <label class="col-md-2 control-label" for="form_control_1">Input with hint</label>
+                                            <label class="col-md-2 control-label" for="val_url">Validator URL</label>
                                             <div class="col-md-10">
-                                                <input type="text" class="form-control" id="form_control_1" placeholder="Enter the url of the validator API">
+                                                <input type="text" class="form-control" id="val_url" placeholder="Enter the url of the validator API">
                                                 <div class="form-control-focus"> </div>
                                                 <span class="help-block">Add the URL of the validator.</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-actions">
+                                        <div class="row">
+                                            <div class="col-md-offset-2 col-md-10">
+                                                <button id="btnsubmit_val" type="button" class="btn blue">Submit</button>
                                             </div>
                                         </div>
                                     </div>
@@ -192,40 +206,23 @@
                                     <a href="" class="collapse"> </a>
                                 </div>
                             </div>
+
                             <div class="portlet-body form">
-                                <form action="assets/global/plugins/dropzone/upload.php" class="dropzone dropzone-file-area" id="my-dropzone" style="width: 800px; margin-top: 50px;">
-                                    <h3 class="sbold">Drop files here or click to upload</h3>
-                                    <p> Include all the pdf documents and respective mrf files that you want to send to the Relying Party. </p>
+                                <form action="#" class="dropzone dropzone-file-area" id="my-dropzone" style="width: 800px; margin-top: 50px;">
+                                    <!--<h3 class="sbold">Drop files here or click to upload</h3>-->
+                                    <!--<p> Include all the pdf documents and respective mrf files that you want to send to the Relying Party. </p>-->
+                                    <div class="row">
+                                        <input class="form-control" id="relyingPartyName" type="text" name="relyingPartyUrl" placeholder="Relying Party URL"/>
+                                    </div>
                                 </form>
-                                <div>
-                                    <button id="submit-all">Submit all files</button>
+                                <br>
+                                <div class="row">
+                                    <div class="col-md-offset-2 col-md-10">
+                                        <button type="button" id="submitRP" class="btn blue" style="text-align: center" >Submit All files!</button>
+                                    </div>
                                 </div>
                             </div>
-                            <script>
-                                Dropzone.options.myDropzone = {
-
-                                    // Prevents Dropzone from uploading dropped files immediately
-                                    autoProcessQueue: false,
-
-                                    init: function() {
-                                        var submitButton = document.querySelector("#submit-all")
-                                        myDropzone = this; // closure
-
-                                        submitButton.addEventListener("click", function() {
-                                            alert("aaaa");
-                                            myDropzone.processQueue(); // Tell Dropzone to process all queued files.
-                                        });
-
-                                        // You might want to show the submit button only when
-                                        // files are dropped here:
-                                        this.on("addedfile", function() {
-                                            // Show submit button here and/or inform user to click it.
-                                            alert("click the submit button")
-                                        });
-
-                                    }
-                                };
-                            </script>
+                            <p id="myparagraph">I am Chandu Bandara Herath form University of Moratuwa</p>
                         </div>
                     </div>
                 </div>
@@ -242,8 +239,7 @@
                 </div>
                 <!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
                 <script id="template-upload" type="text/x-tmpl"> {% for (var i=0, file; file=o.files[i]; i++) {
-                alert("chandu");%}
-                        console.log("sdfasdf");
+                        %}
                         <tr class="template-upload fade">
                             <td>
                                 <span class="preview"></span>
@@ -259,7 +255,7 @@
                                 </div>
                             </td>
                             <td> {% if (!i && !o.options.autoUpload) { %}
-                                <button class="btn blue start" disabled>
+                                <button class="btn blue" onclick="submitForExtraction()">
                                     <i class="fa fa-upload"></i>
                                     <span>Start</span>
                                 </button> {% } %} {% if (!i) { %}
@@ -317,21 +313,64 @@
     </div>
     <!-- END CONTENT -->
 </div>
+
+<script>
+
+    $(document).ready(function(){
+        $("#btnsubmit_val").click(function(){
+            var pdffile = $("#val_pdf").prop("files");
+            var mrffile = $("#val_mrf").prop("files");
+            var val_url = $("#val_url").val();
+            alert(pdffile);
+            alert(mrffile);
+            alert(val_url);
+            //implement the api request for validator
+        });
+
+    });
+
+    function submitForExtraction() {
+//        var myfile = [];
+//        var myfile = $('#extFileInput').prop('files');
+        alert("test");
+        var x = document.getElementById('extFileInput');
+        alert(x);
+        var myfiles = x.files;
+        alert(myfiles);
+        var ext_url = $('#ext_url').val();
+        alert("array length : " + myfiles.length);
+        if( document.getElementById("extFileInput").files.length == 0 ){
+            console.log("JS says no files selected");
+        }
+        if ($('#extFileInput').get(0).files.length === 0) {
+            console.log("Jquery says No files selected.");
+        }
+//        alert(myfiles[0].name);
+        alert(ext_url);
+        //implement the api request for extractor
+    }
+
+    function showPdfFilename()
+    {
+        var thefile = document.getElementById('val_pdf');
+        document.getElementById('val_pdfname').value = thefile.files[0].name;
+    }
+
+    function showMrfFilename()
+    {
+        var thefile = document.getElementById('val_mrf');
+        document.getElementById('val_mrfname').value = thefile.files[0].name;
+    }
+
+    function getFIle()
+    {
+        var thefile = document.getElementById('extFileInput');
+//        document.getElementById('val_mrfname').value = thefile.files[0].name;
+        alert(thefile.files[0]);
+    }
+
+</script>
 <!-- END CONTAINER -->
-<script type="text/javascript">
-    function alertPdfFilename()
-    {
-        var thefile = document.getElementById('extpdf');
-        document.getElementById('extpdfname').value = thefile.files[0].name;
-    }
-</script>
-<script type="text/javascript">
-    function alertMrfFilename()
-    {
-        var thefile = document.getElementById('extmrf');
-        document.getElementById('extmrfname').value = thefile.files[0].name;
-    }
-</script>
 <!-- Start wrapper for jquery script imports  -->
 <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
 
@@ -380,7 +419,9 @@
 <!-- END THEME GLOBAL SCRIPTS -->
 <!-- BEGIN PAGE LEVEL SCRIPTS -->
 <script src="assets/custom/scripts/fileuploader.js" type="text/javascript"></script>
-<script src="assets/pages/scripts/form-dropzone.min.js" type="text/javascript"></script>
+<!--import customized js file for fropzone-->
+<script src="assets/custom/scripts/form-dropzone.js" type="text/javascript"></script>
+<!--<script src="assets/pages/scripts/form-dropzone.js" type="text/javascript"></script>-->
 
 <!-- END PAGE LEVEL SCRIPTS -->
 <!-- BEGIN THEME LAYOUT SCRIPTS -->
