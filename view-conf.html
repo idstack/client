@@ -162,8 +162,11 @@
         var settings = {
             "async": true,
             "crossDomain": true,
-            "url": "http://"+varProperties.ipAddress+"/api-relyingparty/"+varProperties.apiVersion+"/e489e5ce-e80a-4334-8864-abfa86e6014c/getconfig/basic/",
-            "method": "GET"
+            "url": "http://"+varProperties.relyingparty.host+"/api-relyingparty/"+varProperties.relyingparty.apiVersion+"/"+varProperties.relyingparty.apiKey+"/getconfig/basic/",
+            "method": "GET",
+            "headers": {
+                "Authorization": "Basic " + btoa(varProperties.relyingparty.userName + ":" + varProperties.relyingparty.password)
+            },
         }
         $.ajax(settings).done(function (response) {
             console.log(response);
@@ -179,10 +182,11 @@
         var settings = {
             "async": true,
             "crossDomain": true,
-            "url": "http://"+varProperties.ipAddress+"/api-relyingparty/"+varProperties.apiVersion+"/e489e5ce-e80a-4334-8864-abfa86e6014c/saveconfig/basic",
+            "url": "http://"+varProperties.relyingparty.host+"/api-relyingparty/"+varProperties.relyingparty.apiVersion+"/"+varProperties.relyingparty.apiKey+"/saveconfig/basic",
             "method": "POST",
             "headers": {
-                "content-type": "application/json"
+                "content-type": "application/json",
+                "Authorization": "Basic " + btoa(varProperties.relyingparty.userName + ":" + varProperties.relyingparty.password)
             },
             "processData": false,
             "data": JSON.stringify({
