@@ -241,6 +241,11 @@
         console.log("Enter a valid url or file for resource pdf");
         $("#pdf_viewer").append("Enter a valid url or file for resource pdf");
     }
+    
+    function downloadPdf() {
+        window.open(url, '_blank');
+    }
+    
     //Web service calls
     function getExtract() {
         var form = new FormData();
