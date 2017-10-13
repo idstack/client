@@ -100,8 +100,7 @@
                                                 </div>
                                             </div>
                                             <div class="cont-col2">
-                                                <div class="desc"> ${url}
-                                                    <span class="label label-sm label-success"> ${document_type}  </span>
+                                                <div class="desc"> ${requestId}
 
                                                     <span class="label label-sm label-warning "> ${email}</span>
 
@@ -162,8 +161,11 @@
         var settings = {
             "async": true,
             "crossDomain": true,
-            "url": "http://"+varProperties.ipAddress+"/api-relyingparty/"+varProperties.apiVersion+"/e489e5ce-e80a-4334-8864-abfa86e6014c/getdocstore/",
-            "method": "GET"
+            "url": "http://"+varProperties.relyingparty.host+"/api-relyingparty/"+varProperties.relyingparty.apiVersion+"/"+varProperties.relyingparty.apiKey+"/getdocstore/",
+            "method": "GET",
+            "headers": {
+                "Authorization": "Basic " + btoa(varProperties.relyingparty.userName + ":" + varProperties.relyingparty.password)
+            }
         }
 
         $.ajax(settings).done(function (response) {
