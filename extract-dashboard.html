@@ -92,7 +92,7 @@
                                 <li id="request_list">
 
                                     <script id="request_template" type="text/html">
-                                        <a href="extract-data.html?doctype=passport&resource=url&url=${url}">
+                                        <a href="extract-data.html?doctype=passport&resource=url&url=${files[0].pdf}">
                                             <div class="col1">
                                                 <div class="cont">
                                                     <div class="cont-col1">
@@ -101,11 +101,9 @@
                                                         </div>
                                                     </div>
                                                     <div class="cont-col2">
-                                                        <div class="desc"> ${url}
-                                                            <span class="label label-sm label-success"> ${document_type}  </span>
-
+                                                        <div class="desc"> ${request_id}
+                                                            <span class="label label-sm label-success"> ${files[0].document_type}</span>
                                                             <span class="label label-sm label-warning "> ${email}</span>
-
                                                         </div>
                                                     </div>
                                                 </div>
