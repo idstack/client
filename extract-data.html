@@ -130,6 +130,7 @@
     var url ;
     var docType;
     var formObject ;
+    var varProperties;
 
     $(function(){
         App.startPageLoading({
@@ -141,6 +142,9 @@
         $('.datePicker').bootstrapMaterialDatePicker({
             time:false,
             clearButton: true
+        });
+        $.getJSON("properties.json", function(json) {
+            varProperties = json;
         });
         url = getUrlParameter("url");
         docType= getUrlParameter("doctype");
@@ -180,18 +184,13 @@
         $("#pdf_viewer").append(url);
     }
 
-
-
     function loadFile() {
-
-
         var input, file, fr;
 
         if (typeof window.FileReader !== 'function') {
             alert("The file API isn't supported on this browser yet.");
             return;
         }
-
         input = document.getElementById('fileInput');
         console.log(input.files[0]);
         if (!input) {
@@ -208,87 +207,69 @@
             fr = new FileReader();
 
         }
-
-
         $('form#form_passport').loadJSON(response);
-
-
-
-
     }
-    function submitValidatedPassport() {
-        json_doc= extractContent();
-        validated_json_doc=validateContent(json_doc);
-        saveJsonFile(validated_json_doc);
-    }
-
-    function submitPassport() {
-        json_doc= extractContent();
-        saveJsonFile(json_doc);
-        $("#downloadBtn").removeClass("display-hide");
-    }
-
 
     function extractContent() {
-        var unindexed_array = formObject.serializeArray();
-
-        var indexed_array = {};
-
-        $.map(unindexed_array, function(n, i){
-            indexed_array[n['name']] = n['value'];
+        var unindexed_content = formObject.serializeArray();
+        var indexed_content = {};
+        $.map(unindexed_content, function(n, i){
+            indexed_content[n['name']] = n['value'];
 
         });
-
-        // Should handle inner arrays
-//        indexed_array.name={
-//            'surname' : indexed_array.surname,
-//            'other_names' :indexed_array.other_names
-//        }
-//
-//        delete indexed_array.surname;
-//        delete indexed_array.other_names;
-
-
-        passportJsonTemplate.content =indexed_array;
-
-        return passportJsonTemplate;
-
-
-    }
-    function validateContent(json_doc) {
-
-        signature= getSignature();
-        json_doc.verifier= {
-            "id": signature.id,
-            "signature": signature.content
+        JsonTemplate = {
+            'meta_data': {
+                "document_type": docType
+            },
+            "content": {
+            }
         }
-        return json_doc;
+        JsonTemplate.content =indexed_content;
+
+        return JsonTemplate;
     }
 
     function saveJsonFile(json_doc) {
+
         var json_stringify_doc =JSON.stringify(json_doc,0,4);
         var file = new File([json_stringify_doc], "IDStack-extracted-doc.json", {type: "text/json;charset=utf-8"});
         saveAs(file);
+        $("#downloadBtn").removeClass("display-hide");
     }
-
-
-
-
-
 
     function errorInPdfViewer() {
         console.log("Enter a valid url or file for resource pdf");
         $("#pdf_viewer").append("Enter a valid url or file for resource pdf");
     }
-    // Webservice calls
-    function getSignature() {
-        var signature = {
-            "id": "sdfsd343",
-            "signature": {}
-        };
-        return signature
-    }
+    //Web service calls
+    function getExtract() {
+        var form = new FormData();
+        var json = extractContent();
+        form.append("json", JSON.stringify(json,0,4));
+        form.append("pdf", url);
 
+        var settings = {
+            "async": true,
+            "crossDomain": true,
+            "url": "http://"+varProperties.extractor.host+"/api-extractor/"+varProperties.extractor.apiVersion+"/"+varProperties.extractor.apiKey+"/extract/",
+            "method": "POST",
+            "headers": {
+                "authorization": "Basic "+ btoa(varProperties.extractor.userName + ":" + varProperties.extractor.password)
+            },
+            "processData": false,
+            "contentType": false,
+            "mimeType": "multipart/form-data",
+            "data": form
+        }
+
+        $.ajax(settings).done(function (response) {
+            console.log(response);
+            saveJsonFile(response);
+        }).fail( function (response) {
+            console.log("Can't access wep api");
+        });
+
+    }
 
 </script>
 
