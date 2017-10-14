@@ -3,14 +3,14 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group form-md-line-input form-md-floating-label">
-                    <input type="text" class="form-control" name="name" id="university">
+                    <input type="text" class="form-control" name="university" id="university">
                     <label for="form_extract_student">University</label>
                     <span class="help-block">eg: University of Moratuwa</span>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="form-group form-md-line-input form-md-floating-label">
-                    <input type="text" class="form-control" name="name" id="faculty">
+                    <input type="text" class="form-control" name="faculty" id="faculty">
                     <label for="form_extract_student">Faculty</label>
                     <span class="help-block">eg: Faculty of Engineering</span>
                 </div>
@@ -19,7 +19,7 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group form-md-line-input form-md-floating-label">
-                    <input type="text" class="form-control" name="name" id="degree">
+                    <input type="text" class="form-control" name="degree" id="degree">
                     <label for="form_extract_student">Degree</label>
                     <span class="help-block">eg: BSc Eng Hons</span>
                 </div>
@@ -35,7 +35,7 @@
             </div>
             <div class="col-md-6">
                 <div class="form-group form-md-line-input form-md-floating-label">
-                    <input type="text" class="form-control" name="name" id="index_no">
+                    <input type="text" class="form-control" name="indexno" id="indexno">
                     <label for="form_extract_student">ID No</label>
                     <span class="help-block">eg: 130234F</span>
                 </div>
@@ -44,14 +44,14 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group form-md-line-input form-md-floating-label">
-                    <input type="text" class="form-control" name="name" id="address:line1">
+                    <input type="text" class="form-control" name="line1" id="line1">
                     <label for="form_extract_student">Address line 1</label>
                     <span class="help-block">eg: 12/2A, Kandana</span>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="form-group form-md-line-input form-md-floating-label">
-                    <input type="text" class="form-control" name="name" id="address:line2">
+                    <input type="text" class="form-control" name="line2" id="line2">
                     <label for="form_extract_student">Address line 2</label>
                     <span class="help-block">eg: Colombo</span>
                 </div>
@@ -60,14 +60,14 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group form-md-line-input form-md-floating-label">
-                    <input type="text" class="form-control" id="valid_until">
+                    <input type="text" class="form-control" name="validuntil" id="validuntil">
                     <label for="form_extract_student">Valid Until</label>
                     <span class="help-block">eg: Dec 2108</span>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="form-group form-md-line-input form-md-floating-label">
-                    <input type="text" class="form-control" name="name" id="nic">
+                    <input type="text" class="form-control" name="nic" id="nic">
                     <label for="form_extract_student">NIC No</label>
                     <span class="help-block">eg: 921231233V</span>
                 </div>
@@ -79,11 +79,12 @@
             <div class="col-md-12">
                 <button type="reset" class="btn default">Reset</button>
                 <button id="saveBtn" type="button" class="btn green" onclick="getExtract()">Validate and Save</button>
-                <button id="downloadBtn" type="button" class="btn default display-hide" onclick="downloadPdf()">Download PDF</button>
+                <button id="downloadBtn" type="button" class="btn default display-hide" onclick="downloadPdf()">Download
+                    PDF
+                </button>
             </div>
         </div>
     </div>
-
 
 
 </form>

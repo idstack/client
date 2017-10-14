@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group form-md-line-input ">
-                    <select class="form-control" name="passport_type" id="passport_type">
+                    <select class="form-control" name="passporttype" id="passporttype">
                         <option selected>PA</option>
                         <option>PB</option>
                         <option>PC</option>
@@ -15,7 +15,7 @@
             </div>
             <div class="col-md-6">
                 <div class="form-group form-md-line-input ">
-                    <select class="form-control" name="country_code" id="country_code">
+                    <select class="form-control" name="countrycode" id="countrycode">
                         <option selected>LKA</option>
                         <option>IND</option>
                         <option>CHN</option>
@@ -28,7 +28,7 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group form-md-line-input ">
-                    <input type="text" class="form-control" name="passport_no" id="passport_no">
+                    <input type="text" class="form-control" name="passportno" id="passportno">
                     <label for="form_extract_passport">Passport No</label>
                     <span class="help-block">eg: N132123123</span>
                 </div>
@@ -37,14 +37,14 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group form-md-line-input ">
-                    <input type="text" class="form-control" name="name:surname" id="surname">
+                    <input type="text" class="form-control" name="surname" id="surname">
                     <label for="form_extract_passport">Surname</label>
                     <span class="help-block">eg: Wickramarathna</span>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="form-group form-md-line-input ">
-                    <input type="text" class="form-control" name="name:other_names" id="other_names">
+                    <input type="text" class="form-control" name="othernames" id="othernames">
                     <label for="form_extract_passport">Other Names</label>
                     <span class="help-block">eg: Chamin Bhasitha</span>
                 </div>
@@ -53,7 +53,7 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group form-md-line-input ">
-                    <input type="text" class="form-control" name="national_status" id="national_status">
+                    <input type="text" class="form-control" name="nationalstatus" id="nationalstatus">
                     <label for="form_extract_passport">National Status</label>
                     <span class="help-block">eg: SRI LANKAN</span>
                 </div>
@@ -62,13 +62,13 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group form-md-line-input form-md-label">
-                    <input type="text" class="form-control datePicker" name="date_of_birth" id="date_of_birth">
+                    <input type="text" class="form-control datePicker" name="dateofbirth" id="dateofbirth">
                     <label for="form_extract_passport">Date of Birth</label>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="form-group form-md-line-input ">
-                    <input type="text" class="form-control" name="place_of_birth" id="place_of_birth">
+                    <input type="text" class="form-control" name="placeofbirth" id="placeofbirth">
                     <label for="form_extract_passport">Place of Birth</label>
                     <span class="help-block">eg: Colombo</span>
                 </div>
@@ -91,13 +91,13 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group form-md-line-input form-md-label">
-                    <input type="text" class="form-control datePicker" name="date_of_issue" id="date_of_issue">
+                    <input type="text" class="form-control datePicker" name="dateofissue" id="dateofissue">
                     <label for="form_extract_passport">Date of Issue</label>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="form-group form-md-line-input form-md-label">
-                    <input type="text" class="form-control datePicker" name="date_of_expiry" id="date_of_expiry">
+                    <input type="text" class="form-control datePicker" name="dateofexpiry" id="dateofexpiry">
                     <label for="form_extract_passport">Date of Expiry</label>
                 </div>
             </div>
@@ -105,14 +105,14 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group form-md-line-input ">
-                    <input type="text" class="form-control" name="profession" id="profession" >
+                    <input type="text" class="form-control" name="profession" id="profession">
                     <label for="form_extract_passport">Profession</label>
                     <span class="help-block">eg: Engineer</span>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="form-group form-md-line-input ">
-                    <input type="text" class="form-control" name="id_no" id="id_no">
+                    <input type="text" class="form-control" name="idno" id="idno">
                     <label for="form_extract_passport">ID No</label>
                     <span class="help-block">eg: 921231233V</span>
                 </div>
@@ -125,7 +125,9 @@
             <div class="col-md-12">
                 <button type="reset" class="btn default">Reset</button>
                 <button id="saveBtn" type="button" class="btn green" onclick="getExtract()">Validate and Save</button>
-                <button id="downloadBtn" type="button" class="btn default display-hide" onclick="downloadPdf()">Download PDF</button>
+                <button id="downloadBtn" type="button" class="btn default display-hide" onclick="downloadPdf()">Download
+                    PDF
+                </button>
             </div>
         </div>
     </div>
