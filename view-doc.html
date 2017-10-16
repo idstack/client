@@ -139,156 +139,137 @@
                             <div class="portlet-body">
                                 <div class="row">
                                     <div class="col-md-6">
-
-                                        <h4 id="confidence-score"></h4>
-
+                                        <h4 id="confidence-score">%</h4>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
-
                     </div>
                 </div>
 
                 <div>
-                    <div class="portlet light" style="">
+                    <div class="portlet light" id="correlation_portlet" style="display: none">
                         <div class="portlet-title">
                             <div class="caption">
                                 <i class="icon-graph"></i>
                                 <span class="caption-subject bold uppercase font-dark">Correlation document score</span>
                                 <span class="caption-helper font-dark">Correlation Score for multiple Documents.</span>
                             </div>
-
                         </div>
                         <div class="portlet-body">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <div class="table-scrollable">
-                                        <table class="table table-hover table-bordered">
-                                            <tbody class="text-center">
-                                            <tr>
-                                                <td>
-                                                    <div class="col-md-6">
-                                                        <span>Name1</span>
-                                                    </div>
-                                                    <div class="easy-pie-chart col-md-6">
-                                                        <div class="number visits" data-percent="85">
-                                                            <span>+85</span>%
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div class="col-md-10">
-                                                        <span>Name1</span>
-                                                    </div>
-                                                    <div class="col-md-2">
-                                                        <span class="label label-sm label-success"> 75% </span>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div class="col-md-10">
-                                                        <span>Name1</span>
-                                                    </div>
-                                                    <div class="col-md-2">
-                                                        <span class="label label-sm label-success"> 75% </span>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div class="col-md-10">
-                                                        <span>Name1</span>
-                                                    </div>
-                                                    <div class="col-md-2">
-                                                        <span class="label label-sm label-success"> 75% </span>
-                                                    </div>
-                                                </td>
-                                            </tr>
+                                    <div class="table-scrollable" id="correlation_table">
 
-                                            </tbody>
-                                        </table>
+                                        <script id="correlation_table_template" type="text/x-jquery-tmpl">
+                                            <table class="table table-hover table-bordered">
+                                                <thead >
+                                                <tr>
+                                                    <th rowspan="2" class="text-center col-md-1"> Attribute</th>
+                                                    <th rowspan="2" class="text-center col-md-2"> Correlation Score</th>
+                                                    {{each name.values}}
+                                                    <th colspan="2" class="text-center"> Document ${$index + 1}</th>
+                                                    {{/each}}
+                                                    <!--<th colspan="2" class="text-center"> Document 2</th>-->
+                                                    <!--<th colspan="2" class="text-center"> Document 3</th>-->
+                                                </tr>
+                                                <tr>
+                                                    {{each name.values}}
+                                                    <th class="col-md-2 "> Attribute Value</th>
+                                                    <th class="col-md-1">Attribute Score</th>
+                                                    {{/each}}
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr>
+                                                    <th> Name</th>
+                                                    <th>
+                                                        <div class="easy-pie-chart">
+                                                            <div class="number visits" data-percent="${name.avgScore}">
+                                                                <span>+${name.avgScore}</span>%
+                                                            </div>
+                                                        </div>
+                                                    </th>
+                                                    {{each name.values}}
+                                                    <td> ${name.values[$index].text}</td>
+                                                    <td><span class="label label-primary"> ${name.values[$index].score}% </span></td>
+                                                    {{/each}}
+                                                </tr>
+                                                <tr>
+                                                    <th>Address</th>
+                                                    <th>
+                                                        <div class="easy-pie-chart">
+                                                            <div class="number visits" data-percent="${address.avgScore}">
+                                                                <span>+${address.avgScore}</span>%
+                                                            </div>
+                                                        </div>
+                                                    </th>
+                                                    {{each address.values}}
+                                                    <td> ${address.values[$index].text}</td>
+                                                    <td><span class="label label-primary"> ${address.values[$index].score}% </span></td>
+                                                    {{/each}}
+                                                </tr>
+                                                <tr>
+                                                    <th>Date of Birth</th>
+                                                    <th>
+                                                        <div class="easy-pie-chart">
+                                                            <div class="number visits" data-percent="${dob.avgScore}">
+                                                                <span>+${dob.avgScore}</span>%
+                                                            </div>
+                                                        </div>
+                                                    </th>
+                                                    {{each dob.values}}
+                                                    <td> ${dob.values[$index].text}</td>
+                                                    <td><span class="label label-primary"> ${dob.values[$index].score}% </span></td>
+                                                    {{/each}}
+                                                </tr>
+                                                <tr>
+                                                    <th>Gender</th>
+                                                    <th>
+                                                        <div class="easy-pie-chart">
+                                                            <div class="number visits" data-percent="${gender.avgScore}">
+                                                                <span>+${gender.avgScore}</span>%
+                                                            </div>
+                                                        </div>
+                                                    </th>
+                                                    {{each gender.values}}
+                                                    <td> ${gender.values[$index].text}</td>
+                                                    <td><span class="label label-primary"> ${gender.values[$index].score}% </span></td>
+                                                    {{/each}}
+                                                </tr>
+                                                <tr>
+                                                    <th>NIC</th>
+                                                    <th>
+                                                        <div class="easy-pie-chart">
+                                                            <div class="number visits" data-percent="${nic.avgScore}">
+                                                                <span>+${nic.avgScore}</span>%
+                                                            </div>
+                                                        </div>
+                                                    </th>
+                                                    {{each nic.values}}
+                                                    <td> ${nic.values[$index].text}</td>
+                                                    <td><span class="label label-primary"> ${nic.values[$index].score}% </span></td>
+                                                    {{/each}}
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </script>
                                     </div>
 
-
-                                    <!--<div class="row">-->
-                                        <!--<div class="col-md-2">-->
-                                            <!--<a class="title"> Name </a>-->
-                                        <!--</div>-->
-                                        <!--<div class="margin-bottom-10 visible-sm"></div>-->
-                                        <!--<div class="col-md-2">-->
-                                            <!--<div class="easy-pie-chart">-->
-                                                <!--<div class="number visits" data-percent="85">-->
-                                                    <!--<span>+85</span>%-->
-                                                <!--</div>-->
-                                                <!--<a class="title"> NIC-->
-                                                <!--</a>-->
-                                            <!--</div>-->
-                                        <!--</div>-->
-                                        <!--<div class="margin-bottom-10 visible-sm"></div>-->
-                                        <!--<div class="col-md-2">-->
-                                            <!--<div class="easy-pie-chart">-->
-                                                <!--<div class="number transactions" data-percent="46">-->
-                                                    <!--<span>+46</span>%-->
-                                                <!--</div>-->
-                                                <!--<a class="title"> Address-->
-                                                <!--</a>-->
-                                            <!--</div>-->
-                                        <!--</div>-->
-                                        <!--<div class="margin-bottom-10 visible-sm"></div>-->
-                                        <!--<div class="col-md-2">-->
-                                            <!--<div class="easy-pie-chart">-->
-                                                <!--<div class="number visits" data-percent="99">-->
-                                                    <!--<span>+99</span>%-->
-                                                <!--</div>-->
-                                                <!--<a class="title"> Gender-->
-                                                <!--</a>-->
-                                            <!--</div>-->
-                                        <!--</div>-->
-                                        <!--<div class="margin-bottom-10 visible-sm"></div>-->
-                                        <!--<div class="col-md-2">-->
-                                            <!--<div class="easy-pie-chart">-->
-                                                <!--<div class="number transactions" data-percent="66">-->
-                                                    <!--<span>+66</span>%-->
-                                                <!--</div>-->
-                                                <!--<a class="title"> DOB-->
-                                                <!--</a>-->
-                                            <!--</div>-->
-                                        <!--</div>-->
-                                    <!--</div>-->
-
-                                    <!--<div class="row">-->
-                                        <!--<div class="col-md-6">-->
-
-                                            <!--<div class="col-md-6">-->
-                                                <!--<div class="easy-pie-chart ">-->
-                                                    <!--<div class="number bounce" data-percent="66.7">-->
-                                                        <!--<span>+66.7</span>%-->
-                                                    <!--</div>-->
-                                                    <!--<a class="title"> <b>Average</b>-->
-                                                    <!--</a>-->
-                                                <!--</div>-->
-                                            <!--</div>-->
-
-                                        <!--</div>-->
-                                    <!--</div>-->
                                 </div>
                             </div>
                         </div>
-
-
                     </div>
-
-
                     <!-- END PAGE BASE CONTENT -->
                 </div>
-                <!-- END PAGE HEAD-->
-
-
             </div>
-            <!-- END CONTENT BODY -->
+            <!-- END PAGE HEAD-->
         </div>
-        <!-- END CONTENT -->
+        <!-- END CONTENT BODY -->
     </div>
-    <!-- END CONTAINER -->
+    <!-- END CONTENT -->
+</div>
+<!-- END CONTAINER -->
 
     <!--<script type="text/javascript" src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.0.0.min.js"></script>-->
 
@@ -304,27 +285,27 @@
     <script>if (window.module) module = window.module;</script>
 
     <script>
-        var jsonDoc;
-        var docCount = 0;
+        var request_id;
         var varProperties;
         var docListResponse={
-            "requestId": "aa828ce7-5804-4a2f-840e-1d7be90f7de1",
-            "email": "info@avix.lk",
-            "files": [
+            "request_id": "39205fe7-46db-4a56-aecc-cb779b5e0a4b",
+            "email": "ldclakmal@gmail.com",
+            "timestamp": "10/13/2017 06:59:22",
+            "files_list": [
                 {
-                    "documentType": "passport",
-                    "json": "http://www.mrt.ac.lk:8080/opt/tomcat/webapps/idstack/relyingparty/docs/info@avix.lk/aa828ce7-5804-4a2f-840e-1d7be90f7de1/passport/1.json",
-                    "pdf": "http://www.mrt.ac.lk:8080/opt/tomcat/webapps/idstack/relyingparty/docs/info@avix.lk/aa828ce7-5804-4a2f-840e-1d7be90f7de1/passport/1.pdf"
+                    "document_type": "passport",
+                    "json": "http://139.59.74.146:8080/idstack/relyingparty/docs/ldclakmal@gmail.com/39205fe7-46db-4a56-aecc-cb779b5e0a4b/passport/1.json",
+                    "pdf": "http://139.59.74.146:8080/idstack/relyingparty/docs/ldclakmal@gmail.com/39205fe7-46db-4a56-aecc-cb779b5e0a4b/passport/1.pdf"
                 },
                 {
-                    "documentType": "passport",
-                    "json": "http://www.mrt.ac.lk:8080/opt/tomcat/webapps/idstack/relyingparty/docs/info@avix.lk/aa828ce7-5804-4a2f-840e-1d7be90f7de1/passport/1.json",
-                    "pdf": "http://www.mrt.ac.lk:8080/opt/tomcat/webapps/idstack/relyingparty/docs/info@avix.lk/aa828ce7-5804-4a2f-840e-1d7be90f7de1/passport/1.pdf"
+                    "document_type": "student_id",
+                    "json": "http://139.59.74.146:8080/idstack/relyingparty/docs/ldclakmal@gmail.com/39205fe7-46db-4a56-aecc-cb779b5e0a4b/student_id/2.json",
+                    "pdf": "http://139.59.74.146:8080/idstack/relyingparty/docs/ldclakmal@gmail.com/39205fe7-46db-4a56-aecc-cb779b5e0a4b/student_id/2.pdf"
                 }
             ]
         }
-        var response = [
-            {
+        var docCount;
+        var jsonDocResponse = {
                 "meta_data": {
                     "name": "IDStack",
                     "version": "1.0",
@@ -394,56 +375,7 @@
                         ]
                     }
                 ]
-            },
-            {
-                "meta_data": {
-                    "name": "IDStack",
-                    "version": "1.0",
-                    "document_id": "a8heEdgg",
-                    "document_type": "student_id",
-                    "issuer": {
-                        "organization": "university of moratuwa",
-                        "email": "info@mrt.ac.lk",
-                        "url": "http://www.mrt.ac.lk/usr/local/idstack/extractor/cert/pub/9e18a0b3-45cd-41e9-81a2-073e91e0c1b0.cer"
-                    }
-                },
-                "content": {
-                    "university": "University of Moratuwa",
-                    "faculty": "Engineering",
-                    "degree": "BSc Eng Hons",
-                    "name": {
-                        "surname": "Dangalla",
-                        "initials": "DADJS"
-                    },
-                    "index_no": "130094R",
-                    "address": {
-                        "line1": "9A, De Mel Watta Road, Koswatta",
-                        "line2": "Nawala"
-                    },
-                    "nic": "937741180V",
-                    "valid_until": "Dec 2018",
-                    "card_id": "STU-1-41022060-317-130094R"
-                },
-                "extractor": {
-                    "id": "b178dad3",
-                    "signature": {
-                        "message_digest": "MIAGCSqGSIb3DQEHAqCAMIACAQExDzANBglghkgBZQMEAgEFADCABgkqhkiG9w0BBwGggCSABIIBN3sidW5pdmVyc2l0eSI6IlVuaXZlcnNpdHkgb2YgTW9yYXR1d2EiL",
-                        "url": "http://www.mrt.ac.lk/usr/local/idstack/extractor/cert/pub/9e18a0b3-45cd-41e9-81a2-073e91e0c1b0.cer"
-                    }
-                },
-                "validators": [
-                    {
-                        "id": "1Ued5eg",
-                        "signature": {
-                            "message_digest": "MIIFRjCCBC6gAwIBAgIRAMxtHV1q5YH597HXLW01nl4wDQYJKoZIhvcNAQELBQAwgZAxCzAJBgNVBAYTAkdCMRswGQYDVQQIExJHcmVhdGVyIE1hbmNoZ",
-                            "url": "http://www.ugc.ac.lk/usr/local/idstack/validator/cert/pub/9e18a0b3-45cd-41e9-81a2-073e91e0c1b0.cer"
-                        },
-                        "signed_content": "true",
-                        "signed_signatures": []
-                    }
-                ]
             }
-        ]
         var confidenceResponse=[];
         var correlationResponse = {
             "name": {
@@ -516,7 +448,7 @@
                     }
                 ]
             }
-        }
+        };
 
 
         $(function () {
@@ -524,66 +456,59 @@
             $("#sidebar").load("layout/sidebar.html");
             $.getJSON("properties.json", function(json) {
                 varProperties = json;
-                console.log(varProperties);
-                loadView();
+                request_id = getUrlParameter("request_id");
+                getDocstoreByRequest(request_id);
+                getCorrelationByRequest(request_id);
             });
 
 
         });
 
-        function apiCalls() {
-
-        }
-
 
         function loadView() {
-            docCount = response.length;
             if (docCount >= 4) {
                 toastr.warning('You have exceed the maximum number of documents');
                 return;
             }
             for (var i = 0; i < docCount; i++) {
                 var source = $('#column_0');
-                clone = source.clone();
+                var clone = source.clone();
                 clone.removeAttr('style');
                 clone.attr('id', 'column_' + i);
                 clone.removeClass('col-md-12').addClass('col-md-' + 12 / docCount);
 
+                console.log(docListResponse.files_list[i].json);
+                getMRDoc(docListResponse.files_list[i].json,clone);
 
-                clone.find("#template").load("doc_templates/view/"+response[i].meta_data.document_type+".html",loadContentView(i,clone) );
-                loadSignatureView(i, clone);
-                getConfidenceByUrl(docListResponse.files[i].json,clone);
-                $('#document_array').append(clone);
             }
+
         }
 
-        function loadContentView(docNum,clone) {
+        function loadContentView(clone,MRDoc) {
             setTimeout(function () {
-                clone.find('div#document').loadJSON(response[docNum].content);
+                clone.find('div#document').loadJSON(MRDoc.content);
+                try {
+                    clone.find('div#document').loadJSON(MRDoc.content.name);
+                    clone.find('div#document').loadJSON(MRDoc.content.address);
+                }catch(err) {
+                    //
+                }
             },1000)
         }
 
-
-        function loadSignatureView(docNum, clone) {
-            console.log(response[docNum].extractor);
-            $("#signature_template").tmpl(response[docNum].extractor).appendTo(clone.find("#signature_list"));
-            for (var j = 0; j < response[docNum].validators.length; j++) {
-                $("#signature_template").tmpl(response[docNum].validators[j]).appendTo(clone.find("#signature_list"));
+        function loadSignatureView(clone,MRDoc) {
+            $("#signature_template").tmpl(MRDoc.extractor).appendTo(clone.find("#signature_list"));
+            for (var j = 0; j < MRDoc.validators.length; j++) {
+                $("#signature_template").tmpl(MRDoc.validators[j]).appendTo(clone.find("#signature_list"));
             }
         }
 
-        function loadCorrelationScore(docNum) {
-
-        }
 
         // web service calls
-        function getDocuments() {
-
-        }
 
         function getConfidenceByUrl(url,clone) {
             var form = new FormData();
-            form.append("jsonUrl", url);
+            form.append("json_url", url);
 
             var settings = {
                 "async": true,
@@ -601,13 +526,18 @@
 
             $.ajax(settings).done(function (response) {
                 console.log(response);
-                clone.find("#confidence-score").text(response)
+                clone.find("#confidence-score").prepend(response.score);
+            }).fail(function () {
+                response = {
+                    "score" : 100
+                }
+                clone.find("#confidence-score").prepend(response.score);
             });
         }
 
         function getCorrelationByRequest(requestId) {
             var form = new FormData();
-            form.append("requestId", requestId);
+            form.append("request_id", requestId);
 
             var settings = {
                 "async": true,
@@ -624,15 +554,68 @@
             }
 
             $.ajax(settings).done(function (response) {
+                response = JSON.parse(response);
                 console.log(response);
+                $("#correlation_table_template").tmpl(response).appendTo("#correlation_table");
+                $("#correlation_portlet").removeAttr('style');
             });
-
         }
 
+        function getDocstoreByRequest(requestId) {
+            var form = new FormData();
+            form.append("request_id", requestId);
 
+            var settings = {
+                "async": true,
+                "crossDomain": true,
+                "url": "http://"+varProperties.relyingparty.host+"/api-relyingparty/"+varProperties.relyingparty.apiVersion+"/"+varProperties.relyingparty.apiKey+"/getdocstore/request",
+                "method": "POST",
+                "headers": {
+                    "Authorization": "Basic " + btoa(varProperties.relyingparty.userName + ":" + varProperties.relyingparty.password)
+                },
+                "processData": false,
+                "contentType": false,
+                "mimeType": "multipart/form-data",
+                "data": form
+            }
 
+            $.ajax(settings).done(function (response) {
+                response = JSON.parse(response);
+                console.log(response);
+                docCount=response.files_list.length;
+                console.log(docCount);
+                docListResponse=response;
+                loadView();
+            });
+        }
 
+        function getMRDoc(url,clone) {
+            var form = new FormData();
+            form.append("json_url", "http://139.59.74.146:8080/idstack/relyingparty/docs/info@avix.lk/a7444ebf-1cf3-490f-bea4-21cdb1d7c926/passport/1.json");
 
+            var settings = {
+                "async": true,
+                "crossDomain": true,
+                "url": "http://"+varProperties.relyingparty.host+"/api-relyingparty/"+varProperties.relyingparty.apiVersion+"/"+varProperties.relyingparty.apiKey+"/getdocstore/url",
+                "method": "POST",
+                "headers": {
+                    "Authorization": "Basic " + btoa(varProperties.relyingparty.userName + ":" + varProperties.relyingparty.password)
+                },
+                "processData": false,
+                "contentType": false,
+                "mimeType": "multipart/form-data",
+                "data": form
+            }
+
+            $.ajax(settings).done(function (response) {
+                response = JSON.parse(response).json[0];
+                console.log(response);
+                clone.find("#template").load("doc_templates/view/"+response.meta_data.document_type+".html",loadContentView(clone,response) );
+                loadSignatureView(clone,response);
+                getConfidenceByUrl(url,clone);
+                $('#document_array').append(clone);
+            });
+        }
 
     </script>
 
@@ -668,7 +651,7 @@
     <!-- BEGIN PAGE LEVEL SCRIPTS -->
     <script src="assets/pages/scripts/table-bootstrap.js" type="text/javascript"></script>
     <script src="assets/pages/scripts/components-knob-dials.min.js" type="text/javascript"></script>
-    <script src="assets/pages/scripts/dashboard.min.js" type="text/javascript"></script>
+    <script src="assets/custom/scripts/url-paser.js" type="text/javascript" ></script>
     <!-- END PAGE LEVEL SCRIPTS -->
 
 

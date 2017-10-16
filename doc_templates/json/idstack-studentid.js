@@ -7,7 +7,7 @@ var studentidJsonTemplate = {
         "name": "IDStack",
         "version": "1.0",
         "document_id": "a8heEdgg",
-        "document_type": "student_id"
+        "document_type": "university_id"
     },
     "content": {
         "university": "University of Moratuwa",

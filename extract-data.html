@@ -231,8 +231,8 @@
 
     function saveJsonFile(json_doc) {
 
-        var json_stringify_doc =JSON.stringify(json_doc,0,4);
-        var file = new File([json_stringify_doc], "IDStack-extracted-doc.json", {type: "text/json;charset=utf-8"});
+        json_doc = JSON.stringify(JSON.parse(json_doc), null, 4);
+        var file = new File([json_doc], "IDStack-extracted-doc.json", {type: "text/json;charset=utf-8"});
         saveAs(file);
         $("#downloadBtn").removeClass("display-hide");
     }
