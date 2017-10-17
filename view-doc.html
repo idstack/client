@@ -259,6 +259,7 @@
                                 </div>
                             </div>
                         </div>
+
                     </div>
                     <!-- END PAGE BASE CONTENT -->
                 </div>
@@ -287,168 +288,11 @@
     <script>
         var request_id;
         var varProperties;
-        var docListResponse={
-            "request_id": "39205fe7-46db-4a56-aecc-cb779b5e0a4b",
-            "email": "ldclakmal@gmail.com",
-            "timestamp": "10/13/2017 06:59:22",
-            "files_list": [
-                {
-                    "document_type": "passport",
-                    "json": "http://139.59.74.146:8080/idstack/relyingparty/docs/ldclakmal@gmail.com/39205fe7-46db-4a56-aecc-cb779b5e0a4b/passport/1.json",
-                    "pdf": "http://139.59.74.146:8080/idstack/relyingparty/docs/ldclakmal@gmail.com/39205fe7-46db-4a56-aecc-cb779b5e0a4b/passport/1.pdf"
-                },
-                {
-                    "document_type": "student_id",
-                    "json": "http://139.59.74.146:8080/idstack/relyingparty/docs/ldclakmal@gmail.com/39205fe7-46db-4a56-aecc-cb779b5e0a4b/student_id/2.json",
-                    "pdf": "http://139.59.74.146:8080/idstack/relyingparty/docs/ldclakmal@gmail.com/39205fe7-46db-4a56-aecc-cb779b5e0a4b/student_id/2.pdf"
-                }
-            ]
-        }
+        var docListResponse;
         var docCount;
-        var jsonDocResponse = {
-                "meta_data": {
-                    "name": "IDStack",
-                    "version": "1.0",
-                    "document_id": "a8heEdgg",
-                    "document_type": "passport",
-                    "issuer": {
-                        "organization": "department of immigration and emmigration",
-                        "email": "controller@immigration.gov.lk",
-                        "url": "http://www.immigration.gov.lk/usr/local/idstack/extractor/cert/pub/9e18a0b3-45cd-41e9-81a2-073e91e0c1b0.cer"
-                    }
-                },
-                "content": {
-                    "passport_type": "PA",
-                    "country_code": "LKA",
-                    "passport_no": "N6665635",
-                    "name": {
-                        "surname": "Dangalla",
-                        "other_names": "Chamin Bhasitha"
-                    },
-                    "national_status": "Sri Lankan",
-                    "profession": "University Student",
-                    "date_of_birth": "03/10/1992",
-                    "id_no": "922770697V",
-                    "sex": "M",
-                    "palce_of_birth": "Colombo",
-                    "date_of_issue": "25/04/2016",
-                    "date_of_expiry": "25/04/2026"
-                },
-                "extractor": {
-                    "id": "2efed5eg",
-                    "signature": {
-                        "message_digest": "MIIFRjCCBC6gAwIBAgIRAMxtHV1q5YH597HXLW01nl4wDQYJKoZIhvcNAQELBQAwgZAxCzAJBgNVBATAkdCMRswGQYDVQQIExJHcmVhdGVyIE1hbmNoZXN0ZXIx",
-                        "url": "http://www.immigration.gov.lk/usr/local/idstack/extractor/cert/pub/9e18a0b3-45cd-41e9-81a2-073e91e0c1b0.cer"
-                    }
-                },
-                "validators": [
-                    {
-                        "id": "1Ued5eg",
-                        "signature": {
-                            "message_digest": "MIIFRjCCBC6gAwIBAgIRAMxtHV1q5YH597HXLW01nl4wDQYJKoZIhvcNAQELBQAwgZAxCzAJBgNVBAYTAkdCMRswGQYDVQQIExJHcmVhdGVyIE1hbmNoZ",
-                            "url": "http://www.usaembassy.gov.lk/usr/local/idstack/validator/cert/pub/9e18a0b3-45cd-41e9-81a2-073e91e0c1b0.cer"
-                        },
-                        "signed_content": "true",
-                        "signed_signatures": []
-                    },
-                    {
-                        "id": "5E8d32g",
-                        "signature": {
-                            "message_digest": "MIIFRjCCBC6gAwIBAgIRAMxtHV1q5YH597HXLW01nl4wDQYJKoZIhvcNAQELBQAwgZAxCzAJBgNVBAYTAkdCMRswGQYDVQQIExJHcmVhdGVyIE1hbmNoZ",
-                            "url": "http://www.foreignembassy.com/usr/local/idstack/validator/cert/pub/9e18a0b3-45cd-41e9-81a2-073e91e0c1b0.cer"
-                        },
-                        "signed_content": "true",
-                        "signed_signatures": [
-                            "1Ued5eg"
-                        ]
-                    },
-                    {
-                        "id": "dg4TGd6",
-                        "signature": {
-                            "message_digest": "MIIFRjCCBC6gAwIBAgIRAMxtHV1q5YH597HXLW01nl4wDQYJKoZIhvcNAQELBQAwgZAxCzAJBgNVBAYTAkdCMRswGQYDVQQIExJHcmVhdGVyIE1hbmNoZXN0ZXIxEDAOBgNVBAcTB1NhbGZvcmQxGjAYBgNVBAoTEUNPTU9ETyBDQSBMaW1pdGVkMTYwNAYDVQQDEy1DT01PRE8gUlNBIERvbWFpbiBWYWxpZGF0aW9uIFNlY3VyZSBTZXJ2ZXIgQ0EwHhcNMTcwMTI3MDAwMDAwWhcNMTgwMTI3MjM1OTU5WjBPMSEwHwYDVQQLExhEb21haW4gQ29udHJvbCBWYWxpZGF0ZWQxFDASBgNVBAsTC1Bvc2l0aXZlU1NMMRQwEgYDVQQDEwtpZHN0YWNrLm9uZTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBALs+h8tOFef8I7N0UgZscW9XGKzoicffXT5",
-                            "url": "http://www.president.us/usr/local/idstack/validator/cert/pub/9e18a0b3-45cd-41e9-81a2-073e91e0c1b0.cer"
-                        },
-                        "signed_content": "true",
-                        "signed_signatures": [
-                            "1Ued5eg",
-                            "5E8d32g"
-                        ]
-                    }
-                ]
-            }
+        var jsonDocResponse ;
         var confidenceResponse=[];
-        var correlationResponse = {
-            "name": {
-                "avgScore": 0,
-                "status": -1,
-                "values": [
-                    {
-                        "text": "Chamin Bhasitha Wickaramarathna",
-                        "score": 0
-                    },
-                    {
-                        "text": "Dangalla",
-                        "score": 0
-                    }
-                ]
-            },
-            "address": {
-                "avgScore": 0,
-                "status": -1,
-                "values": [
-                    {
-                        "text": "",
-                        "score": 0
-                    },
-                    {
-                        "text": "9A, De Mel Watta Road, Koswatta Nawala",
-                        "score": 0
-                    }
-                ]
-            },
-            "dob": {
-                "avgScore": 0,
-                "status": -1,
-                "values": [
-                    {
-                        "text": "03/10/1992",
-                        "score": 0
-                    },
-                    {
-                        "text": "",
-                        "score": 0
-                    }
-                ]
-            },
-            "gender": {
-                "avgScore": 0,
-                "status": -1,
-                "values": [
-                    {
-                        "text": "m",
-                        "score": 0
-                    },
-                    {
-                        "text": "",
-                        "score": 0
-                    }
-                ]
-            },
-            "nic": {
-                "avgScore": 50,
-                "status": 0,
-                "values": [
-                    {
-                        "text": "922770697v",
-                        "score": 100
-                    },
-                    {
-                        "text": "937741180v",
-                        "score": 0
-                    }
-                ]
-            }
-        };
+        var correlationResponse ;
 
 
         $(function () {
@@ -493,7 +337,7 @@
                 }catch(err) {
                     //
                 }
-            },1000)
+            },1)
         }
 
         function loadSignatureView(clone,MRDoc) {
@@ -525,12 +369,10 @@
             }
 
             $.ajax(settings).done(function (response) {
+                response = JSON.parse(response);
                 console.log(response);
                 clone.find("#confidence-score").prepend(response.score);
             }).fail(function () {
-                response = {
-                    "score" : 100
-                }
                 clone.find("#confidence-score").prepend(response.score);
             });
         }

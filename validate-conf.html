@@ -98,8 +98,8 @@
                                                     <td> ${stringBeautify(doc_type)}</td>
                                                     <td>
                                                         <div class="md-checkbox">
-                                                            <input type="checkbox" id=${doc_type+"-auto"} class="md-check" {{if auto}} checked {{/if}} >
-                                                            <label for=${doc_type+"-auto"}>
+                                                            <input type="checkbox" id=${doc_type+"-automatic_processable"} class="md-check" {{if automatic_processable}} checked {{/if}} >
+                                                            <label for=${doc_type+"-automatic_processable"}>
                                                                 <span></span>
                                                                 <span class="check"></span>
                                                                 <span class="box"></span></label>
@@ -107,8 +107,8 @@
                                                     </td>
                                                     <td>
                                                         <div class="md-checkbox has-error">
-                                                            <input type="checkbox" id=${doc_type+"-is_issuer_equal"} class="md-check" {{if is_issuer_equal}} checked {{/if}}>
-                                                            <label for=${doc_type+"-is_issuer_equal"}>
+                                                            <input type="checkbox" id=${doc_type+"-issuer_equal_extractor"} class="md-check" {{if issuer_equal_extractor}} checked {{/if}}>
+                                                            <label for=${doc_type+"-issuer_equal_extractor"}>
                                                                 <span></span>
                                                                 <span class="check"></span>
                                                                 <span class="box"></span></label>
@@ -116,8 +116,8 @@
                                                     </td>
                                                     <td>
                                                         <div class="md-checkbox has-info">
-                                                            <input type="checkbox" id=${doc_type+"-sign"} class="md-check"  {{if sign}} checked {{/if}}>
-                                                            <label for=${doc_type+"-sign"}>
+                                                            <input type="checkbox" id=${doc_type+"-content_signable"} class="md-check"  {{if content_signable}} checked {{/if}}>
+                                                            <label for=${doc_type+"-content_signable"}>
                                                                 <span></span>
                                                                 <span class="check"></span>
                                                                 <span class="box"></span></label>
@@ -189,7 +189,7 @@
                                     </div>
                                     <div class="form-actions right">
                                         <button type="reset" class="btn default">Reset</button>
-                                        <button type="button" class="btn green" onclick="setDocumentConfig()">Save
+                                        <button type="button" class="btn green" onclick="saveBlackWhiteList()">Save
                                         </button>
                                     </div>
                                 </form>
@@ -394,6 +394,10 @@
             whiteList.push(newValue);
         }
     });
+    
+    function saveBlackWhiteList() {
+        setWhiteList();
+    }
 
 
     //Web service calls
@@ -452,28 +456,8 @@
         }
         $.ajax(settings).done(function (response) {
             console.log(response);
-            response = [
-                {
-                    "doc_type" : "transcript",
-                    "auto" : "true",
-                    "is_issuer_equal" : "true",
-                    "sign" : "true",
-                },
-                {
-                    "doc_type" : "passport",
-                    "auto" : "true",
-                    "is_issuer_equal" : "false",
-                    "sign" : "true",
-                },
-                {
-                    "doc_type" : "university_id",
-                    "auto" : "false",
-                    "is_issuer_equal" : "true",
-                    "sign" : "true",
-                }
-            ];
 
-            $("#access_template").tmpl(response).appendTo("#access_list");
+            $("#access_template").tmpl(response.document).appendTo("#access_list");
         });
     }
 
@@ -489,26 +473,30 @@
                 "Authorization": "Basic " + btoa(varProperties.validator.userName + ":" + varProperties.validator.password)
             },
             "processData": false,
-            "data": JSON.stringify([
-                        {
-                            "doc_type" : "transcript",
-                            "auto" : document.getElementById("transcript"+"-"+"auto").checked,
-                            "is_issuer_equal" : document.getElementById("transcript"+"-"+"is_issuer_equal").checked,
-                            "sign" : document.getElementById("transcript"+"-"+"sign").checked
-                        },
-                        {
-                            "doc_type" : "passport",
-                            "auto" : document.getElementById("passport"+"-"+"auto").checked,
-                            "is_issuer_equal" : document.getElementById("passport"+"-"+"is_issuer_equal").checked,
-                            "sign" : document.getElementById("passport"+"-"+"sign").checked
-                        },
-                        {
-                            "doc_type" : "university_id",
-                            "auto" : document.getElementById("university_id"+"-"+"auto").checked,
-                            "is_issuer_equal" : document.getElementById("university_id"+"-"+"is_issuer_equal").checked,
-                            "sign" : document.getElementById("university_id"+"-"+"sign").checked
-                        }
-                    ]
+            "data": JSON.stringify(
+                    {
+                        "document":[
+                            {
+                                "doc_type" : "transcript",
+                                "automatic_processable" : document.getElementById("transcript"+"-"+"automatic_processable").checked,
+                                "issuer_equal_extractor" : document.getElementById("transcript"+"-"+"issuer_equal_extractor").checked,
+                                "content_signable" : document.getElementById("transcript"+"-"+"content_signable").checked
+
+                            },
+                            {
+                                "doc_type" : "passport",
+                                "automatic_processable" : document.getElementById("passport"+"-"+"automatic_processable").checked,
+                                "issuer_equal_extractor" : document.getElementById("passport"+"-"+"issuer_equal_extractor").checked,
+                                "content_signable" : document.getElementById("passport"+"-"+"content_signable").checked
+                            },
+                            {
+                                "doc_type" : "university_id",
+                                "automatic_processable" : document.getElementById("university_id"+"-"+"automatic_processable").checked,
+                                "issuer_equal_extractor" : document.getElementById("university_id"+"-"+"issuer_equal_extractor").checked,
+                                "content_signable" : document.getElementById("university_id"+"-"+"content_signable").checked
+                            }
+                        ]
+                    }
             )
         }
 
@@ -529,11 +517,9 @@
         }
         $.ajax(settings).done(function (response) {
             console.log(response);
-            response = {
-                "white_list": ["http://test/opt/tomcat/webapps/idstack/extractor/cert/pub/9e18a0b3-45cd-41e9-81a2-073e91e0c1b0.cer","http://www.immigration.gov.lk/ewg4UkNwmS85Ib4"]
-            };
 
             whiteList.concat(response.white_list);
+            console.log(whiteList);
             response.white_list.forEach(function(item){
                 whiteListUl.append("<li class='ms-elem-selectable'><span>"+item+"</span></li>");
                 console.log(item);
@@ -555,9 +541,6 @@
         }
         $.ajax(settings).done(function (response) {
             console.log(response);
-            response = {
-                "black_list": ["http://test2/opt/tomcat/webapps/idstack/extractor/cert/pub/9e18a0b3-45cd-41e9-81a2-073e91e0c1b0.cer","http://www.immigration.gov.lk/ewg4UkNwmS85Ib4"]
-            };
 
             blackList.concat(response.black_list);
             response.black_list.forEach(function(item){
@@ -583,30 +566,14 @@
                 "Authorization": "Basic " + btoa(varProperties.validator.userName + ":" + varProperties.validator.password)
             },
             "processData": false,
-            "data": JSON.stringify([
-                        {
-                            "doc_type" : "transcript",
-                            "auto" : document.getElementById("transcript"+"-"+"auto").checked,
-                            "is_issuer_equal" : document.getElementById("transcript"+"-"+"is_issuer_equal").checked,
-                            "sign" : document.getElementById("transcript"+"-"+"sign").checked
-                        },
-                        {
-                            "doc_type" : "passport",
-                            "auto" : document.getElementById("passport"+"-"+"auto").checked,
-                            "is_issuer_equal" : document.getElementById("passport"+"-"+"is_issuer_equal").checked,
-                            "sign" : document.getElementById("passport"+"-"+"sign").checked
-                        },
-                        {
-                            "doc_type" : "university_id",
-                            "auto" : document.getElementById("university_id"+"-"+"auto").checked,
-                            "is_issuer_equal" : document.getElementById("university_id"+"-"+"is_issuer_equal").checked,
-                            "sign" : document.getElementById("university_id"+"-"+"sign").checked
-                        }
-                    ]
+            "data": JSON.stringify({
+                "white_list" : whiteList
+                    }
             )
         }
 
         $.ajax(settings).done(function (response) {
+            console.log(whiteList);
             console.log(response);
         });
     }
