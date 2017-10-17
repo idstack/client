@@ -154,26 +154,36 @@
                                 <form action="index.html" class="form-horizontal form-row-seperated">
                                     <div class="form-body">
                                         <div class="form-group">
-                                            <label class="control-label col-md-3">Default</label>
-                                            <div class="col-md-9">
+                                            <div class="col-md-3">
+
+                                                <div class="form-group form-md-line-input">
+                                                    <div class="input-group">
+                                                        <div class="input-group-control">
+                                                            <input type="text" class="form-control edited" id="new-whitelist-item" placeholder="White Member">
+                                                        </div>
+                                                        <span class="input-group-btn btn-left">
+                                                        <button class="btn blue-madison" type="button" id="add-whitelist-item">Add <i class="icon-arrow-right"></i></button>
+                                                    </span>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="col-md-4">
                                                 <select multiple="multiple" class="multi-select" id="my_multi_select1" name="my_multi_select1[]">
-                                                    <option>Dallas Cowboys</option>
-                                                    <option>New York Giants</option>
-                                                    <option selected>Philadelphia Eagles</option>
-                                                    <option selected>Washington Redskins</option>
-                                                    <option>Chicago Bears</option>
-                                                    <option>Detroit Lions</option>
-                                                    <option>Green Bay Packers</option>
-                                                    <option>Minnesota Vikings</option>
-                                                    <option selected>Atlanta Falcons</option>
-                                                    <option>Carolina Panthers</option>
-                                                    <option>New Orleans Saints</option>
-                                                    <option>Tampa Bay Buccaneers</option>
-                                                    <option>Arizona Cardinals</option>
-                                                    <option>St. Louis Rams</option>
-                                                    <option>San Francisco 49ers</option>
-                                                    <option>Seattle Seahawks</option>
-                                                </select>
+                                                    </select>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group form-md-line-input">
+                                                    <div class="input-group">
+                                                        <span class="input-group-btn btn-left">
+                                                            <button class="btn blue-madison" type="button" id="add-blacklist-item"> <i class="icon-arrow-left"></i>  Add</button>
+                                                        </span>
+                                                        <div class="input-group-control">
+                                                            <input type="text" class="form-control edited" id="new-blacklist-item" placeholder="Black Member">
+                                                        </div>
+                                                    </div>
+                                                </div>
+
                                             </div>
                                         </div>
                                     </div>
@@ -346,14 +356,43 @@
 <script>
     var json_doc;
     var varProperties;
+    var blackList =[];
+    var whiteList = [];
+    var blackListUl;
+    var whiteListUl;
     $(function () {
         $("#header").load("layout/header.html");
         $("#sidebar").load("layout/sidebar.html");
         $.getJSON("properties.json", function(json) {
             varProperties = json;
+            //block blacklist, whitelist
+            $(".ms-list").css("height","300px");
+            blackListUl = $(".ms-selection .ms-list");
+            whiteListUl = $(".ms-selectable .ms-list");
             getBasicDetails();
             getDocumentConfig();
+            getWhiteList();
+            getBlackList();
         });
+    });
+
+
+    $("#add-blacklist-item").click(function () {
+        if ($("#new-blacklist-item").val() != "") {
+            var newValue = $("#new-blacklist-item").val();
+            $("#new-blacklist-item").val("");
+            blackListUl.append("<li selected class='ms-elem-selection ms-selected'><span>" + newValue + "</span></li>");
+            blackList.push(newValue);
+        }
+    });
+
+    $("#add-whitelist-item").click(function () {
+        if ($("#new-whitelist-item").val() != "") {
+            var newValue = $("#new-whitelist-item").val();
+            $("#new-whitelist-item").val("");
+            whiteListUl.append("<li class='ms-elem-selectable'><span>" + newValue + "</span></li>");
+            whiteList.push(newValue);
+        }
     });
 
 
@@ -423,12 +462,12 @@
                 {
                     "doc_type" : "passport",
                     "auto" : "true",
-                    "is_issuer_equal" : "true",
+                    "is_issuer_equal" : "false",
                     "sign" : "true",
                 },
                 {
                     "doc_type" : "university_id",
-                    "auto" : "true",
+                    "auto" : "false",
                     "is_issuer_equal" : "true",
                     "sign" : "true",
                 }
@@ -444,6 +483,100 @@
             "async": true,
             "crossDomain": true,
             "url": "http://"+varProperties.validator.host+"/api-validator/"+varProperties.validator.apiVersion+"/"+varProperties.validator.apiKey+"/saveconfig/document/",
+            "method": "POST",
+            "headers": {
+                "content-type": "application/json",
+                "Authorization": "Basic " + btoa(varProperties.validator.userName + ":" + varProperties.validator.password)
+            },
+            "processData": false,
+            "data": JSON.stringify([
+                        {
+                            "doc_type" : "transcript",
+                            "auto" : document.getElementById("transcript"+"-"+"auto").checked,
+                            "is_issuer_equal" : document.getElementById("transcript"+"-"+"is_issuer_equal").checked,
+                            "sign" : document.getElementById("transcript"+"-"+"sign").checked
+                        },
+                        {
+                            "doc_type" : "passport",
+                            "auto" : document.getElementById("passport"+"-"+"auto").checked,
+                            "is_issuer_equal" : document.getElementById("passport"+"-"+"is_issuer_equal").checked,
+                            "sign" : document.getElementById("passport"+"-"+"sign").checked
+                        },
+                        {
+                            "doc_type" : "university_id",
+                            "auto" : document.getElementById("university_id"+"-"+"auto").checked,
+                            "is_issuer_equal" : document.getElementById("university_id"+"-"+"is_issuer_equal").checked,
+                            "sign" : document.getElementById("university_id"+"-"+"sign").checked
+                        }
+                    ]
+            )
+        }
+
+        $.ajax(settings).done(function (response) {
+            console.log(response);
+        });
+    }
+
+    function getWhiteList() {
+        var settings = {
+            "async": true,
+            "crossDomain": true,
+            "url": "http://"+varProperties.validator.host+"/api-validator/"+varProperties.validator.apiVersion+"/"+varProperties.validator.apiKey+"/getconfig/whitelist/",
+            "method": "GET",
+            "headers": {
+                "Authorization": "Basic " + btoa(varProperties.validator.userName + ":" + varProperties.validator.password)
+            }
+        }
+        $.ajax(settings).done(function (response) {
+            console.log(response);
+            response = {
+                "white_list": ["http://test/opt/tomcat/webapps/idstack/extractor/cert/pub/9e18a0b3-45cd-41e9-81a2-073e91e0c1b0.cer","http://www.immigration.gov.lk/ewg4UkNwmS85Ib4"]
+            };
+
+            whiteList.concat(response.white_list);
+            response.white_list.forEach(function(item){
+                whiteListUl.append("<li class='ms-elem-selectable'><span>"+item+"</span></li>");
+                console.log(item);
+            });
+
+
+        });
+    }
+
+    function getBlackList() {
+        var settings = {
+            "async": true,
+            "crossDomain": true,
+            "url": "http://"+varProperties.validator.host+"/api-validator/"+varProperties.validator.apiVersion+"/"+varProperties.validator.apiKey+"/getconfig/blacklist/",
+            "method": "GET",
+            "headers": {
+                "Authorization": "Basic " + btoa(varProperties.validator.userName + ":" + varProperties.validator.password)
+            }
+        }
+        $.ajax(settings).done(function (response) {
+            console.log(response);
+            response = {
+                "black_list": ["http://test2/opt/tomcat/webapps/idstack/extractor/cert/pub/9e18a0b3-45cd-41e9-81a2-073e91e0c1b0.cer","http://www.immigration.gov.lk/ewg4UkNwmS85Ib4"]
+            };
+
+            blackList.concat(response.black_list);
+            response.black_list.forEach(function(item){
+
+                blackListUl.append("<li selected class='ms-elem-selection ms-selected'><span>"+item+"</span></li>");
+
+                console.log(item);
+            });
+
+
+        });
+    }
+
+
+    function setWhiteList() {
+        var settings = {
+            "async": true,
+            "crossDomain": true,
+            "url": "http://"+varProperties.validator.host+"/api-validator/"+varProperties.validator.apiVersion+"/"+varProperties.validator.apiKey+"/saveconfig/whitelist/",
             "method": "POST",
             "headers": {
                 "content-type": "application/json",
