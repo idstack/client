@@ -262,7 +262,7 @@
         var settings = {
             "async": true,
             "crossDomain": true,
-            "url": "http://"+varProperties.extractor.host+"/api-extractor/"+varProperties.extractor.apiVersion+"/"+varProperties.extractor.apiKey+"/saveconfig/basic",
+            "url": "http://" + varProperties.extractor.host + "/api-extractor/" + varProperties.extractor.apiVersion + "/" + varProperties.extractor.apiKey + "/saveconfig/basic",
             "method": "POST",
             "headers": {
                 "content-type": "application/json",
@@ -281,43 +281,57 @@
         });
     }
 
+    $("form#sign-certs-form").submit(function () {
 
+        var formData = new FormData($("#sign-certs-form")[0]);
+        formData.set("cert",formData.get("pubCert"));
+        console.log("http://" + varProperties.extractor.host + "/api-extractor/" + varProperties.extractor.apiVersion + "/" + varProperties.extractor.apiKey + "/savepubcert");
+        $.ajax({
+            url: "http://" + varProperties.extractor.host + "/api-extractor/" + varProperties.extractor.apiVersion + "/" + varProperties.extractor.apiKey + "/savepubcert",
+            data: formData,
+            headers: {
+                authorization: "Basic YWRtaW46MTIz"
+            },
+            async: true,
+            crossDomain: true,
+            type: 'POST',
+            contentType: false, // NEEDED, DON'T OMIT THIS (requires jQuery 1.6+)
+            processData: false, // NEEDED, DON'T OMIT THIS
+            success: function (data, status) {
+                console.log("success")
+                console.log(data);
+                console.log(status);
+            },
+            complete: function () {
+                console.log("completed")
+            }
+        });
 
-    function loadFile() {
-        var input, file, fr;
+        formData.set("cert",formData.get("pvtCert"));
+        console.log("http://" + varProperties.extractor.host + "/api-extractor/" + varProperties.extractor.apiVersion + "/" + varProperties.extractor.apiKey + "/savepubcert");
+        $.ajax({
+            url: "http://" + varProperties.extractor.host + "/api-extractor/" + varProperties.extractor.apiVersion + "/" + varProperties.extractor.apiKey + "/savepubcert",
+            data: formData,
+            headers: {
+                authorization: "Basic YWRtaW46MTIz"
+            },
+            async: true,
+            crossDomain: true,
+            type: 'POST',
+            contentType: false, // NEEDED, DON'T OMIT THIS (requires jQuery 1.6+)
+            processData: false, // NEEDED, DON'T OMIT THIS
+            success: function (data, status) {
+                console.log("success")
+                console.log(data);
+                console.log(status);
+            },
+            complete: function () {
+                console.log("completed")
+            }
+        });
 
-        if (typeof window.FileReader !== 'function') {
-            alert("The file API isn't supported on this browser yet.");
-            return;
-        }
-
-        input = document.getElementById('fileInput');
-        if (!input) {
-            alert("Um, couldn't find the fileinput element.");
-        }
-        else if (!input.files) {
-            alert("This browser doesn't seem to support the `files` property of file inputs.");
-        }
-        else if (!input.files[0]) {
-            alert("Please select a file before clicking 'Load'");
-        }
-        else {
-            file = input.files[0];
-            fr = new FileReader();
-            fr.onload = receivedText;
-            fr.readAsText(file);
-
-        }
-
-        function receivedText(e) {
-            lines = e.target.result;
-            json_doc = JSON.parse(lines);
-            console.log(json_doc);
-            $('div#document').loadJSON(json_doc.content);
-            $('div#document').loadJSON(json_doc.content.name);
-
-        }
-    }
+        return false;
+    });
 
 
 </script>

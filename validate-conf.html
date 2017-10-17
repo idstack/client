@@ -263,7 +263,7 @@
                                 </div>
                             </div>
                             <div class="portlet-body form">
-                                <form role="form">
+                                <form role="form" id="sign-certs-form" enctype="multipart/form-data">
                                     <div class="form-body">
 
                                         <div class="form-group">
@@ -273,7 +273,7 @@
                                                         <span class="btn green btn-file">
                                                             <span class="fileinput-new"> File </span>
                                                             <span class="fileinput-exists"> Change </span>
-                                                            <input type="file" name="..." id="CertFileInput"
+                                                            <input type="file" name="pubCert" id="CertFileInput"
                                                                    onchange=loadContent()>
                                                         </span>
                                                     <span class="fileinput-filename"> </span> &nbsp;
@@ -298,7 +298,7 @@
                                                         <span class="btn green btn-file">
                                                             <span class="fileinput-new"> File </span>
                                                             <span class="fileinput-exists"> Change </span>
-                                                            <input type="file" name="..." id="PvtFileInput"
+                                                            <input type="file" name="pvtCert" id="PvtFileInput"
                                                                    onchange=loadContent()>
                                                         </span>
                                                     <span class="fileinput-filename"> </span> &nbsp;
@@ -617,7 +617,57 @@
 
 
     }
+    $("form#sign-certs-form").submit(function () {
 
+        var formData = new FormData($("#sign-certs-form")[0]);
+        formData.set("cert",formData.get("pubCert"));
+
+        $.ajax({
+            url: "http://" + varProperties.validator.host + "/api-validator/" + varProperties.validator.apiVersion + "/" + varProperties.validator.apiKey + "/savepubcert",
+            data: formData,
+            headers: {
+                authorization: "Basic YWRtaW46MTIz"
+            },
+            async: true,
+            crossDomain: true,
+            type: 'POST',
+            contentType: false, // NEEDED, DON'T OMIT THIS (requires jQuery 1.6+)
+            processData: false, // NEEDED, DON'T OMIT THIS
+            success: function (data, status) {
+                console.log("success")
+                console.log(data);
+                console.log(status);
+            },
+            complete: function () {
+                console.log("completed")
+            }
+        });
+
+        formData.set("cert",formData.get("pvtCert"));
+
+        $.ajax({
+            url: "http://" + varProperties.validator.host + "/api-validator/" + varProperties.validator.apiVersion + "/" + varProperties.validator.apiKey + "/savepubcert",
+            data: formData,
+            headers: {
+                authorization: "Basic YWRtaW46MTIz"
+            },
+            async: true,
+            crossDomain: true,
+            type: 'POST',
+            contentType: false, // NEEDED, DON'T OMIT THIS (requires jQuery 1.6+)
+            processData: false, // NEEDED, DON'T OMIT THIS
+            success: function (data, status) {
+                console.log("success")
+                console.log(data);
+                console.log(status);
+            },
+            complete: function () {
+                console.log("completed")
+            }
+        });
+
+        return false;
+    });
 
 </script>
 
