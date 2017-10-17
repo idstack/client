@@ -274,7 +274,7 @@
                                                             <span class="fileinput-new"> File </span>
                                                             <span class="fileinput-exists"> Change </span>
                                                             <input type="file" name="pubCert" id="CertFileInput"
-                                                                   onchange=loadContent()>
+                                                                   >
                                                         </span>
                                                     <span class="fileinput-filename"> </span> &nbsp;
                                                     <a href="javascript:;" class="close fileinput-exists"
@@ -299,7 +299,7 @@
                                                             <span class="fileinput-new"> File </span>
                                                             <span class="fileinput-exists"> Change </span>
                                                             <input type="file" name="pvtCert" id="PvtFileInput"
-                                                                   onchange=loadContent()>
+                                                                   >
                                                         </span>
                                                     <span class="fileinput-filename"> </span> &nbsp;
                                                     <a href="javascript:;" class="close fileinput-exists"
@@ -320,7 +320,7 @@
                                     </div>
                                     <div class="form-actions right">
                                         <button type="reset" class="btn default">Reset</button>
-                                        <button type="button" class="btn green" onclick="saveSignedPassport();">Save
+                                        <button type="submit" class="btn green" >Save
                                         </button>
                                     </div>
                                 </form>
@@ -554,7 +554,6 @@
         });
     }
 
-
     function setWhiteList() {
         var settings = {
             "async": true,
@@ -578,55 +577,16 @@
         });
     }
 
-    function loadFile() {
-        var input, file, fr;
-
-        if (typeof window.FileReader !== 'function') {
-            alert("The file API isn't supported on this browser yet.");
-            return;
-        }
-
-        input = document.getElementById('fileInput');
-        if (!input) {
-            alert("Um, couldn't find the fileinput element.");
-        }
-        else if (!input.files) {
-            alert("This browser doesn't seem to support the `files` property of file inputs.");
-        }
-        else if (!input.files[0]) {
-            alert("Please select a file before clicking 'Load'");
-        }
-        else {
-            file = input.files[0];
-            fr = new FileReader();
-            fr.onload = receivedText;
-            fr.readAsText(file);
-
-        }
-
-        function receivedText(e) {
-            lines = e.target.result;
-            json_doc = JSON.parse(lines);
-            console.log(json_doc);
-            $('div#document').loadJSON(json_doc.content);
-            $('div#document').loadJSON(json_doc.content.name);
-
-        }
-
-
-
-
-    }
     $("form#sign-certs-form").submit(function () {
 
         var formData = new FormData($("#sign-certs-form")[0]);
         formData.set("cert",formData.get("pubCert"));
-
+        alert(formData);
         $.ajax({
             url: "http://" + varProperties.validator.host + "/api-validator/" + varProperties.validator.apiVersion + "/" + varProperties.validator.apiKey + "/savepubcert",
             data: formData,
             headers: {
-                authorization: "Basic YWRtaW46MTIz"
+                "Authorization": "Basic " + btoa(varProperties.validator.userName + ":" + varProperties.validator.password)
             },
             async: true,
             crossDomain: true,
@@ -646,10 +606,10 @@
         formData.set("cert",formData.get("pvtCert"));
 
         $.ajax({
-            url: "http://" + varProperties.validator.host + "/api-validator/" + varProperties.validator.apiVersion + "/" + varProperties.validator.apiKey + "/savepubcert",
+            url: "http://" + varProperties.validator.host + "/api-validator/" + varProperties.validator.apiVersion + "/" + varProperties.validator.apiKey + "/savepvtcert",
             data: formData,
             headers: {
-                authorization: "Basic YWRtaW46MTIz"
+                "Authorization": "Basic " + btoa(varProperties.validator.userName + ":" + varProperties.validator.password)
             },
             async: true,
             crossDomain: true,
@@ -657,7 +617,7 @@
             contentType: false, // NEEDED, DON'T OMIT THIS (requires jQuery 1.6+)
             processData: false, // NEEDED, DON'T OMIT THIS
             success: function (data, status) {
-                console.log("success")
+                console.log("success");
                 console.log(data);
                 console.log(status);
             },
