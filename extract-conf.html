@@ -78,35 +78,35 @@
                             <div class="portlet-body form">
                                 <form role="form" id="basic_details">
                                     <div class="form-body">
-                                            <div class="form-group form-md-line-input">
-                                                <label for="basic_details"
-                                                       class="col-md-2 control-label">Organization</label>
-                                                <div class="col-md-4">
-                                                    <input type="text" class="form-control" id="organization"
-                                                           placeholder="Organization">
-                                                    <div class="form-control-focus"></div>
-                                                </div>
+                                        <div class="form-group form-md-line-input">
+                                            <label for="basic_details"
+                                                   class="col-md-2 control-label">Organization</label>
+                                            <div class="col-md-4">
+                                                <input type="text" class="form-control" id="organization"
+                                                       placeholder="Organization">
+                                                <div class="form-control-focus"></div>
                                             </div>
+                                        </div>
 
-                                            <div class="form-group form-md-line-input">
-                                                <label for="basic_details"
-                                                       class="col-md-2 control-label">Email</label>
-                                                <div class="col-md-4">
-                                                    <input type="email" class="form-control" id="email"
-                                                           placeholder="Email">
-                                                    <div class="form-control-focus"></div>
-                                                </div>
+                                        <div class="form-group form-md-line-input">
+                                            <label for="basic_details"
+                                                   class="col-md-2 control-label">Email</label>
+                                            <div class="col-md-4">
+                                                <input type="email" class="form-control" id="email"
+                                                       placeholder="Email">
+                                                <div class="form-control-focus"></div>
                                             </div>
+                                        </div>
 
-                                            <div class="form-group form-md-line-input">
-                                                <label for="basic_details"
-                                                       class="col-md-2 control-label">Web URL</label>
-                                                <div class="col-md-4">
-                                                    <input type="text" class="form-control" id="web"
-                                                           placeholder="Url">
-                                                    <div class="form-control-focus"></div>
-                                                </div>
+                                        <div class="form-group form-md-line-input">
+                                            <label for="basic_details"
+                                                   class="col-md-2 control-label">Web URL</label>
+                                            <div class="col-md-4">
+                                                <input type="text" class="form-control" id="web"
+                                                       placeholder="Url">
+                                                <div class="form-control-focus"></div>
                                             </div>
+                                        </div>
                                         <div class="form-actions right">
                                             <button type="reset" class="btn default">Reset</button>
                                             <button type="button" class="btn green" onclick="setBasicDetails();">Save
@@ -130,7 +130,7 @@
                                 </div>
                             </div>
                             <div class="portlet-body form">
-                                <form role="form">
+                                <form role="form" id="sign-certs-form" enctype="multipart/form-data">
                                     <div class="form-body">
 
                                         <div class="form-group">
@@ -140,8 +140,7 @@
                                                         <span class="btn green btn-file">
                                                             <span class="fileinput-new"> File </span>
                                                             <span class="fileinput-exists"> Change </span>
-                                                            <input type="file" name="..." id="CertFileInput"
-                                                                   onchange=loadContent()>
+                                                            <input type="file" name="pubCert" id="CertFileInput">
                                                         </span>
                                                     <span class="fileinput-filename"> </span> &nbsp;
                                                     <a href="javascript:;" class="close fileinput-exists"
@@ -156,7 +155,6 @@
                                                 <p>
 
 
-
                                                 </p>
                                             </div>
 
@@ -169,8 +167,8 @@
                                                         <span class="btn green btn-file">
                                                             <span class="fileinput-new"> File </span>
                                                             <span class="fileinput-exists"> Change </span>
-                                                            <input type="file" name="..." id="PvtFileInput"
-                                                                   onchange=loadContent()>
+                                                            <input type="file" name="pvtCert" id="PvtFileInput"
+                                                            >
                                                         </span>
                                                     <span class="fileinput-filename"> </span> &nbsp;
                                                     <a href="javascript:;" class="close fileinput-exists"
@@ -183,7 +181,7 @@
                                             <label for="certificate_pass"
                                                    class="col-md-2 control-label">Password</label>
                                             <div class="col-md-4">
-                                                <input type="password" class="form-control" id="certificate_pass"
+                                                <input type="password" class="form-control" id="certificate_pass" name="password"
                                                        placeholder="Password">
                                                 <div class="form-control-focus"></div>
                                             </div>
@@ -191,7 +189,7 @@
                                     </div>
                                     <div class="form-actions right">
                                         <button type="reset" class="btn default">Reset</button>
-                                        <button type="button" class="btn green" onclick="saveSignedPassport();">Save
+                                        <button type="submit" class="btn green">Save
                                         </button>
                                     </div>
                                 </form>
@@ -230,19 +228,20 @@
     $(function () {
         $("#header").load("layout/header.html");
         $("#sidebar").load("layout/sidebar.html");
-        $.getJSON("properties.json", function(json) {
+        $.getJSON("properties.json", function (json) {
             varProperties = json;
             getBasicDetails();
         });
 
 
     });
+
     //Web service calls
     function getBasicDetails() {
         var settings = {
             "async": true,
             "crossDomain": true,
-            "url": "http://"+varProperties.extractor.host+"/api-extractor/"+varProperties.extractor.apiVersion+"/"+varProperties.extractor.apiKey+"/getconfig/basic/",
+            "url": "http://" + varProperties.extractor.host + "/api-extractor/" + varProperties.extractor.apiVersion + "/" + varProperties.extractor.apiKey + "/getconfig/basic/",
             "method": "GET",
             "headers": {
                 "Authorization": "Basic " + btoa(varProperties.extractor.userName + ":" + varProperties.extractor.password)
@@ -256,13 +255,13 @@
 
         });
     }
-    
-    
+
+
     function setBasicDetails() {
         var settings = {
             "async": true,
             "crossDomain": true,
-            "url": "http://"+varProperties.extractor.host+"/api-extractor/"+varProperties.extractor.apiVersion+"/"+varProperties.extractor.apiKey+"/saveconfig/basic",
+            "url": "http://" + varProperties.extractor.host + "/api-extractor/" + varProperties.extractor.apiVersion + "/" + varProperties.extractor.apiKey + "/saveconfig/basic",
             "method": "POST",
             "headers": {
                 "content-type": "application/json",
@@ -281,48 +280,58 @@
         });
     }
 
+    $("form#sign-certs-form").submit(function () {
 
+        var formData = new FormData($("#sign-certs-form")[0]);
+        formData.set("cert",formData.get("pubCert"));
+        console.log("http://" + varProperties.extractor.host + "/api-extractor/" + varProperties.extractor.apiVersion + "/" + varProperties.extractor.apiKey + "/savepubcert");
+        $.ajax({
+            url: "http://" + varProperties.extractor.host + "/api-extractor/" + varProperties.extractor.apiVersion + "/" + varProperties.extractor.apiKey + "/savepubcert",
+            data: formData,
+            headers: {
+                authorization: "Basic YWRtaW46MTIz"
+            },
+            async: true,
+            crossDomain: true,
+            type: 'POST',
+            contentType: false, // NEEDED, DON'T OMIT THIS (requires jQuery 1.6+)
+            processData: false, // NEEDED, DON'T OMIT THIS
+            success: function (data, status) {
+                console.log("success")
+                console.log(data);
+                console.log(status);
+            },
+            complete: function () {
+                console.log("completed")
+            }
+        });
 
-    function loadFile() {
-        var input, file, fr;
+        formData.set("cert",formData.get("pvtCert"));
+        console.log("http://" + varProperties.extractor.host + "/api-extractor/" + varProperties.extractor.apiVersion + "/" + varProperties.extractor.apiKey + "/savepubcert");
+        $.ajax({
+            url: "http://" + varProperties.extractor.host + "/api-extractor/" + varProperties.extractor.apiVersion + "/" + varProperties.extractor.apiKey + "/savepubcert",
+            data: formData,
+            headers: {
+                authorization: "Basic YWRtaW46MTIz"
+            },
+            async: true,
+            crossDomain: true,
+            type: 'POST',
+            contentType: false, // NEEDED, DON'T OMIT THIS (requires jQuery 1.6+)
+            processData: false, // NEEDED, DON'T OMIT THIS
+            success: function (data, status) {
+                console.log("success")
+                console.log(data);
+                console.log(status);
+            },
+            complete: function () {
+                console.log("completed")
+            }
+        });
 
-        if (typeof window.FileReader !== 'function') {
-            alert("The file API isn't supported on this browser yet.");
-            return;
-        }
-
-        input = document.getElementById('fileInput');
-        if (!input) {
-            alert("Um, couldn't find the fileinput element.");
-        }
-        else if (!input.files) {
-            alert("This browser doesn't seem to support the `files` property of file inputs.");
-        }
-        else if (!input.files[0]) {
-            alert("Please select a file before clicking 'Load'");
-        }
-        else {
-            file = input.files[0];
-            fr = new FileReader();
-            fr.onload = receivedText;
-            fr.readAsText(file);
-
-        }
-
-        function receivedText(e) {
-            lines = e.target.result;
-            json_doc = JSON.parse(lines);
-            console.log(json_doc);
-            $('div#document').loadJSON(json_doc.content);
-            $('div#document').loadJSON(json_doc.content.name);
-
-        }
-
-
-
-
-    }
-
+        return false;
+    });
+ 
 
 </script>
 
