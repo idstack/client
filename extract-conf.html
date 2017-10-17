@@ -78,35 +78,35 @@
                             <div class="portlet-body form">
                                 <form role="form" id="basic_details">
                                     <div class="form-body">
-                                        <div class="form-group form-md-line-input">
-                                            <label for="basic_details"
-                                                   class="col-md-2 control-label">Organization</label>
-                                            <div class="col-md-4">
-                                                <input type="text" class="form-control" id="organization"
-                                                       placeholder="Organization">
-                                                <div class="form-control-focus"></div>
+                                            <div class="form-group form-md-line-input">
+                                                <label for="basic_details"
+                                                       class="col-md-2 control-label">Organization</label>
+                                                <div class="col-md-4">
+                                                    <input type="text" class="form-control" id="organization"
+                                                           placeholder="Organization">
+                                                    <div class="form-control-focus"></div>
+                                                </div>
                                             </div>
-                                        </div>
 
-                                        <div class="form-group form-md-line-input">
-                                            <label for="basic_details"
-                                                   class="col-md-2 control-label">Email</label>
-                                            <div class="col-md-4">
-                                                <input type="email" class="form-control" id="email"
-                                                       placeholder="Email">
-                                                <div class="form-control-focus"></div>
+                                            <div class="form-group form-md-line-input">
+                                                <label for="basic_details"
+                                                       class="col-md-2 control-label">Email</label>
+                                                <div class="col-md-4">
+                                                    <input type="email" class="form-control" id="email"
+                                                           placeholder="Email">
+                                                    <div class="form-control-focus"></div>
+                                                </div>
                                             </div>
-                                        </div>
 
-                                        <div class="form-group form-md-line-input">
-                                            <label for="basic_details"
-                                                   class="col-md-2 control-label">Web URL</label>
-                                            <div class="col-md-4">
-                                                <input type="text" class="form-control" id="web"
-                                                       placeholder="Url">
-                                                <div class="form-control-focus"></div>
+                                            <div class="form-group form-md-line-input">
+                                                <label for="basic_details"
+                                                       class="col-md-2 control-label">Web URL</label>
+                                                <div class="col-md-4">
+                                                    <input type="text" class="form-control" id="web"
+                                                           placeholder="Url">
+                                                    <div class="form-control-focus"></div>
+                                                </div>
                                             </div>
-                                        </div>
                                         <div class="form-actions right">
                                             <button type="reset" class="btn default">Reset</button>
                                             <button type="button" class="btn green" onclick="setBasicDetails();">Save
@@ -130,7 +130,7 @@
                                 </div>
                             </div>
                             <div class="portlet-body form">
-                                <form role="form" id="sign-certs-form" enctype="multipart/form-data">
+                                <form role="form">
                                     <div class="form-body">
 
                                         <div class="form-group">
@@ -140,7 +140,8 @@
                                                         <span class="btn green btn-file">
                                                             <span class="fileinput-new"> File </span>
                                                             <span class="fileinput-exists"> Change </span>
-                                                            <input type="file" name="pubCert" id="CertFileInput">
+                                                            <input type="file" name="..." id="CertFileInput"
+                                                                   onchange=loadContent()>
                                                         </span>
                                                     <span class="fileinput-filename"> </span> &nbsp;
                                                     <a href="javascript:;" class="close fileinput-exists"
@@ -155,6 +156,7 @@
                                                 <p>
 
 
+
                                                 </p>
                                             </div>
 
@@ -167,8 +169,8 @@
                                                         <span class="btn green btn-file">
                                                             <span class="fileinput-new"> File </span>
                                                             <span class="fileinput-exists"> Change </span>
-                                                            <input type="file" name="pvtCert" id="PvtFileInput"
-                                                            >
+                                                            <input type="file" name="..." id="PvtFileInput"
+                                                                   onchange=loadContent()>
                                                         </span>
                                                     <span class="fileinput-filename"> </span> &nbsp;
                                                     <a href="javascript:;" class="close fileinput-exists"
@@ -181,7 +183,7 @@
                                             <label for="certificate_pass"
                                                    class="col-md-2 control-label">Password</label>
                                             <div class="col-md-4">
-                                                <input type="password" class="form-control" id="certificate_pass" name="password"
+                                                <input type="password" class="form-control" id="certificate_pass"
                                                        placeholder="Password">
                                                 <div class="form-control-focus"></div>
                                             </div>
@@ -189,7 +191,7 @@
                                     </div>
                                     <div class="form-actions right">
                                         <button type="reset" class="btn default">Reset</button>
-                                        <button type="submit" class="btn green">Save
+                                        <button type="button" class="btn green" onclick="saveSignedPassport();">Save
                                         </button>
                                     </div>
                                 </form>
@@ -228,20 +230,19 @@
     $(function () {
         $("#header").load("layout/header.html");
         $("#sidebar").load("layout/sidebar.html");
-        $.getJSON("properties.json", function (json) {
+        $.getJSON("properties.json", function(json) {
             varProperties = json;
             getBasicDetails();
         });
 
 
     });
-
     //Web service calls
     function getBasicDetails() {
         var settings = {
             "async": true,
             "crossDomain": true,
-            "url": "http://" + varProperties.extractor.host + "/api-extractor/" + varProperties.extractor.apiVersion + "/" + varProperties.extractor.apiKey + "/getconfig/basic/",
+            "url": "http://"+varProperties.extractor.host+"/api-extractor/"+varProperties.extractor.apiVersion+"/"+varProperties.extractor.apiKey+"/getconfig/basic/",
             "method": "GET",
             "headers": {
                 "Authorization": "Basic " + btoa(varProperties.extractor.userName + ":" + varProperties.extractor.password)
@@ -255,8 +256,8 @@
 
         });
     }
-
-
+    
+    
     function setBasicDetails() {
         var settings = {
             "async": true,
