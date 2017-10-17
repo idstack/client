@@ -242,7 +242,7 @@
         var settings = {
             "async": true,
             "crossDomain": true,
-            "url": "http://"+varProperties.extractor.host+"/api-extractor/"+varProperties.extractor.apiVersion+"/"+varProperties.extractor.apiKey+"/getdocstore/",
+            "url": "http://"+varProperties.extractor.host+"/api-extractor/"+varProperties.extractor.apiVersion+"/"+varProperties.extractor.apiKey+"/getconfig/basic/",
             "method": "GET",
             "headers": {
                 "Authorization": "Basic " + btoa(varProperties.extractor.userName + ":" + varProperties.extractor.password)
@@ -262,7 +262,7 @@
         var settings = {
             "async": true,
             "crossDomain": true,
-            "url": "http://"+varProperties.extractor.host+"/api-extractor/"+varProperties.extractor.apiVersion+"/"+varProperties.extractor.apiKey+"/getdocstore/",
+            "url": "http://"+varProperties.extractor.host+"/api-extractor/"+varProperties.extractor.apiVersion+"/"+varProperties.extractor.apiKey+"/saveconfig/basic",
             "method": "POST",
             "headers": {
                 "content-type": "application/json",
