@@ -319,7 +319,7 @@
                 clone.attr('id', 'column_' + i);
                 clone.removeClass('col-md-12').addClass('col-md-' + 12 / docCount);
 
-                console.log(docListResponse.files_list[i].json);
+                //console.log(docListResponse.files_list[i].json);
                 getMRDoc(docListResponse.files_list[i].json,clone);
             }
 
@@ -433,6 +433,7 @@
         }
 
         function getMRDoc(url,clone) {
+            console.log(url);
             var form = new FormData();
             form.append("json_url", url);
 
@@ -450,11 +451,11 @@
                 "data": form
             }
 
-            $.ajax(settings).done(function (response) {
-                var response = JSON.parse(response).json[0];
-                console.log(response);
-                clone.find("#template").load("doc_templates/view/"+response.meta_data.document_type+".html",loadContentView(clone,response) );
-                loadSignatureView(clone,response);
+            $.ajax(settings).done(function (MRresponse) {
+                var MRresponse = JSON.parse(MRresponse).json[0];
+                console.log(MRresponse);
+                clone.find("#template").load("doc_templates/view/"+MRresponse.meta_data.document_type+".html",loadContentView(clone,MRresponse) );
+                loadSignatureView(clone,MRresponse);
                 getConfidenceByUrl(url,clone);
                 $('#document_array').append(clone);
             }).fail(function () {
