@@ -166,7 +166,7 @@
                                                 <thead >
                                                 <tr>
                                                     <th rowspan="2" class="text-center col-md-1"> Attribute</th>
-                                                    <th rowspan="2" class="text-center col-md-2"> Correlation Score</th>
+                                                    <th rowspan="2" class="text-center col-md-2"> Average Correlation Score</th>
                                                     {{each name.values}}
                                                     <th colspan="2" class="text-center"> Document ${$index + 1}</th>
                                                     {{/each}}
@@ -304,8 +304,6 @@
                 getDocstoreByRequest(request_id);
                 getCorrelationByRequest(request_id);
             });
-
-
         });
 
 
@@ -323,7 +321,6 @@
 
                 console.log(docListResponse.files_list[i].json);
                 getMRDoc(docListResponse.files_list[i].json,clone);
-
             }
 
         }
@@ -337,7 +334,7 @@
                 }catch(err) {
                     //
                 }
-            },1)
+            },1000)
         }
 
         function loadSignatureView(clone,MRDoc) {
@@ -369,7 +366,7 @@
             }
 
             $.ajax(settings).done(function (response) {
-                response = JSON.parse(response);
+                var response = JSON.parse(response);
                 console.log(response);
                 clone.find("#confidence-score").prepend(response.score);
             }).fail(function () {
@@ -396,7 +393,7 @@
             }
 
             $.ajax(settings).done(function (response) {
-                response = JSON.parse(response);
+                var response = JSON.parse(response);
                 console.log(response);
                 $("#correlation_table_template").tmpl(response).appendTo("#correlation_table");
                 $("#correlation_portlet").removeAttr('style');
@@ -424,7 +421,7 @@
             }
 
             $.ajax(settings).done(function (response) {
-                response = JSON.parse(response);
+                var response = JSON.parse(response);
                 console.log(response);
                 docCount=response.files_list.length;
                 console.log(docCount);
@@ -437,7 +434,7 @@
 
         function getMRDoc(url,clone) {
             var form = new FormData();
-            form.append("json_url", "http://139.59.74.146:8080/idstack/relyingparty/docs/info@avix.lk/a7444ebf-1cf3-490f-bea4-21cdb1d7c926/passport/1.json");
+            form.append("json_url", url);
 
             var settings = {
                 "async": true,
@@ -454,14 +451,14 @@
             }
 
             $.ajax(settings).done(function (response) {
-                response = JSON.parse(response).json[0];
+                var response = JSON.parse(response).json[0];
                 console.log(response);
                 clone.find("#template").load("doc_templates/view/"+response.meta_data.document_type+".html",loadContentView(clone,response) );
                 loadSignatureView(clone,response);
                 getConfidenceByUrl(url,clone);
                 $('#document_array').append(clone);
             }).fail(function () {
-                toastr.warning("Can't access Machine readable documentd api");
+                toastr.warning("Can't access Machine readable document api");
             });
         }
 

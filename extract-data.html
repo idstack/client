@@ -131,6 +131,7 @@
     var docType;
     var formObject ;
     var varProperties;
+    var pdfUrl;
 
     $(function(){
         App.startPageLoading({
@@ -231,7 +232,7 @@
 
     function saveJsonFile(json_doc) {
 
-        json_doc = JSON.stringify(JSON.parse(json_doc), null, 4);
+        json_doc = JSON.stringify(json_doc, null, 4);
         var file = new File([json_doc], "IDStack-extracted-doc.json", {type: "text/json;charset=utf-8"});
         saveAs(file);
         $("#downloadBtn").removeClass("display-hide");
@@ -243,7 +244,7 @@
     }
     
     function downloadPdf() {
-        window.open(url, '_blank');
+        window.open(pdfUrl, '_blank');
     }
     
     //Web service calls
@@ -269,7 +270,9 @@
 
         $.ajax(settings).done(function (response) {
             console.log(response);
-            saveJsonFile(response);
+            response = JSON.parse(response);
+            pdfUrl =response.pdf;
+            saveJsonFile(response.json);
         }).fail( function (response) {
             console.log("Can't access wep api");
         });
