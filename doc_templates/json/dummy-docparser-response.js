@@ -7,9 +7,9 @@ var response = {
     "page_count": 1,
     "uploaded_at": "2017-06-10T04:23:06+00:00",
     "processed_at": "2017-06-10T04:23:13+00:00",
-    "surname": "CLINTON",
-    "other_names": "HILARY DUFF",
-    "date_of_birth": "1978-11-01",
+    "surname": "LOKUPOTHAGAMAGE DON",
+    "other_names": "CHANAKA LAKAMAL",
+    "date_of_birth": "1992-11-18",
     "national_status": "SRI LANKAN",
     "sex": "M",
     "profession": "UNIVERSITY STUDENT",
@@ -17,7 +17,7 @@ var response = {
     "place_of_birth": "KURUNEGALA",
     "date_of_issue": "2016-04-25",
     "passport_no": "N6663355",
-    "date_of_expiry": "2016-04-25",
+    "date_of_expiry": "2026-04-25",
     "passport_type": "PB",
     "country_code": "LKA"
 }
