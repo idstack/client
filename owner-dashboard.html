@@ -4,38 +4,44 @@
 <!-- BEGIN HEAD -->
 
 <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8"/>
     <title>IDStack</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta content="width=device-width, initial-scale=1" name="viewport" />
-    <meta content="IDStack | The common protocol for document verification built on Blockchain" name="description" />
-    <meta content="www.idstack.one" name="author" />
+    <meta content="width=device-width, initial-scale=1" name="viewport"/>
+    <meta content="IDStack | The common protocol for document verification built on Blockchain" name="description"/>
+    <meta content="www.idstack.one" name="author"/>
     <!-- BEGIN GLOBAL MANDATORY STYLES -->
-    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css" />
-    <link href="assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-    <link href="assets/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
-    <link href="assets/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <link href="assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css" />
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet"
+          type="text/css"/>
+    <link href="assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+    <link href="assets/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css"/>
+    <link href="assets/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <link href="assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css"/>
     <!-- END GLOBAL MANDATORY STYLES -->
     <!-- BEGIN PAGE LEVEL PLUGINS -->
-    <link href="assets/global/plugins/fancybox/source/jquery.fancybox.css" rel="stylesheet" type="text/css" />
-    <link href="assets/global/plugins/jquery-file-upload/blueimp-gallery/blueimp-gallery.min.css" rel="stylesheet" type="text/css" />
-    <link href="assets/global/plugins/jquery-file-upload/css/jquery.fileupload.css" rel="stylesheet" type="text/css" />
-    <link href="assets/global/plugins/jquery-file-upload/css/jquery.fileupload-ui.css" rel="stylesheet" type="text/css" />
-    <link href="assets/global/plugins/dropzone/dropzone.min.css" rel="stylesheet" type="text/css" />
-    <link href="assets/global/plugins/dropzone/basic.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/global/plugins/fancybox/source/jquery.fancybox.css" rel="stylesheet" type="text/css"/>
+    <link href="assets/global/plugins/jquery-file-upload/blueimp-gallery/blueimp-gallery.min.css" rel="stylesheet"
+          type="text/css"/>
+    <link href="assets/global/plugins/jquery-file-upload/css/jquery.fileupload.css" rel="stylesheet" type="text/css"/>
+    <link href="assets/global/plugins/jquery-file-upload/css/jquery.fileupload-ui.css" rel="stylesheet"
+          type="text/css"/>
+    <link href="assets/global/plugins/dropzone/dropzone.min.css" rel="stylesheet" type="text/css"/>
+    <link href="assets/global/plugins/dropzone/basic.min.css" rel="stylesheet" type="text/css"/>
+    <link href="assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.css" rel="stylesheet" type="text/css"/>
+
     <!-- END PAGE LEVEL PLUGINS -->
     <!-- BEGIN THEME GLOBAL STYLES -->
-    <link href="assets/global/css/components-md.min.css" rel="stylesheet" id="style_components" type="text/css" />
-    <link href="assets/global/css/plugins-md.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/global/css/components-md.min.css" rel="stylesheet" id="style_components" type="text/css"/>
+    <link href="assets/global/css/plugins-md.min.css" rel="stylesheet" type="text/css"/>
     <!-- END THEME GLOBAL STYLES -->
     <!-- BEGIN THEME LAYOUT STYLES -->
-    <link href="assets/layout/css/layout.min.css" rel="stylesheet" type="text/css" />
-    <link href="assets/layout/css/themes/blue.min.css" rel="stylesheet" type="text/css" id="style_color" />
-    <link href="assets/layout/css/custom.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/layout/css/layout.min.css" rel="stylesheet" type="text/css"/>
+    <link href="assets/layout/css/themes/blue.min.css" rel="stylesheet" type="text/css" id="style_color"/>
+    <link href="assets/layout/css/custom.min.css" rel="stylesheet" type="text/css"/>
     <!-- END THEME LAYOUT STYLES -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <link rel="shortcut icon" href="assets/favicon.png" /> </head>
+    <link rel="shortcut icon" href="assets/favicon.png"/>
+</head>
 <!-- END HEAD -->
 
 <body class="page-header-fixed page-sidebar-closed-hide-logo page-container-bg-solid page-sidebar-closed page-md">
@@ -43,7 +49,7 @@
 <div id="header"></div>
 <!-- END HEADER -->
 <!-- BEGIN HEADER & CONTENT DIVIDER -->
-<div class="clearfix"> </div>
+<div class="clearfix"></div>
 <!-- END HEADER & CONTENT DIVIDER -->
 <!-- BEGIN CONTAINER -->
 <div class="page-container">
@@ -78,38 +84,65 @@
                                 </div>
                             </div>
                             <div class="portlet-body form">
-                                <form role="form" class="form-horizontal">
-                                    <!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
-                                    <div class="row fileupload-buttonbar">
-                                        <div class="col-lg-2">
-                                            <!-- The fileinput-button span is used to style the file input field as button -->
-                                            <span class="btn green fileinput-button">
-                                            <i class="fa fa-plus"></i>
-                                             <span> Add PDF </span>
-                                            <input id="extFileInput" type="file" onchange="getFIle()"> </span>
-                                             <!--The global file processing state-->
-                                            <span class="fileupload-process"> </span>
-                                        </div>
-                                        <div class="col-lg-10">
-                                            <label class="col-md-2 control-label">Extractor URL</label>
-                                            <div class="col-md-10">
-                                                <input type="text" id="ext_url" class="form-control" placeholder="Enter the url of the extractor API">
+                                <form class="form-horizontal form-bordered" id="extract-form"
+                                      enctype="multipart/form-data" role="form">
+                                    <div class="form-body">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">Select Pdf File</label>
+                                            <div class="col-md-3">
+                                                <div class="fileinput fileinput-new" data-provides="fileinput">
+                                                    <div class="input-group input-large">
+                                                        <div class="form-control uneditable-input input-fixed input-medium"
+                                                             data-trigger="fileinput">
+                                                            <i class="fa fa-file fileinput-exists"></i>&nbsp;
+                                                            <span class="fileinput-filename"> </span>
+                                                        </div>
+                                                        <span class="input-group-addon btn default btn-file">
+                                                                <span class="fileinput-new"> Select file </span>
+                                                                <span class="fileinput-exists"> Change </span>
+                                                                <input type="file" id="extFileInput" name="pdf"> </span>
+                                                        <a href="javascript:;"
+                                                           class="input-group-addon btn red fileinput-exists"
+                                                           data-dismiss="fileinput"> Remove </a>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
-                                        <!-- The global progress information -->
-                                        <!--<div class="col-lg-5 fileupload-progress fade">-->
-                                            <!--&lt;!&ndash; The global progress bar &ndash;&gt;-->
-                                            <!--<div class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100">-->
-                                                <!--<div class="progress-bar progress-bar-success" style="width:0%;"> </div>-->
-                                            <!--</div>-->
-                                            <!--&lt;!&ndash; The extended global progress information &ndash;&gt;-->
-                                            <!--<div class="progress-extended"> &nbsp; </div>-->
-                                        <!--</div>-->
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">Document Type</label>
+                                            <div class="col-md-3">
+                                                <select class="form-control" name="doc_type">
+                                                    <option value="passport">Passport</option>
+                                                    <option value="university_id">University ID</option>
+                                                    <option value="transcript">University Transcript</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">Your Email</label>
+                                            <div class="col-md-6">
+                                                <input class="form-control" type="email" id="my_email" name="email"
+                                                       placeholder="e.g: myname@gmail.com">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">Extractor URL</label>
+                                            <div class="col-md-6">
+                                                <input class="form-control" type="text" id="ext_url" name="url"
+                                                       placeholder="e.g: http://extractor.com">
+                                            </div>
+                                        </div>
                                     </div>
-                                    <!-- The table listing the files available for upload/download -->
-                                    <table role="presentation" class="table table-striped clearfix">
-                                        <tbody class="files"> </tbody>
-                                    </table>
+                                    <div class="form-actions">
+                                        <div class="row">
+                                            <div class="col-md-offset-3 col-md-9">
+                                                <button class="btn green" type="submit">
+                                                    <i class="fa fa-check"></i> Submit
+                                                </button>
+                                                <button class="btn btn-outline grey-salsa" type="button">Cancel</button>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </form>
                             </div>
                         </div>
@@ -132,56 +165,109 @@
                                 </div>
                             </div>
                             <div class="portlet-body form">
-                                <form role="form" class="form-horizontal">
+                                <form class="form-horizontal form-bordered" id="validate-form"
+                                      enctype="multipart/form-data">
                                     <div class="form-body">
-                                        <div class="form-group form-md-line-input">
-                                            <label class="col-md-2 control-label" >PDF File</label>
-                                            <div class="col-md-10">
-                                                <div class="col-md-2">
-                                                        <span class="btn green fileinput-button">
-                                                            <i class="fa fa-plus"></i>
-                                                            <span> Choose PDF</span>
-                                                        <input id="val_pdf" type="file" name="pdf"  onchange="showPdfFilename()" > </span>
-                                                </div>
-                                                <div class="col-md-10">
-                                                    <div class="input-group-control">
-                                                        <input id="val_pdfname" type="text" class="form-control" placeholder="Placeholder" readonly>
-                                                        <div class="form-control-focus"> </div>
-                                                    </div>
-                                                </div>
-                                                <!--</div>-->
-                                            </div>
-                                        </div>
-                                        <div class="form-group form-md-line-input">
-                                            <label class="col-md-2 control-label" >Machine Readable File</label>
-                                            <div class="col-md-10">
-                                                <div class="col-md-2">
-                                                        <span class="btn green fileinput-button">
-                                                            <i class="fa fa-plus"></i>
-                                                            <span> Choose MRF</span>
-                                                        <input id="val_mrf" type="file" name="mrf"  onchange="showMrfFilename()"> </span>
-                                                </div>
-                                                <div class="col-md-10">
-                                                    <div class="input-group-control">
-                                                        <input id="val_mrfname" type="text" class="form-control" placeholder="Placeholder" readonly>
-                                                        <div class="form-control-focus"> </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">Select Pdf File</label>
+                                            <div class="col-md-3">
+                                                <div class="fileinput fileinput-new" data-provides="fileinput">
+                                                    <div class="input-group input-large">
+                                                        <div class="form-control uneditable-input input-fixed input-medium"
+                                                             data-trigger="fileinput">
+                                                            <i class="fa fa-file fileinput-exists"></i>&nbsp;
+                                                            <span class="fileinput-filename"> </span>
+                                                        </div>
+                                                        <span class="input-group-addon btn default btn-file">
+                                                                <span class="fileinput-new"> Select file </span>
+                                                                <span class="fileinput-exists"> Change </span>
+                                                                <input type="file" id="valFileInput" name="pdf"> </span>
+                                                        <a href="javascript:;"
+                                                           class="input-group-addon btn red fileinput-exists"
+                                                           data-dismiss="fileinput"> Remove </a>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="form-group form-md-line-input">
-                                            <label class="col-md-2 control-label" for="val_url">Validator URL</label>
-                                            <div class="col-md-10">
-                                                <input type="text" class="form-control" id="val_url" placeholder="Enter the url of the validator API">
-                                                <div class="form-control-focus"> </div>
-                                                <span class="help-block">Add the URL of the validator.</span>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">Select MRF File</label>
+                                            <div class="col-md-3">
+                                                <div class="fileinput fileinput-new" data-provides="fileinput">
+                                                    <div class="input-group input-large">
+                                                        <div class="form-control uneditable-input input-fixed input-medium"
+                                                             data-trigger="fileinput">
+                                                            <i class="fa fa-file fileinput-exists"></i>&nbsp;
+                                                            <span class="fileinput-filename"> </span>
+                                                        </div>
+                                                        <span class="input-group-addon btn default btn-file">
+                                                                <span class="fileinput-new"> Select file </span>
+                                                                <span class="fileinput-exists"> Change </span>
+                                                                <input type="file" id="valJSONInput"
+                                                                       name="json"> </span>
+                                                        <a href="javascript:;"
+                                                           class="input-group-addon btn red fileinput-exists"
+                                                           data-dismiss="fileinput"> Remove </a>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">Your Email</label>
+                                            <div class="col-md-6">
+                                                <input class="form-control" type="email" id="my_email1" name="email"
+                                                       placeholder="e.g: myname@gmail.com">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">Validator URL</label>
+                                            <div class="col-md-6">
+                                                <input class="form-control" type="text" id="val_url" name="url"
+                                                       placeholder="e.g: http://validator.com">
+                                            </div>
+                                        </div>
+                                        <!--<div class="form-group">-->
+                                        <!--<label class="control-label col-md-3">Pdf Document</label>-->
+                                        <!--<div class="col-md-9">-->
+                                        <!--<div class="fileinput fileinput-new" data-provides="fileinput">-->
+                                        <!--<span class="btn green btn-file">-->
+                                        <!--<span class="fileinput-new"> Select file </span>-->
+                                        <!--<span class="fileinput-exists"> Change </span>-->
+                                        <!--<input type="file" name="..."> </span>-->
+                                        <!--<span class="fileinput-filename"> </span> &nbsp;-->
+                                        <!--<a href="javascript:;" class="close fileinput-exists"-->
+                                        <!--data-dismiss="fileinput"> </a>-->
+                                        <!--</div>-->
+                                        <!--</div>-->
+                                        <!--</div>-->
+                                        <!--<div class="form-group">-->
+                                        <!--<label class="control-label col-md-3">MRF Document</label>-->
+                                        <!--<div class="col-md-9">-->
+                                        <!--<div class="fileinput fileinput-new" data-provides="fileinput">-->
+                                        <!--<span class="btn green btn-file">-->
+                                        <!--<span class="fileinput-new"> Select file </span>-->
+                                        <!--<span class="fileinput-exists"> Change </span>-->
+                                        <!--<input type="file" name="..."> </span>-->
+                                        <!--<span class="fileinput-filename"> </span> &nbsp;-->
+                                        <!--<a href="javascript:;" class="close fileinput-exists"-->
+                                        <!--data-dismiss="fileinput"> </a>-->
+                                        <!--</div>-->
+                                        <!--</div>-->
+                                        <!--</div>-->
+                                        <!--<div class="form-group form-md-line-input">-->
+                                        <!--<label class="col-md-3 control-label" for="val_url">Validator URL</label>-->
+                                        <!--<div class="col-md-9">-->
+                                        <!--<input type="text" class="form-control" id="val_url"-->
+                                        <!--placeholder="Enter the url of the validator API">-->
+                                        <!--<div class="form-control-focus"></div>-->
+                                        <!--</div>-->
+                                        <!--</div>-->
                                     </div>
                                     <div class="form-actions">
                                         <div class="row">
-                                            <div class="col-md-offset-2 col-md-10">
-                                                <button id="btnsubmit_val" type="button" class="btn blue">Submit</button>
+                                            <div class="col-md-offset-3 col-md-9">
+                                                <a href="javascript:;" class="btn green">
+                                                    <i class="fa fa-check"></i> Submit</a>
+                                                <a href="javascript:;" class="btn btn-outline grey-salsa">Cancel</a>
                                             </div>
                                         </div>
                                     </div>
@@ -206,36 +292,139 @@
                                     <a href="" class="collapse"> </a>
                                 </div>
                             </div>
-
-                            <div class="portlet-body form">
-                                <form action="#" class="dropzone dropzone-file-area" id="my-dropzone" style="width: 800px; margin-top: 50px;">
-                                    <!--<h3 class="sbold">Drop files here or click to upload</h3>-->
-                                    <!--<p> Include all the pdf documents and respective mrf files that you want to send to the Relying Party. </p>-->
-                                    <div class="row">
-                                        <input class="form-control" id="relyingPartyName" type="text" name="relyingPartyUrl" placeholder="Relying Party URL"/>
+                            <form class="form-horizontal form-bordered" id="evaluate-form"
+                                  enctype="multipart/form-data" role="form">
+                                <div class="form-body">
+                                    <div id="evaluate-form-body">
+                                        <div id="evaluate-pdf-template">
+                                            <div class="form-group">
+                                                <label class="control-label col-md-3">Select Pdf File</label>
+                                                <div class="col-md-3">
+                                                    <div class="fileinput fileinput-new" data-provides="fileinput">
+                                                        <div class="input-group input-large">
+                                                            <div class="form-control uneditable-input input-fixed input-medium"
+                                                                 data-trigger="fileinput">
+                                                                <i class="fa fa-file fileinput-exists"></i>&nbsp;
+                                                                <span class="fileinput-filename"> </span>
+                                                            </div>
+                                                            <span class="input-group-addon btn default btn-file">
+                                                                <span class="fileinput-new"> Select file </span>
+                                                                <span class="fileinput-exists"> Change </span>
+                                                                <input type="file" id="evalFileInput" name="1"
+                                                                       class="eval-input"> </span>
+                                                            <a href="javascript:;"
+                                                               class="input-group-addon btn red fileinput-exists"
+                                                               data-dismiss="fileinput"> Remove </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label col-md-3">Document Type</label>
+                                                <div class="col-md-3">
+                                                    <select class="form-control eval-doc-type" name="doc_type_1">
+                                                        <option value="passport">Passport</option>
+                                                        <option value="university_id">University ID</option>
+                                                        <option value="transcript">University Transcript</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                </form>
-                                <br>
-                                <div class="row">
-                                    <div class="col-md-offset-2 col-md-10">
-                                        <button type="button" id="submitRP" class="btn blue" style="text-align: center" >Submit All files!</button>
+
+                                    <div class="form-group">
+                                        <div class="col-md-offset-3 col-md-9">
+                                            <button class="btn btn-xs" type="button" id="add-eval-pdf-grps">
+                                                <i class="fa fa-plus"></i> Add PDFs
+                                            </button>
+
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3">Select JSON File</label>
+                                        <div class="col-md-3">
+                                            <div class="fileinput fileinput-new" data-provides="fileinput">
+                                                <div class="input-group input-large">
+                                                    <div class="form-control uneditable-input input-fixed input-medium"
+                                                         data-trigger="fileinput">
+                                                        <i class="fa fa-file fileinput-exists"></i>&nbsp;
+                                                        <span class="fileinput-filename"> </span>
+                                                    </div>
+                                                    <span class="input-group-addon btn default btn-file">
+                                                                <span class="fileinput-new"> Select file </span>
+                                                                <span class="fileinput-exists"> Change </span>
+                                                                <input type="file" id="evalJSONInput" name="json"
+                                                                       class="eval-input"> </span>
+                                                    <a href="javascript:;"
+                                                       class="input-group-addon btn red fileinput-exists"
+                                                       data-dismiss="fileinput"> Remove </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3">Your Email</label>
+                                        <div class="col-md-6">
+                                            <input class="form-control" type="email" id="my_email2" name="email"
+                                                   placeholder="e.g: myname@gmail.com">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3">Evaluator URL</label>
+                                        <div class="col-md-6">
+                                            <input class="form-control" type="text" id="eval_url" name="url"
+                                                   placeholder="e.g: http://extractor.com">
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <p id="myparagraph">I am Chandu Bandara Herath form University of Moratuwa</p>
+                                <div class="form-actions">
+                                    <div class="row">
+                                        <div class="col-md-offset-3 col-md-9">
+                                            <button class="btn green" type="submit">
+                                                <i class="fa fa-check"></i> Submit
+                                            </button>
+                                            <button class="btn btn-outline grey-salsa" type="button">Cancel</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+
+                            <!--<div class="portlet-body form">-->
+                                <!--<form class="dropzone dropzone-file-area" id="my-dropzone"-->
+                                      <!--style="width: 800px; margin-top: 50px;">-->
+                                    <!--&lt;!&ndash;<h3 class="sbold">Drop files here or click to upload</h3>&ndash;&gt;-->
+                                    <!--&lt;!&ndash;<p> Include all the pdf documents and respective mrf files that you want to send to the Relying Party. </p>&ndash;&gt;-->
+                                    <!--<div class="row">-->
+                                        <!--<input class="form-control" id="relyingPartyName" type="text"-->
+                                               <!--name="relyingPartyUrl" placeholder="Relying Party URL"/>-->
+                                    <!--</div>-->
+
+                                    <!--<br>-->
+                                    <!--<div class="row">-->
+                                        <!--<div class="col-md-offset-2 col-md-10">-->
+                                            <!--<button type="button" id="submitRP" class="btn blue"-->
+                                                    <!--style="text-align: center">-->
+                                                <!--Submit All files!-->
+                                            <!--</button>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+
+                                <!--</form>-->
+                            <!--</div>-->
+                            <!--<p id="myparagraph">I am Chandu Bandara Herath form University of Moratuwa</p>-->
                         </div>
                     </div>
                 </div>
 
                 <!-- The blueimp Gallery widget -->
                 <div id="blueimp-gallery" class="blueimp-gallery blueimp-gallery-controls" data-filter=":even">
-                    <div class="slides"> </div>
+                    <div class="slides"></div>
                     <h3 class="title"></h3>
                     <a class="prev"> ‹ </a>
                     <a class="next"> › </a>
                     <a class="close white"> </a>
                     <a class="play-pause"> </a>
-                    <ol class="indicator"> </ol>
+                    <ol class="indicator"></ol>
                 </div>
                 <!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
                 <script id="template-upload" type="text/x-tmpl"> {% for (var i=0, file; file=o.files[i]; i++) {
@@ -263,7 +452,38 @@
                                     <i class="fa fa-ban"></i>
                                     <span>Cancel</span>
                                 </button> {% } %} </td>
-                        </tr> {% } %} </script>
+                        </tr> {% } %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                </script>
                 <!-- The template to display files available for download -->
                 <script id="template-download" type="text/x-tmpl">
                 {% for (var i=0, file; file=o.files[i]; i++) { %}
@@ -301,7 +521,38 @@
                                     <span>Cancel</span>
                                 </button> {% } %} </td>
                         </tr> {% } %}
-</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                </script>
                 <!-- END PAGE BASE CONTENT FOR SEND TO EXTRACTOR-->
 
                 <!-- END PAGE BASE CONTENT -->
@@ -316,16 +567,25 @@
 
 <script>
 
-    $(document).ready(function(){
-        $("#btnsubmit_val").click(function(){
+    $(document).ready(function () {
+        $("#btnsubmit_val").click(function () {
             var pdffile = $("#val_pdf").prop("files");
             var mrffile = $("#val_mrf").prop("files");
             var val_url = $("#val_url").val();
-            alert(pdffile);
-            alert(mrffile);
-            alert(val_url);
+//            alert(pdffile);
+//            alert(mrffile);
+//            alert(val_url);
             //implement the api request for validator
         });
+
+
+    });
+    var varProperties;
+    $(function () { 
+        $.getJSON("properties.json", function (json) {
+            varProperties = json;
+        });
+
 
     });
 
@@ -339,7 +599,7 @@
         alert(myfiles);
         var ext_url = $('#ext_url').val();
         alert("array length : " + myfiles.length);
-        if( document.getElementById("extFileInput").files.length == 0 ){
+        if (document.getElementById("extFileInput").files.length == 0) {
             console.log("JS says no files selected");
         }
         if ($('#extFileInput').get(0).files.length === 0) {
@@ -350,29 +610,116 @@
         //implement the api request for extractor
     }
 
-    function showPdfFilename()
-    {
+    function callExtractorApi() {
+        alert("call extractor api");
+        var file = document.getElementById('extFileInput');
+        var url = document.getElementById('ext_url').value;
+        alert(file);
+        alert(url);
+    }
+
+    function showPdfFilename() {
         var thefile = document.getElementById('val_pdf');
         document.getElementById('val_pdfname').value = thefile.files[0].name;
     }
 
-    function showMrfFilename()
-    {
+    function showMrfFilename() {
         var thefile = document.getElementById('val_mrf');
         document.getElementById('val_mrfname').value = thefile.files[0].name;
     }
 
-    function getFIle()
-    {
+    function getFIle() {
         var thefile = document.getElementById('extFileInput');
 //        document.getElementById('val_mrfname').value = thefile.files[0].name;
         alert(thefile.files[0]);
     }
 
+    //Call APIs to upload files
+
+    $("form#extract-form").submit(function () {
+        var formData = new FormData($("#extract-form")[0]);
+        $.ajax({
+            url: formData.get("url") + "/api-extractor/" + varProperties.extractor.apiVersion + "/extract",
+            data: formData,
+            headers: {
+                authorization: "Basic YWRtaW46MTIz"
+            },
+            async: true,
+            crossDomain: true,
+            type: 'POST',
+            contentType: false, // NEEDED, DON'T OMIT THIS (requires jQuery 1.6+)
+            processData: false, // NEEDED, DON'T OMIT THIS
+            success: function (data, status) {
+                console.log(data);
+            },
+            complete: function () {
+                console.log("completed");
+            }
+        });
+
+        return false;
+    });
+    $("form#validate-form").submit(function () {
+        var formData = new FormData($("#validate-form")[0]);
+        $.ajax({
+            url: formData.get("url") + "/api-extractor/" + varProperties.extractor.apiVersion + "/sign",
+            data: formData,
+            headers: {
+                authorization: "Basic YWRtaW46MTIz"
+            },
+            async: true,
+            crossDomain: true,
+            type: 'POST',
+            contentType: false, // NEEDED, DON'T OMIT THIS (requires jQuery 1.6+)
+            processData: false, // NEEDED, DON'T OMIT THIS
+            success: function (data, status) {
+                console.log(data);
+            },
+            complete: function () {
+                console.log("completed");
+            }
+        });
+
+        return false;
+    });
+    var pdfCount = 1;
+    $("#add-eval-pdf-grps").click(function () {
+        pdfCount++;
+        var newGroup = $("#evaluate-pdf-template").clone().attr("id", "");
+        newGroup.find("input.eval-input").attr("name", pdfCount);
+        newGroup.find("select.eval-doc-type").attr("name", "doc_type_" + pdfCount);
+        $("#evaluate-form-body").append(newGroup);
+    });
+    $("form#evaluate-form").submit(function () {
+        var formData = new FormData($("#evaluate-form")[0]);
+        $.ajax({
+            url: formData.get("url") + "/api-relyingparty/" + varProperties.extractor.apiVersion + "/evaluate",
+            data: formData,
+            headers: {
+                authorization: "Basic YWRtaW46MTIz"
+            },
+            async: true,
+            crossDomain: true,
+            type: 'POST',
+            contentType: false, // NEEDED, DON'T OMIT THIS (requires jQuery 1.6+)
+            processData: false, // NEEDED, DON'T OMIT THIS
+            success: function (data, status) {
+                console.log(data);
+            },
+            complete: function () {
+                console.log("completed");
+            }
+        });
+
+        return false;
+    });
 </script>
 <!-- END CONTAINER -->
 <!-- Start wrapper for jquery script imports  -->
-<script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+<script>if (typeof module === 'object') {
+    window.module = module;
+    module = undefined;
+}</script>
 
 <script type="text/javascript" src="assets/global/plugins/jquery.min.js"></script>
 
@@ -380,7 +727,7 @@
 <script>if (window.module) module = window.module;</script>
 
 <script>
-    $(function(){
+    $(function () {
         $("#header").load("layout/header.html");
         $("#sidebar").load("layout/sidebar.html");
     });
@@ -402,15 +749,10 @@
 <script src="assets/global/plugins/jquery-file-upload/js/vendor/tmpl.min.js" type="text/javascript"></script>
 <script src="assets/global/plugins/jquery-file-upload/js/vendor/load-image.min.js" type="text/javascript"></script>
 <script src="assets/global/plugins/jquery-file-upload/js/vendor/canvas-to-blob.min.js" type="text/javascript"></script>
-<script src="assets/global/plugins/jquery-file-upload/blueimp-gallery/jquery.blueimp-gallery.min.js" type="text/javascript"></script>
+<script src="assets/global/plugins/jquery-file-upload/blueimp-gallery/jquery.blueimp-gallery.min.js"
+        type="text/javascript"></script>
 <script src="assets/global/plugins/jquery-file-upload/js/jquery.iframe-transport.js" type="text/javascript"></script>
-<script src="assets/global/plugins/jquery-file-upload/js/jquery.fileupload.js" type="text/javascript"></script>
-<script src="assets/global/plugins/jquery-file-upload/js/jquery.fileupload-process.js" type="text/javascript"></script>
-<script src="assets/global/plugins/jquery-file-upload/js/jquery.fileupload-image.js" type="text/javascript"></script>
-<script src="assets/global/plugins/jquery-file-upload/js/jquery.fileupload-audio.js" type="text/javascript"></script>
-<script src="assets/global/plugins/jquery-file-upload/js/jquery.fileupload-video.js" type="text/javascript"></script>
-<script src="assets/global/plugins/jquery-file-upload/js/jquery.fileupload-validate.js" type="text/javascript"></script>
-<script src="assets/global/plugins/jquery-file-upload/js/jquery.fileupload-ui.js" type="text/javascript"></script>
+<script src="assets/global/plugins/bootstrap-toastr/toastr.min.js" type="text/javascript"></script>
 
 <script src="assets/global/plugins/dropzone/dropzone.min.js" type="text/javascript"></script>
 <!-- END PAGE LEVEL PLUGINS -->
@@ -418,7 +760,8 @@
 <script src="assets/global/scripts/app.min.js" type="text/javascript"></script>
 <!-- END THEME GLOBAL SCRIPTS -->
 <!-- BEGIN PAGE LEVEL SCRIPTS -->
-<script src="assets/custom/scripts/fileuploader.js" type="text/javascript"></script>
+<script src="assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.js" type="text/javascript"></script>
+<!--<script src="assets/custom/scripts/fileuploader.js" type="text/javascript"></script>-->
 <!--import customized js file for fropzone-->
 <script src="assets/custom/scripts/form-dropzone.js" type="text/javascript"></script>
 <!--<script src="assets/pages/scripts/form-dropzone.js" type="text/javascript"></script>-->

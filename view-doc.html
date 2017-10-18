@@ -373,7 +373,7 @@
                 console.log(response);
                 clone.find("#confidence-score").prepend(response.score);
             }).fail(function () {
-                clone.find("#confidence-score").prepend(response.score);
+                toastr.warning("Can't access confidence api");
             });
         }
 
@@ -400,6 +400,8 @@
                 console.log(response);
                 $("#correlation_table_template").tmpl(response).appendTo("#correlation_table");
                 $("#correlation_portlet").removeAttr('style');
+            }).fail(function () {
+                toastr.warning("Can't access correlation api");
             });
         }
 
@@ -428,6 +430,8 @@
                 console.log(docCount);
                 docListResponse=response;
                 loadView();
+            }).fail(function () {
+                toastr.warning("Can't access document store api");
             });
         }
 
@@ -456,6 +460,8 @@
                 loadSignatureView(clone,response);
                 getConfidenceByUrl(url,clone);
                 $('#document_array').append(clone);
+            }).fail(function () {
+                toastr.warning("Can't access Machine readable document api");
             });
         }
 

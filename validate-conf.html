@@ -397,6 +397,8 @@
     
     function saveBlackWhiteList() {
         setWhiteList();
+        setBlackList();
+
     }
 
 
@@ -417,6 +419,8 @@
             $('#email').val(response.email);
             $('#web').val(response.web);
 
+        }).fail(function () {
+            toastr.warning("Can't access basic details saving api");
         });
     }
 
@@ -441,6 +445,9 @@
 
         $.ajax(settings).done(function (response) {
             console.log(response);
+            toastr.info("Basic details added successfully!");
+        }).fail(function () {
+            toastr.warning("Can't access get basic details api");
         });
     }
 
@@ -458,6 +465,8 @@
             console.log(response);
 
             $("#access_template").tmpl(response.document).appendTo("#access_list");
+        }).fail(function () {
+            toastr.warning("Can't access get document api");
         });
     }
 
@@ -502,6 +511,9 @@
 
         $.ajax(settings).done(function (response) {
             console.log(response);
+            toastr.warning("Document configuration details added successfully!");
+        }).fail(function () {
+            toastr.warning("Can't access document configuration api");
         });
     }
 
@@ -524,8 +536,8 @@
                 whiteListUl.append("<li class='ms-elem-selectable'><span>"+item+"</span></li>");
                 console.log(item);
             });
-
-
+        }).fail(function () {
+            toastr.warning("Can't access get whitelist api");
         });
     }
 
@@ -551,6 +563,8 @@
             });
 
 
+        }).fail(function () {
+            toastr.warning("Can't access get blacklist api");
         });
     }
 
@@ -572,8 +586,35 @@
         }
 
         $.ajax(settings).done(function (response) {
-            console.log(whiteList);
             console.log(response);
+            toastr.info("Whitelist saved successfully!");
+        }).fail(function () {
+            toastr.warning("Can't access whitelist saving api");
+        });
+    }
+
+    function setBlackList() {
+        var settings = {
+            "async": true,
+            "crossDomain": true,
+            "url": "http://"+varProperties.validator.host+"/api-validator/"+varProperties.validator.apiVersion+"/"+varProperties.validator.apiKey+"/saveconfig/blacklist/",
+            "method": "POST",
+            "headers": {
+                "content-type": "application/json",
+                "Authorization": "Basic " + btoa(varProperties.validator.userName + ":" + varProperties.validator.password)
+            },
+            "processData": false,
+            "data": JSON.stringify({
+                        "black_list" : blackList
+                    }
+            )
+        }
+
+        $.ajax(settings).done(function (response) {
+            console.log(response);
+            toastr.info("Blacklist saved successfully!");
+        }).fail(function () {
+            toastr.warning("Can't access Blacklist saving api");
         });
     }
 
@@ -600,6 +641,9 @@
             },
             complete: function () {
                 console.log("completed")
+            },
+            error:function () {
+                toastr.warning("Can't access save public certificate api");
             }
         });
 
@@ -623,6 +667,9 @@
             },
             complete: function () {
                 console.log("completed")
+            },
+            error:function () {
+                toastr.warning("Can't access save private certificate api");
             }
         });
 
@@ -653,6 +700,7 @@
 <script src="assets/global/plugins/select2/js/select2.full.min.js" type="text/javascript"></script>
 <script src="assets/global/plugins/jquery-tmpl/jquery.tmpl.min.js" type="text/javascript"></script>
 <script src="assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
+<script src="assets/global/plugins/bootstrap-toastr/toastr.min.js" type="text/javascript"></script>
 
 <!-- END PAGE LEVEL PLUGINS -->
 <!-- BEGIN THEME GLOBAL SCRIPTS -->
