@@ -530,9 +530,9 @@
         $.ajax(settings).done(function (response) {
             console.log(response);
 
-            whiteList.concat(response.white_list);
             console.log(whiteList);
             response.white_list.forEach(function(item){
+                whiteList.push(item);
                 whiteListUl.append("<li class='ms-elem-selectable'><span>"+item+"</span></li>");
                 console.log(item);
             });
@@ -556,7 +556,7 @@
 
             blackList.concat(response.black_list);
             response.black_list.forEach(function(item){
-
+                blackList.push(item);
                 blackListUl.append("<li selected class='ms-elem-selection ms-selected'><span>"+item+"</span></li>");
 
                 console.log(item);
@@ -622,7 +622,6 @@
 
         var formData = new FormData($("#sign-certs-form")[0]);
         formData.set("cert",formData.get("pubCert"));
-        alert(formData);
         $.ajax({
             url: "http://" + varProperties.validator.host + "/api-validator/" + varProperties.validator.apiVersion + "/" + varProperties.validator.apiKey + "/savepubcert",
             data: formData,
