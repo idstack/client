@@ -265,9 +265,9 @@
                                     <div class="form-actions">
                                         <div class="row">
                                             <div class="col-md-offset-3 col-md-9">
-                                                <a href="javascript:;" class="btn green">
-                                                    <i class="fa fa-check"></i> Submit</a>
-                                                <a href="javascript:;" class="btn btn-outline grey-salsa">Cancel</a>
+                                                <button class="btn green" type="submit">
+                                                    <i class="fa fa-check"></i> Submit</button>
+                                                <button type="reset" class="btn btn-outline grey-salsa">Cancel</button>
                                             </div>
                                         </div>
                                     </div>
@@ -662,7 +662,7 @@
     $("form#validate-form").submit(function () {
         var formData = new FormData($("#validate-form")[0]);
         $.ajax({
-            url: formData.get("url") + "/api-extractor/" + varProperties.extractor.apiVersion + "/sign",
+            url: formData.get("url") + "/api-validator/" + varProperties.validator.apiVersion + "/sign",
             data: formData,
             headers: {
                 authorization: "Basic YWRtaW46MTIz"
@@ -693,7 +693,7 @@
     $("form#evaluate-form").submit(function () {
         var formData = new FormData($("#evaluate-form")[0]);
         $.ajax({
-            url: formData.get("url") + "/api-relyingparty/" + varProperties.extractor.apiVersion + "/evaluate",
+            url: formData.get("url") + "/api-relyingparty/" + varProperties.relyingparty.apiVersion + "/evaluate",
             data: formData,
             headers: {
                 authorization: "Basic YWRtaW46MTIz"
