@@ -266,7 +266,8 @@
                                         <div class="row">
                                             <div class="col-md-offset-3 col-md-9">
                                                 <button class="btn green" type="submit">
-                                                    <i class="fa fa-check"></i> Submit</button>
+                                                    <i class="fa fa-check"></i> Submit
+                                                </button>
                                                 <button type="reset" class="btn btn-outline grey-salsa">Cancel</button>
                                             </div>
                                         </div>
@@ -329,6 +330,27 @@
                                                     </select>
                                                 </div>
                                             </div>
+                                            <div class="form-group">
+                                                <label class="control-label col-md-3">Select JSON File</label>
+                                                <div class="col-md-3">
+                                                    <div class="fileinput fileinput-new" data-provides="fileinput">
+                                                        <div class="input-group input-large">
+                                                            <div class="form-control uneditable-input input-fixed input-medium"
+                                                                 data-trigger="fileinput">
+                                                                <i class="fa fa-file fileinput-exists"></i>&nbsp;
+                                                                <span class="fileinput-filename"> </span>
+                                                            </div>
+                                                            <span class="input-group-addon btn default btn-file">
+                                                                <span class="fileinput-new"> Select file </span>
+                                                                <span class="fileinput-exists"> Change </span>
+                                                                <input type="file" id="evalJSONInput1"> </span>
+                                                            <a href="javascript:;"
+                                                               class="input-group-addon btn red fileinput-exists"
+                                                               data-dismiss="fileinput"> Remove </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
 
@@ -340,28 +362,7 @@
 
                                         </div>
                                     </div>
-                                    <div class="form-group">
-                                        <label class="control-label col-md-3">Select JSON File</label>
-                                        <div class="col-md-3">
-                                            <div class="fileinput fileinput-new" data-provides="fileinput">
-                                                <div class="input-group input-large">
-                                                    <div class="form-control uneditable-input input-fixed input-medium"
-                                                         data-trigger="fileinput">
-                                                        <i class="fa fa-file fileinput-exists"></i>&nbsp;
-                                                        <span class="fileinput-filename"> </span>
-                                                    </div>
-                                                    <span class="input-group-addon btn default btn-file">
-                                                                <span class="fileinput-new"> Select file </span>
-                                                                <span class="fileinput-exists"> Change </span>
-                                                                <input type="file" id="evalJSONInput" name="json"
-                                                                       class="eval-input"> </span>
-                                                    <a href="javascript:;"
-                                                       class="input-group-addon btn red fileinput-exists"
-                                                       data-dismiss="fileinput"> Remove </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+
                                     <div class="form-group">
                                         <label class="control-label col-md-3">Your Email</label>
                                         <div class="col-md-6">
@@ -390,26 +391,26 @@
                             </form>
 
                             <!--<div class="portlet-body form">-->
-                                <!--<form class="dropzone dropzone-file-area" id="my-dropzone"-->
-                                      <!--style="width: 800px; margin-top: 50px;">-->
-                                    <!--&lt;!&ndash;<h3 class="sbold">Drop files here or click to upload</h3>&ndash;&gt;-->
-                                    <!--&lt;!&ndash;<p> Include all the pdf documents and respective mrf files that you want to send to the Relying Party. </p>&ndash;&gt;-->
-                                    <!--<div class="row">-->
-                                        <!--<input class="form-control" id="relyingPartyName" type="text"-->
-                                               <!--name="relyingPartyUrl" placeholder="Relying Party URL"/>-->
-                                    <!--</div>-->
+                            <!--<form class="dropzone dropzone-file-area" id="my-dropzone"-->
+                            <!--style="width: 800px; margin-top: 50px;">-->
+                            <!--&lt;!&ndash;<h3 class="sbold">Drop files here or click to upload</h3>&ndash;&gt;-->
+                            <!--&lt;!&ndash;<p> Include all the pdf documents and respective mrf files that you want to send to the Relying Party. </p>&ndash;&gt;-->
+                            <!--<div class="row">-->
+                            <!--<input class="form-control" id="relyingPartyName" type="text"-->
+                            <!--name="relyingPartyUrl" placeholder="Relying Party URL"/>-->
+                            <!--</div>-->
 
-                                    <!--<br>-->
-                                    <!--<div class="row">-->
-                                        <!--<div class="col-md-offset-2 col-md-10">-->
-                                            <!--<button type="button" id="submitRP" class="btn blue"-->
-                                                    <!--style="text-align: center">-->
-                                                <!--Submit All files!-->
-                                            <!--</button>-->
-                                        <!--</div>-->
-                                    <!--</div>-->
+                            <!--<br>-->
+                            <!--<div class="row">-->
+                            <!--<div class="col-md-offset-2 col-md-10">-->
+                            <!--<button type="button" id="submitRP" class="btn blue"-->
+                            <!--style="text-align: center">-->
+                            <!--Submit All files!-->
+                            <!--</button>-->
+                            <!--</div>-->
+                            <!--</div>-->
 
-                                <!--</form>-->
+                            <!--</form>-->
                             <!--</div>-->
                             <!--<p id="myparagraph">I am Chandu Bandara Herath form University of Moratuwa</p>-->
                         </div>
@@ -453,6 +454,11 @@
                                     <span>Cancel</span>
                                 </button> {% } %} </td>
                         </tr> {% } %}
+
+
+
+
+
 
 
 
@@ -548,6 +554,11 @@
 
 
 
+
+
+
+
+
                 </script>
                 <!-- END PAGE BASE CONTENT FOR SEND TO EXTRACTOR-->
 
@@ -577,7 +588,7 @@
 
     });
     var varProperties;
-    $(function () { 
+    $(function () {
         $.getJSON("properties.json", function (json) {
             varProperties = json;
         });
@@ -679,15 +690,40 @@
         return false;
     });
     var pdfCount = 1;
+    var evalJSONText = {json_list: []};
+    $('#evalJSONInput1').change(function () {
+        var file = $(this)[0].files[0];
+        var fr = new FileReader(); // FileReader instance
+        fr.onload = function () {
+            // Do stuff on onload, use fr.result for contents of file
+            evalJSONText.json_list.push(JSON.parse(fr.result));
+            return;
+        };
+        //fr.readAsText( file );
+        fr.readAsText(file);
+    });
     $("#add-eval-pdf-grps").click(function () {
         pdfCount++;
         var newGroup = $("#evaluate-pdf-template").clone().attr("id", "");
         newGroup.find("input.eval-input").attr("name", pdfCount);
         newGroup.find("select.eval-doc-type").attr("name", "doc_type_" + pdfCount);
+        var me = newGroup.find("input.eval-input-json").attr("id", "evalJSONInput" + pdfCount);
+        me.change(function () {
+            var file = $(this)[0].files[0];
+            var fr = new FileReader(); // FileReader instance
+            fr.onload = function () {
+                // Do stuff on onload, use fr.result for contents of file
+                evalJSONText.json_list.push(JSON.parse(fr.result));
+                return;
+            };
+            //fr.readAsText( file );
+            fr.readAsText(file);
+        });
         $("#evaluate-form-body").append(newGroup);
     });
     $("form#evaluate-form").submit(function () {
         var formData = new FormData($("#evaluate-form")[0]);
+        formData.set("json", JSON.stringify(evalJSONText)); 
         $.ajax({
             url: formData.get("url") + "/api-relyingparty/" + varProperties.relyingparty.apiVersion + "/evaluate",
             data: formData,
