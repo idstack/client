@@ -21,10 +21,10 @@
     <!-- BEGIN PAGE LEVEL PLUGINS -->
     <link href="assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.css" rel="stylesheet" type="text/css"/>
     <link href="assets/global/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet" type="text/css"/>
-    <link href="assets/global/plugins/bootstrap-select/css/bootstrap-select.min.css" rel="stylesheet" type="text/css" />
-    <link href="assets/global/plugins/jquery-multi-select/css/multi-select.css" rel="stylesheet" type="text/css" />
-    <link href="assets/global/plugins/select2/css/select2.min.css" rel="stylesheet" type="text/css" />
-    <link href="assets/global/plugins/select2/css/select2-bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/global/plugins/bootstrap-select/css/bootstrap-select.min.css" rel="stylesheet" type="text/css"/>
+    <link href="assets/global/plugins/jquery-multi-select/css/multi-select.css" rel="stylesheet" type="text/css"/>
+    <link href="assets/global/plugins/select2/css/select2.min.css" rel="stylesheet" type="text/css"/>
+    <link href="assets/global/plugins/select2/css/select2-bootstrap.min.css" rel="stylesheet" type="text/css"/>
 
     <!-- END PAGE LEVEL PLUGINS -->
     <!-- BEGIN THEME GLOBAL STYLES -->
@@ -71,141 +71,12 @@
                 <!-- BEGIN PAGE BASE CONTENT -->
                 <div class="row">
                     <div class="col-md-12">
-                        <!-- BEGIN SAMPLE FORM PORTLET-->
-                        <div class="portlet light ">
-                            <div class="portlet-title">
-                                <div class="caption font-green-haze">
-                                    <i class="icon-settings font-green-haze"></i>
-                                    <span class="caption-subject bold uppercase"> Document type Configuration</span>
-                                </div>
-                            </div>
-                            <div class="portlet-body form">
-                                <form role="form" class="form-horizontal">
-                                    <div class="form-body">
-
-                                        <div class="table-scrollable table-scrollable-borderless">
-                                            <table class="table table-hover table-light" id="access_list">
-                                                <thead>
-                                                <tr class="uppercase">
-                                                    <th> Document type </th>
-                                                    <th> Manual/Automatic </th>
-                                                    <th> Issuer is equal to Extractor </th>
-                                                    <th> Sign Content </th>
-                                                </tr>
-                                                </thead>
-                                                <script id="access_template" type="text/html">
-                                                <tr>
-                                                    <td> ${stringBeautify(doc_type)}</td>
-                                                    <td>
-                                                        <div class="md-checkbox">
-                                                            <input type="checkbox" id=${doc_type+"-automatic_processable"} class="md-check" {{if automatic_processable}} checked {{/if}} >
-                                                            <label for=${doc_type+"-automatic_processable"}>
-                                                                <span></span>
-                                                                <span class="check"></span>
-                                                                <span class="box"></span></label>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="md-checkbox has-error">
-                                                            <input type="checkbox" id=${doc_type+"-issuer_equal_extractor"} class="md-check" {{if issuer_equal_extractor}} checked {{/if}}>
-                                                            <label for=${doc_type+"-issuer_equal_extractor"}>
-                                                                <span></span>
-                                                                <span class="check"></span>
-                                                                <span class="box"></span></label>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="md-checkbox has-info">
-                                                            <input type="checkbox" id=${doc_type+"-content_signable"} class="md-check"  {{if content_signable}} checked {{/if}}>
-                                                            <label for=${doc_type+"-content_signable"}>
-                                                                <span></span>
-                                                                <span class="check"></span>
-                                                                <span class="box"></span></label>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                </script>
-                                            </table>
-                                        </div>
-                                    </div>
-                                    <div class="form-actions right">
-                                        <button type="reset" class="btn default">Reset</button>
-                                        <button type="button" class="btn green" onclick="setDocumentConfig()">Save
-                                        </button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                        <!-- END SAMPLE FORM PORTLET-->
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="portlet light ">
-                            <div class="portlet-title">
-                                <div class="caption">
-                                    <i class="icon-compass font-green"></i>
-                                    <span class="caption-subject font-green bold uppercase">BLACKLIST/ WHITELIST CONFIGURATION</span>
-                                </div>
-                            </div>
-                            <div class="portlet-body form">
-                                <!-- BEGIN FORM-->
-                                <form action="index.html" class="form-horizontal form-row-seperated">
-                                    <div class="form-body">
-                                        <div class="form-group">
-                                            <div class="col-md-3">
-
-                                                <div class="form-group form-md-line-input">
-                                                    <div class="input-group">
-                                                        <div class="input-group-control">
-                                                            <input type="text" class="form-control edited" id="new-whitelist-item" placeholder="White Member">
-                                                        </div>
-                                                        <span class="input-group-btn btn-left">
-                                                        <button class="btn blue-madison" type="button" id="add-whitelist-item">Add <i class="icon-arrow-right"></i></button>
-                                                    </span>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                            <div class="col-md-4">
-                                                <select multiple="multiple" class="multi-select" id="my_multi_select1" name="my_multi_select1[]">
-                                                    </select>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <div class="form-group form-md-line-input">
-                                                    <div class="input-group">
-                                                        <span class="input-group-btn btn-left">
-                                                            <button class="btn blue-madison" type="button" id="add-blacklist-item"> <i class="icon-arrow-left"></i>  Add</button>
-                                                        </span>
-                                                        <div class="input-group-control">
-                                                            <input type="text" class="form-control edited" id="new-blacklist-item" placeholder="Black Member">
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-actions right">
-                                        <button type="reset" class="btn default">Reset</button>
-                                        <button type="button" class="btn green" onclick="saveBlackWhiteList()">Save
-                                        </button>
-                                    </div>
-                                </form>
-                                <!-- END FORM-->
-                            </div>
-                        </div>
-                        <!-- END PORTLET-->
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-12">
                         <div class="portlet light  portlet-form">
                             <div class="portlet-title">
-                                <div class="caption">
-                                    <i class="fa fa-folder"></i>Basic Details
+                                <div class="caption font-green-haze">
+                                    <i class="icon-user font-green-haze"></i>
+                                    <span class="caption-subject font-green bold uppercase"> Basic Details
+                                                                       </span>
                                 </div>
                             </div>
                             <div class="portlet-body form">
@@ -213,7 +84,7 @@
                                     <div class="form-body">
                                         <div class="form-group form-md-line-input">
                                             <label for="basic_details"
-                                                   class="col-md-2 control-label">Organization</label>
+                                                   class="col-md-2 control-label">Organization </label>
                                             <div class="col-md-4">
                                                 <input type="text" class="form-control" id="organization"
                                                        placeholder="Organization">
@@ -233,7 +104,9 @@
 
                                         <div class="form-group form-md-line-input">
                                             <label for="basic_details"
-                                                   class="col-md-2 control-label">Web URL</label>
+                                                   class="col-md-2 control-label">Web URL <span data-toggle="tooltip"
+                                                                                                title="Define the URL of your web service">
+                                                        <i class="icon-question"></i> </span></label>
                                             <div class="col-md-4">
                                                 <input type="text" class="form-control" id="web"
                                                        placeholder="Url">
@@ -257,24 +130,33 @@
                         <!-- BEGIN SIGN FORM PORTLET-->
                         <div class="portlet light  portlet-form">
                             <div class="portlet-title">
-                                <div class="caption">
-                                    <i class="icon-settings"></i>
-                                    <span class="caption-subject bold uppercase"> Digital Signature Certificates</span>
+                                <div class="caption font-green-haze">
+                                    <i class="icon-badge font-green-haze"></i>
+                                    <span class="caption-subject font-green bold uppercase"> Digital Signature Certificates </span>
                                 </div>
                             </div>
+                            <!--<div class="portlet-title">-->
+                            <!--<div class="caption">-->
+                            <!--<i class="icon-settings"></i>-->
+                            <!--<span class="caption-subject bold uppercase"> Digital Signature Certificates</span>-->
+                            <!--</div>-->
+                            <!--</div>-->
                             <div class="portlet-body form">
                                 <form role="form" id="sign-certs-form" enctype="multipart/form-data">
                                     <div class="form-body">
 
                                         <div class="form-group">
-                                            <label class="control-label col-md-2">Public Certificate File</label>
+                                            <label class="control-label col-md-2">Public Certificate File <span
+                                                    data-toggle="tooltip"
+                                                    title="Upload your public certificate to the server">
+                                                        <i class="icon-question"></i> </span></label>
                                             <div class="col-md-4">
                                                 <div class="fileinput fileinput-new" data-provides="fileinput">
                                                         <span class="btn green btn-file">
                                                             <span class="fileinput-new"> File </span>
                                                             <span class="fileinput-exists"> Change </span>
                                                             <input type="file" name="pubCert" id="CertFileInput"
-                                                                   >
+                                                            >
                                                         </span>
                                                     <span class="fileinput-filename"> </span> &nbsp;
                                                     <a href="javascript:;" class="close fileinput-exists"
@@ -292,14 +174,17 @@
                                         </div>
 
                                         <div class="form-group">
-                                            <label class="control-label col-md-2">Private Key File</label>
+                                            <label class="control-label col-md-2">Private Key File <span
+                                                    data-toggle="tooltip"
+                                                    title="Upload your private certificate to the server">
+                                                        <i class="icon-question"></i> </span></label>
                                             <div class="col-md-4">
                                                 <div class="fileinput fileinput-new" data-provides="fileinput">
                                                         <span class="btn green btn-file">
                                                             <span class="fileinput-new"> File </span>
                                                             <span class="fileinput-exists"> Change </span>
                                                             <input type="file" name="pvtCert" id="PvtFileInput"
-                                                                   >
+                                                            >
                                                         </span>
                                                     <span class="fileinput-filename"> </span> &nbsp;
                                                     <a href="javascript:;" class="close fileinput-exists"
@@ -310,7 +195,9 @@
                                         </div>
                                         <div class="form-group form-md-line-input">
                                             <label for="certificate_pass"
-                                                   class="col-md-2 control-label">Password</label>
+                                                   class="col-md-2 control-label">Password <span data-toggle="tooltip"
+                                                                                                 title="Password-protect your private certificate">
+                                                        <i class="icon-question"></i> </span></label>
                                             <div class="col-md-4">
                                                 <input type="password" class="form-control" id="certificate_pass"
                                                        placeholder="Password">
@@ -320,7 +207,7 @@
                                     </div>
                                     <div class="form-actions right">
                                         <button type="reset" class="btn default">Reset</button>
-                                        <button type="submit" class="btn green" >Save
+                                        <button type="submit" class="btn green">Save
                                         </button>
                                     </div>
                                 </form>
@@ -329,6 +216,167 @@
                         <!-- END Verify FORM PORTLET-->
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <!-- BEGIN SAMPLE FORM PORTLET-->
+                        <div class="portlet light ">
+                            <div class="portlet-title">
+                                <div class="caption font-green-haze">
+                                    <i class="icon-docs font-green-haze"></i>
+                                    <span class="caption-subject font-green bold uppercase"> Document type Configuration <span
+                                            data-toggle="tooltip"
+                                            title="Define automatic signing settings to each document type">
+                                                        <i class="icon-question"></i> </span> </span>
+                                </div>
+                            </div>
+                            <div class="portlet-body form">
+                                <form role="form" class="form-horizontal">
+                                    <div class="form-body">
+
+                                        <div class="table-scrollable table-scrollable-borderless">
+                                            <table class="table table-hover table-light" id="access_list">
+                                                <thead>
+                                                <tr class="uppercase">
+                                                    <th> Document type</th>
+                                                    <th> Automatic validation <span data-toggle="tooltip"
+                                                                                    title="Enables automatic validation for the selected document type"><i
+                                                            class="icon-question"></i> </span></th>
+                                                    <th> Issuer is equal to Extractor <span data-toggle="tooltip"
+                                                                                            title="Enables automatic validation if extractor is the issuer">
+                                                        <i class="icon-question"></i> </span></th>
+                                                    <th> Sign Content <span data-toggle="tooltip"
+                                                                            title="Enables automatic validation of content">
+                                                        <i class="icon-question"></i> </span></th>
+                                                </tr>
+                                                </thead>
+                                                <script id="access_template" type="text/html">
+                                                    <tr>
+                                                        <td> ${stringBeautify(doc_type)}</td>
+                                                        <td>
+                                                            <div class="md-checkbox">
+                                                                <input type="checkbox"
+                                                                       id=${doc_type+"-automatic_processable"}
+                                                                       class="md-check" {{if automatic_processable}}
+                                                                       checked {{/if}} >
+                                                                <label for=${doc_type+"-automatic_processable"}>
+                                                                    <span></span>
+                                                                    <span class="check"></span>
+                                                                    <span class="box"></span></label>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="md-checkbox has-error">
+                                                                <input type="checkbox"
+                                                                       id=${doc_type+"-issuer_equal_extractor"}
+                                                                       class="md-check" {{if issuer_equal_extractor}}
+                                                                       checked {{/if}}>
+                                                                <label for=${doc_type+"-issuer_equal_extractor"}>
+                                                                    <span></span>
+                                                                    <span class="check"></span>
+                                                                    <span class="box"></span></label>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="md-checkbox has-info">
+                                                                <input type="checkbox"
+                                                                       id=${doc_type+"-content_signable"}
+                                                                       class="md-check" {{if content_signable}} checked
+                                                                       {{/if}}>
+                                                                <label for=${doc_type+"-content_signable"}>
+                                                                    <span></span>
+                                                                    <span class="check"></span>
+                                                                    <span class="box"></span></label>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </script>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="form-actions right">
+                                        <button type="reset" class="btn default">Reset</button>
+                                        <button type="button" class="btn green" onclick="setDocumentConfig()">Save
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <!-- END SAMPLE FORM PORTLET-->
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="portlet light ">
+                            <div class="portlet-title">
+                                <div class="caption">
+                                    <i class="icon-check font-green"></i>
+                                    <span class="caption-subject font-green bold uppercase">Blacklist/ Whitelist configuration</span>
+                                </div>
+                            </div>
+                            <div class="portlet-body form">
+                                <!-- BEGIN FORM-->
+                                <form action="index.html" class="form-horizontal form-row-seperated">
+                                    <div class="form-body">
+                                        <div class="form-group">
+                                            <div class="col-md-4">
+                                                                                               <div class="form-group form-md-line-input">
+                                                    <div class="input-group">
+                                                        <div class="input-group-control">
+                                                            <input type="text" class="form-control edited"
+                                                                   id="new-whitelist-item" placeholder="White Member">
+                                                        </div>
+                                                        <span class="input-group-btn btn-left">
+                                                        <button class="btn blue-madison" type="button"
+                                                                id="add-whitelist-item"><span data-toggle="tooltip"
+                                                                                              title="If a whitelist member has previously signed, I too will automatically sign">
+                                                        <i class="icon-question"></i> </span> Add <i
+                                                                class="icon-arrow-right"></i></button>
+
+                                                    </span>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="col-md-4">
+                                                <select multiple="multiple" class="multi-select" id="my_multi_select1"
+                                                        name="my_multi_select1[]">
+                                                </select>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group form-md-line-input">
+                                                    <div class="input-group">
+                                                        <span class="input-group-btn btn-left">
+                                                            <button class="btn blue-madison" type="button"
+                                                                    id="add-blacklist-item"> <i
+                                                                    class="icon-arrow-left"></i>  Add <span
+                                                                    data-toggle="tooltip"
+                                                                    title="If a blacklist member has previously signed, I will automatically ignore">
+                                                        <i class="icon-question"></i> </span></button>
+                                                        </span>
+                                                        <div class="input-group-control">
+                                                            <input type="text" class="form-control edited"
+                                                                   id="new-blacklist-item" placeholder="Black Member">
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-actions right">
+                                        <button type="reset" class="btn default">Reset</button>
+                                        <button type="button" class="btn green" onclick="saveBlackWhiteList()">Save
+                                        </button>
+                                    </div>
+                                </form>
+                                <!-- END FORM-->
+                            </div>
+                        </div>
+                        <!-- END PORTLET-->
+                    </div>
+                </div>
+
 
                 <!-- END PAGE BASE CONTENT -->
             </div>
@@ -356,17 +404,17 @@
 <script>
     var json_doc;
     var varProperties;
-    var blackList =[];
+    var blackList = [];
     var whiteList = [];
     var blackListUl;
     var whiteListUl;
     $(function () {
         $("#header").load("layout/header.html");
         $("#sidebar").load("layout/sidebar.html");
-        $.getJSON("properties.json", function(json) {
+        $.getJSON("properties.json", function (json) {
             varProperties = json;
             //block blacklist, whitelist
-            $(".ms-list").css("height","300px");
+            $(".ms-list").css("height", "300px");
             blackListUl = $(".ms-selection .ms-list");
             whiteListUl = $(".ms-selectable .ms-list");
             getBasicDetails();
@@ -394,7 +442,7 @@
             whiteList.push(newValue);
         }
     });
-    
+
     function saveBlackWhiteList() {
         setWhiteList();
         setBlackList();
@@ -407,7 +455,7 @@
         var settings = {
             "async": true,
             "crossDomain": true,
-            "url": "http://"+varProperties.validator.host+"/api-validator/"+varProperties.validator.apiVersion+"/"+varProperties.validator.apiKey+"/getconfig/basic/",
+            "url": "http://" + varProperties.validator.host + "/api-validator/" + varProperties.validator.apiVersion + "/" + varProperties.validator.apiKey + "/getconfig/basic/",
             "method": "GET",
             "headers": {
                 "Authorization": "Basic " + btoa(varProperties.validator.userName + ":" + varProperties.validator.password)
@@ -429,7 +477,7 @@
         var settings = {
             "async": true,
             "crossDomain": true,
-            "url": "http://"+varProperties.validator.host+"/api-validator/"+varProperties.validator.apiVersion+"/"+varProperties.validator.apiKey+"/saveconfig/basic/",
+            "url": "http://" + varProperties.validator.host + "/api-validator/" + varProperties.validator.apiVersion + "/" + varProperties.validator.apiKey + "/saveconfig/basic/",
             "method": "POST",
             "headers": {
                 "content-type": "application/json",
@@ -455,7 +503,7 @@
         var settings = {
             "async": true,
             "crossDomain": true,
-            "url": "http://"+varProperties.validator.host+"/api-validator/"+varProperties.validator.apiVersion+"/"+varProperties.validator.apiKey+"/getconfig/document/",
+            "url": "http://" + varProperties.validator.host + "/api-validator/" + varProperties.validator.apiVersion + "/" + varProperties.validator.apiKey + "/getconfig/document/",
             "method": "GET",
             "headers": {
                 "Authorization": "Basic " + btoa(varProperties.validator.userName + ":" + varProperties.validator.password)
@@ -475,7 +523,7 @@
         var settings = {
             "async": true,
             "crossDomain": true,
-            "url": "http://"+varProperties.validator.host+"/api-validator/"+varProperties.validator.apiVersion+"/"+varProperties.validator.apiKey+"/saveconfig/document/",
+            "url": "http://" + varProperties.validator.host + "/api-validator/" + varProperties.validator.apiVersion + "/" + varProperties.validator.apiKey + "/saveconfig/document/",
             "method": "POST",
             "headers": {
                 "content-type": "application/json",
@@ -483,29 +531,29 @@
             },
             "processData": false,
             "data": JSON.stringify(
-                    {
-                        "document":[
-                            {
-                                "doc_type" : "transcript",
-                                "automatic_processable" : document.getElementById("transcript"+"-"+"automatic_processable").checked,
-                                "issuer_equal_extractor" : document.getElementById("transcript"+"-"+"issuer_equal_extractor").checked,
-                                "content_signable" : document.getElementById("transcript"+"-"+"content_signable").checked
+                {
+                    "document": [
+                        {
+                            "doc_type": "transcript",
+                            "automatic_processable": document.getElementById("transcript" + "-" + "automatic_processable").checked,
+                            "issuer_equal_extractor": document.getElementById("transcript" + "-" + "issuer_equal_extractor").checked,
+                            "content_signable": document.getElementById("transcript" + "-" + "content_signable").checked
 
-                            },
-                            {
-                                "doc_type" : "passport",
-                                "automatic_processable" : document.getElementById("passport"+"-"+"automatic_processable").checked,
-                                "issuer_equal_extractor" : document.getElementById("passport"+"-"+"issuer_equal_extractor").checked,
-                                "content_signable" : document.getElementById("passport"+"-"+"content_signable").checked
-                            },
-                            {
-                                "doc_type" : "university_id",
-                                "automatic_processable" : document.getElementById("university_id"+"-"+"automatic_processable").checked,
-                                "issuer_equal_extractor" : document.getElementById("university_id"+"-"+"issuer_equal_extractor").checked,
-                                "content_signable" : document.getElementById("university_id"+"-"+"content_signable").checked
-                            }
-                        ]
-                    }
+                        },
+                        {
+                            "doc_type": "passport",
+                            "automatic_processable": document.getElementById("passport" + "-" + "automatic_processable").checked,
+                            "issuer_equal_extractor": document.getElementById("passport" + "-" + "issuer_equal_extractor").checked,
+                            "content_signable": document.getElementById("passport" + "-" + "content_signable").checked
+                        },
+                        {
+                            "doc_type": "university_id",
+                            "automatic_processable": document.getElementById("university_id" + "-" + "automatic_processable").checked,
+                            "issuer_equal_extractor": document.getElementById("university_id" + "-" + "issuer_equal_extractor").checked,
+                            "content_signable": document.getElementById("university_id" + "-" + "content_signable").checked
+                        }
+                    ]
+                }
             )
         }
 
@@ -521,7 +569,7 @@
         var settings = {
             "async": true,
             "crossDomain": true,
-            "url": "http://"+varProperties.validator.host+"/api-validator/"+varProperties.validator.apiVersion+"/"+varProperties.validator.apiKey+"/getconfig/whitelist/",
+            "url": "http://" + varProperties.validator.host + "/api-validator/" + varProperties.validator.apiVersion + "/" + varProperties.validator.apiKey + "/getconfig/whitelist/",
             "method": "GET",
             "headers": {
                 "Authorization": "Basic " + btoa(varProperties.validator.userName + ":" + varProperties.validator.password)
@@ -531,9 +579,9 @@
             console.log(response);
 
             console.log(whiteList);
-            response.white_list.forEach(function(item){
+            response.white_list.forEach(function (item) {
                 whiteList.push(item);
-                whiteListUl.append("<li class='ms-elem-selectable'><span>"+item+"</span></li>");
+                whiteListUl.append("<li class='ms-elem-selectable'><span>" + item + "</span></li>");
                 console.log(item);
             });
         }).fail(function () {
@@ -545,7 +593,7 @@
         var settings = {
             "async": true,
             "crossDomain": true,
-            "url": "http://"+varProperties.validator.host+"/api-validator/"+varProperties.validator.apiVersion+"/"+varProperties.validator.apiKey+"/getconfig/blacklist/",
+            "url": "http://" + varProperties.validator.host + "/api-validator/" + varProperties.validator.apiVersion + "/" + varProperties.validator.apiKey + "/getconfig/blacklist/",
             "method": "GET",
             "headers": {
                 "Authorization": "Basic " + btoa(varProperties.validator.userName + ":" + varProperties.validator.password)
@@ -555,9 +603,9 @@
             console.log(response);
 
             blackList.concat(response.black_list);
-            response.black_list.forEach(function(item){
+            response.black_list.forEach(function (item) {
                 blackList.push(item);
-                blackListUl.append("<li selected class='ms-elem-selection ms-selected'><span>"+item+"</span></li>");
+                blackListUl.append("<li selected class='ms-elem-selection ms-selected'><span>" + item + "</span></li>");
 
                 console.log(item);
             });
@@ -572,7 +620,7 @@
         var settings = {
             "async": true,
             "crossDomain": true,
-            "url": "http://"+varProperties.validator.host+"/api-validator/"+varProperties.validator.apiVersion+"/"+varProperties.validator.apiKey+"/saveconfig/whitelist/",
+            "url": "http://" + varProperties.validator.host + "/api-validator/" + varProperties.validator.apiVersion + "/" + varProperties.validator.apiKey + "/saveconfig/whitelist/",
             "method": "POST",
             "headers": {
                 "content-type": "application/json",
@@ -580,8 +628,8 @@
             },
             "processData": false,
             "data": JSON.stringify({
-                "white_list" : whiteList
-                    }
+                    "white_list": whiteList
+                }
             )
         }
 
@@ -597,7 +645,7 @@
         var settings = {
             "async": true,
             "crossDomain": true,
-            "url": "http://"+varProperties.validator.host+"/api-validator/"+varProperties.validator.apiVersion+"/"+varProperties.validator.apiKey+"/saveconfig/blacklist/",
+            "url": "http://" + varProperties.validator.host + "/api-validator/" + varProperties.validator.apiVersion + "/" + varProperties.validator.apiKey + "/saveconfig/blacklist/",
             "method": "POST",
             "headers": {
                 "content-type": "application/json",
@@ -605,8 +653,8 @@
             },
             "processData": false,
             "data": JSON.stringify({
-                        "black_list" : blackList
-                    }
+                    "black_list": blackList
+                }
             )
         }
 
@@ -621,7 +669,7 @@
     $("form#sign-certs-form").submit(function () {
 
         var formData = new FormData($("#sign-certs-form")[0]);
-        formData.set("cert",formData.get("pubCert"));
+        formData.set("cert", formData.get("pubCert"));
         $.ajax({
             url: "http://" + varProperties.validator.host + "/api-validator/" + varProperties.validator.apiVersion + "/" + varProperties.validator.apiKey + "/savepubcert",
             data: formData,
@@ -641,12 +689,12 @@
             complete: function () {
                 console.log("completed")
             },
-            error:function () {
+            error: function () {
                 toastr.warning("Can't access save public certificate api");
             }
         });
 
-        formData.set("cert",formData.get("pvtCert"));
+        formData.set("cert", formData.get("pvtCert"));
 
         $.ajax({
             url: "http://" + varProperties.validator.host + "/api-validator/" + varProperties.validator.apiVersion + "/" + varProperties.validator.apiKey + "/savepvtcert",
@@ -667,7 +715,7 @@
             complete: function () {
                 console.log("completed")
             },
-            error:function () {
+            error: function () {
                 toastr.warning("Can't access save private certificate api");
             }
         });
@@ -711,7 +759,7 @@
 <script src="assets/pages/scripts/form-repeater.min.js" type="text/javascript"></script>
 <script src="assets/pages/scripts/components-multi-select.min.js" type="text/javascript"></script>
 <script src="assets/custom/scripts/string-beautify.js" type="text/javascript"></script>
-assets/custom/scripts/string-beautify.js
+<!--assets/custom/scripts/string-beautify.js-->
 <!-- END PAGE LEVEL SCRIPTS -->
 
 <!-- BEGIN THEME LAYOUT SCRIPTS -->
