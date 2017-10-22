@@ -723,7 +723,7 @@
     });
     $("form#evaluate-form").submit(function () {
         var formData = new FormData($("#evaluate-form")[0]);
-        formData.set("json", JSON.stringify(evalJSONText)); 
+        formData.set("json", JSON.stringify(evalJSONText));
         $.ajax({
             url: formData.get("url") + "/api-relyingparty/" + varProperties.relyingparty.apiVersion + "/evaluate",
             data: formData,
