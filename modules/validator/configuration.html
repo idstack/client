@@ -104,13 +104,12 @@
 
                                         <div class="form-group form-md-line-input">
                                             <label for="basic_details"
-                                                   class="col-md-2 control-label">Web URL <span data-toggle="tooltip"
-                                                                                                title="Define the URL of your web service">
-                                                        <i class="icon-question"></i> </span></label>
+                                                   class="col-md-2 control-label">Web URL</label>
                                             <div class="col-md-4">
                                                 <input type="text" class="form-control" id="web"
-                                                       placeholder="Url">
+                                                       placeholder="http://example.com/validator">
                                                 <div class="form-control-focus"></div>
+                                                <span class="help-block">Define the URL of your web service</span>
                                             </div>
                                         </div>
                                         <div class="form-actions right">
@@ -195,13 +194,12 @@
                                         </div>
                                         <div class="form-group form-md-line-input">
                                             <label for="certificate_pass"
-                                                   class="col-md-2 control-label">Password <span data-toggle="tooltip"
-                                                                                                 title="Password-protect your private certificate">
-                                                        <i class="icon-question"></i> </span></label>
+                                                   class="col-md-2 control-label">Password</label>
                                             <div class="col-md-4">
                                                 <input type="password" class="form-control" id="certificate_pass"
                                                        placeholder="Password">
                                                 <div class="form-control-focus"></div>
+                                                <span class="help-block">Enter the password of the private certificate</span>
                                             </div>
                                         </div>
                                     </div>
@@ -320,17 +318,16 @@
                                     <div class="form-body">
                                         <div class="form-group">
                                             <div class="col-md-4">
-                                                                                               <div class="form-group form-md-line-input">
+                                                <div class="form-group form-md-line-input">
                                                     <div class="input-group">
                                                         <div class="input-group-control">
                                                             <input type="text" class="form-control edited"
                                                                    id="new-whitelist-item" placeholder="White Member">
+                                                            <span class="help-block">If a whitelist member has previously signed, I too will automatically sign</span>
                                                         </div>
-                                                        <span class="input-group-btn btn-left">
+                                                        <span class="input-group-btn btn-right">
                                                         <button class="btn blue-madison" type="button"
-                                                                id="add-whitelist-item"><span data-toggle="tooltip"
-                                                                                              title="If a whitelist member has previously signed, I too will automatically sign">
-                                                        <i class="icon-question"></i> </span> Add <i
+                                                                id="add-whitelist-item">Add<i
                                                                 class="icon-arrow-right"></i></button>
 
                                                     </span>
@@ -349,14 +346,13 @@
                                                         <span class="input-group-btn btn-left">
                                                             <button class="btn blue-madison" type="button"
                                                                     id="add-blacklist-item"> <i
-                                                                    class="icon-arrow-left"></i>  Add <span
-                                                                    data-toggle="tooltip"
-                                                                    title="If a blacklist member has previously signed, I will automatically ignore">
-                                                        <i class="icon-question"></i> </span></button>
+                                                                    class="icon-arrow-left"></i>Add</button>
                                                         </span>
                                                         <div class="input-group-control">
                                                             <input type="text" class="form-control edited"
                                                                    id="new-blacklist-item" placeholder="Black Member">
+                                                            <span class="help-block">If a blacklist member has previously signed, I will automatically ignore</span>
+
                                                         </div>
                                                     </div>
                                                 </div>
