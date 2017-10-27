@@ -572,8 +572,18 @@
     <!-- END CONTENT -->
 </div>
 
-<script>
+<!-- Start wrapper for jquery script imports  -->
+<script>if (typeof module === 'object') {
+    window.module = module;
+    module = undefined;
+}</script>
 
+<script type="text/javascript" src="../../assets/global/plugins/jquery.min.js"></script>
+
+<!-- End wrapper for jquery script imports -->
+<script>if (window.module) module = window.module;</script>
+
+<script>
     $(document).ready(function () {
         $("#header").load("../../layout/header.html");
         $("#sidebar").load("../../layout/sidebar.html");

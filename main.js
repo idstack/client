@@ -16,6 +16,11 @@ function createWindow () {
   mainWindow = new BrowserWindow({width: 800, height: 600})
   mainWindow.maximize();
 
+  // //clear all the cache
+  // mainWindow.webContents.session.clearCache(function(){
+  // //some callback.
+  // });
+
   // and load the index.html of the app.
   mainWindow.loadURL(url.format({
     pathname: path.join(__dirname, 'index.html'),
