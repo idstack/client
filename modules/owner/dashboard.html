@@ -74,21 +74,21 @@
                     <div class="col-md-12">
                         <div class="portlet light">
                             <div class="portlet-title">
-                                <div class="caption">
-                                    <i class="icon-puzzle font-grey-gallery"></i>
-                                    <span class="caption-subject uppercase">Send Document for Extraction </span>
-                                    <span class="caption-helper">Choose PDf and send it to an authorized extractor</span>
+                                <div class="caption font-green-haze">
+                                    <i class="icon-magnet font-green"></i>
+                                    <span class="caption-subject font-green bold uppercase">Send Document for Extraction </span>
+                                    <span class="caption-helper font-green">Choose PDF and send it to an authorized extractor</span>
                                 </div>
                                 <div class="tools">
                                     <a href="" class="collapse"> </a>
                                 </div>
                             </div>
                             <div class="portlet-body form">
-                                <form class="form-horizontal form-bordered" id="extract-form"
+                                <form class="form-horizontal" id="extract-form"
                                       enctype="multipart/form-data" role="form">
                                     <div class="form-body">
-                                        <div class="form-group">
-                                            <label class="control-label col-md-3">Select Pdf File</label>
+                                        <div class="form-group ">
+                                            <label class="control-label col-md-3 font-grey-cascade">Select Pdf File</label>
                                             <div class="col-md-3">
                                                 <div class="fileinput fileinput-new" data-provides="fileinput">
                                                     <div class="input-group input-large">
@@ -108,40 +108,37 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="form-group">
+                                        <div class="form-group form-md-line-input ">
                                             <label class="control-label col-md-3">Document Type</label>
-                                            <div class="col-md-3">
+                                            <div class="col-md-6">
                                                 <select class="form-control" name="doc_type">
-                                                    <option value="passport">Passport</option>
+                                                    <option selected value="passport">Passport</option>
                                                     <option value="university_id">University ID</option>
                                                     <option value="transcript">University Transcript</option>
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class="form-group">
-                                            <label class="control-label col-md-3">Your Email</label>
+                                        <div class="form-group form-md-line-input">
+                                            <label class="col-md-3 control-label">Your Email</label>
                                             <div class="col-md-6">
-                                                <input class="form-control" type="email" id="my_email" name="email"
-                                                       placeholder="e.g: myname@gmail.com">
+                                                <input type="email" class="form-control" id="my_email" name="email">
+                                                <div class="form-control-focus"> </div>
+                                                <span class="help-block">myname@gmail.com</span>
                                             </div>
                                         </div>
-                                        <div class="form-group">
-                                            <label class="control-label col-md-3">Extractor URL</label>
+                                        <div class="form-group form-md-line-input">
+                                            <label class="col-md-3 control-label">Extractor URL</label>
                                             <div class="col-md-6">
-                                                <input class="form-control" type="text" id="ext_url" name="url"
-                                                       placeholder="e.g: http://extractor.com">
+                                                <input type="text" class="form-control" id="ext_url" name="url">
+                                                <div class="form-control-focus"> </div>
+                                                <span class="help-block">http://extractor.com</span>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="form-actions">
-                                        <div class="row">
-                                            <div class="col-md-offset-3 col-md-9">
-                                                <button class="btn green" type="submit">
-                                                    <i class="fa fa-check"></i> Submit
-                                                </button>
-                                                <button class="btn btn-outline grey-salsa" type="button">Cancel</button>
-                                            </div>
-                                        </div>
+                                    <div class="form-actions right">
+                                        <button type="reset" class="btn default">Cancel</button>
+                                        <button type="submit" class="btn green" onclick="saveSignedPassport();">Send<i class="fa fa-check"></i>
+                                        </button>
                                     </div>
                                 </form>
                             </div>
@@ -155,21 +152,21 @@
                     <div class="col-md-12">
                         <div class="portlet light">
                             <div class="portlet-title">
-                                <div class="caption">
-                                    <i class="icon-puzzle font-grey-gallery"></i>
-                                    <span class="caption-subject uppercase">Send Document for Validation </span>
-                                    <span class="caption-helper">Choose PDf and the corresponding MRF you received by extracting the document</span>
+                                <div class="caption font-green">
+                                    <i class="icon-puzzle font-green"></i>
+                                    <span class="caption-subject font-green bold uppercase">Send Document for Validation </span>
+                                    <span class="caption-helper font-green">Choose PDf and the corresponding MRF you received by extracting the document</span>
                                 </div>
                                 <div class="tools">
                                     <a href="" class="collapse"> </a>
                                 </div>
                             </div>
                             <div class="portlet-body form">
-                                <form class="form-horizontal form-bordered" id="validate-form"
+                                <form class="form-horizontal" id="validate-form"
                                       enctype="multipart/form-data">
                                     <div class="form-body">
                                         <div class="form-group">
-                                            <label class="control-label col-md-3">Select Pdf File</label>
+                                            <label class="control-label col-md-3 font-grey-cascade">Select Pdf File</label>
                                             <div class="col-md-3">
                                                 <div class="fileinput fileinput-new" data-provides="fileinput">
                                                     <div class="input-group input-large">
@@ -190,7 +187,7 @@
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="control-label col-md-3">Select MRF File</label>
+                                            <label class="control-label col-md-3 font-grey-cascade">Select MRF File</label>
                                             <div class="col-md-3">
                                                 <div class="fileinput fileinput-new" data-provides="fileinput">
                                                     <div class="input-group input-large">
@@ -211,66 +208,27 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="form-group">
-                                            <label class="control-label col-md-3">Your Email</label>
+                                        <div class="form-group form-md-line-input">
+                                            <label class="col-md-3 control-label">Your Email</label>
                                             <div class="col-md-6">
-                                                <input class="form-control" type="email" id="my_email1" name="email"
-                                                       placeholder="e.g: myname@gmail.com">
+                                                <input type="email" class="form-control" id="my_email1" name="email">
+                                                <div class="form-control-focus"> </div>
+                                                <span class="help-block">myname@gmail.com</span>
                                             </div>
                                         </div>
-                                        <div class="form-group">
-                                            <label class="control-label col-md-3">Validator URL</label>
+                                        <div class="form-group form-md-line-input">
+                                            <label class="col-md-3 control-label">Validator URL</label>
                                             <div class="col-md-6">
-                                                <input class="form-control" type="text" id="val_url" name="url"
-                                                       placeholder="e.g: http://validator.com">
+                                                <input type="text" class="form-control" id="val_url" name="url">
+                                                <div class="form-control-focus"> </div>
+                                                <span class="help-block">http://validator.com</span>
                                             </div>
                                         </div>
-                                        <!--<div class="form-group">-->
-                                        <!--<label class="control-label col-md-3">Pdf Document</label>-->
-                                        <!--<div class="col-md-9">-->
-                                        <!--<div class="fileinput fileinput-new" data-provides="fileinput">-->
-                                        <!--<span class="btn green btn-file">-->
-                                        <!--<span class="fileinput-new"> Select file </span>-->
-                                        <!--<span class="fileinput-exists"> Change </span>-->
-                                        <!--<input type="file" name="..."> </span>-->
-                                        <!--<span class="fileinput-filename"> </span> &nbsp;-->
-                                        <!--<a href="javascript:;" class="close fileinput-exists"-->
-                                        <!--data-dismiss="fileinput"> </a>-->
-                                        <!--</div>-->
-                                        <!--</div>-->
-                                        <!--</div>-->
-                                        <!--<div class="form-group">-->
-                                        <!--<label class="control-label col-md-3">MRF Document</label>-->
-                                        <!--<div class="col-md-9">-->
-                                        <!--<div class="fileinput fileinput-new" data-provides="fileinput">-->
-                                        <!--<span class="btn green btn-file">-->
-                                        <!--<span class="fileinput-new"> Select file </span>-->
-                                        <!--<span class="fileinput-exists"> Change </span>-->
-                                        <!--<input type="file" name="..."> </span>-->
-                                        <!--<span class="fileinput-filename"> </span> &nbsp;-->
-                                        <!--<a href="javascript:;" class="close fileinput-exists"-->
-                                        <!--data-dismiss="fileinput"> </a>-->
-                                        <!--</div>-->
-                                        <!--</div>-->
-                                        <!--</div>-->
-                                        <!--<div class="form-group form-md-line-input">-->
-                                        <!--<label class="col-md-3 control-label" for="val_url">Validator URL</label>-->
-                                        <!--<div class="col-md-9">-->
-                                        <!--<input type="text" class="form-control" id="val_url"-->
-                                        <!--placeholder="Enter the url of the validator API">-->
-                                        <!--<div class="form-control-focus"></div>-->
-                                        <!--</div>-->
-                                        <!--</div>-->
                                     </div>
-                                    <div class="form-actions">
-                                        <div class="row">
-                                            <div class="col-md-offset-3 col-md-9">
-                                                <button class="btn green" type="submit">
-                                                    <i class="fa fa-check"></i> Submit
-                                                </button>
-                                                <button type="reset" class="btn btn-outline grey-salsa">Cancel</button>
-                                            </div>
-                                        </div>
+                                    <div class="form-actions right">
+                                        <button type="reset" class="btn default">Cancel</button>
+                                        <button type="submit" class="btn green">Send<i class="fa fa-check"></i>
+                                        </button>
                                     </div>
                                 </form>
                             </div>
@@ -278,28 +236,25 @@
                     </div>
                     <!-- END GRID PORTLET-->
                 </div>
-
-
                 <div class="row">
                     <div class="col-md-12">
                         <div class="portlet light">
                             <div class="portlet-title">
-                                <div class="caption">
-                                    <i class="icon-puzzle font-grey-gallery"></i>
-                                    <span class="caption-subject uppercase">Send Document to the Relying Party </span>
-                                    <span class="caption-helper">Choose set of PDfs and corresponding MRFs that you want to send</span>
+                                <div class="caption font-green">
+                                    <i class="icon-puzzle font-green"></i>
+                                    <span class="caption-subject font-green bold uppercase">Send Document to the Relying Party </span>
+                                    <span class="caption-helper font-green">Choose set of PDfs and corresponding MRFs that you want to send</span>
                                 </div>
                                 <div class="tools">
                                     <a href="" class="collapse"> </a>
                                 </div>
                             </div>
-                            <form class="form-horizontal form-bordered" id="evaluate-form"
-                                  enctype="multipart/form-data" role="form">
+                            <form class="form-horizontal" id="evaluate-form" enctype="multipart/form-data" role="form">
                                 <div class="form-body">
                                     <div id="evaluate-form-body">
                                         <div id="evaluate-pdf-template">
                                             <div class="form-group">
-                                                <label class="control-label col-md-3">Select Pdf File</label>
+                                                <label class="control-label col-md-3 font-grey-cascade">Select Pdf File</label>
                                                 <div class="col-md-3">
                                                     <div class="fileinput fileinput-new" data-provides="fileinput">
                                                         <div class="input-group input-large">
@@ -320,18 +275,18 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="form-group">
+                                            <div class="form-group form-md-line-input ">
                                                 <label class="control-label col-md-3">Document Type</label>
-                                                <div class="col-md-3">
-                                                    <select class="form-control eval-doc-type" name="doc_type_1">
-                                                        <option value="passport">Passport</option>
+                                                <div class="col-md-6">
+                                                    <select class="form-control" name="doc_type">
+                                                        <option selected value="passport">Passport</option>
                                                         <option value="university_id">University ID</option>
                                                         <option value="transcript">University Transcript</option>
                                                     </select>
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label class="control-label col-md-3">Select JSON File</label>
+                                                <label class="control-label col-md-3 font-grey-cascade">Select JSON File</label>
                                                 <div class="col-md-3">
                                                     <div class="fileinput fileinput-new" data-provides="fileinput">
                                                         <div class="input-group input-large">
@@ -351,215 +306,44 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                            <hr />
                                         </div>
                                     </div>
 
                                     <div class="form-group">
                                         <div class="col-md-offset-3 col-md-9">
                                             <button class="btn btn-xs" type="button" id="add-eval-pdf-grps">
-                                                <i class="fa fa-plus"></i> Add PDFs
+                                                <i class="fa fa-plus"></i> Add Document
                                             </button>
 
                                         </div>
                                     </div>
-
-                                    <div class="form-group">
-                                        <label class="control-label col-md-3">Your Email</label>
+                                    <div class="form-group form-md-line-input">
+                                        <label class="col-md-3 control-label">Your Email</label>
                                         <div class="col-md-6">
-                                            <input class="form-control" type="email" id="my_email2" name="email"
-                                                   placeholder="e.g: myname@gmail.com">
+                                            <input type="email" class="form-control" id="my_email2" name="email">
+                                            <div class="form-control-focus"> </div>
+                                            <span class="help-block">myname@gmail.com</span>
                                         </div>
                                     </div>
-                                    <div class="form-group">
-                                        <label class="control-label col-md-3">Evaluator URL</label>
+                                    <div class="form-group form-md-line-input">
+                                        <label class="col-md-3 control-label">Evaluator URL</label>
                                         <div class="col-md-6">
-                                            <input class="form-control" type="text" id="eval_url" name="url"
-                                                   placeholder="e.g: http://extractor.com">
+                                            <input type="text" class="form-control" id="eval_url" name="url">
+                                            <div class="form-control-focus"> </div>
+                                            <span class="help-block">http://validator.com</span>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="form-actions">
-                                    <div class="row">
-                                        <div class="col-md-offset-3 col-md-9">
-                                            <button class="btn green" type="submit">
-                                                <i class="fa fa-check"></i> Submit
-                                            </button>
-                                            <button class="btn btn-outline grey-salsa" type="button">Cancel</button>
-                                        </div>
-                                    </div>
+                                <div class="form-actions right">
+                                    <button type="reset" class="btn default">Cancel</button>
+                                    <button type="submit" class="btn green">Send<i class="fa fa-check"></i>
+                                    </button>
                                 </div>
                             </form>
-
-                            <!--<div class="portlet-body form">-->
-                            <!--<form class="dropzone dropzone-file-area" id="my-dropzone"-->
-                            <!--style="width: 800px; margin-top: 50px;">-->
-                            <!--&lt;!&ndash;<h3 class="sbold">Drop files here or click to upload</h3>&ndash;&gt;-->
-                            <!--&lt;!&ndash;<p> Include all the pdf documents and respective mrf files that you want to send to the Relying Party. </p>&ndash;&gt;-->
-                            <!--<div class="row">-->
-                            <!--<input class="form-control" id="relyingPartyName" type="text"-->
-                            <!--name="relyingPartyUrl" placeholder="Relying Party URL"/>-->
-                            <!--</div>-->
-
-                            <!--<br>-->
-                            <!--<div class="row">-->
-                            <!--<div class="col-md-offset-2 col-md-10">-->
-                            <!--<button type="button" id="submitRP" class="btn blue"-->
-                            <!--style="text-align: center">-->
-                            <!--Submit All files!-->
-                            <!--</button>-->
-                            <!--</div>-->
-                            <!--</div>-->
-
-                            <!--</form>-->
-                            <!--</div>-->
-                            <!--<p id="myparagraph">I am Chandu Bandara Herath form University of Moratuwa</p>-->
                         </div>
                     </div>
                 </div>
-
-                <!-- The blueimp Gallery widget -->
-                <div id="blueimp-gallery" class="blueimp-gallery blueimp-gallery-controls" data-filter=":even">
-                    <div class="slides"></div>
-                    <h3 class="title"></h3>
-                    <a class="prev"> ‹ </a>
-                    <a class="next"> › </a>
-                    <a class="close white"> </a>
-                    <a class="play-pause"> </a>
-                    <ol class="indicator"></ol>
-                </div>
-                <!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
-                <script id="template-upload" type="text/x-tmpl"> {% for (var i=0, file; file=o.files[i]; i++) {
-                        %}
-                        <tr class="template-upload fade">
-                            <td>
-                                <span class="preview"></span>
-                            </td>
-                            <td>
-                                <p class="name">{%=file.name%}</p>
-                                <strong class="error text-danger label label-danger"></strong>
-                            </td>
-                            <td>
-                                <p class="size">Processing...</p>
-                                <div class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
-                                    <div class="progress-bar progress-bar-success" style="width:0%;"></div>
-                                </div>
-                            </td>
-                            <td> {% if (!i && !o.options.autoUpload) { %}
-                                <button class="btn blue" onclick="submitForExtraction()">
-                                    <i class="fa fa-upload"></i>
-                                    <span>Start</span>
-                                </button> {% } %} {% if (!i) { %}
-                                <button class="btn red cancel">
-                                    <i class="fa fa-ban"></i>
-                                    <span>Cancel</span>
-                                </button> {% } %} </td>
-                        </tr> {% } %}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                </script>
-                <!-- The template to display files available for download -->
-                <script id="template-download" type="text/x-tmpl">
-                {% for (var i=0, file; file=o.files[i]; i++) { %}
-                        <tr class="template-download fade">
-                            <td>
-                                <span class="preview"> {% if (file.thumbnailUrl) { %}
-                                    <a href="{%=file.url%}" title="{%=file.name%}" download="{%=file.name%}" data-gallery>
-                                        <img src="{%=file.thumbnailUrl%}">
-                                    </a> {% } %} </span>
-                            </td>
-                            <td>
-                                <p class="name">
-                                {% if (file.url) { %}
-                                    <!--<a href="{%=file.url%}" title="{%=file.name%}" download="{%=file.name%}" {%=file.thumbnailUrl? 'data-gallery': ''%}>{%=file.name%}</a> -->
-                                    {% } else { %}
-                                    <span>{%=file.name%}</span> {% } %} </p>
-                                    {% if (file.error) { %}
-                                <!--<div>-->
-                                    <!--<span class="label label-danger">Error</span> {%=file.error%}-->
-                                    <!--</div> -->
-                                    {% } %} </td>
-                            <td>
-                                <p class="name">
-                                    <span class="size">{%=o.formatFileSize(file.size)%}</span>
-                                </p>
-                            </td>
-                            <td> {% if (file.deleteUrl) { %}
-                                <button class="btn red delete btn-sm" data-type="{%=file.deleteType%}" data-url="{%=file.deleteUrl%}" {% if (file.deleteWithCredentials) { %} data-xhr-fields='{"withCredentials":true}' {% } %}>
-                                    <i class="fa fa-trash-o"></i>
-                                    <span>Delete</span>
-                                </button>
-                                <input type="checkbox" name="delete" value="1" class="toggle"> {% } else { %}
-                                <br><button class="btn yellow cancel btn-sm">
-                                    <i class="fa fa-ban"></i>
-                                    <span>Cancel</span>
-                                </button> {% } %} </td>
-                        </tr> {% } %}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                </script>
                 <!-- END PAGE BASE CONTENT FOR SEND TO EXTRACTOR-->
 
                 <!-- END PAGE BASE CONTENT -->
@@ -571,6 +355,7 @@
     </div>
     <!-- END CONTENT -->
 </div>
+<!-- END CONTAINER -->
 
 <!-- Start wrapper for jquery script imports  -->
 <script>if (typeof module === 'object') {
@@ -585,34 +370,28 @@
 
 <script>
     $(document).ready(function () {
+        var varProperties;
+
         $("#header").load("../../layout/header.html");
         $("#sidebar").load("../../layout/sidebar.html");
+        $.getJSON("../../properties.json", function (json) {
+            varProperties = json;
+        });
 
         $("#btnsubmit_val").click(function () {
             var pdffile = $("#val_pdf").prop("files");
             var mrffile = $("#val_mrf").prop("files");
             var val_url = $("#val_url").val();
-//            alert(pdffile);
-//            alert(mrffile);
-//            alert(val_url);
             //implement the api request for validator
         });
 
 
     });
-    var varProperties;
-    $(function () {
-        $.getJSON("properties.json", function (json) {
-            varProperties = json;
-        });
 
-
-    });
 
     function submitForExtraction() {
 //        var myfile = [];
 //        var myfile = $('#extFileInput').prop('files');
-        alert("test");
         var x = document.getElementById('extFileInput');
         alert(x);
         var myfiles = x.files;
@@ -757,24 +536,6 @@
         });
 
         return false;
-    });
-</script>
-<!-- END CONTAINER -->
-<!-- Start wrapper for jquery script imports  -->
-<script>if (typeof module === 'object') {
-    window.module = module;
-    module = undefined;
-}</script>
-
-<script type="text/javascript" src="../../assets/global/plugins/jquery.min.js"></script>
-
-<!-- End wrapper for jquery script imports -->
-<script>if (window.module) module = window.module;</script>
-
-<script>
-    $(function () {
-        $("#header").load("layout/header.html");
-        $("#sidebar").load("layout/sidebar.html");
     });
 </script>
 
