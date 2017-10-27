@@ -144,7 +144,7 @@
             time:false,
             clearButton: true
         });
-        $.getJSON("properties.json", function(json) {
+        $.getJSON("../../properties.json", function(json) {
             varProperties = json;
         });
         url = getUrlParameter("url");
@@ -152,7 +152,7 @@
         if (docType || 0 !== docType.length) {
             $("#tab_template").append(stringBeautify(docType));
 
-            $("#form_template").load("doc_templates/extract/" + docType + ".html");
+            $("#form_template").load("../../doc_templates/extract/" + docType + ".html");
 
             setTimeout(function () {
                 formObject = $("form#form_extract_" + docType);

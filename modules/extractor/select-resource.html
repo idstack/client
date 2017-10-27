@@ -67,7 +67,7 @@
             <!-- BEGIN CARDS -->
             <div class="row margin-bottom-20">
                 <div class="col-lg-4 col-md-6">
-                    <a href="javascript:window.location.href = 'extract-data.html?doctype='+getUrlParameter('doctype')+'&resource=physical.'">
+                    <a href="javascript:window.location.href = 'extract.html?doctype='+getUrlParameter('doctype')+'&resource=physical.'">
                         <div class="portlet light  bordered">
                             <div class="card-icon">
                                 <i class="glyphicon glyphicon-hand-up font-red-sunglo theme-font"></i>
@@ -189,11 +189,11 @@
 
     function loadURL() {
 
-        var url = "sdasdasd";
+        var url = "www.sample.com/sample.pdf";
 
         url = document.getElementById('input_url').value;
         console.log(url)
-        window.location.href = "extract-data.html?doctype="+getUrlParameter("doctype")+"&resource=url&url="+url;
+        window.location.href = "extract.html?doctype="+getUrlParameter("doctype")+"&resource=url&url="+url;
     }
 
     function readPDF() {

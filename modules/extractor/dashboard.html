@@ -175,7 +175,7 @@
         $("#header").load("../../layout/header.html");
         $("#sidebar").load("../../layout/sidebar.html");
 
-        $.getJSON("properties.json", function (json) {
+        $.getJSON("../../properties.json", function (json) {
             varProperties = json;
             getRequestList();
         });

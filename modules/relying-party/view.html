@@ -296,9 +296,9 @@
 
 
         $(function () {
-            $("#header").load("layout/header.html");
-            $("#sidebar").load("layout/sidebar.html");
-            $.getJSON("properties.json", function(json) {
+            $("#header").load("../../layout/header.html");
+            $("#sidebar").load("../../layout/sidebar.html");
+            $.getJSON("../../properties.json", function(json) {
                 varProperties = json;
                 request_id = getUrlParameter("request_id");
                 getDocstoreByRequest(request_id);
@@ -454,7 +454,7 @@
             $.ajax(settings).done(function (MRresponse) {
                 var MRresponse = JSON.parse(MRresponse).json[0];
                 console.log(MRresponse);
-                clone.find("#template").load("doc_templates/view/"+MRresponse.meta_data.document_type+".html",loadContentView(clone,MRresponse) );
+                clone.find("#template").load("../../doc_templates/view/"+MRresponse.meta_data.document_type+".html",loadContentView(clone,MRresponse) );
                 loadSignatureView(clone,MRresponse);
                 getConfidenceByUrl(url,clone);
                 $('#document_array').append(clone);

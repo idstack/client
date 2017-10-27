@@ -148,9 +148,9 @@
     var json_doc;
     var varProperties;
     $(function () {
-        $("#header").load("layout/header.html");
-        $("#sidebar").load("layout/sidebar.html");
-        $.getJSON("properties.json", function(json) {
+        $("#header").load("../../layout/header.html");
+        $("#sidebar").load("../../layout/sidebar.html");
+        $.getJSON("../../properties.json", function(json) {
             varProperties = json;
             getBasicDetails();
         });
