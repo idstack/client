@@ -71,43 +71,36 @@
                     <div class="col-md-12">
                         <div class="portlet light  portlet-form">
                             <div class="portlet-title">
-                                <div class="caption">
-                                    <i class="fa fa-folder"></i>Basic Details
+                                <div class="caption font-green-haze">
+                                    <i class="icon-user font-green-haze"></i>
+                                    <span class="caption-subject font-green bold uppercase">Basic Details</span>
                                 </div>
                             </div>
                             <div class="portlet-body form">
-                                <form role="form" id="basic_details">
+                                <form class="form-horizontal" id="basic-form" enctype="multipart/form-data" role="form">
                                     <div class="form-body">
-                                            <div class="form-group form-md-line-input">
-                                                <label for="basic_details"
-                                                       class="col-md-2 control-label">Organization</label>
-                                                <div class="col-md-4">
-                                                    <input type="text" class="form-control" id="organization"
-                                                           placeholder="Organization">
-                                                    <div class="form-control-focus"></div>
-                                                </div>
+                                        <div class="form-group form-md-line-input">
+                                            <label class="col-md-3 control-label">Organization</label>
+                                            <div class="col-md-6">
+                                                <input type="email" class="form-control" id="organization" name="organization">
+                                                <div class="form-control-focus"> </div>
                                             </div>
-
-                                            <div class="form-group form-md-line-input">
-                                                <label for="basic_details"
-                                                       class="col-md-2 control-label">Email</label>
-                                                <div class="col-md-4">
-                                                    <input type="email" class="form-control" id="email"
-                                                           placeholder="Email">
-                                                    <div class="form-control-focus"></div>
-                                                </div>
+                                        </div>
+                                        <div class="form-group form-md-line-input">
+                                            <label class="col-md-3 control-label">Email</label>
+                                            <div class="col-md-6">
+                                                <input type="email" class="form-control" id="email" name="email">
+                                                <div class="form-control-focus"> </div>
                                             </div>
-
-                                            <div class="form-group form-md-line-input">
-                                                <label for="basic_details"
-                                                       class="col-md-2 control-label">Web URL</label>
-                                                <div class="col-md-4">
-                                                    <input type="text" class="form-control" id="web"
-                                                           placeholder="http://example.com/relying_party">
-                                                    <div class="form-control-focus"></div>
-                                                    <span class="help-block">Define the URL of your web service</span>
-                                                </div>
+                                        </div>
+                                        <div class="form-group form-md-line-input">
+                                            <label class="col-md-3 control-label">Web URL</label>
+                                            <div class="col-md-6">
+                                                <input type="text" class="form-control" id="web" name="web" placeholder="http://example.com/relying_party">
+                                                <div class="form-control-focus"> </div>
+                                                <span class="help-block">Define the URL of your web service</span>
                                             </div>
+                                        </div>
                                         <div class="form-actions right">
                                             <button type="reset" class="btn default">Reset</button>
                                             <button type="button" class="btn green" onclick="setBasicDetails();">Save
