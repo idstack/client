@@ -77,11 +77,11 @@
             <!-- BEGIN PAGE BASE CONTENT -->
             <div class="col-lg-12 col-mg-12 col-xs-12 col-sm-12">
                 <!-- BEGIN PORTLET-->
-                <div class="portlet light portlet-fit">
-                    <div class="portlet-title ">
+                <div class="portlet light">
+                    <div class="portlet-title">
                         <div class="caption">
-                            <i class="icon-globe font-dark hide"></i>
-                            <span class="caption-subject font-dark ">Extract Requests</span>
+                            <i class="icon-list font-green-haze"></i>
+                            <span class="caption-subject font-green bold uppercase">Extract Requests</span>
                         </div>
                     </div>
                     <div class="portlet-body">
@@ -118,16 +118,30 @@
                         <!--</ul>-->
                         <!--</div>-->
 
-                        <div class="scroller" style="height: 320px;" data-always-visible="1" data-rail-visible1="1">
+                        <div>
                             <div class="panel-body" id="request_list">
                                 <div class="list-group">
+                                    <div class="list-group-item-heading">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="col-md-1"></div>
+                                                <div class="col-md-4">Request ID</div>
+                                                <div class="col-md-2">Document Type</span>
+                                                </div>
+                                                <div class="col-md-2">Email</div>
+                                                <div class="col-md-3"><span
+                                                        class="pull-right">Timestamp </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <script id="request_template" type="text/html">
-
-                                        <a href="extract.html?doctype=passport&resource=url&url=${files_list[0].pdf}"
+                                        <a href="extract.html?doctype=${files_list[0].document_type}&resource=url&url=${files_list[0].pdf}"
                                            class="list-group-item">
                                             <div class="row">
                                                 <div class="col-md-12">
-                                                    <div class="col-md-1"><span class="label label-sm label-success "><i class="fa fa-bell-o"></i></span></div>
+                                                    <div class="col-md-1"><span class="label label-sm  ${(status == 'PENDING') ? 'label-danger' : 'label-success'}"><i class="fa ${(status == 'PENDING') ? 'fa-clock-o' : 'fa-bell-o'}
+                                                                      "></i> </span></div>
                                                     <div class="col-md-4">${request_id}</div>
                                                     <div class="col-md-2"><span class="label label-sm label-success "> ${files_list[0].document_type}</span>
                                                     </div>
@@ -139,8 +153,6 @@
 
                                             </div>
                                         </a>
-
-
                                     </script>
                                 </div>
                             </div>
@@ -150,6 +162,7 @@
                 </div>
                 <!-- END PORTLET-->
             </div>
+            <div style="color: transparent">.</div>
             <!-- END PAGE BASE CONTENT -->
         </div>
         <!-- END CONTENT BODY -->
