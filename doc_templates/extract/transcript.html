@@ -1,20 +1,18 @@
 <form id="form_extract_transcript" class="horizontal-form" name="content" enctype='application/json'>
     <div class="form-body">
         <div class="row">
-            <div class="col-md-12">
-                <div class="form-group  ">
-                    <input type="text" class="form-control-static" name="full_name" id="full_name">
-
-                    <label for="form_extract_transcript">Full Name</label>
-                    <span class="help-block">eg: Ranasinghe Arachchilage Kasun Dhanushka Gayanath</span>
+                <div class="col-md-12">
+                    <div class="form-group form-md-line-input ">
+                        <input type="text" class="form-control" name="full_name" id="full_name">
+                        <label for="form_extract_transcript">Full Name</label>
+                        <span class="help-block">eg: Ranasinghe Arachchilage Kasun Dhanushka Gayanath</span>
+                    </div>
                 </div>
-            </div>
-
         </div>
         <div class="row">
             <div class="col-md-6">
-                <div class="form-group  ">
-                    <input type="text" class="form-control-static" name="registration_no" id="registration_no">
+                <div class="form-group form-md-line-input ">
+                    <input type="text" class="form-control" name="registration_no" id="registration_no">
                     <label for="form_extract_transcript">Registration No</label>
                     <span class="help-block">eg: 130876R</span>
                 </div>
@@ -22,15 +20,14 @@
         </div>
         <div class="row">
             <div class="col-md-6">
-                <div class="form-group  ">
-                    <input type="text" class="form-control-static" name="date_of_birth" id="date_of_birth">
-                    <label for="form_extract_transcript">Date Of Birth</label>
-                    <span class="help-block">eg: 13 June 1994</span>
+                <div class="form-group form-md-line-input form-md-label">
+                    <input type="text" class="form-control datePicker" name="date_of_birth" id="date_of_birth">
+                    <label for="form_extract_transcript">Date of Birth</label>
                 </div>
             </div>
             <div class="col-md-6">
-                <div class="form-group  ">
-                    <input type="text" class="form-control-static" name="gender" id="gender">
+                <div class="form-group form-md-line-input ">
+                    <input type="text" class="form-control" name="gender" id="gender">
                     <label for="form_extract_transcript">Gender</label>
                     <span class="help-block">eg: Male</span>
                 </div>
@@ -38,9 +35,8 @@
         </div>
         <div class="row">
             <div class="col-md-12">
-                <div class="form-group  ">
-                    <input type="text" class="form-control-static" name="degree_name" id="degree_name">
-
+                <div class="form-group form-md-line-input ">
+                    <input type="text" class="form-control" name="degree_name" id="degree_name">
                     <label for="form_extract_transcript">Degree Awarded</label>
                     <span class="help-block">eg: Honours Degree of Bachelor of the Science of Engineering</span>
                 </div>
@@ -49,8 +45,8 @@
         </div>
         <div class="row">
             <div class="col-md-12">
-                <div class="form-group  ">
-                    <input type="text" class="form-control-static" name="specialization_name" id="specialization_name">
+                <div class="form-group form-md-line-input ">
+                    <input type="text" class="form-control" name="specialization_name" id="specialization_name">
                     <label for="form_extract_transcript">Field of Specialization</label>
                     <span class="help-block">eg: Computer Science & Engineering</span>
                 </div>
@@ -58,8 +54,8 @@
         </div>
         <div class="row">
             <div class="col-md-6">
-                <div class="form-group  ">
-                    <input type="text" class="form-control-static" name="date_of_graduation" id="date_of_graduation">
+                <div class="form-group form-md-line-input form-md-label">
+                    <input type="text" class="form-control datePicker" name="date_of_graduation" id="date_of_graduation">
                     <label for="form_extract_transcript">Date Of Graduation</label>
                     <span class="help-block">eg: 01 May 2018</span>
                 </div>
@@ -67,24 +63,24 @@
         </div>
         <div class="row">
             <div class="col-md-6">
-                <div class="form-group  ">
-                    <input type="text" class="form-control-static" name="overall_gpa" id="overall_gpa">
+                <div class="form-group form-md-line-input form-md-label">
+                    <input type="text" class="form-control" name="overall_gpa" id="overall_gpa">
                     <label for="form_extract_transcript">Overall GPA</label>
                     <span class="help-block">eg: 3.67</span>
                 </div>
             </div>
             <div class="col-md-6">
-                <div class="form-group  ">
-                    <input type="text" class="form-control-static" name="academic_standing" id="academic_standing">
+                <div class="form-group form-md-line-input form-md-label">
+                    <input type="text" class="form-control" name="academic_standing" id="academic_standing">
                     <label for="form_extract_transcript">Academic Standing</label>
                     <span class="help-block">eg: First class</span>
                 </div>
             </div>
         </div>
         <div class="row">
-            <div class="col-md-12">
-                <div class="form-group  ">
-                    <input type="text" class="form-control-static" name="language" id="language">
+            <div class="col-md-6">
+                <div class="form-group form-md-line-input">
+                    <input type="text" class="form-control" name="language" id="language">
                     <label for="form_extract_transcript">Language</label>
                     <span class="help-block">eg: This course is conducted entirely in the English medium.</span>
                 </div>
@@ -92,14 +88,14 @@
         </div>
         <div class="row">
             <div class="col-md-6">
-                <div class="form-group  form-md-label">
-                    <input type="text" class="form-control-static datePicker" name="issued_date" id="issued_date">
+                <div class="form-group form-md-line-input">
+                    <input type="text" class="form-control datePicker" name="issued_date" id="issued_date">
                     <label for="form_extract_transcript">Issued Date</label>
                 </div>
             </div>
             <div class="col-md-6">
-                <div class="form-group  ">
-                    <input type="text" class="form-control-static" name="serial_number" id="serial_number">
+                <div class="form-group form-md-line-input ">
+                    <input type="text" class="form-control" name="serial_number" id="serial_number">
                     <label for="form_extract_transcript">Serial Number</label>
                     <span class="help-block">eg: 0134392</span>
                 </div>
@@ -107,184 +103,93 @@
         </div>
 
         <div class="row">
-            <div class="col-md-12">
-                <table class="table table-bordered table-condensed">
-                    <thead>
-                    <tr>
-                        <th><input type="text" class="form-control-static" name="s1_academic_year"
-                                   id="s1_academic_year" placeholder="eg: 2010/2011"></th>
-                        <th colspan="2"><input type="text" class="form-control-static" name="s1_semester_name"
-                                               id="s1_semester_name" placeholder="eg: Semester 1"></th>
-                        <th colspan="2"><input type="text" class="form-control-static" name="s1_duration"
-                                               id="s1_duration"
-                                               placeholder="eg: Aug 2010 - Dec 2010">
-                        </th>
-                    </tr>
-                    <tr>
-                        <th rowspan="2">Module Code</th>
-                        <th rowspan="2">Module Title</th>
-                        <th rowspan="2">Grade</th>
-                        <th colspan="2">Credits</th>
-                    </tr>
-                    <tr>
-                        <th>GPA</th>
-                        <th>Non-GPA</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-
-                    <tr>
-                        <td>
-                            <input type="text" class="form-control-static" name="s1_0_coursecode"
-                                   id="s1_0_coursecode" placeholder="eg: CE 1022">
-                        </td>
-                        <td>
-                            <input type="text" class="form-control-static" name="s1_0_coursename"
-                                   id="s1_0_coursename" placeholder="eg: Fluid Mechanics">
-                        </td>
-                        <td>
-                            <input type="text" class="form-control-static" name="s1_0_grade"
-                                   id="s1_0_grade" placeholder="eg: A-">
-                        </td>
-                        <td>
-                            <input type="text" class="form-control-static" name="s1_0_gpacredit"
-                                   id="s1_0_gpacredit" placeholder="eg: 2.0">
-                        </td>
-                        <td>
-                            <input type="text" class="form-control-static" name="s1_0_ngpacredit"
-                                   id="s1_0_ngpacredit" placeholder="eg: 1.5">
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>
-                            <input type="text" class="form-control-static" name="s1_1_coursecode"
-                                   id="s1_1_coursecode" placeholder="eg: CE 1022">
-                        </td>
-                        <td>
-                            <input type="text" class="form-control-static" name="s1_1_coursename"
-                                   id="s1_1_coursename" placeholder="eg: Fluid Mechanics">
-                        </td>
-                        <td>
-                            <input type="text" class="form-control-static" name="s1_1_grade"
-                                   id="s1_1_grade" placeholder="eg: A-">
-                        </td>
-                        <td>
-                            <input type="text" class="form-control-static" name="s1_1_gpacredit"
-                                   id="s1_1_gpacredit" placeholder="eg: 2.0">
-                        </td>
-                        <td>
-                            <input type="text" class="form-control-static" name="s1_1_ngpacredit"
-                                   id="s1_1_ngpacredit" placeholder="eg: 1.5">
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>
-                            <input type="text" class="form-control-static" name="s1_2_coursecode"
-                                   id="s1_2_coursecode" placeholder="eg: CE 1022">
-                        </td>
-                        <td>
-                            <input type="text" class="form-control-static" name="s1_2_coursename"
-                                   id="s1_2_coursename" placeholder="eg: Fluid Mechanics">
-                        </td>
-                        <td>
-                            <input type="text" class="form-control-static" name="s1_2_grade"
-                                   id="s1_2_grade" placeholder="eg: A-">
-                        </td>
-                        <td>
-                            <input type="text" class="form-control-static" name="s1_2_gpacredit"
-                                   id="s1_2_gpacredit" placeholder="eg: 2.0">
-                        </td>
-                        <td>
-                            <input type="text" class="form-control-static" name="s1_2_ngpacredit"
-                                   id="s1_2_ngpacredit" placeholder="eg: 1.5">
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>
-                            <input type="text" class="form-control-static" name="s1_3_coursecode"
-                                   id="s1_3_coursecode" placeholder="eg: CE 1022">
-                        </td>
-                        <td>
-                            <input type="text" class="form-control-static" name="s1_3_coursename"
-                                   id="s1_3_coursename" placeholder="eg: Fluid Mechanics">
-                        </td>
-                        <td>
-                            <input type="text" class="form-control-static" name="s1_3_grade"
-                                   id="s1_3_grade" placeholder="eg: A-">
-                        </td>
-                        <td>
-                            <input type="text" class="form-control-static" name="s1_3_gpacredit"
-                                   id="s1_3_gpacredit" placeholder="eg: 2.0">
-                        </td>
-                        <td>
-                            <input type="text" class="form-control-static" name="s1_3_ngpacredit"
-                                   id="s1_3_ngpacredit" placeholder="eg: 1.5">
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>
-                            <input type="text" class="form-control-static" name="s1_4_coursecode"
-                                   id="s1_4_coursecode" placeholder="eg: CE 1022">
-                        </td>
-                        <td>
-                            <input type="text" class="form-control-static" name="s1_4_coursename"
-                                   id="s1_4_coursename" placeholder="eg: Fluid Mechanics">
-                        </td>
-                        <td>
-                            <input type="text" class="form-control-static" name="s1_4_grade"
-                                   id="s1_4_grade" placeholder="eg: A-">
-                        </td>
-                        <td>
-                            <input type="text" class="form-control-static" name="s1_4_gpacredit"
-                                   id="s1_4_gpacredit" placeholder="eg: 2.0">
-                        </td>
-                        <td>
-                            <input type="text" class="form-control-static" name="s1_4_ngpacredit"
-                                   id="s1_4_ngpacredit" placeholder="eg: 1.5">
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>
-                            <input type="text" class="form-control-static" name="s1_5_coursecode"
-                                   id="s1_5_coursecode" placeholder="eg: CE 1022">
-                        </td>
-                        <td>
-                            <input type="text" class="form-control-static" name="s1_5_coursename"
-                                   id="s1_5_coursename" placeholder="eg: Fluid Mechanics">
-                        </td>
-                        <td>
-                            <input type="text" class="form-control-static" name="s1_5_grade"
-                                   id="s1_5_grade" placeholder="eg: A-">
-                        </td>
-                        <td>
-                            <input type="text" class="form-control-static" name="s1_5_gpacredit"
-                                   id="s1_5_gpacredit" placeholder="eg: 2.0">
-                        </td>
-                        <td>
-                            <input type="text" class="form-control-static" name="s1_5_ngpacredit"
-                                   id="s1_5_ngpacredit" placeholder="eg: 1.5">
-                        </td>
-                    </tr>
-
-                    </tbody>
-                </table>
-
+            <div class="portlet box grey">
+                <div class="portlet-title">
+                    <div class="caption">Semester Results </div>
+                    <div class="tools">
+                        <a href="javascript:;" class="collapse"> </a>
+                        <!--<a href="#portlet-config" data-toggle="modal" class="config"> </a>-->
+                        <!--<a href="javascript:;" class="reload"> </a>-->
+                        <!--<a href="javascript:;" class="remove"> </a>-->
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    <div class="table-responsive">
+                        <table class="table" style="width: 775px;">
+                            <thead>
+                            <tr>
+                                <th> <input type="text" class="form-control" name="s1_academic_year" id="s1_academic_year1" placeholder="eg: 2010/2011"> </th>
+                                <th colspan="2"> <input type="text" class="form-control" name="s1_semester_name" id="s1_semester_name1" placeholder="eg: Semester 1"> </th>
+                                <th colspan="2"> <input type="text" class="form-control" name="s1_duration" id="s1_duration1" placeholder="eg: Aug 2010 - Dec 2010"> </th>
+                            </tr>
+                            <tr>
+                                <th rowspan="2"> Module Code </th>
+                                <th rowspan="2" style="width: 300px;"> Module Title </th>
+                                <th rowspan="2" style="width: 80px"> Grade </th>
+                                <th colspan="2" style="width: 150px;text-align: center"> Credits </th>
+                            </tr>
+                            <tr>
+                                <th>GPA</th>
+                                <th>Non GPA</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td> <input type="text" class="form-control" name="s1_0_coursecode" id="s1_0_coursecode" placeholder="eg: CE 1022"> </td>
+                                <td> <input type="text" class="form-control" name="s1_0_coursename" id="s1_0_coursename" placeholder="eg: Fluid Mechanics"> </td>
+                                <td> <input type="text" class="form-control" name="s1_0_grade" id="s1_0_grade" placeholder="eg: A-"> </td>
+                                <td> <input type="text" class="form-control" name="s1_0_gpacredit" id="s1_0_gpacredit" placeholder="eg: 2.0"> </td>
+                                <td> <input type="text" class="form-control" name="s1_0_ngpacredit" id="s1_0_ngpacredit" placeholder="eg: 1.5"></td>
+                            </tr>
+                            <tr>
+                                <td> <input type="text" class="form-control" name="s1_0_coursecode" id="s1_1_coursecode" placeholder="eg: CE 1022"> </td>
+                                <td> <input type="text" class="form-control" name="s1_0_coursename" id="s1_1_coursename" placeholder="eg: Fluid Mechanics"> </td>
+                                <td> <input type="text" class="form-control" name="s1_0_grade" id="s1_1_grade" placeholder="eg: A-"> </td>
+                                <td> <input type="text" class="form-control" name="s1_0_gpacredit" id="s1_1_gpacredit" placeholder="eg: 2.0"> </td>
+                                <td> <input type="text" class="form-control" name="s1_0_ngpacredit" id="s1_1_ngpacredit" placeholder="eg: 1.5"></td>
+                            </tr>
+                            <tr>
+                                <td> <input type="text" class="form-control" name="s1_0_coursecode" id="s1_2_coursecode" placeholder="eg: CE 1022"> </td>
+                                <td> <input type="text" class="form-control" name="s1_0_coursename" id="s1_2_coursename" placeholder="eg: Fluid Mechanics"> </td>
+                                <td> <input type="text" class="form-control" name="s1_0_grade" id="s1_2_grade" placeholder="eg: A-"> </td>
+                                <td> <input type="text" class="form-control" name="s1_0_gpacredit" id="s1_2_gpacredit" placeholder="eg: 2.0"> </td>
+                                <td> <input type="text" class="form-control" name="s1_0_ngpacredit" id="s1_2_ngpacredit" placeholder="eg: 1.5"></td>
+                            </tr>
+                            <tr>
+                                <td> <input type="text" class="form-control" name="s1_0_coursecode" id="s1_3_coursecode" placeholder="eg: CE 1022"> </td>
+                                <td> <input type="text" class="form-control" name="s1_0_coursename" id="s1_3_coursename" placeholder="eg: Fluid Mechanics"> </td>
+                                <td> <input type="text" class="form-control" name="s1_0_grade" id="s1_3_grade" placeholder="eg: A-"> </td>
+                                <td> <input type="text" class="form-control" name="s1_0_gpacredit" id="s1_3_gpacredit" placeholder="eg: 2.0"> </td>
+                                <td> <input type="text" class="form-control" name="s1_0_ngpacredit" id="s1_3_ngpacredit" placeholder="eg: 1.5"></td>
+                            </tr>
+                            <tr>
+                                <td> <input type="text" class="form-control" name="s1_0_coursecode" id="s1_4_coursecode" placeholder="eg: CE 1022"> </td>
+                                <td> <input type="text" class="form-control" name="s1_0_coursename" id="s1_4_coursename" placeholder="eg: Fluid Mechanics"> </td>
+                                <td> <input type="text" class="form-control" name="s1_0_grade" id="s1_4_grade" placeholder="eg: A-"> </td>
+                                <td> <input type="text" class="form-control" name="s1_0_gpacredit" id="s1_4_gpacredit" placeholder="eg: 2.0"> </td>
+                                <td> <input type="text" class="form-control" name="s1_0_ngpacredit" id="s1_4_ngpacredit" placeholder="eg: 1.5"></td>
+                            </tr>
+                            <tr>
+                                <td> <input type="text" class="form-control" name="s1_0_coursecode" id="s1_5_coursecode" placeholder="eg: CE 1022"> </td>
+                                <td> <input type="text" class="form-control" name="s1_0_coursename" id="s1_5_coursename" placeholder="eg: Fluid Mechanics"> </td>
+                                <td> <input type="text" class="form-control" name="s1_0_grade" id="s1_5_grade" placeholder="eg: A-"> </td>
+                                <td> <input type="text" class="form-control" name="s1_0_gpacredit" id="s1_5_gpacredit" placeholder="eg: 2.0"> </td>
+                                <td> <input type="text" class="form-control" name="s1_0_ngpacredit" id="s1_5_ngpacredit" placeholder="eg: 1.5"></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
-
         </div>
+
         <div class="row">
             <div class="col-md-12">
-                <div class="form-group  form-md-label">
-                    <select class="form-control-static" name="s1_deans_list" id="s1_deans_list">
+                <div class="form-group form-md-line-input ">
+                    <select class="form-control" name="s1_deans_list" id="s1_deans_list">
                         <option selected>Not Included in the Dean's List for the Semester</option>
                         <option>Included in the Dean's List for the Semester</option>
                     </select>
-                    <!--<label for="form_extract_transcript">Dean's List</label>-->
                 </div>
             </div>
         </div>
