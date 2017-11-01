@@ -80,49 +80,94 @@
                 <div class="portlet light portlet-fit">
                     <div class="portlet-title ">
                         <div class="caption">
-                            <i class="icon-globe font-dark hide"></i>
-                            <span class="caption-subject font-dark ">View Requests</span>
+                            <i class="icon-list font-green-haze"></i>
+                            <span class="caption-subject font-green bold uppercase">View Requests</span>
                         </div>
-
                     </div>
-                    <div class="portlet-body">
-                        <!--BEGIN PORTLET-BODY-->
-                        <div class="scroller" style="height: 290px;" data-always-visible="1" data-rail-visible1="1">
-                            <ul class="feeds">
-                                <li id="request_list">
+                    <!--<div class="portlet-body">-->
+                        <!--&lt;!&ndash;BEGIN PORTLET-BODY&ndash;&gt;-->
+                        <!--<div class="scroller" style="height: 290px;" data-always-visible="1" data-rail-visible1="1">-->
+                            <!--<ul class="feeds">-->
+                                <!--<li id="request_list">-->
 
-                            <script id="request_template" type="text/html">
-                                <a href="view.html?type=auto&request_id=${request_id}">
-                                    <div class="col1">
-                                        <div class="cont">
-                                            <div class="cont-col1">
-                                                <div class="label label-sm label-success">
-                                                    <i class="fa fa-bell-o"></i>
+                            <!--<script id="request_template" type="text/html">-->
+                                <!--<a href="view.html?type=auto&request_id=${request_id}">-->
+                                    <!--<div class="col1">-->
+                                        <!--<div class="cont">-->
+                                            <!--<div class="cont-col1">-->
+                                                <!--<div class="label label-sm label-success">-->
+                                                    <!--<i class="fa fa-bell-o"></i>-->
+                                                <!--</div>-->
+                                            <!--</div>-->
+                                            <!--<div class="cont-col2">-->
+                                                <!--<div class="desc"> ${request_id}-->
+                                                    <!--<span class="label label-sm label-warning "> ${email}</span>-->
+                                                    <!--{{each files_list}}-->
+                                                    <!--<span class="label label-sm label-info "> ${files_list[$index].document_type} </span>-->
+                                                    <!--{{/each}}-->
+                                                <!--</div>-->
+                                            <!--</div>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                    <!--<div class="col2">-->
+                                        <!--<div class="desc"> ${timestamp}</div>-->
+                                    <!--</div>-->
+                                <!--</a>-->
+                            <!--</script>-->
+
+
+                                <!--</li>-->
+                            <!--</ul>-->
+                        <!--</div>-->
+
+                        <!--&lt;!&ndash;END PORTLET-BODY&ndash;&gt;-->
+                    <!--</div>-->
+                    <div class="portlet-body">
+                        <div>
+                            <div class="panel-body" id="request_list">
+                                <div class="list-group">
+                                    <div class="list-group-item-heading">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="col-md-1"></div>
+                                                <div class="col-md-4">Request ID</div>
+                                                <div class="col-md-2">Document Type</span>
                                                 </div>
-                                            </div>
-                                            <div class="cont-col2">
-                                                <div class="desc"> ${request_id}
-                                                    <span class="label label-sm label-warning "> ${email}</span>
-                                                    {{each files_list}}
-                                                    <span class="label label-sm label-info "> ${files_list[$index].document_type} </span>
-                                                    {{/each}}
+                                                <div class="col-md-2">Email</div>
+                                                <div class="col-md-3"><span
+                                                        class="pull-right">Timestamp </span>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col2">
-                                        <div class="desc"> ${timestamp}</div>
-                                    </div>
-                                </a>
-                            </script>
+                                    <script id="request_template" type="text/html">
+                                        <a href="view.html?type=auto&request_id=${request_id}"
+                                           class="list-group-item">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="col-md-1"><span class="label label-sm  ${(status == 'PENDING') ? 'label-danger' : 'label-success'}"><i class="fa ${(status == 'PENDING') ? 'fa-clock-o' : 'fa-check'}
+                                                                      "></i> </span></div>
+                                                    <div class="col-md-4">${request_id}</div>
+                                                    <div class="col-md-2">
+                                                        {{each files_list}}
+                                                        <span class="label label-sm label-info"> ${files_list[$index].document_type} </span>
+                                                        {{/each}}
+                                                    </div>
+                                                    <div class="col-md-2"><span class="text-info"> ${email}</span></div>
+                                                    <div class="col-md-3"><span
+                                                            class="pull-right text-muted small"> <em>${timestamp}</em>  </span>
+                                                    </div>
+                                                </div>
 
-
-                                </li>
-                            </ul>
+                                            </div>
+                                        </a>
+                                    </script>
+                                </div>
+                            </div>
                         </div>
-
                         <!--END PORTLET-BODY-->
                     </div>
+
                 </div>
                 <!-- END PORTLET-->
             </div>
