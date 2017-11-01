@@ -75,40 +75,31 @@
                             <div class="portlet-title">
                                 <div class="caption font-green-haze">
                                     <i class="icon-user font-green-haze"></i>
-                                    <span class="caption-subject font-green bold uppercase"> Basic Details
-                                                                       </span>
+                                    <span class="caption-subject font-green bold uppercase">Basic Details</span>
                                 </div>
                             </div>
                             <div class="portlet-body form">
-                                <form role="form" id="basic_details">
+                                <form class="form-horizontal" id="basic-form" enctype="multipart/form-data" role="form">
                                     <div class="form-body">
                                         <div class="form-group form-md-line-input">
-                                            <label for="basic_details"
-                                                   class="col-md-2 control-label">Organization </label>
-                                            <div class="col-md-4">
-                                                <input type="text" class="form-control" id="organization"
-                                                       placeholder="Organization">
-                                                <div class="form-control-focus"></div>
+                                            <label class="col-md-3 control-label">Organization</label>
+                                            <div class="col-md-6">
+                                                <input type="email" class="form-control" id="organization" name="organization">
+                                                <div class="form-control-focus"> </div>
                                             </div>
                                         </div>
-
                                         <div class="form-group form-md-line-input">
-                                            <label for="basic_details"
-                                                   class="col-md-2 control-label">Email</label>
-                                            <div class="col-md-4">
-                                                <input type="email" class="form-control" id="email"
-                                                       placeholder="Email">
-                                                <div class="form-control-focus"></div>
+                                            <label class="col-md-3 control-label">Email</label>
+                                            <div class="col-md-6">
+                                                <input type="email" class="form-control" id="email" name="email">
+                                                <div class="form-control-focus"> </div>
                                             </div>
                                         </div>
-
                                         <div class="form-group form-md-line-input">
-                                            <label for="basic_details"
-                                                   class="col-md-2 control-label">Web URL</label>
-                                            <div class="col-md-4">
-                                                <input type="text" class="form-control" id="web"
-                                                       placeholder="http://example.com/validator">
-                                                <div class="form-control-focus"></div>
+                                            <label class="col-md-3 control-label">Web URL</label>
+                                            <div class="col-md-6">
+                                                <input type="text" class="form-control" id="web" name="web" placeholder="http://example.com/extractor">
+                                                <div class="form-control-focus"> </div>
                                                 <span class="help-block">Define the URL of your web service</span>
                                             </div>
                                         </div>
@@ -129,83 +120,71 @@
                         <!-- BEGIN SIGN FORM PORTLET-->
                         <div class="portlet light  portlet-form">
                             <div class="portlet-title">
-                                <div class="caption font-green-haze">
-                                    <i class="icon-badge font-green-haze"></i>
-                                    <span class="caption-subject font-green bold uppercase"> Digital Signature Certificates </span>
+                                <div class="caption">
+                                    <i class="icon-briefcase font-green-haze"></i>
+                                    <span class="caption-subject font-green bold uppercase">Digital Signature Certificates</span>
                                 </div>
                             </div>
-                            <!--<div class="portlet-title">-->
-                            <!--<div class="caption">-->
-                            <!--<i class="icon-settings"></i>-->
-                            <!--<span class="caption-subject bold uppercase"> Digital Signature Certificates</span>-->
-                            <!--</div>-->
-                            <!--</div>-->
                             <div class="portlet-body form">
-                                <form role="form" id="sign-certs-form" enctype="multipart/form-data">
+                                <form class="form-horizontal" id="certificate-form" enctype="multipart/form-data" role="form">
                                     <div class="form-body">
-
                                         <div class="form-group">
-                                            <label class="control-label col-md-2">Public Certificate File <span
+                                            <label class="control-label col-md-3 font-grey-cascade">Public Certificate File <span
                                                     data-toggle="tooltip"
                                                     title="Upload your public certificate to the server">
                                                         <i class="icon-question"></i> </span></label>
-                                            <div class="col-md-4">
+                                            <div class="col-md-3">
                                                 <div class="fileinput fileinput-new" data-provides="fileinput">
-                                                        <span class="btn green btn-file">
-                                                            <span class="fileinput-new"> File </span>
-                                                            <span class="fileinput-exists"> Change </span>
-                                                            <input type="file" name="pubCert" id="CertFileInput"
-                                                            >
-                                                        </span>
-                                                    <span class="fileinput-filename"> </span> &nbsp;
-                                                    <a href="javascript:;" class="close fileinput-exists"
-                                                       data-dismiss="fileinput"> </a>
-
+                                                    <div class="input-group input-large">
+                                                        <div class="form-control uneditable-input input-fixed input-medium"
+                                                             data-trigger="fileinput">
+                                                            <i class="fa fa-file fileinput-exists"></i>&nbsp;
+                                                            <span class="fileinput-filename"> </span>
+                                                        </div>
+                                                        <span class="input-group-addon btn default btn-file">
+                                                                <span class="fileinput-new"> Select file </span>
+                                                                <span class="fileinput-exists"> Change </span>
+                                                                <input type="file" id="CertFileInput" onchange=loadContent()> </span>
+                                                        <a href="javascript:;"
+                                                           class="input-group-addon btn red fileinput-exists"
+                                                           data-dismiss="fileinput"> Remove </a>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <p></p>
-                                            </div>
-
-                                        </div>
-
                                         <div class="form-group">
-                                            <label class="control-label col-md-2">Private Key File <span
+                                            <label class="control-label col-md-3 font-grey-cascade">Private Key File <span
                                                     data-toggle="tooltip"
                                                     title="Upload your private certificate to the server">
                                                         <i class="icon-question"></i> </span></label>
                                             <div class="col-md-4">
                                                 <div class="fileinput fileinput-new" data-provides="fileinput">
-                                                        <span class="btn green btn-file">
-                                                            <span class="fileinput-new"> File </span>
-                                                            <span class="fileinput-exists"> Change </span>
-                                                            <input type="file" name="pvtCert" id="PvtFileInput"
-                                                            >
-                                                        </span>
-                                                    <span class="fileinput-filename"> </span> &nbsp;
-                                                    <a href="javascript:;" class="close fileinput-exists"
-                                                       data-dismiss="fileinput"> </a>
-
+                                                    <div class="input-group input-large">
+                                                        <div class="form-control uneditable-input input-fixed input-medium"
+                                                             data-trigger="fileinput">
+                                                            <i class="fa fa-file fileinput-exists"></i>&nbsp;
+                                                            <span class="fileinput-filename"> </span>
+                                                        </div>
+                                                        <span class="input-group-addon btn default btn-file">
+                                                                <span class="fileinput-new"> Select file </span>
+                                                                <span class="fileinput-exists"> Change </span>
+                                                                <input type="file" id="PvtFileInput" onchange=loadContent()> </span>
+                                                        <a href="javascript:;"
+                                                           class="input-group-addon btn red fileinput-exists"
+                                                           data-dismiss="fileinput"> Remove </a>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="form-group form-md-line-input">
-                                            <label for="certificate_pass"
-                                                   class="col-md-2 control-label">Password</label>
-                                            <div class="col-md-4">
+                                            <div class="col-md-2">
                                                 <input type="password" class="form-control" id="certificate_pass"
-                                                       placeholder="Password">
+                                                       placeholder="Password of pvt key">
                                                 <div class="form-control-focus"></div>
-                                                <span class="help-block">Enter the password of the private certificate</span>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="form-actions right">
                                         <button type="reset" class="btn default">Reset</button>
-                                        <button type="submit" class="btn green">Save
+                                        <button type="button" class="btn green" onclick="saveSignedPassport();">Save
                                         </button>
                                     </div>
                                 </form>
