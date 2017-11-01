@@ -13,7 +13,13 @@ const url = require('url')
 
 function createWindow () {
   // Create the browser window.
-  mainWindow = new BrowserWindow({width: 800, height: 600})
+  mainWindow = new BrowserWindow({
+      width: 800,
+      height: 600,
+      title: 'IDStack',
+      //backgroundColor: '#002b36',
+      icon: 'assets/logo-mini.png'
+  })
   mainWindow.maximize();
 
   // //clear all the cache

@@ -55,12 +55,12 @@
             <div class="page-head">
                 <!-- BEGIN PAGE TITLE -->
                 <div class="page-title">
-                    <h1>Extractor Dashboard
+                    <h1>Validator Dashboard
 
                         <div style="float: right;">
                             <a class="btn btn-circle btn-default" href="select-template.html">
-                                <i class="icon-magnet"></i>
-                                Extract Manually
+                                <i class="icon-check"></i>
+                                Validate Manually
                             </a>
                             <a class="btn btn-circle btn-icon-only tooltips btn-default" href="configuration.html"
                                data-container="body" data-placement="left" data-html="true"
@@ -81,11 +81,11 @@
                     <div class="portlet-title">
                         <div class="caption">
                             <i class="icon-list font-green-haze"></i>
-                            <span class="caption-subject font-green bold uppercase">Extract Requests</span>
+                            <span class="caption-subject font-green bold uppercase">Validate Requests</span>
                         </div>
                     </div>
                     <div class="portlet-body">
-                        <div>
+                        <div >
                             <div class="panel-body" id="request_list">
                                 <div class="list-group">
                                     <div class="list-group-item-heading">
@@ -103,7 +103,7 @@
                                         </div>
                                     </div>
                                     <script id="request_template" type="text/html">
-                                        <a href="extract.html?doctype=${files_list[0].document_type}&resource=url&url=${files_list[0].pdf}"
+                                        <a href="validate.html?doctype=${files_list[0].document_type}&resource=url&url=${files_list[0].pdf}"
                                            class="list-group-item">
                                             <div class="row">
                                                 <div class="col-md-12">
