@@ -245,6 +245,8 @@
             $('#email').val(response.email);
             $('#web').val(response.web);
 
+        }).fail(function () {
+            toastr.warning("Can't access get Basic Details api");
         });
     }
     
@@ -269,6 +271,9 @@
 
         $.ajax(settings).done(function (response) {
             console.log(response);
+            toastr.info("Basic details added successfully!");
+        }).fail(function () {
+            toastr.warning("Can't access get basic details api");
         });
     }
 
@@ -292,9 +297,11 @@
                 console.log("success")
                 console.log(data);
                 console.log(status);
+                toastr.warning("Public certificate saved successfully ");
             },
             complete: function () {
                 console.log("completed")
+                toastr.warning("Can't access save public certificate api");
             }
         });
 
@@ -315,9 +322,11 @@
                 console.log("success")
                 console.log(data);
                 console.log(status);
+                toastr.warning("Private certificate saved successfully ");
             },
             complete: function () {
                 console.log("completed")
+                toastr.warning("Can't access save private certificate api");
             }
         });
 
