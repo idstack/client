@@ -73,9 +73,6 @@
                             <li class="active">
                                 <a href="#tab_0" data-toggle="tab" id="tab_template"> </a>
                             </li>
-
-
-
                         </ul>
                         <div class="tab-content">
                             <div class="tab-pane active" id="tab_0">
@@ -83,18 +80,13 @@
                                     <div class="portlet-body">
                                         <!-- BEGIN CONTENT FORM-->
                                         <div id="form_template"></div>
-
                                         <!-- END CONTENT FORM-->
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-
-
-
                 </div>
-
                 <div class="col-md-6" >
                     <!--<iframe class="col-md-6" src="assets/global/plugins/pdfjs/web/viewer.html?file=../../../../../doc_templates/temp-passport.pdf" style="width:620px; height:500px;" allowfullscreen frameborder="0">-->
                         <!--This browser does not support PDFs. Please download the PDF to view it: <a href="http://www.orimi.com/pdf-test.pdf">Download PDF</a>-->
@@ -132,7 +124,8 @@
     var docType;
     var formObject ;
     var varProperties;
-    var pdfUrl;
+    var signedPdfUrl;
+    var signedMdf;
 
     $(function(){
         App.startPageLoading({
@@ -241,10 +234,7 @@
         console.log("Enter a valid url or file for resource pdf");
         $("#pdf_viewer").append("Enter a valid url or file for resource pdf");
     }
-    
-    function downloadPdf() {
-        window.open(pdfUrl, '_blank');
-    }
+
     
     //Web service calls
     function getExtract() {
@@ -271,8 +261,10 @@
         $.ajax(settings).done(function (response) {
             console.log(response);
             response = JSON.parse(response);
-            pdfUrl = response.pdf;
-            saveJsonFile(response.json);
+            signedPdfUrl = response.pdf;
+            signedMdf = response.json;
+            $("#pdfDownloadBtn").removeClass("display-hide");
+            $("#mrfDownloadBtn").removeClass("display-hide");
         }).fail( function (response) {
             console.log("Can't access wep api");
         });
@@ -304,6 +296,21 @@
             formObject.loadJSON(response);
             App.stopPageLoading();
         });
+    }
+
+    function saveJsonFile(json_doc) {
+        json_doc = JSON.stringify(json_doc, null, 4);
+        var file = new File([json_doc], "IDStack-extracted-doc.json", {type: "text/json;charset=utf-8"});
+        saveAs(file);
+    }
+
+    function downloadPdf() {
+        console.log(signedPdfUrl);
+        window.open(signedPdfUrl, '_blank');
+    }
+
+    function downloadMrf() {
+        saveJsonFile(signedMdf);
     }
     
 
