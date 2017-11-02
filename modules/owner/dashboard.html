@@ -28,7 +28,7 @@
     <link href="../../assets/global/plugins/dropzone/dropzone.min.css" rel="stylesheet" type="text/css"/>
     <link href="../../assets/global/plugins/dropzone/basic.min.css" rel="stylesheet" type="text/css"/>
     <link href="../../assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.css" rel="stylesheet" type="text/css"/>
-
+    <link href="../../assets/global/plugins/bootstrap-toastr/toastr.min.css" rel="stylesheet" type="text/css" />
     <!-- END PAGE LEVEL PLUGINS -->
     <!-- BEGIN THEME GLOBAL STYLES -->
     <link href="../../assets/global/css/components-md.min.css" rel="stylesheet" id="style_components" type="text/css"/>
@@ -136,7 +136,7 @@
                                     </div>
                                     <div class="form-actions right">
                                         <button type="reset" class="btn default">Cancel</button>
-                                        <button type="submit" class="btn green" onclick="saveSignedPassport();">Send<i class="fa fa-check"></i>
+                                        <button type="submit" class="btn green" >Send<i class="fa fa-check"></i>
                                         </button>
                                     </div>
                                 </form>
@@ -435,11 +435,8 @@
     $("form#extract-form").submit(function () {
         var formData = new FormData($("#extract-form")[0]);
         $.ajax({
-            url: formData.get("url") + "/api-extractor/" + varProperties.extractor.apiVersion + "/extract",
+            url: formData.get("url") + "/api-extractor/v1/extract",
             data: formData,
-            headers: {
-                authorization: "Basic YWRtaW46MTIz"
-            },
             async: true,
             crossDomain: true,
             type: 'POST',
@@ -447,9 +444,14 @@
             processData: false, // NEEDED, DON'T OMIT THIS
             success: function (data, status) {
                 console.log(data);
+                toastr.success("Document successfully send to extractor!!");
             },
-            complete: function () {
-                console.log("completed");
+            error: function(jqXHR,error, errorThrown) {
+                if(jqXHR.status&&jqXHR.status==400){
+                    toastr.error(jqXHR.responseText);
+                }else{
+                    toastr.error("Something went wrong");
+                }
             }
         });
 
@@ -458,11 +460,8 @@
     $("form#validate-form").submit(function () {
         var formData = new FormData($("#validate-form")[0]);
         $.ajax({
-            url: formData.get("url") + "/api-validator/" + varProperties.validator.apiVersion + "/sign",
+            url: formData.get("url") + "/api-validator/v1/sign",
             data: formData,
-            headers: {
-                authorization: "Basic YWRtaW46MTIz"
-            },
             async: true,
             crossDomain: true,
             type: 'POST',
@@ -470,9 +469,14 @@
             processData: false, // NEEDED, DON'T OMIT THIS
             success: function (data, status) {
                 console.log(data);
+                toastr.success("Document successfully send to validator!!");
             },
-            complete: function () {
-                console.log("completed");
+            error: function(jqXHR,errorStatus, errorThrown) {
+                if(jqXHR.status&&jqXHR.status==400){
+                    toastr.error(jqXHR.responseText);
+                }else{
+                    toastr.error("Something went wrong");
+                }
             }
         });
 
@@ -514,11 +518,8 @@
         var formData = new FormData($("#evaluate-form")[0]);
         formData.set("json", JSON.stringify(evalJSONText));
         $.ajax({
-            url: formData.get("url") + "/api-relyingparty/" + varProperties.relyingparty.apiVersion + "/evaluate",
+            url: formData.get("url") + "/api-relyingparty/v1/evaluate",
             data: formData,
-            headers: {
-                authorization: "Basic YWRtaW46MTIz"
-            },
             async: true,
             crossDomain: true,
             type: 'POST',
@@ -526,9 +527,14 @@
             processData: false, // NEEDED, DON'T OMIT THIS
             success: function (data, status) {
                 console.log(data);
+                toastr.success("Document successfully send to relying party!!");
             },
-            complete: function () {
-                console.log("completed");
+            error: function(jqXHR,error, errorThrown) {
+                if(jqXHR.status&&jqXHR.status==400){
+                    toastr.error(jqXHR.responseText);
+                }else{
+                    toastr.error("Something went wrong");
+                }
             }
         });
 
