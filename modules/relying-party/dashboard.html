@@ -55,7 +55,7 @@
             <div class="page-head">
                 <!-- BEGIN PAGE TITLE -->
                 <div class="page-title">
-                    <h1>Relying party Dashboard
+                    <h1>Relying Party Dashboard
 
                         <div style="float: right;">
                             <a class="btn btn-circle btn-default" href="view.html?type=manual">
@@ -216,8 +216,12 @@
         $.ajax(settings).done(function (response) {
             console.log(response);
             $("#request_template").tmpl(response.document_store).appendTo("#request_list");
-        }).fail(function () {
-            toastr.warning("Can't access request list api");
+        }).fail(function (jqXHR, errorStatus, errorThrown) {
+            if (jqXHR.status && jqXHR.status == 400) {
+                toastr.error(jqXHR.responseText);
+            } else {
+                toastr.error("Something went wrong");
+            }
         });
     }
 

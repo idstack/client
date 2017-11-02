@@ -153,9 +153,7 @@
         docType= getUrlParameter("doctype");
         if (docType || 0 !== docType.length) {
             $("#tab_template").append(stringBeautify(docType));
-
             $("#form_template").load("../../doc_templates/extract/" + docType + ".html");
-
 
             setTimeout(function () {
                 getParseDoc();
@@ -288,10 +286,10 @@
         var settings = {
             "async": true,
             "crossDomain": true,
-            "url": "http://139.59.74.146:8080/api-extractor/v1/8742b79d-08d7-4e1b-a4ce-27b4817348a1/docparse",
+            "url": "http://"+varProperties.extractor.host+"/api-extractor/"+varProperties.extractor.apiVersion+"/"+varProperties.extractor.apiKey+"/docparse/",
             "method": "POST",
             "headers": {
-                "authorization": "Basic YWRtaW46MTIz"
+                "authorization": "Basic "+ btoa(varProperties.extractor.userName + ":" + varProperties.extractor.password)
             },
             "processData": false,
             "contentType": false,
@@ -303,10 +301,8 @@
             response = JSON.parse(response);
             console.log(response);
             formObject = $("form#form_extract_" + docType);
-            console.log("form#form_extract_" + docType);
             formObject.loadJSON(response);
             App.stopPageLoading();
-
         });
     }
     
