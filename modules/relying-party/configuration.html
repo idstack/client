@@ -194,8 +194,12 @@
             $('#port').val(response.port);
             $('#designation').val(response.designation);
             $('#name').val(response.name);
-        }).fail(function () {
-            toastr.warning("Can't access basic details api");
+        }).fail(function (jqXHR, errorStatus, errorThrown) {
+            if (jqXHR.status && jqXHR.status == 400) {
+                toastr.error(jqXHR.responseText);
+            } else {
+                toastr.error("Something went wrong");
+            }
         });
     }
     
@@ -223,7 +227,7 @@
 
         $.ajax(settings).done(function (response) {
             console.log(response);
-            toastr.info("Basic details added successfully!");
+            toastr.success("Basic details added successfully!");
         }).fail(function (jqXHR, errorStatus, errorThrown) {
             if (jqXHR.status && jqXHR.status == 400) {
                 toastr.error(jqXHR.responseText);
