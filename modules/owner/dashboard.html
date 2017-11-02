@@ -232,6 +232,7 @@
                                         </div>
                                     </div>
                                     <div class="form-actions right">
+                                        <button id="downloadBtn" type="button" class="btn green display-hide" onclick="downloadPdf()">Download signed PDF <i class="fa fa-download"></i></button>
                                         <button type="reset" class="btn default">Cancel</button>
                                         <button type="submit" class="btn green">Send<i class="fa fa-check"></i>
                                         </button>
@@ -380,6 +381,7 @@
 <script>
     $(document).ready(function () {
         var varProperties;
+        var signedPdfUrl;
 
         $("#header").load("../../layout/header.html");
         $("#sidebar").load("../../layout/sidebar.html");
@@ -451,7 +453,15 @@
             processData: false, // NEEDED, DON'T OMIT THIS
             success: function (data, status) {
                 console.log(data);
-                toastr.success("Document sent to validator successfully!");
+                if ("json" in data) {
+                    saveJsonFile(data.json);
+                    signedPdfUrl = data.pdf;
+                    $("#downloadBtn").removeClass("display-hide");
+                    toastr.success("Document successfully validated and sent back!");
+                }
+                else {
+                    toastr.warning(data.status);
+                }
             },
             error: function (jqXHR, errorStatus, errorThrown) {
                 if (jqXHR.status && jqXHR.status == 400) {
@@ -528,6 +538,18 @@
 
         return false;
     });
+
+    function saveJsonFile(json_doc) {
+        json_doc = JSON.stringify(json_doc, null, 4);
+        var file = new File([json_doc], "IDStack-extracted-doc.json", {type: "text/json;charset=utf-8"});
+        saveAs(file);
+    }
+
+    function downloadPdf() {
+        console.log(signedPdfUrl);
+        window.open(signedPdfUrl, '_blank');
+    }
+
 </script>
 
 <script src="../../assets/global/plugins/respond.min.js"></script>
@@ -554,7 +576,7 @@
 <script src="../../assets/global/plugins/jquery-file-upload/js/jquery.iframe-transport.js"
         type="text/javascript"></script>
 <script src="../../assets/global/plugins/bootstrap-toastr/toastr.min.js" type="text/javascript"></script>
-
+<script type="text/javascript" src="../../assets/global/plugins/filesaverjs/filesaver.min.js"></script>
 <script src="../../assets/global/plugins/dropzone/dropzone.min.js" type="text/javascript"></script>
 <!-- END PAGE LEVEL PLUGINS -->
 <!-- BEGIN THEME GLOBAL SCRIPTS -->
