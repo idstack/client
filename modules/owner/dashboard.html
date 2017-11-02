@@ -286,7 +286,7 @@
                                             <div class="form-group form-md-line-input ">
                                                 <label class="control-label col-md-3">Document Type</label>
                                                 <div class="col-md-6">
-                                                    <select class="form-control" name="doc_type_1">
+                                                    <select class="form-control eval-doc-type" name="doc_type_1">
                                                         <option selected value="passport">Passport</option>
                                                         <option value="university_id">University ID</option>
                                                         <option value="transcript">University Transcript</option>
@@ -307,7 +307,7 @@
                                                             <span class="input-group-addon btn default btn-file">
                                                                 <span class="fileinput-new"> Select file </span>
                                                                 <span class="fileinput-exists"> Change </span>
-                                                                <input type="file" id="evalJSONInput1"> </span>
+                                                                <input class="eval-input-json" type="file" id="evalJSONInput1"> </span>
                                                             <a href="javascript:;"
                                                                class="input-group-addon btn red fileinput-exists"
                                                                data-dismiss="fileinput"> Remove </a>
@@ -496,7 +496,7 @@
         var newGroup = $("#evaluate-pdf-template").clone().attr("id", "");
         newGroup.find("input.eval-input").attr("name", pdfCount);
         newGroup.find("select.eval-doc-type").attr("name", "doc_type_" + pdfCount);
-        var me = newGroup.find("input.eval-input-json").attr("id", "evalJSONInput" + pdfCount);
+        var me = newGroup.find("input.eval-input-json").attr("id", "evalJSONInput" + (pdfCount+1));
         me.change(function () {
             var file = $(this)[0].files[0];
             var fr = new FileReader(); // FileReader instance
