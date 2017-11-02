@@ -156,10 +156,9 @@
 
             $("#form_template").load("../../doc_templates/extract/" + docType + ".html");
 
+
             setTimeout(function () {
-                formObject = $("form#form_extract_" + docType);
-                formObject.loadJSON(response);
-                App.stopPageLoading();
+                getParseDoc();
             }, 1000);
         }
         else {
@@ -274,13 +273,43 @@
         $.ajax(settings).done(function (response) {
             console.log(response);
             response = JSON.parse(response);
-            pdfUrl =response.pdf;
+            pdfUrl = response.pdf;
             saveJsonFile(response.json);
         }).fail( function (response) {
             console.log("Can't access wep api");
         });
 
     }
+    function getParseDoc() {
+        var form = new FormData();
+        form.append("pdf", url);
+        form.append("doc_type", docType);
+
+        var settings = {
+            "async": true,
+            "crossDomain": true,
+            "url": "http://139.59.74.146:8080/api-extractor/v1/8742b79d-08d7-4e1b-a4ce-27b4817348a1/docparse",
+            "method": "POST",
+            "headers": {
+                "authorization": "Basic YWRtaW46MTIz"
+            },
+            "processData": false,
+            "contentType": false,
+            "mimeType": "multipart/form-data",
+            "data": form
+        }
+
+        $.ajax(settings).done(function (response) {
+            response = JSON.parse(response);
+            console.log(response);
+            formObject = $("form#form_extract_" + docType);
+            console.log("form#form_extract_" + docType);
+            formObject.loadJSON(response);
+            App.stopPageLoading();
+
+        });
+    }
+    
 
 </script>
 
@@ -310,7 +339,6 @@
 <!-- END THEME GLOBAL SCRIPTS -->
 <!-- BEGIN PAGE LEVEL SCRIPTS -->
 <script src="../../doc_templates/json/idstack-passport.js" type="text/javascript"></script>
-<script src="../../doc_templates/json/dummy-docparser-response.js" type="text/javascript"></script>
 <script src="../../assets/custom/scripts/url-paser.js" type="text/javascript" ></script>
 <script src="../../assets/custom/scripts/string-beautify.js" type="text/javascript" ></script>
 <!-- END PAGE LEVEL SCRIPTS -->
