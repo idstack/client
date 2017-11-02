@@ -128,6 +128,7 @@
 
 <script>
     var url ;
+    var request_id;
     var docType;
     var formObject ;
     var varProperties;
@@ -148,6 +149,7 @@
             varProperties = json;
         });
         url = getUrlParameter("url");
+        request_id = getUrlParameter("request_id");
         docType= getUrlParameter("doctype");
         if (docType || 0 !== docType.length) {
             $("#tab_template").append(stringBeautify(docType));
@@ -253,6 +255,7 @@
         var json = extractContent();
         form.append("json", JSON.stringify(json,0,4));
         form.append("pdf", url);
+        form.append("request_id", request_id);
 
         var settings = {
             "async": true,
