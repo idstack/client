@@ -103,7 +103,7 @@
                                         </div>
                                         <div class="form-actions right">
                                             <button type="reset" class="btn default">Reset</button>
-                                            <button type="button" class="btn green" onclick="setBasicDetails();">Save
+                                            <button type="submit" class="btn green">Save
                                             </button>
                                         </div>
                                     </div>
@@ -142,7 +142,7 @@
                                                         <span class="input-group-addon btn default btn-file">
                                                                 <span class="fileinput-new"> Select file </span>
                                                                 <span class="fileinput-exists"> Change </span>
-                                                                <input type="file" id="CertFileInput" onchange=loadContent()> </span>
+                                                                <input type="file" id="CertFileInput" name="pubCert"> </span>
                                                         <a href="javascript:;"
                                                            class="input-group-addon btn red fileinput-exists"
                                                            data-dismiss="fileinput"> Remove </a>
@@ -166,7 +166,7 @@
                                                         <span class="input-group-addon btn default btn-file">
                                                                 <span class="fileinput-new"> Select file </span>
                                                                 <span class="fileinput-exists"> Change </span>
-                                                                <input type="file" id="PvtFileInput" onchange=loadContent()> </span>
+                                                                <input type="file" id="PvtFileInput" name="pvtCert"> </span>
                                                         <a href="javascript:;"
                                                            class="input-group-addon btn red fileinput-exists"
                                                            data-dismiss="fileinput"> Remove </a>
@@ -175,14 +175,14 @@
                                             </div>
                                             <div class="col-md-2">
                                                 <input type="password" class="form-control" id="certificate_pass"
-                                                       placeholder="Password of pvt key">
+                                                       name="password" placeholder="Password of pvt key">
                                                 <div class="form-control-focus"></div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="form-actions right">
                                         <button type="reset" class="btn default">Reset</button>
-                                        <button type="button" class="btn green" onclick="saveSignedPassport();">Save
+                                        <button type="submit" class="btn green">Save
                                         </button>
                                     </div>
                                 </form>
@@ -272,16 +272,16 @@
         });
     }
 
-    $("form#sign-certs-form").submit(function () {
+    $("form#certificate-form").submit(function () {
 
-        var formData = new FormData($("#sign-certs-form")[0]);
+        var formData = new FormData($("#certificate-form")[0]);
         formData.set("cert",formData.get("pubCert"));
         console.log("http://" + varProperties.extractor.host + "/api-extractor/" + varProperties.extractor.apiVersion + "/" + varProperties.extractor.apiKey + "/savepubcert");
         $.ajax({
             url: "http://" + varProperties.extractor.host + "/api-extractor/" + varProperties.extractor.apiVersion + "/" + varProperties.extractor.apiKey + "/savepubcert",
             data: formData,
             headers: {
-                authorization: "Basic YWRtaW46MTIz"
+                "Authorization": "Basic " + btoa(varProperties.extractor.userName + ":" + varProperties.extractor.password)
             },
             async: true,
             crossDomain: true,
