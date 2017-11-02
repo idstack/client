@@ -272,8 +272,12 @@
             $('#port').val(response.port);
             $('#designation').val(response.designation);
             $('#name').val(response.name);
-        }).fail(function () {
-            toastr.error("Can't access get Basic Details api");
+        }).fail(function (jqXHR, errorStatus, errorThrown) {
+            if (jqXHR.status && jqXHR.status == 400) {
+                toastr.error(jqXHR.responseText);
+            } else {
+                toastr.error("Something went wrong");
+            }
         });
     }
     
@@ -302,8 +306,12 @@
         $.ajax(settings).done(function (response) {
             console.log(response);
             toastr.success("Basic details added successfully!");
-        }).fail(function () {
-            toastr.error("Can't access get basic details api");
+        }).fail(function (jqXHR, errorStatus, errorThrown) {
+            if (jqXHR.status && jqXHR.status == 400) {
+                toastr.error(jqXHR.responseText);
+            } else {
+                toastr.error("Something went wrong");
+            }
         });
     }
 
@@ -327,10 +335,14 @@
                 console.log("success");
                 console.log(data);
                 console.log(status);
-                toastr.success("Public certificate saved successfully ");
+                toastr.success("Public certificate saved successfully! ");
             },
-            error: function () {
-                toastr.error("Can't access save public certificate api");
+            error: function (jqXHR, errorStatus, errorThrown) {
+                if (jqXHR.status && jqXHR.status == 400) {
+                    toastr.error(jqXHR.responseText);
+                } else {
+                    toastr.error("Something went wrong");
+                }
             }
         });
 
@@ -351,11 +363,14 @@
                 console.log("success")
                 console.log(data);
                 console.log(status);
-                toastr.success("Private certificate saved successfully ");
+                toastr.success("Private certificate saved successfully! ");
             },
-            error: function () {
-                console.log("completed")
-                toastr.warning("Can't access save private certificate api");
+            error: function (jqXHR, errorStatus, errorThrown) {
+                if (jqXHR.status && jqXHR.status == 400) {
+                    toastr.error(jqXHR.responseText);
+                } else {
+                    toastr.error("Something went wrong");
+                }
             }
         });
 

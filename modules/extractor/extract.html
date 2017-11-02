@@ -273,8 +273,13 @@
             response = JSON.parse(response);
             pdfUrl = response.pdf;
             saveJsonFile(response.json);
-        }).fail( function (response) {
-            console.log("Can't access wep api");
+            toastr.success("Document extracted successfully!");
+        }).fail( function (jqXHR, error, errorThrown) {
+            if (jqXHR.status && jqXHR.status == 400) {
+                toastr.error(jqXHR.responseText);
+            } else {
+                toastr.error("Something went wrong");
+            }
         });
 
     }
@@ -303,6 +308,13 @@
             formObject = $("form#form_extract_" + docType);
             formObject.loadJSON(response);
             App.stopPageLoading();
+            toastr.info("Document extracted successfully!");
+        }).fail(function (jqXHR, error, errorThrown) {
+            if (jqXHR.status && jqXHR.status == 400) {
+                toastr.error(jqXHR.responseText);
+            } else {
+                toastr.error("Something went wrong");
+            }
         });
     }
     

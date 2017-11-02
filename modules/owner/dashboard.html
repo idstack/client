@@ -135,7 +135,7 @@
                                             <label class="col-md-3 control-label">Extractor URL</label>
                                             <div class="col-md-6">
                                                 <input type="text" class="form-control" id="ext_url" name="url"
-                                                       placeholder="http://example.com/extractor">
+                                                       placeholder="http://example.com/extractor:port">
                                                 <div class="form-control-focus"></div>
                                                 <span class="help-block">Define the URL of the extractor's web service</span>
                                             </div>
@@ -225,7 +225,7 @@
                                             <label class="col-md-3 control-label">Validator URL</label>
                                             <div class="col-md-6">
                                                 <input type="text" class="form-control" id="val_url" name="url"
-                                                       placeholder="http://example.com/validator">
+                                                       placeholder="http://example.com/validator:port">
                                                 <div class="form-control-focus"></div>
                                                 <span class="help-block">Define the URL of the validator's web service</span>
                                             </div>
@@ -338,7 +338,7 @@
                                         <label class="col-md-3 control-label">Evaluator URL</label>
                                         <div class="col-md-6">
                                             <input type="text" class="form-control" id="eval_url" name="url"
-                                                   placeholder="http://example.com/relying_party">
+                                                   placeholder="http://example.com/relying_party:port">
                                             <div class="form-control-focus"></div>
                                             <span class="help-block">Define the URL of the relying party's web service</span>
                                         </div>
@@ -412,7 +412,7 @@
             processData: false, // NEEDED, DON'T OMIT THIS
             success: function (data, status) {
                 console.log(data);
-                toastr.success("Document successfully send to extractor!!");
+                toastr.success("Document sent to extractor successfully!");
             },
             error: function (jqXHR, error, errorThrown) {
                 if (jqXHR.status && jqXHR.status == 400) {
@@ -451,7 +451,7 @@
             processData: false, // NEEDED, DON'T OMIT THIS
             success: function (data, status) {
                 console.log(data);
-                toastr.success("Document successfully send to validator!!");
+                toastr.success("Document sent to validator successfully!");
             },
             error: function (jqXHR, errorStatus, errorThrown) {
                 if (jqXHR.status && jqXHR.status == 400) {
@@ -515,7 +515,7 @@
             processData: false, // NEEDED, DON'T OMIT THIS
             success: function (data, status) {
                 console.log(data);
-                toastr.success("Document successfully send to relying party!!");
+                toastr.success("Document sent to relying party successfully!");
             },
             error: function (jqXHR, error, errorThrown) {
                 if (jqXHR.status && jqXHR.status == 400) {

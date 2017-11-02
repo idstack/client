@@ -450,8 +450,12 @@
             });
             whiteListUl.setList(whiteList);
 
-        }).fail(function () {
-            toastr.warning("Can't access get whitelist api");
+        }).fail(function (jqXHR, errorStatus, errorThrown) {
+            if (jqXHR.status && jqXHR.status == 400) {
+                toastr.error(jqXHR.responseText);
+            } else {
+                toastr.error("Something went wrong");
+            }
         });
     }
 
@@ -474,8 +478,12 @@
             });
             blackListUl.setList(blackList);
 
-        }).fail(function () {
-            toastr.warning("Can't access get blacklist api");
+        }).fail(function (jqXHR, errorStatus, errorThrown) {
+            if (jqXHR.status && jqXHR.status == 400) {
+                toastr.error(jqXHR.responseText);
+            } else {
+                toastr.error("Something went wrong");
+            }
         });
     }
 
@@ -500,7 +508,11 @@
             console.log(response);
             toastr.success("Whitelist saved successfully!");
         }).fail(function (jqXHR, textStatus, errorThrown) {
-            toastr.error(jqXHR.responseText);
+            if (jqXHR.status && jqXHR.status == 400) {
+                toastr.error(jqXHR.responseText);
+            } else {
+                toastr.error("Something went wrong");
+            }
         });
     }
 
@@ -524,8 +536,12 @@
         $.ajax(settings).done(function (response) {
             console.log(response);
             toastr.success("Blacklist saved successfully!");
-        }).fail(function () {
-            toastr.error("Can't access Blacklist saving api");
+        }).fail(function (jqXHR, textStatus, errorThrown) {
+            if (jqXHR.status && jqXHR.status == 400) {
+                toastr.error(jqXHR.responseText);
+            } else {
+                toastr.error("Something went wrong");
+            }
         });
     }
 
@@ -547,8 +563,12 @@
             $('#email').val(response.email);
             $('#web').val(response.web);
 
-        }).fail(function () {
-            toastr.warning("Can't access basic details saving api");
+        }).fail(function (jqXHR, textStatus, errorThrown) {
+            if (jqXHR.status && jqXHR.status == 400) {
+                toastr.error(jqXHR.responseText);
+            } else {
+                toastr.error("Something went wrong");
+            }
         });
     }
 
@@ -575,7 +595,11 @@
             console.log(response);
             toastr.success("Basic details added successfully!");
         }).fail(function(jqXHR, textStatus, errorThrown) {
-            toastr.warning(jqXHR.responseText);
+            if (jqXHR.status && jqXHR.status == 400) {
+                toastr.error(jqXHR.responseText);
+            } else {
+                toastr.error("Something went wrong");
+            }
         })
     }
 
@@ -593,8 +617,12 @@
             console.log(response);
 
             $("#access_template").tmpl(response.document).appendTo("#access_list");
-        }).fail(function () {
-            toastr.warning("Can't access get document api");
+        }).fail(function (jqXHR, textStatus, errorThrown) {
+            if (jqXHR.status && jqXHR.status == 400) {
+                toastr.error(jqXHR.responseText);
+            } else {
+                toastr.error("Something went wrong");
+            }
         });
     }
 
@@ -641,7 +669,11 @@
             console.log(response);
             toastr.success("Document configuration details added successfully!");
         }).fail(function (jqXHR, textStatus, errorThrown) {
-            toastr.warning(jqXHR.responseText);
+            if (jqXHR.status && jqXHR.status == 400) {
+                toastr.error(jqXHR.responseText);
+            } else {
+                toastr.error("Something went wrong");
+            }
         });
     }
 
@@ -662,10 +694,14 @@
             processData: false, // NEEDED, DON'T OMIT THIS
             success: function (data, status) {
                 console.log("success");
-                toastr.success("Public certificate stored successfully!!");
+                toastr.success("Public certificate stored successfully!");
             },
-            error: function () {
-                toastr.error("Can't access save public certificate api");
+            error: function (jqXHR, textStatus, errorThrown) {
+                if (jqXHR.status && jqXHR.status == 400) {
+                    toastr.error(jqXHR.responseText);
+                } else {
+                    toastr.error("Something went wrong");
+                }
             }
         });
 
@@ -684,11 +720,15 @@
             processData: false, // NEEDED, DON'T OMIT THIS
             success: function (data, status) {
                 console.log(status);
-                toastr.success("Private certificate stored successfully!!");
+                toastr.success("Private certificate stored successfully!");
             },
 
-            error: function () {
-                toastr.warning("Can't access save private certificate api");
+            error: function (jqXHR, textStatus, errorThrown) {
+                if (jqXHR.status && jqXHR.status == 400) {
+                    toastr.error(jqXHR.responseText);
+                } else {
+                    toastr.error("Something went wrong");
+                }
             }
         });
 
