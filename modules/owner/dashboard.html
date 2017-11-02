@@ -205,7 +205,7 @@
                                                         <span class="input-group-addon btn default btn-file">
                                                                 <span class="fileinput-new"> Select file </span>
                                                                 <span class="fileinput-exists"> Change </span>
-                                                                <input type="file" id="valJSONInput" > </span>
+                                                                <input type="file" id="valJSONInput"> </span>
                                                         <a href="javascript:;"
                                                            class="input-group-addon btn red fileinput-exists"
                                                            data-dismiss="fileinput"> Remove </a>
@@ -261,101 +261,105 @@
                                     <a href="" class="collapse"> </a>
                                 </div>
                             </div>
-                            <form class="form-horizontal" id="evaluate-form" enctype="multipart/form-data" role="form">
-                                <div class="form-body">
-                                    <div id="evaluate-form-body">
-                                        <div id="evaluate-pdf-template">
-                                            <div class="form-group">
-                                                <label class="control-label col-md-3 font-grey-cascade">Select Pdf
-                                                    File</label>
-                                                <div class="col-md-3">
-                                                    <div class="fileinput fileinput-new" data-provides="fileinput">
-                                                        <div class="input-group input-large">
-                                                            <div class="form-control uneditable-input input-fixed input-medium"
-                                                                 data-trigger="fileinput">
-                                                                <i class="fa fa-file fileinput-exists"></i>&nbsp;
-                                                                <span class="fileinput-filename"> </span>
-                                                            </div>
-                                                            <span class="input-group-addon btn default btn-file">
+                            <div class="portlet-body form">
+                                <form class="form-horizontal" id="evaluate-form" enctype="multipart/form-data"
+                                      role="form">
+                                    <div class="form-body">
+                                        <div id="evaluate-form-body">
+                                            <div id="evaluate-pdf-template">
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-3 font-grey-cascade">Select Pdf
+                                                        File</label>
+                                                    <div class="col-md-3">
+                                                        <div class="fileinput fileinput-new" data-provides="fileinput">
+                                                            <div class="input-group input-large">
+                                                                <div class="form-control uneditable-input input-fixed input-medium"
+                                                                     data-trigger="fileinput">
+                                                                    <i class="fa fa-file fileinput-exists"></i>&nbsp;
+                                                                    <span class="fileinput-filename"> </span>
+                                                                </div>
+                                                                <span class="input-group-addon btn default btn-file">
                                                                 <span class="fileinput-new"> Select file </span>
                                                                 <span class="fileinput-exists"> Change </span>
                                                                 <input type="file" id="evalFileInput" name="1"
                                                                        class="eval-input"> </span>
-                                                            <a href="javascript:;"
-                                                               class="input-group-addon btn red fileinput-exists"
-                                                               data-dismiss="fileinput"> Remove </a>
+                                                                <a href="javascript:;"
+                                                                   class="input-group-addon btn red fileinput-exists"
+                                                                   data-dismiss="fileinput"> Remove </a>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="form-group form-md-line-input ">
-                                                <label class="control-label col-md-3">Document Type</label>
-                                                <div class="col-md-6">
-                                                    <select class="form-control eval-doc-type" name="doc_type_1">
-                                                        <option selected value="passport">Passport</option>
-                                                        <option value="university_id">University ID</option>
-                                                        <option value="transcript">University Transcript</option>
-                                                    </select>
+                                                <div class="form-group form-md-line-input ">
+                                                    <label class="control-label col-md-3">Document Type</label>
+                                                    <div class="col-md-6">
+                                                        <select class="form-control eval-doc-type" name="doc_type_1">
+                                                            <option selected value="passport">Passport</option>
+                                                            <option value="university_id">University ID</option>
+                                                            <option value="transcript">University Transcript</option>
+                                                        </select>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="control-label col-md-3 font-grey-cascade">Select JSON
-                                                    File</label>
-                                                <div class="col-md-3">
-                                                    <div class="fileinput fileinput-new" data-provides="fileinput">
-                                                        <div class="input-group input-large">
-                                                            <div class="form-control uneditable-input input-fixed input-medium"
-                                                                 data-trigger="fileinput">
-                                                                <i class="fa fa-file fileinput-exists"></i>&nbsp;
-                                                                <span class="fileinput-filename"> </span>
-                                                            </div>
-                                                            <span class="input-group-addon btn default btn-file">
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-3 font-grey-cascade">Select JSON
+                                                        File</label>
+                                                    <div class="col-md-3">
+                                                        <div class="fileinput fileinput-new" data-provides="fileinput">
+                                                            <div class="input-group input-large">
+                                                                <div class="form-control uneditable-input input-fixed input-medium"
+                                                                     data-trigger="fileinput">
+                                                                    <i class="fa fa-file fileinput-exists"></i>&nbsp;
+                                                                    <span class="fileinput-filename"> </span>
+                                                                </div>
+                                                                <span class="input-group-addon btn default btn-file">
                                                                 <span class="fileinput-new"> Select file </span>
                                                                 <span class="fileinput-exists"> Change </span>
-                                                                <input class="eval-input-json" type="file" id="evalJSONInput1"> </span>
-                                                            <a href="javascript:;"
-                                                               class="input-group-addon btn red fileinput-exists"
-                                                               data-dismiss="fileinput"> Remove </a>
+                                                                <input class="eval-input-json" type="file"
+                                                                       id="evalJSONInput1"> </span>
+                                                                <a href="javascript:;"
+                                                                   class="input-group-addon btn red fileinput-exists"
+                                                                   data-dismiss="fileinput"> Remove </a>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
+                                                <hr/>
                                             </div>
-                                            <hr/>
                                         </div>
-                                    </div>
 
-                                    <div class="form-group">
-                                        <div class="col-md-offset-3 col-md-9">
-                                            <button class="btn btn-xs" type="button" id="add-eval-pdf-grps">
-                                                <i class="fa fa-plus"></i> Add Document
-                                            </button>
+                                        <div class="form-group">
+                                            <div class="col-md-offset-3 col-md-9">
+                                                <button class="btn btn-xs" type="button" id="add-eval-pdf-grps">
+                                                    <i class="fa fa-plus"></i> Add Document
+                                                </button>
 
+                                            </div>
+                                        </div>
+                                        <div class="form-group form-md-line-input">
+                                            <label class="col-md-3 control-label">Your Email</label>
+                                            <div class="col-md-6">
+                                                <input type="email" class="form-control" id="my_email2" name="email"
+                                                       placeholder="abc@example.com">
+                                                <div class="form-control-focus"></div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group form-md-line-input">
+                                            <label class="col-md-3 control-label">Evaluator URL</label>
+                                            <div class="col-md-6">
+                                                <input type="text" class="form-control" id="eval_url" name="url"
+                                                       placeholder="http://example.com/relying_party:port">
+                                                <div class="form-control-focus"></div>
+                                                <span class="help-block">Define the URL of the relying party's web service</span>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="form-group form-md-line-input">
-                                        <label class="col-md-3 control-label">Your Email</label>
-                                        <div class="col-md-6">
-                                            <input type="email" class="form-control" id="my_email2" name="email"
-                                                   placeholder="abc@example.com">
-                                            <div class="form-control-focus"></div>
-                                        </div>
+                                    <div class="form-actions right">
+                                        <button type="reset" class="btn default">Cancel</button>
+                                        <button type="submit" class="btn green">Send<i class="fa fa-check"></i>
+                                        </button>
                                     </div>
-                                    <div class="form-group form-md-line-input">
-                                        <label class="col-md-3 control-label">Evaluator URL</label>
-                                        <div class="col-md-6">
-                                            <input type="text" class="form-control" id="eval_url" name="url"
-                                                   placeholder="http://example.com/relying_party:port">
-                                            <div class="form-control-focus"></div>
-                                            <span class="help-block">Define the URL of the relying party's web service</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-actions right">
-                                    <button type="reset" class="btn default">Cancel</button>
-                                    <button type="submit" class="btn green">Send<i class="fa fa-check"></i>
-                                    </button>
-                                </div>
-                            </form>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -503,7 +507,7 @@
         var newGroup = $("#evaluate-pdf-template").clone().attr("id", "");
         newGroup.find("input.eval-input").attr("name", pdfCount);
         newGroup.find("select.eval-doc-type").attr("name", "doc_type_" + pdfCount);
-        var me = newGroup.find("input.eval-input-json").attr("id", "evalJSONInput" + (pdfCount+1));
+        var me = newGroup.find("input.eval-input-json").attr("id", "evalJSONInput" + (pdfCount + 1));
         me.change(function () {
             var file = $(this)[0].files[0];
             var fr = new FileReader(); // FileReader instance
