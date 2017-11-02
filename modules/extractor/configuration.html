@@ -129,7 +129,7 @@
                                         </div>
                                         <div class="form-actions right">
                                             <button type="reset" class="btn default">Reset</button>
-                                            <button type="submit" class="btn green">Save</button>
+                                            <button type="button" class="btn green" onclick="setBasicDetails()">Save</button>
                                         </div>
                                     </div>
                                 </form>
@@ -273,7 +273,7 @@
             $('#designation').val(response.designation);
             $('#name').val(response.name);
         }).fail(function () {
-            toastr.warning("Can't access get Basic Details api");
+            toastr.error("Can't access get Basic Details api");
         });
     }
     
@@ -301,9 +301,9 @@
 
         $.ajax(settings).done(function (response) {
             console.log(response);
-            toastr.info("Basic details added successfully!");
+            toastr.success("Basic details added successfully!");
         }).fail(function () {
-            toastr.warning("Can't access get basic details api");
+            toastr.error("Can't access get basic details api");
         });
     }
 
@@ -324,14 +324,13 @@
             contentType: false, // NEEDED, DON'T OMIT THIS (requires jQuery 1.6+)
             processData: false, // NEEDED, DON'T OMIT THIS
             success: function (data, status) {
-                console.log("success")
+                console.log("success");
                 console.log(data);
                 console.log(status);
-                toastr.warning("Public certificate saved successfully ");
+                toastr.success("Public certificate saved successfully ");
             },
-            complete: function () {
-                console.log("completed")
-                toastr.warning("Can't access save public certificate api");
+            error: function () {
+                toastr.error("Can't access save public certificate api");
             }
         });
 
@@ -352,9 +351,9 @@
                 console.log("success")
                 console.log(data);
                 console.log(status);
-                toastr.warning("Private certificate saved successfully ");
+                toastr.success("Private certificate saved successfully ");
             },
-            complete: function () {
+            error: function () {
                 console.log("completed")
                 toastr.warning("Can't access save private certificate api");
             }
