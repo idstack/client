@@ -25,6 +25,7 @@
     <link href="../../assets/global/plugins/jquery-multi-select/css/multi-select.css" rel="stylesheet" type="text/css"/>
     <link href="../../assets/global/plugins/select2/css/select2.min.css" rel="stylesheet" type="text/css"/>
     <link href="../../assets/global/plugins/select2/css/select2-bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <link href="../../assets/global/plugins/bootstrap-toastr/toastr.min.css" rel="stylesheet" type="text/css"/>
 
     <!-- END PAGE LEVEL PLUGINS -->
     <!-- BEGIN THEME GLOBAL STYLES -->
@@ -78,27 +79,54 @@
                             </div>
                             <div class="portlet-body form">
                                 <form class="form-horizontal" id="basic-form" enctype="multipart/form-data" role="form">
-                                <div class="form-body">
+                                    <div class="form-body">
                                         <div class="form-group form-md-line-input">
                                             <label class="col-md-3 control-label">Organization</label>
                                             <div class="col-md-6">
-                                                <input type="email" class="form-control" id="organization" name="organization">
-                                                <div class="form-control-focus"> </div>
+                                                <input type="text" class="form-control" id="organization"
+                                                       name="organization">
+                                                <div class="form-control-focus"></div>
                                             </div>
                                         </div>
                                         <div class="form-group form-md-line-input">
                                             <label class="col-md-3 control-label">Email</label>
                                             <div class="col-md-6">
-                                                <input type="email" class="form-control" id="email" name="email" placeholder="abc@example.com">
-                                                <div class="form-control-focus"> </div>
+                                                <input type="email" class="form-control" id="email" name="email"
+                                                       placeholder="abc@example.com">
+                                                <div class="form-control-focus"></div>
                                             </div>
                                         </div>
                                         <div class="form-group form-md-line-input">
                                             <label class="col-md-3 control-label">Web URL</label>
                                             <div class="col-md-6">
-                                                <input type="text" class="form-control" id="web" name="web" placeholder="http://example.com/extractor">
-                                                <div class="form-control-focus"> </div>
+                                                <input type="text" class="form-control" id="web" name="web"
+                                                       placeholder="http://example.com/extractor">
+                                                <div class="form-control-focus"></div>
                                                 <span class="help-block">Define the URL of your web service</span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group form-md-line-input">
+                                            <label class="col-md-3 control-label">Port</label>
+                                            <div class="col-md-6">
+                                                <input type="text" class="form-control" id="port" name="port"
+                                                       placeholder="8969">
+                                                <div class="form-control-focus"></div>
+                                                <span class="help-block">Define the port number of your web service</span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group form-md-line-input">
+                                            <label class="col-md-3 control-label">Designation</label>
+                                            <div class="col-md-6">
+                                                <input type="text" class="form-control" id="designation"
+                                                       name="designation">
+                                                <div class="form-control-focus"></div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group form-md-line-input">
+                                            <label class="col-md-3 control-label">Name</label>
+                                            <div class="col-md-6">
+                                                <input type="text" class="form-control" id="name" name="name">
+                                                <div class="form-control-focus"></div>
                                             </div>
                                         </div>
                                         <div class="form-actions right">
@@ -244,7 +272,9 @@
             $('#organization').val(response.organization);
             $('#email').val(response.email);
             $('#web').val(response.web);
-
+            $('#port').val(response.port);
+            $('#designation').val(response.designation);
+            $('#name').val(response.name);
         }).fail(function () {
             toastr.warning("Can't access get Basic Details api");
         });
@@ -265,7 +295,10 @@
             "data": JSON.stringify({
                 "organization": document.getElementById('organization').value,
                 "email": document.getElementById('email').value,
-                "web": document.getElementById('web').value
+                "web": document.getElementById('web').value,
+                "port": document.getElementById('port').value,
+                "designation": document.getElementById('designation').value,
+                "name": document.getElementById('name').value
             })
         }
 
@@ -356,7 +389,7 @@
 <script src="../../assets/global/plugins/bootstrap-select/js/bootstrap-select.min.js" type="text/javascript"></script>
 <script src="../../assets/global/plugins/jquery-multi-select/js/jquery.multi-select.js" type="text/javascript"></script>
 <script src="../../assets/global/plugins/select2/js/select2.full.min.js" type="text/javascript"></script>
-
+<script src="../../assets/global/plugins/bootstrap-toastr/toastr.min.js" type="text/javascript"></script>
 <!-- END PAGE LEVEL PLUGINS -->
 <!-- BEGIN THEME GLOBAL SCRIPTS -->
 <script src="../../assets/global/scripts/app.min.js" type="text/javascript"></script>
