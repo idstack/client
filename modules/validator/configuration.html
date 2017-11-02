@@ -103,6 +103,29 @@
                                                 <span class="help-block">Define the URL of your web service</span>
                                             </div>
                                         </div>
+                                        <div class="form-group form-md-line-input">
+                                            <label class="col-md-3 control-label">Port</label>
+                                            <div class="col-md-6">
+                                                <input type="number" class="form-control" id="port" name="port" placeholder="0000">
+                                                <div class="form-control-focus"></div>
+                                                <span class="help-block">Define the port number of your web service</span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group form-md-line-input">
+                                            <label class="col-md-3 control-label">Designation</label>
+                                            <div class="col-md-6">
+                                                <input type="text" class="form-control" id="designation"
+                                                       name="designation" placeholder="Employee">
+                                                <div class="form-control-focus"></div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group form-md-line-input">
+                                            <label class="col-md-3 control-label">Name</label>
+                                            <div class="col-md-6">
+                                                <input type="text" class="form-control" id="name" name="name" placeholder="John Smith">
+                                                <div class="form-control-focus"></div>
+                                            </div>
+                                        </div>
                                         <div class="form-actions right">
                                             <button type="reset" class="btn default">Reset</button>
                                             <button type="button" class="btn green" onclick="setBasicDetails();">Save
@@ -450,8 +473,12 @@
             });
             whiteListUl.setList(whiteList);
 
-        }).fail(function () {
-            toastr.warning("Can't access get whitelist api");
+        }).fail(function (jqXHR, errorStatus, errorThrown) {
+            if (jqXHR.status && jqXHR.status == 400) {
+                toastr.error(jqXHR.responseText);
+            } else {
+                toastr.error("Something went wrong");
+            }
         });
     }
 
@@ -474,8 +501,12 @@
             });
             blackListUl.setList(blackList);
 
-        }).fail(function () {
-            toastr.warning("Can't access get blacklist api");
+        }).fail(function (jqXHR, errorStatus, errorThrown) {
+            if (jqXHR.status && jqXHR.status == 400) {
+                toastr.error(jqXHR.responseText);
+            } else {
+                toastr.error("Something went wrong");
+            }
         });
     }
 
@@ -500,7 +531,11 @@
             console.log(response);
             toastr.success("Whitelist saved successfully!");
         }).fail(function (jqXHR, textStatus, errorThrown) {
-            toastr.error(jqXHR.responseText);
+            if (jqXHR.status && jqXHR.status == 400) {
+                toastr.error(jqXHR.responseText);
+            } else {
+                toastr.error("Something went wrong");
+            }
         });
     }
 
@@ -524,8 +559,12 @@
         $.ajax(settings).done(function (response) {
             console.log(response);
             toastr.success("Blacklist saved successfully!");
-        }).fail(function () {
-            toastr.error("Can't access Blacklist saving api");
+        }).fail(function (jqXHR, textStatus, errorThrown) {
+            if (jqXHR.status && jqXHR.status == 400) {
+                toastr.error(jqXHR.responseText);
+            } else {
+                toastr.error("Something went wrong");
+            }
         });
     }
 
@@ -546,9 +585,16 @@
             $('#organization').val(response.organization);
             $('#email').val(response.email);
             $('#web').val(response.web);
+            $('#port').val(response.port);
+            $('#designation').val(response.designation);
+            $('#name').val(response.name);
 
-        }).fail(function () {
-            toastr.warning("Can't access basic details saving api");
+        }).fail(function (jqXHR, textStatus, errorThrown) {
+            if (jqXHR.status && jqXHR.status == 400) {
+                toastr.error(jqXHR.responseText);
+            } else {
+                toastr.error("Something went wrong");
+            }
         });
     }
 
@@ -567,7 +613,10 @@
             "data": JSON.stringify({
                 "organization": document.getElementById('organization').value,
                 "email": document.getElementById('email').value,
-                "web": document.getElementById('web').value
+                "web": document.getElementById('web').value,
+                "port": document.getElementById('port').value,
+                "designation": document.getElementById('designation').value,
+                "name": document.getElementById('name').value
             })
         }
 
@@ -575,7 +624,11 @@
             console.log(response);
             toastr.success("Basic details added successfully!");
         }).fail(function(jqXHR, textStatus, errorThrown) {
-            toastr.warning(jqXHR.responseText);
+            if (jqXHR.status && jqXHR.status == 400) {
+                toastr.error(jqXHR.responseText);
+            } else {
+                toastr.error("Something went wrong");
+            }
         })
     }
 
@@ -593,8 +646,12 @@
             console.log(response);
 
             $("#access_template").tmpl(response.document).appendTo("#access_list");
-        }).fail(function () {
-            toastr.warning("Can't access get document api");
+        }).fail(function (jqXHR, textStatus, errorThrown) {
+            if (jqXHR.status && jqXHR.status == 400) {
+                toastr.error(jqXHR.responseText);
+            } else {
+                toastr.error("Something went wrong");
+            }
         });
     }
 
@@ -641,7 +698,11 @@
             console.log(response);
             toastr.success("Document configuration details added successfully!");
         }).fail(function (jqXHR, textStatus, errorThrown) {
-            toastr.warning(jqXHR.responseText);
+            if (jqXHR.status && jqXHR.status == 400) {
+                toastr.error(jqXHR.responseText);
+            } else {
+                toastr.error("Something went wrong");
+            }
         });
     }
 
@@ -662,10 +723,14 @@
             processData: false, // NEEDED, DON'T OMIT THIS
             success: function (data, status) {
                 console.log("success");
-                toastr.success("Public certificate stored successfully!!");
+                toastr.success("Public certificate stored successfully!");
             },
-            error: function () {
-                toastr.error("Can't access save public certificate api");
+            error: function (jqXHR, textStatus, errorThrown) {
+                if (jqXHR.status && jqXHR.status == 400) {
+                    toastr.error(jqXHR.responseText);
+                } else {
+                    toastr.error("Something went wrong");
+                }
             }
         });
 
@@ -684,11 +749,15 @@
             processData: false, // NEEDED, DON'T OMIT THIS
             success: function (data, status) {
                 console.log(status);
-                toastr.success("Private certificate stored successfully!!");
+                toastr.success("Private certificate stored successfully!");
             },
 
-            error: function () {
-                toastr.warning("Can't access save private certificate api");
+            error: function (jqXHR, textStatus, errorThrown) {
+                if (jqXHR.status && jqXHR.status == 400) {
+                    toastr.error(jqXHR.responseText);
+                } else {
+                    toastr.error("Something went wrong");
+                }
             }
         });
 

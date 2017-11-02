@@ -265,8 +265,12 @@
             signedMdf = response.json;
             $("#pdfDownloadBtn").removeClass("display-hide");
             $("#mrfDownloadBtn").removeClass("display-hide");
-        }).fail( function (response) {
-            console.log("Can't access wep api");
+        }).fail( function (jqXHR, error, errorThrown) {
+            if (jqXHR.status && jqXHR.status == 400) {
+                toastr.error(jqXHR.responseText);
+            } else {
+                toastr.error("Something went wrong");
+            }
         });
 
     }
@@ -295,6 +299,13 @@
             formObject = $("form#form_extract_" + docType);
             formObject.loadJSON(response);
             App.stopPageLoading();
+            toastr.info("Document extracted successfully!");
+        }).fail(function (jqXHR, error, errorThrown) {
+            if (jqXHR.status && jqXHR.status == 400) {
+                toastr.error(jqXHR.responseText);
+            } else {
+                toastr.error("Something went wrong");
+            }
         });
     }
 
@@ -312,7 +323,7 @@
     function downloadMrf() {
         saveJsonFile(signedMdf);
     }
-    
+
 
 </script>
 

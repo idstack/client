@@ -135,7 +135,7 @@
                                             <label class="col-md-3 control-label">Extractor URL</label>
                                             <div class="col-md-6">
                                                 <input type="text" class="form-control" id="ext_url" name="url"
-                                                       placeholder="http://example.com/extractor">
+                                                       placeholder="http://example.com/extractor:port">
                                                 <div class="form-control-focus"></div>
                                                 <span class="help-block">Define the URL of the extractor's web service</span>
                                             </div>
@@ -225,7 +225,7 @@
                                             <label class="col-md-3 control-label">Validator URL</label>
                                             <div class="col-md-6">
                                                 <input type="text" class="form-control" id="val_url" name="url"
-                                                       placeholder="http://example.com/validator">
+                                                       placeholder="http://example.com/validator:port">
                                                 <div class="form-control-focus"></div>
                                                 <span class="help-block">Define the URL of the validator's web service</span>
                                             </div>
@@ -312,7 +312,7 @@
                                                             <span class="input-group-addon btn default btn-file">
                                                                 <span class="fileinput-new"> Select file </span>
                                                                 <span class="fileinput-exists"> Change </span>
-                                                                <input type="file" id="evalJSONInput1"> </span>
+                                                                <input class="eval-input-json" type="file" id="evalJSONInput1"> </span>
                                                             <a href="javascript:;"
                                                                class="input-group-addon btn red fileinput-exists"
                                                                data-dismiss="fileinput"> Remove </a>
@@ -344,7 +344,7 @@
                                         <label class="col-md-3 control-label">Evaluator URL</label>
                                         <div class="col-md-6">
                                             <input type="text" class="form-control" id="eval_url" name="url"
-                                                   placeholder="http://example.com/relying_party">
+                                                   placeholder="http://example.com/relying_party:port">
                                             <div class="form-control-focus"></div>
                                             <span class="help-block">Define the URL of the relying party's web service</span>
                                         </div>
@@ -420,7 +420,7 @@
             processData: false, // NEEDED, DON'T OMIT THIS
             success: function (data, status) {
                 console.log(data);
-                toastr.success("Document successfully send to extractor!!");
+                toastr.success("Document sent to extractor successfully!");
             },
             error: function (jqXHR, error, errorThrown) {
                 if (jqXHR.status && jqXHR.status == 400) {
@@ -503,7 +503,7 @@
         var newGroup = $("#evaluate-pdf-template").clone().attr("id", "");
         newGroup.find("input.eval-input").attr("name", pdfCount);
         newGroup.find("select.eval-doc-type").attr("name", "doc_type_" + pdfCount);
-        var me = newGroup.find("input.eval-input-json").attr("id", "evalJSONInput" + pdfCount);
+        var me = newGroup.find("input.eval-input-json").attr("id", "evalJSONInput" + (pdfCount+1));
         me.change(function () {
             var file = $(this)[0].files[0];
             var fr = new FileReader(); // FileReader instance
@@ -532,7 +532,12 @@
             processData: false, // NEEDED, DON'T OMIT THIS
             success: function (data, status) {
                 console.log(data);
-                toastr.success("Document successfully send to relying party!!");
+                if (data.status == "STATUS_SUCCESS") {
+                    toastr.success("Document sent to relying party successfully!");
+                }
+                else {
+                    toastr.error(data.status);
+                }
             },
             error: function (jqXHR, error, errorThrown) {
                 if (jqXHR.status && jqXHR.status == 400) {
