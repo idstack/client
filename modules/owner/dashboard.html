@@ -424,7 +424,12 @@
             processData: false, // NEEDED, DON'T OMIT THIS
             success: function (data, status) {
                 console.log(data);
-                toastr.success("Document sent to extractor successfully!");
+                if (data.status == "STATUS_SUCCESS") {
+                    toastr.success("Document sent to relying party successfully!");
+                }
+                else {
+                    toastr.error(data.status);
+                }
             },
             error: function (jqXHR, error, errorThrown) {
                 if (jqXHR.status && jqXHR.status == 400) {
