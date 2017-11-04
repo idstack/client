@@ -88,22 +88,16 @@
                     </div>
                 </div>
                 <div class="col-md-6" >
-                    <!--<iframe class="col-md-6" src="assets/global/plugins/pdfjs/web/viewer.html?file=../../../../../doc_templates/temp-passport.pdf" style="width:620px; height:500px;" allowfullscreen frameborder="0">-->
-                        <!--This browser does not support PDFs. Please download the PDF to view it: <a href="http://www.orimi.com/pdf-test.pdf">Download PDF</a>-->
-                    <!--</iframe>-->
-                    <object id="pdf_viewer" width="620px" height="500px" data="" onerror=errorInPdfViewer()>
+                    <!--<object id="pdf_viewer" width="620px" height="500px" data="" onerror=errorInPdfViewer()>-->
+                    <!--</object>-->
+
+                    <object id="pdf_viewer_obj" width="600px" height="500px" data="" onerror=errorInPdfViewer()>
+                        <iframe id="pdf_viewer_iframe" src="" style="width:600px; height:500px;" frameborder="0">
+                            This browser does not support PDFs. Please download the PDF to view it: <a id="pdf_viewer_down" href="http://www.orimi.com/pdf-test.pdf">Download PDF</a>
+                        </iframe>
                     </object>
-
-                    <!--<iframe src="http://docs.google.com/gview?url=http://www.orimi.com/pdf-test.pdf&embedded=true"-->
-                            <!--style="width:600px; height:500px;" frameborder="0"></iframe>-->
-
                 </div>
-
-
             </div>
-
-
-
         </div>
     </div>
     <!-- END CONTENT -->
@@ -172,9 +166,15 @@
 
     }
     function showPDFbyURL() {
+        //show pdf using html object element
+//        document.getElementById("pdf_viewer").data = url
+//        $("#pdf_viewer").append(url);
 
-        document.getElementById("pdf_viewer").data = url
-        $("#pdf_viewer").append(url);
+        //support pdf view in electron
+        document.getElementById("pdf_viewer_obj").data = url;
+        document.getElementById("pdf_viewer_iframe").src = "https://docs.google.com/viewer?url="+ url + "&embedded=true";
+        document.getElementById("pdf_viewer_down").href = url;
+
     }
 
     function loadFile() {
@@ -232,7 +232,7 @@
 
     function errorInPdfViewer() {
         console.log("Enter a valid url or file for resource pdf");
-        $("#pdf_viewer").append("Enter a valid url or file for resource pdf");
+        toastr.error("Enter a valid url or file for resource pdf.");
     }
 
     
