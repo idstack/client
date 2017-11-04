@@ -1,0 +1,140 @@
+<!-- BEGIN FORM-->
+<form id="form_validate_university_id" class="form-horizontal" role="form">
+    <div class="form-body" id="document">
+
+        <!--/row-->
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="control-label col-md-6"><b>University: </b></label>
+                    <div class="col-md-6">
+                        <p class="form-control-static" id="university"> </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="control-label col-md-6"><b>Faculty:</b></label>
+                    <div class="col-md-6">
+                        <p class="form-control-static" id="faculty">   </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="control-label col-md-6"><b>Degree:</b></label>
+                    <div class="col-md-6">
+                        <p class="form-control-static" id="degree">  </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/row-->
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="control-label col-md-6"><b>Surname:</b></label>
+                    <div class="col-md-6">
+                        <p class="form-control-static" id="surname">  </p>
+                    </div>
+                </div>
+            </div>
+            <!--/span-->
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="control-label col-md-6"><b>Initials:</b></label>
+                    <div class="col-md-6">
+                        <p class="form-control-static" id="initials">  </p>
+                    </div>
+                </div>
+            </div>
+            <!--/span-->
+        </div>
+        <!--/row-->
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="control-label col-md-6"><b>Index no:</b></label>
+                    <div class="col-md-6">
+                        <p class="form-control-static" id="index_no">  </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/row-->
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="control-label col-md-6"><b>Address:</b></label>
+                    <div class="col-md-6">
+                        <p class="form-control-static" id="line1">  </p>
+                    </div>
+                </div>
+            </div>
+            <!--&lt;!&ndash;/span&ndash;&gt;-->
+            <!--<div class="col-md-6">-->
+                <!--<div class="form-group">-->
+                    <!--<label class="control-label col-md-3">Line2:</label>-->
+                    <!--<div class="col-md-9">-->
+                        <!--<p class="form-control-static" id="line2">  </p>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--&lt;!&ndash;/span&ndash;&gt;-->
+        </div>
+        <div class="row">
+            <!--/span-->
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="control-label col-md-6"><b>NIC:</b></label>
+                    <div class="col-md-6">
+                        <p class="form-control-static" id="nic">  </p>
+                    </div>
+                </div>
+            </div>
+            <!--/span-->
+        </div>
+        <div class="row">
+            <!--/span-->
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="control-label col-md-6"><b>Valid until:</b></label>
+                    <div class="col-md-6">
+                        <p class="form-control-static" id="valid_until"> Dec 2018 </p>
+                    </div>
+                </div>
+            </div>
+            <!--/span-->
+        </div>
+        <!--<div class="row">-->
+            <!--&lt;!&ndash;/span&ndash;&gt;-->
+            <!--<div class="col-md-6">-->
+                <!--<div class="form-group">-->
+                    <!--<label class="control-label col-md-6"><b>Card id:</b></label>-->
+                    <!--<div class="col-md-6">-->
+                        <!--<p class="form-control-static" id="card_id"> STU-1-41022060-317-130094R </p>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--&lt;!&ndash;/span&ndash;&gt;-->
+        <!--</div>-->
+
+    </div>
+    <div class="form-actions right">
+        <div class="row">
+            <div class="col-md-12">
+                <button id="saveBtn" type="button" class="btn green" onclick="getValidate()">Validate and Save</button>
+            </div>
+        </div>
+        <br>
+        <div class="raw">
+            <div class="col-md-12">
+                <button id="mrfDownloadBtn" type="button" class="btn red display-hide" onclick="downloadMrf()">Signed MRF <i class="fa fa-download"></i></button>
+                <button id="pdfDownloadBtn" type="button" class="btn red display-hide" onclick="downloadPdf()">Signed PDF <i class="fa fa-download"></i></button>
+            </div>
+        </div>
+    </div>
+</form>
+<!-- END FORM-->
