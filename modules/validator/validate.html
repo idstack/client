@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <!--<![endif]-->
 <!-- BEGIN HEAD -->
@@ -18,8 +19,12 @@
     <link href="../../assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css" />
     <!-- END GLOBAL MANDATORY STYLES -->
     <!-- BEGIN PAGE LEVEL PLUGINS -->
+    <link href="../../assets/global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css" rel="stylesheet" type="text/css" />
     <link href="../../assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.css" rel="stylesheet" type="text/css" />
-    <link href="../../assets/global/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet" type="text/css" />
+
+    <link rel="stylesheet" href="../../assets/global/plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css" />
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,500' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <!-- END PAGE LEVEL PLUGINS -->
     <!-- BEGIN THEME GLOBAL STYLES -->
@@ -54,173 +59,47 @@
             <div class="page-head">
                 <!-- BEGIN PAGE TITLE -->
                 <div class="page-title">
-                    <h1>Document Verification<small> Verify documents using the digital signatures</small></h1>
-
+                    <h3>Data Validation
+                        <small> validate data from document in order to make it into machine readable format</small>
+                    </h3>
                 </div>
                 <!-- END PAGE TITLE -->
-                <!-- BEGIN PAGE BASE CONTENT -->
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="portlet light portlet-fit portlet-form ">
-                            <div class="portlet-title">
-
-                                <div class="form-group">
-                                    <label class="control-label col-md-3">Select Document</label>
-                                    <div class="col-md-9">
-                                        <div class="fileinput fileinput-new" data-provides="fileinput">
-                                                        <span class="btn green btn-file">
-                                                            <span class="fileinput-new"> File </span>
-                                                            <span class="fileinput-exists"> Change </span>
-                                                            <input type="file" name="..." accept="application/json" id="fileInput" onchange="loadContent();">
-                                                        </span>
-                                            <span class="fileinput-filename"> </span> &nbsp;
-                                            <a href="javascript:;" class="close fileinput-exists" data-dismiss="fileinput"> </a>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <style type="text/css">
-                                .form-horizontal .control-label {
-                                    text-align: left;
-                                }
-                            </style>
-                            <div class="portlet-body">
-                                <div id="template" ></div>
-                                <!-- Template load in runtime-->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row" >
-                    <div class="col-md-12">
-                        <div class="portlet light " style="display:none" id="signature-portlet">
-                            <div class="portlet-title">
-                                <div class="caption">
-                                    <i class="icon-social-dribbble font-green hide"></i>
-                                    <span class="caption-subject font-dark bold uppercase">Signatures</span>
-                                </div>
-
-                            </div>
-                            <div class="portlet-body">
-                                <!-- BEGIN: Signature list -->
-                                <div class="mt-comments">
-                                    <div class="mt-comment mt-element-ribbon">
-                                        <div class="ribbon ribbon-vertical-left ribbon-shadow ribbon-color-primary uppercase">
-                                            <div class="ribbon-sub ribbon-bookmark"></div>
-                                            <i class="fa fa-pencil-square-o"></i>
-                                        </div>
-                                        <div class="mt-comment-body">
-                                            <div class="mt-comment-info">
-                                                <span class="mt-comment-author">Chamin Wickramarathna</span>
-                                                <div class="task-checkbox" >
-                                                    <label class="mt-checkbox mt-checkbox-single mt-checkbox-outline" style="margin-left:5px;">
-                                                        <input type="checkbox" class="checkboxes" value="1" />
-                                                        <span></span>
-                                                    </label>
-                                                </div>
-
-                                                <span class="mt-comment-date">26 Feb, 10:30AM</span>
-                                            </div>
-                                            <div class="mt-comment-text"> chaminb@gmail.com</div>
-                                            <div class="mt-comment-text"> Extractor </div>
-                                            <div class="mt-comment-text"> Expire on Apr 25 10:31:18 2022 GMT</div>
-                                            <div class="mt-comment-details">
-                                                <span class="mt-comment-status mt-comment-status-approved">Valid</span>
-                                                <ul class="mt-comment-actions">
-                                                    <li>
-                                                        <a href="#">More</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div>
-                                <!-- END: Signature list -->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <!-- BEGIN SIGN FORM PORTLET-->
-                    <div class="portlet light " style="display:none" id="sign-portlet">
-                        <div class="portlet-title">
-                            <div class="caption">
-                                <i class="icon-settings"></i>
-                                <span class="caption-subject bold uppercase"> Sign Document</span>
-                            </div>
-                        </div>
-                        <div class="portlet-body form">
-                            <form role="form">
-                                <div class="form-body">
-
-                                    <div class="form-group">
-                                        <label class="control-label col-md-3">Public Certificate File</label>
-                                        <div class="col-md-9">
-                                            <div class="fileinput fileinput-new" data-provides="fileinput">
-                                                        <span class="btn green btn-file">
-                                                            <span class="fileinput-new"> File </span>
-                                                            <span class="fileinput-exists"> Change </span>
-                                                            <input type="file" name="..."  id="CertFileInput" onchange=loadContent()>
-                                                        </span>
-                                                <span class="fileinput-filename"> </span> &nbsp;
-                                                <a href="javascript:;" class="close fileinput-exists" data-dismiss="fileinput"> </a>
-
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="row" >
-                                        <div class="col-md-12">
-                                            <p> </p>
-                                        </div>
-
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label class="control-label col-md-3">Private Key File</label>
-                                        <div class="col-md-9">
-                                            <div class="fileinput fileinput-new" data-provides="fileinput">
-                                                        <span class="btn green btn-file">
-                                                            <span class="fileinput-new"> File </span>
-                                                            <span class="fileinput-exists"> Change </span>
-                                                            <input type="file" name="..." id="PvtFileInput" onchange=loadContent()>
-                                                        </span>
-                                                <span class="fileinput-filename"> </span> &nbsp;
-                                                <a href="javascript:;" class="close fileinput-exists" data-dismiss="fileinput"> </a>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group form-md-line-input">
-                                        <label for="certificate_pass" class="col-md-2 control-label">Password</label>
-                                        <div class="col-md-4">
-                                            <input type="password" class="form-control" id="certificate_pass" placeholder="Password">
-                                            <div class="form-control-focus"> </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-actions right">
-                                    <button type="reset" class="btn default">Reset</button>
-                                    <button type="button" class="btn green" onclick="saveSignedPassport();">Sign and Save</button>
-                                </div>
-                                <p class="font-red-mint"> <br>*Please select the attribute you wish to sign. </p>
-                            </form>
-                        </div>
-                    </div>
-                    <!-- END Verify FORM PORTLET-->
-                </div>
-
-                <!-- END PAGE BASE CONTENT -->
             </div>
             <!-- END PAGE HEAD-->
+            <!-- BEGIN PAGE BASE CONTENT -->
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="tabbable-line boxless tabbable-reversed">
+                        <ul class="nav nav-tabs" >
+                            <li class="active">
+                                <a href="#tab_0" data-toggle="tab" id="tab_template"> </a>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="tab_0">
+                                <div class="portlet light portlet-fit portlet-form ">
+                                    <div class="portlet-body">
+                                        <!-- BEGIN CONTENT FORM-->
+                                        <div id="form_template"></div>
+                                        <!-- END CONTENT FORM-->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6" >
+                    <!--<object id="pdf_viewer" width="620px" height="500px" data="" onerror=errorInPdfViewer()>-->
+                    <!--</object>-->
 
-
+                    <object id="pdf_viewer_obj" width="600px" height="500px" data="" onerror=errorInPdfViewer()>
+                        <iframe id="pdf_viewer_iframe" src="" style="width:600px; height:500px;" frameborder="0">
+                            This browser does not support PDFs. Please download the PDF to view it: <a id="pdf_viewer_down" href="http://www.orimi.com/pdf-test.pdf">Download PDF</a>
+                        </iframe>
+                    </object>
+                </div>
+            </div>
         </div>
-        <!-- END CONTENT BODY -->
     </div>
     <!-- END CONTENT -->
 </div>
@@ -235,113 +114,197 @@
 <script>if (window.module) module = window.module;</script>
 
 <script>
-    var json_doc;
+    var url ;
+    var request_id;
+    var docType;
+    var formObject ;
+    var varProperties;
+    var signedPdfUrl;
+    var signedMdf;
+
     $(function(){
+        App.startPageLoading({
+            animate: true
+        });
+        // Load header and sidebar into DOM dynamically
         $("#header").load("../../layout/header.html");
         $("#sidebar").load("../../layout/sidebar.html");
-
-    });
-    function loadContent() {
-        $("#template").load("doc_templates/sign-passport.html",function(){
-            loadFile();
-            loadSignature();
-            loadSignForm();
+        $('.datePicker').bootstrapMaterialDatePicker({
+            time:false,
+            clearButton: true
         });
-    }
+        $.getJSON("../../properties.json", function(json) {
+            varProperties = json;
+        });
+        url = getUrlParameter("url");
+        request_id = getUrlParameter("request_id");
+        docType= getUrlParameter("doctype");
+        if (docType || 0 !== docType.length) {
+            $("#tab_template").append(stringBeautify(docType));
+            $("#form_template").load("../../doc_templates/validate/" + docType + ".html");
 
-    function loadFile() {
-        var input, file, fr;
-
-        if (typeof window.FileReader !== 'function') {
-            alert("The file API isn't supported on this browser yet.");
-            return;
-        }
-
-        input = document.getElementById('fileInput');
-        if (!input) {
-            alert("Um, couldn't find the fileinput element.");
-        }
-        else if (!input.files) {
-            alert("This browser doesn't seem to support the `files` property of file inputs.");
-        }
-        else if (!input.files[0]) {
-            alert("Please select a file before clicking 'Load'");
+            setTimeout(function () {
+                getContentByRequest();
+            }, 1000);
         }
         else {
-            file = input.files[0];
-            fr = new FileReader();
-            fr.onload = receivedText;
-            fr.readAsText(file);
-
+            App.stopPageLoading();
+            console.log("define docType uri parameter");
         }
 
-        function receivedText(e) {
-            lines = e.target.result;
-            json_doc = JSON.parse(lines);
-            console.log(json_doc);
-            $('div#document').loadJSON(json_doc.content);
-            $('div#document').loadJSON(json_doc.content.name);
+        switch(getUrlParameter("resource")) {
+            case "pdf":
+                showPDFbyFile();
+                break;
+            case "url":
+                showPDFbyURL();
+                break;
+            default:
 
         }
-
-
-
-    }
-    function loadSignature() {
-
-        // get a reference to your element, or it's container
-        var myElement = document.getElementById('signature-portlet');
-        myElement.style.display = '';
-    }
-
-    function loadSignForm() {
-
-        // get a reference to your element, or it's container
-        var myElement = document.getElementById('sign-portlet');
-        myElement.style.display = '';
-
+    });
+    function showPDFbyFile(){
 
     }
+    function showPDFbyURL() {
+        //show pdf using html object element
+//        document.getElementById("pdf_viewer").data = url
+//        $("#pdf_viewer").append(url);
 
-    function saveSignedPassport() {
-        signed_json_doc=signContent(json_doc);
-        saveJsonFile(signed_json_doc);
-    }
+        //support pdf view in electron
+        document.getElementById("pdf_viewer_obj").data = url;
+        document.getElementById("pdf_viewer_iframe").src = "https://docs.google.com/viewer?url="+ url + "&embedded=true";
+        document.getElementById("pdf_viewer_down").href = url;
 
-
-    function signContent(json_doc) {
-        if(!json_doc.hasOwnProperty('signers')) {
-            json_doc.signers = [
-                {
-                    "id": "1Ued5eg",
-                    "signature": {},
-                    "signed_attributes": [
-                        "nic_no",
-                        "sure_name"
-                    ]
-                }]
-        }
-        else {
-            json_doc['signers'].push({
-                "id": "1Ued5eg",
-                "signature": {},
-                "signed_attributes": [
-                    "nic_no",
-                    "sure_name"
-                ]
-            });
-        }
-        return json_doc;
     }
 
     function saveJsonFile(json_doc) {
-        var json_stringify_doc =JSON.stringify(json_doc,0,4);
-        var file = new File([json_stringify_doc], "IDStack-signed-doc.json", {type: "text/json;charset=utf-8"});
+
+        json_doc = JSON.stringify(json_doc, null, 4);
+        var file = new File([json_doc], "IDStack-validated-doc.json", {type: "text/json;charset=utf-8"});
+        saveAs(file);
+        $("#downloadBtn").removeClass("display-hide");
+    }
+
+    function errorInPdfViewer() {
+        console.log("Enter a valid url or file for resource pdf");
+        toastr.error("Enter a valid url or file for resource pdf.");
+    }
+
+    
+    //Web service calls
+    function getValidate() {
+        var form = new FormData();
+        form.append("json", JSON.stringify(signedMdf,0,4));
+        form.append("pdf", url);
+//        form.append("request_id", request_id);
+
+        var settings = {
+            "async": true,
+            "crossDomain": true,
+            "url": "http://"+varProperties.validator.host+"/api-validator/"+varProperties.validator.apiVersion+"/"+varProperties.validator.apiKey+"/sign/",
+            "method": "POST",
+            "headers": {
+                "authorization": "Basic "+ btoa(varProperties.validator.userName + ":" + varProperties.validator.password)
+            },
+            "processData": false,
+            "contentType": false,
+            "mimeType": "multipart/form-data",
+            "data": form
+        }
+
+        $.ajax(settings).done(function (response) {
+            console.log(response);
+            response = JSON.parse(response);
+            signedPdfUrl = response.pdf;
+            signedMdf = response.json;
+            $("#pdfDownloadBtn").removeClass("display-hide");
+            $("#mrfDownloadBtn").removeClass("display-hide");
+        }).fail( function (jqXHR, error, errorThrown) {
+            if (jqXHR.status && jqXHR.status == 400) {
+                toastr.error(jqXHR.responseText);
+            } else {
+                toastr.error("Something went wrong");
+            }
+        });
+
+    }
+    function getContentByRequest() {
+        var form = new FormData();
+        form.append("request_id", request_id);
+
+        var settings = {
+            "async": true,
+            "crossDomain": true,
+            "url": "http://"+varProperties.validator.host+"/api-validator/"+varProperties.validator.apiVersion+"/"+varProperties.validator.apiKey+"/sign/request",
+            "method": "POST",
+            "headers": {
+                "authorization": "Basic "+ btoa(varProperties.validator.userName + ":" + varProperties.validator.password)
+            },
+            "processData": false,
+            "contentType": false,
+            "mimeType": "multipart/form-data",
+            "data": form
+        }
+
+        $.ajax(settings).done(function (response) {
+            response = JSON.parse(response);
+            console.log(response);
+            formObject = $("form#form_validate_" + docType);
+            formObject.loadJSON(response.json.content);
+            signedMdf = response.json;
+            App.stopPageLoading();
+        }).fail(function (jqXHR, error, errorThrown) {
+            if (jqXHR.status && jqXHR.status == 400) {
+                toastr.error(jqXHR.responseText);
+            } else {
+                toastr.error("Something went wrong");
+            }
+        });
+    }
+
+    function saveJsonFile(json_doc) {
+        json_doc = JSON.stringify(json_doc, null, 4);
+        var file = new File([json_doc], "IDStack-validated-doc.json", {type: "text/json;charset=utf-8"});
         saveAs(file);
     }
 
-</script>
+    function downloadPdf() {
+        console.log(signedPdfUrl);
+        window.open(signedPdfUrl, '_blank');
+    }
 
+    function downloadMrf() {
+        saveJsonFile(signedMdf);
+    }
+
+//    function loadFile() {
+//        var input, file, fr;
+//
+//        if (typeof window.FileReader !== 'function') {
+//            alert("The file API isn't supported on this browser yet.");
+//            return;
+//        }
+//        input = document.getElementById('fileInput');
+//        console.log(input.files[0]);
+//        if (!input) {
+//            alert("Um, couldn't find the fileinput element.");
+//        }
+//        else if (!input.files) {
+//            alert("This browser doesn't seem to support the `files` property of file inputs.");
+//        }
+//        else if (!input.files[0]) {
+//            alert("Please select a file before clicking 'Load'");
+//        }
+//        else {
+//            file = input.files[0];
+//            fr = new FileReader();
+//
+//        }
+//        $('form#form_passport').loadJSON(response);
+//    }
+
+</script>
 
 <!-- BEGIN CORE PLUGINS -->
 
@@ -352,21 +315,26 @@
 <script src="../../assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
 <!-- END CORE PLUGINS -->
 <!-- BEGIN PAGE LEVEL PLUGINS -->
+<script type="text/javascript" src="../../assets/global/plugins/moment.min.js"></script>
+<script type="text/javascript" src="../../assets/global/plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js"></script>
+<script type="text/javascript" src="../../assets/global/plugins/filesaverjs/filesaver.min.js"></script>
+<script src="../../assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js" type="text/javascript"></script>
 <script src="../../assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.js" type="text/javascript"></script>
 <script src="https://cdn.rawgit.com/kevindb/jquery-load-json/v1.3.3/dist/jquery.loadJSON.min.js" integrity="sha384-fG4z44FEBJnIevyzvSDobSmVTsO/oVsxNvKcUl7bO1ihWYDPg2QI83Xi+7wSBzap" crossorigin="anonymous"></script>
-<script src="../../assets/global/plugins/bootstrap-table/bootstrap-table.min.js" type="text/javascript"></script>
-<script type="text/javascript" src="../../assets/global/plugins/filesaverjs/filesaver.min.js"></script>
+<script src="../../assets/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
+<script src="../../assets/global/plugins/bootstrap-toastr/toastr.min.js" type="text/javascript"></script>
+
+
 
 <!-- END PAGE LEVEL PLUGINS -->
 <!-- BEGIN THEME GLOBAL SCRIPTS -->
 <script src="../../assets/global/scripts/app.min.js" type="text/javascript"></script>
 <!-- END THEME GLOBAL SCRIPTS -->
-
 <!-- BEGIN PAGE LEVEL SCRIPTS -->
-<script src="../../assets/pages/scripts/table-bootstrap.js" type="text/javascript"></script>
-
+<script src="../../doc_templates/json/idstack-passport.js" type="text/javascript"></script>
+<script src="../../assets/custom/scripts/url-paser.js" type="text/javascript" ></script>
+<script src="../../assets/custom/scripts/string-beautify.js" type="text/javascript" ></script>
 <!-- END PAGE LEVEL SCRIPTS -->
-
 <!-- BEGIN THEME LAYOUT SCRIPTS -->
 <script src="../../assets/layout/scripts/layout.min.js" type="text/javascript"></script>
 <script src="../../assets/layout/scripts/demo.min.js" type="text/javascript"></script>
@@ -374,6 +342,9 @@
 <script src="../../assets/layout/global/scripts/quick-nav.min.js" type="text/javascript"></script>
 <!-- END THEME LAYOUT SCRIPTS -->
 
+
+
 </body>
 
 </html>
+
