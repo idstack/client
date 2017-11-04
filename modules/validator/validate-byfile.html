@@ -63,157 +63,102 @@
                     <div class="col-md-12">
                         <div class="portlet light portlet-fit portlet-form ">
                             <div class="portlet-title">
-
                                 <div class="form-group">
-                                    <label class="control-label col-md-3">Select Document</label>
-                                    <div class="col-md-9">
+                                    <label class="control-label col-md-3 font-grey-cascade">Select MRF</label>
+                                    <div class="col-md-3">
                                         <div class="fileinput fileinput-new" data-provides="fileinput">
-                                                        <span class="btn green btn-file">
-                                                            <span class="fileinput-new"> File </span>
-                                                            <span class="fileinput-exists"> Change </span>
-                                                            <input type="file" name="..." accept="application/json" id="fileInput" onchange="loadContent();">
-                                                        </span>
-                                            <span class="fileinput-filename"> </span> &nbsp;
-                                            <a href="javascript:;" class="close fileinput-exists" data-dismiss="fileinput"> </a>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <style type="text/css">
-                                .form-horizontal .control-label {
-                                    text-align: left;
-                                }
-                            </style>
-                            <div class="portlet-body">
-                                <div id="template" ></div>
-                                <!-- Template load in runtime-->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row" >
-                    <div class="col-md-12">
-                        <div class="portlet light " style="display:none" id="signature-portlet">
-                            <div class="portlet-title">
-                                <div class="caption">
-                                    <i class="icon-social-dribbble font-green hide"></i>
-                                    <span class="caption-subject font-dark bold uppercase">Signatures</span>
-                                </div>
-
-                            </div>
-                            <div class="portlet-body">
-                                <!-- BEGIN: Signature list -->
-                                <div class="mt-comments">
-                                    <div class="mt-comment mt-element-ribbon">
-                                        <div class="ribbon ribbon-vertical-left ribbon-shadow ribbon-color-primary uppercase">
-                                            <div class="ribbon-sub ribbon-bookmark"></div>
-                                            <i class="fa fa-pencil-square-o"></i>
-                                        </div>
-                                        <div class="mt-comment-body">
-                                            <div class="mt-comment-info">
-                                                <span class="mt-comment-author">Chamin Wickramarathna</span>
-                                                <div class="task-checkbox" >
-                                                    <label class="mt-checkbox mt-checkbox-single mt-checkbox-outline" style="margin-left:5px;">
-                                                        <input type="checkbox" class="checkboxes" value="1" />
-                                                        <span></span>
-                                                    </label>
+                                            <div class="input-group input-large">
+                                                <div class="form-control uneditable-input input-fixed input-medium"
+                                                     data-trigger="fileinput">
+                                                    <i class="fa fa-file fileinput-exists"></i>&nbsp;
+                                                    <span class="fileinput-filename"> </span>
                                                 </div>
-
-                                                <span class="mt-comment-date">26 Feb, 10:30AM</span>
-                                            </div>
-                                            <div class="mt-comment-text"> chaminb@gmail.com</div>
-                                            <div class="mt-comment-text"> Extractor </div>
-                                            <div class="mt-comment-text"> Expire on Apr 25 10:31:18 2022 GMT</div>
-                                            <div class="mt-comment-details">
-                                                <span class="mt-comment-status mt-comment-status-approved">Valid</span>
-                                                <ul class="mt-comment-actions">
-                                                    <li>
-                                                        <a href="#">More</a>
-                                                    </li>
-                                                </ul>
+                                                <span class="input-group-addon btn default btn-file">
+                                                                <span class="fileinput-new"> Select file </span>
+                                                                <span class="fileinput-exists"> Change </span>
+                                                                <input type="file" id="fileInput" onchange="loadContent()"> </span>
+                                                <a href="javascript:;"
+                                                   class="input-group-addon btn red fileinput-exists"
+                                                   data-dismiss="fileinput"> Remove </a>
                                             </div>
                                         </div>
                                     </div>
-
                                 </div>
-                                <!-- END: Signature list -->
+
+
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="row">
-                    <!-- BEGIN SIGN FORM PORTLET-->
-                    <div class="portlet light " style="display:none" id="sign-portlet">
-                        <div class="portlet-title">
-                            <div class="caption">
-                                <i class="icon-settings"></i>
-                                <span class="caption-subject bold uppercase"> Sign Document</span>
-                            </div>
-                        </div>
-                        <div class="portlet-body form">
-                            <form role="form">
-                                <div class="form-body">
-
-                                    <div class="form-group">
-                                        <label class="control-label col-md-3">Public Certificate File</label>
-                                        <div class="col-md-9">
-                                            <div class="fileinput fileinput-new" data-provides="fileinput">
-                                                        <span class="btn green btn-file">
-                                                            <span class="fileinput-new"> File </span>
-                                                            <span class="fileinput-exists"> Change </span>
-                                                            <input type="file" name="..."  id="CertFileInput" onchange=loadContent()>
-                                                        </span>
-                                                <span class="fileinput-filename"> </span> &nbsp;
-                                                <a href="javascript:;" class="close fileinput-exists" data-dismiss="fileinput"> </a>
-
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="row" >
-                                        <div class="col-md-12">
-                                            <p> </p>
-                                        </div>
-
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label class="control-label col-md-3">Private Key File</label>
-                                        <div class="col-md-9">
-                                            <div class="fileinput fileinput-new" data-provides="fileinput">
-                                                        <span class="btn green btn-file">
-                                                            <span class="fileinput-new"> File </span>
-                                                            <span class="fileinput-exists"> Change </span>
-                                                            <input type="file" name="..." id="PvtFileInput" onchange=loadContent()>
-                                                        </span>
-                                                <span class="fileinput-filename"> </span> &nbsp;
-                                                <a href="javascript:;" class="close fileinput-exists" data-dismiss="fileinput"> </a>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group form-md-line-input">
-                                        <label for="certificate_pass" class="col-md-2 control-label">Password</label>
-                                        <div class="col-md-4">
-                                            <input type="password" class="form-control" id="certificate_pass" placeholder="Password">
-                                            <div class="form-control-focus"> </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-actions right">
-                                    <button type="reset" class="btn default">Reset</button>
-                                    <button type="button" class="btn green" onclick="saveSignedPassport();">Sign and Save</button>
-                                </div>
-                                <p class="font-red-mint"> <br>*Please select the attribute you wish to sign. </p>
-                            </form>
+                <div class="portlet light portlet-fit portlet-form">
+                    <div class="portlet-title">
+                        <div class="caption">
+                            <i class="icon-pencil font-green"></i>
+                            <span class="caption-subject font-dark bold uppercase" id="document_type"></span>
                         </div>
                     </div>
-                    <!-- END Verify FORM PORTLET-->
+                    <div class="portlet-body">
+                        <div id="template"></div>
+                    </div>
                 </div>
+                <div class="portlet light portlet-fit portlet-form">
+                    <div class="portlet-title">
+                        <div class="caption">
+                            <i class="icon-pencil font-green"></i>
+                            <span class="caption-subject font-dark bold uppercase">Signatures</span>
+                        </div>
 
+                    </div>
+                    <div class="portlet-body">
+                        <!-- BEGIN: Signature list -->
+                        <div class="mt-comments" id="signature_list">
+                            <script id="signature_template" type="text/html">
+                                <div class="mt-comment mt-element-ribbon" id="signature-0">
+                                    <div class="ribbon ribbon-vertical-left ribbon-shadow ribbon-color-primary uppercase">
+                                        <div class="ribbon-sub ribbon-bookmark"></div>
+                                        <i class="fa fa-pencil-square-o"></i>
+                                    </div>
+                                    <div class="mt-comment-body">
+                                        <div class="mt-comment-info">
+                                            <span class="mt-comment-author">${id}</span>
+                                            <!--<span class="mt-comment-author">${name}</span>-->
+
+                                            <!--<span class="mt-comment-date" id="signed_date">${signed_date}</span>-->
+                                        </div>
+                                        <!--<div class="mt-comment-text" id="email"> ${email}</div>-->
+                                        <!--<div class="mt-comment-text" id="type"> ${type}</div>-->
+                                        <!--<div class="mt-comment-text" id="expire_date"> ${expire_date}</div>-->
+                                        <div class="mt-comment-details">
+                                            <!--<span class="mt-comment-status mt-comment-status-approved"-->
+                                            <!--id="validity">${validity}</span>-->
+                                            <ul class="mt-comment-actions">
+                                                <li>
+                                                    <a href="#">More</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </script>
+                        </div>
+                        <!-- END: Signature list -->
+                        <div class="form-actions right">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <button id="saveBtn" type="button" class="btn green" onclick="getValidate()">Validate and Save</button>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="raw">
+                                <div class="col-md-12">
+                                    <button id="mrfDownloadBtn" type="button" class="btn red display-hide" onclick="downloadMrf()">Signed MRF <i class="fa fa-download"></i></button>
+                                    <button id="pdfDownloadBtn" type="button" class="btn red display-hide" onclick="downloadPdf()">Signed PDF <i class="fa fa-download"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <!-- END PAGE BASE CONTENT -->
             </div>
             <!-- END PAGE HEAD-->
@@ -235,18 +180,21 @@
 <script>if (window.module) module = window.module;</script>
 
 <script>
-    var json_doc;
+    var docType;
+    var varProperties;
+    var signedMrf;
+    var signedPdfUrl;
     $(function(){
         $("#header").load("../../layout/header.html");
         $("#sidebar").load("../../layout/sidebar.html");
+        $.getJSON("../../properties.json", function(json) {
+            varProperties = json;
+        });
 
     });
     function loadContent() {
-        $("#template").load("doc_templates/sign-passport.html",function(){
-            loadFile();
-            loadSignature();
-            loadSignForm();
-        });
+        loadFile();
+
     }
 
     function loadFile() {
@@ -277,67 +225,82 @@
 
         function receivedText(e) {
             lines = e.target.result;
-            json_doc = JSON.parse(lines);
-            console.log(json_doc);
-            $('div#document').loadJSON(json_doc.content);
-            $('div#document').loadJSON(json_doc.content.name);
+            signedMrf = JSON.parse(lines);
+            console.log(signedMrf);
+            docType = signedMrf.meta_data.document_type;
+            loadContentView();
+            loadSignatureView();
+        }
+    }
+    function loadContentView() {
+        $("#document_type").text(stringBeautify(docType));
+        $("#template").load("../../doc_templates/validate/"+docType+".html",function(){
+            $("div#document").loadJSON(signedMrf.content);
+            try {
+                clone.find('div#document').loadJSON(signedMrf.content.name);
+                clone.find('div#document').loadJSON(signedMrf.content.address);
+            }catch(err) {
+                //
+            }
+        });
+    }
 
+    function loadSignatureView() {
+        $("#signature_template").tmpl(signedMrf.extractor).appendTo($("#signature_list"));
+        for (var j = 0; j < signedMrf.validators.length; j++) {
+            $("#signature_template").tmpl(signedMrf.validators[j]).appendTo($("#signature_list"));
+        }
+    }
+    function getValidate() {
+        var form = new FormData();
+        form.append("json", JSON.stringify(signedMrf,0,4));
+        form.append("pdf", "http://139.59.74.146:8080/idstack/validator/docs/chanaka@avix.lk/13cfde33-3641-4178-9800-c9311cd7f8d5/passport/1.pdf");
+//        form.append("request_id", request_id);
+
+        var settings = {
+            "async": true,
+            "crossDomain": true,
+            "url": "http://"+varProperties.validator.host+"/api-validator/"+varProperties.validator.apiVersion+"/"+varProperties.validator.apiKey+"/sign/",
+            "method": "POST",
+            "headers": {
+                "authorization": "Basic "+ btoa(varProperties.validator.userName + ":" + varProperties.validator.password)
+            },
+            "processData": false,
+            "contentType": false,
+            "mimeType": "multipart/form-data",
+            "data": form
         }
 
+        $.ajax(settings).done(function (response) {
+            console.log(response);
+            response = JSON.parse(response);
+            signedPdfUrl = response.pdf;
+            signedMrf = response.json;
+            $("#pdfDownloadBtn").removeClass("display-hide");
+            $("#mrfDownloadBtn").removeClass("display-hide");
+        }).fail( function (jqXHR, error, errorThrown) {
+            if (jqXHR.status && jqXHR.status == 400) {
+                toastr.error(jqXHR.responseText);
+            } else {
+                toastr.error("Something went wrong");
+            }
+        });
 
-
-    }
-    function loadSignature() {
-
-        // get a reference to your element, or it's container
-        var myElement = document.getElementById('signature-portlet');
-        myElement.style.display = '';
-    }
-
-    function loadSignForm() {
-
-        // get a reference to your element, or it's container
-        var myElement = document.getElementById('sign-portlet');
-        myElement.style.display = '';
-
-
-    }
-
-    function saveSignedPassport() {
-        signed_json_doc=signContent(json_doc);
-        saveJsonFile(signed_json_doc);
-    }
-
-
-    function signContent(json_doc) {
-        if(!json_doc.hasOwnProperty('signers')) {
-            json_doc.signers = [
-                {
-                    "id": "1Ued5eg",
-                    "signature": {},
-                    "signed_attributes": [
-                        "nic_no",
-                        "sure_name"
-                    ]
-                }]
-        }
-        else {
-            json_doc['signers'].push({
-                "id": "1Ued5eg",
-                "signature": {},
-                "signed_attributes": [
-                    "nic_no",
-                    "sure_name"
-                ]
-            });
-        }
-        return json_doc;
     }
 
     function saveJsonFile(json_doc) {
-        var json_stringify_doc =JSON.stringify(json_doc,0,4);
-        var file = new File([json_stringify_doc], "IDStack-signed-doc.json", {type: "text/json;charset=utf-8"});
+        json_doc = JSON.stringify(json_doc, null, 4);
+        var file = new File([json_doc], "IDStack-validated-doc.json", {type: "text/json;charset=utf-8"});
         saveAs(file);
+    }
+
+    function downloadMrf() {
+        saveJsonFile(signedMrf);
+    }
+
+    function downloadPdf() {
+        console.log(signedPdfUrl);
+        window.open(signedPdfUrl, '_blank');
     }
 
 </script>
@@ -356,7 +319,7 @@
 <script src="https://cdn.rawgit.com/kevindb/jquery-load-json/v1.3.3/dist/jquery.loadJSON.min.js" integrity="sha384-fG4z44FEBJnIevyzvSDobSmVTsO/oVsxNvKcUl7bO1ihWYDPg2QI83Xi+7wSBzap" crossorigin="anonymous"></script>
 <script src="../../assets/global/plugins/bootstrap-table/bootstrap-table.min.js" type="text/javascript"></script>
 <script type="text/javascript" src="../../assets/global/plugins/filesaverjs/filesaver.min.js"></script>
-
+<script src="../../assets/global/plugins/jquery-tmpl/jquery.tmpl.min.js" type="text/javascript"></script>
 <!-- END PAGE LEVEL PLUGINS -->
 <!-- BEGIN THEME GLOBAL SCRIPTS -->
 <script src="../../assets/global/scripts/app.min.js" type="text/javascript"></script>
@@ -364,6 +327,7 @@
 
 <!-- BEGIN PAGE LEVEL SCRIPTS -->
 <script src="../../assets/pages/scripts/table-bootstrap.js" type="text/javascript"></script>
+<script src="../../assets/custom/scripts/string-beautify.js" type="text/javascript" ></script>
 
 <!-- END PAGE LEVEL SCRIPTS -->
 
