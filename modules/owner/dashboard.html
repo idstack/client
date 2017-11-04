@@ -135,7 +135,7 @@
                                             <label class="col-md-3 control-label">Extractor URL</label>
                                             <div class="col-md-6">
                                                 <input type="text" class="form-control" id="ext_url" name="url"
-                                                       placeholder="http://example.com/extractor:port">
+                                                       placeholder="http://extractor.com:port">
                                                 <div class="form-control-focus"></div>
                                                 <span class="help-block">Define the URL of the extractor's web service</span>
                                             </div>
@@ -225,7 +225,7 @@
                                             <label class="col-md-3 control-label">Validator URL</label>
                                             <div class="col-md-6">
                                                 <input type="text" class="form-control" id="val_url" name="url"
-                                                       placeholder="http://example.com/validator:port">
+                                                       placeholder="http://validator.com:port">
                                                 <div class="form-control-focus"></div>
                                                 <span class="help-block">Define the URL of the validator's web service</span>
                                             </div>
@@ -289,16 +289,6 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="form-group form-md-line-input ">
-                                                    <label class="control-label col-md-3">Document Type</label>
-                                                    <div class="col-md-6">
-                                                        <select class="form-control eval-doc-type" name="doc_type_1">
-                                                            <option selected value="passport">Passport</option>
-                                                            <option value="university_id">University ID</option>
-                                                            <option value="transcript">University Transcript</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
                                                 <div class="form-group">
                                                     <label class="control-label col-md-3 font-grey-cascade">Select MRF</label>
                                                     <div class="col-md-3">
@@ -319,6 +309,16 @@
                                                                    data-dismiss="fileinput"> Remove </a>
                                                             </div>
                                                         </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group form-md-line-input ">
+                                                    <label class="control-label col-md-3">Document Type</label>
+                                                    <div class="col-md-6">
+                                                        <select class="form-control eval-doc-type" name="doc_type_1">
+                                                            <option selected value="passport">Passport</option>
+                                                            <option value="university_id">University ID</option>
+                                                            <option value="transcript">University Transcript</option>
+                                                        </select>
                                                     </div>
                                                 </div>
                                                 <hr/>
@@ -345,7 +345,7 @@
                                             <label class="col-md-3 control-label">Evaluator URL</label>
                                             <div class="col-md-6">
                                                 <input type="text" class="form-control" id="eval_url" name="url"
-                                                       placeholder="http://example.com/relying_party:port">
+                                                       placeholder="http://relyingpart.com:port">
                                                 <div class="form-control-focus"></div>
                                                 <span class="help-block">Define the URL of the relying party's web service</span>
                                             </div>
