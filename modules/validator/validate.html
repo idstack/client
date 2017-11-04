@@ -87,6 +87,63 @@
                             </div>
                         </div>
                     </div>
+                    <div class="portlet light portlet-fit portlet-form">
+                        <div class="portlet-title">
+                            <div class="caption">
+                                <i class="icon-pencil font-green"></i>
+                                <span class="caption-subject font-dark bold uppercase">Signatures</span>
+                            </div>
+
+                        </div>
+                        <div class="portlet-body">
+                            <!-- BEGIN: Signature list -->
+                            <div class="mt-comments" id="signature_list">
+                                <script id="signature_template" type="text/html">
+                                    <div class="mt-comment mt-element-ribbon" id="signature-0">
+                                        <div class="ribbon ribbon-vertical-left ribbon-shadow ribbon-color-primary uppercase">
+                                            <div class="ribbon-sub ribbon-bookmark"></div>
+                                            <i class="fa fa-pencil-square-o"></i>
+                                        </div>
+                                        <div class="mt-comment-body">
+                                            <div class="mt-comment-info">
+                                                <span class="mt-comment-author">${id}</span>
+                                                <!--<span class="mt-comment-author">${name}</span>-->
+
+                                                <!--<span class="mt-comment-date" id="signed_date">${signed_date}</span>-->
+                                            </div>
+                                            <!--<div class="mt-comment-text" id="email"> ${email}</div>-->
+                                            <!--<div class="mt-comment-text" id="type"> ${type}</div>-->
+                                            <!--<div class="mt-comment-text" id="expire_date"> ${expire_date}</div>-->
+                                            <div class="mt-comment-details">
+                                                <!--<span class="mt-comment-status mt-comment-status-approved"-->
+                                                <!--id="validity">${validity}</span>-->
+                                                <ul class="mt-comment-actions">
+                                                    <li>
+                                                        <a href="#">More</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </script>
+                            </div>
+                            <!-- END: Signature list -->
+                            <div class="form-actions right">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <button id="saveBtn" type="button" class="btn green" onclick="getValidate()">Validate and Save</button>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="raw">
+                                    <div class="col-md-12">
+                                        <button id="mrfDownloadBtn" type="button" class="btn red display-hide" onclick="downloadMrf()">Signed MRF <i class="fa fa-download"></i></button>
+                                        <button id="pdfDownloadBtn" type="button" class="btn red display-hide" onclick="downloadPdf()">Signed PDF <i class="fa fa-download"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="col-md-6" >
                     <!--<object id="pdf_viewer" width="620px" height="500px" data="" onerror=errorInPdfViewer()>-->
@@ -114,13 +171,13 @@
 <script>if (window.module) module = window.module;</script>
 
 <script>
-    var url ;
+    var url;
     var request_id;
     var docType;
     var formObject ;
     var varProperties;
     var signedPdfUrl;
-    var signedMdf;
+    var signedMrf;
 
     $(function(){
         App.startPageLoading({
@@ -195,7 +252,7 @@
     //Web service calls
     function getValidate() {
         var form = new FormData();
-        form.append("json", JSON.stringify(signedMdf,0,4));
+        form.append("json", JSON.stringify(signedMrf,0,4));
         form.append("pdf", url);
 //        form.append("request_id", request_id);
 
@@ -217,7 +274,7 @@
             console.log(response);
             response = JSON.parse(response);
             signedPdfUrl = response.pdf;
-            signedMdf = response.json;
+            signedMrf = response.json;
             $("#pdfDownloadBtn").removeClass("display-hide");
             $("#mrfDownloadBtn").removeClass("display-hide");
         }).fail( function (jqXHR, error, errorThrown) {
@@ -229,6 +286,7 @@
         });
 
     }
+
     function getContentByRequest() {
         var form = new FormData();
         form.append("request_id", request_id);
@@ -252,7 +310,14 @@
             console.log(response);
             formObject = $("form#form_validate_" + docType);
             formObject.loadJSON(response.json.content);
-            signedMdf = response.json;
+            try {
+                formObject.loadJSON(response.json.content.name);
+                formObject.loadJSON(response.json.content.address);
+            }catch(err) {
+                //
+            }
+            signedMrf = response.json;
+            loadSignatureView();
             App.stopPageLoading();
         }).fail(function (jqXHR, error, errorThrown) {
             if (jqXHR.status && jqXHR.status == 400) {
@@ -261,6 +326,13 @@
                 toastr.error("Something went wrong");
             }
         });
+    }
+
+    function loadSignatureView() {
+        $("#signature_template").tmpl(signedMrf.extractor).appendTo($("#signature_list"));
+        for (var j = 0; j < signedMrf.validators.length; j++) {
+            $("#signature_template").tmpl(signedMrf.validators[j]).appendTo($("#signature_list"));
+        }
     }
 
     function saveJsonFile(json_doc) {
@@ -275,7 +347,7 @@
     }
 
     function downloadMrf() {
-        saveJsonFile(signedMdf);
+        saveJsonFile(signedMrf);
     }
 
 //    function loadFile() {
@@ -323,17 +395,16 @@
 <script src="https://cdn.rawgit.com/kevindb/jquery-load-json/v1.3.3/dist/jquery.loadJSON.min.js" integrity="sha384-fG4z44FEBJnIevyzvSDobSmVTsO/oVsxNvKcUl7bO1ihWYDPg2QI83Xi+7wSBzap" crossorigin="anonymous"></script>
 <script src="../../assets/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
 <script src="../../assets/global/plugins/bootstrap-toastr/toastr.min.js" type="text/javascript"></script>
-
-
-
+<script src="../../assets/global/plugins/jquery-tmpl/jquery.tmpl.min.js" type="text/javascript"></script>
 <!-- END PAGE LEVEL PLUGINS -->
 <!-- BEGIN THEME GLOBAL SCRIPTS -->
 <script src="../../assets/global/scripts/app.min.js" type="text/javascript"></script>
 <!-- END THEME GLOBAL SCRIPTS -->
 <!-- BEGIN PAGE LEVEL SCRIPTS -->
-<script src="../../doc_templates/json/idstack-passport.js" type="text/javascript"></script>
+<!--<script src="../../doc_templates/json/idstack-passport.js" type="text/javascript"></script>-->
 <script src="../../assets/custom/scripts/url-paser.js" type="text/javascript" ></script>
 <script src="../../assets/custom/scripts/string-beautify.js" type="text/javascript" ></script>
+
 <!-- END PAGE LEVEL SCRIPTS -->
 <!-- BEGIN THEME LAYOUT SCRIPTS -->
 <script src="../../assets/layout/scripts/layout.min.js" type="text/javascript"></script>
