@@ -1,0 +1,154 @@
+<!-- BEGIN FORM-->
+<form id="form_validate_passport" class="form-horizontal" role="form">
+    <div class="form-body" id="document">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="control-label col-md-6 "><b>Passport Type:</b></label>
+                    <div class="col-md-6">
+                        <p class="form-control-static" id="passport_type"></p>
+                    </div>
+                </div>
+            </div>
+            <!--/span-->
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="control-label col-md-6"><b>Country Code:</b></label>
+                    <div class="col-md-6">
+                        <p class="form-control-static" id="country_code"></p>
+                    </div>
+                </div>
+            </div>
+            <!--/span-->
+        </div>
+        <!--/row-->
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="control-label col-md-6"><b>Passport No:</b></label>
+                    <div class="col-md-6">
+                        <p class="form-control-static" id="passport_no"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/row-->
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="control-label col-md-6"><b>Surname:</b></label>
+                    <div class="col-md-6">
+                        <p class="form-control-static" id="surname"></p>
+                    </div>
+                </div>
+            </div>
+            <!--/span-->
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="control-label col-md-6"><b>Other Names:</b></label>
+                    <div class="col-md-6">
+                        <p class="form-control-static" id="other_names"></p>
+                    </div>
+                </div>
+            </div>
+            <!--/span-->
+        </div>
+        <!--/row-->
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="control-label col-md-6"><b>National Status:</b></label>
+                    <div class="col-md-6">
+                        <p class="form-control-static" id="national_status"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="control-label col-md-6"><b>Date of Birth:</b></label>
+                    <div class="col-md-6">
+                        <p class="form-control-static" id="date_of_birth"></p>
+                    </div>
+                </div>
+            </div>
+            <!--/span-->
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="control-label col-md-6"><b>Place of Birth:</b></label>
+                    <div class="col-md-6">
+                        <p class="form-control-static" id="place_of_birth"></p>
+                    </div>
+                </div>
+            </div>
+            <!--/span-->
+        </div>
+        <!--/row-->
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="control-label col-md-6"><b>Sex:</b></label>
+                    <div class="col-md-6">
+                        <p class="form-control-static" id="sex"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="control-label col-md-6"><b>Date of Issue:</b></label>
+                    <div class="col-md-6">
+                        <p class="form-control-static" id="date_of_issue"></p>
+                    </div>
+                </div>
+            </div>
+            <!--/span-->
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="control-label col-md-6"><b>Date of Expiry:</b></label>
+                    <div class="col-md-6">
+                        <p class="form-control-static" id="date_of_expiry"></p>
+                    </div>
+                </div>
+            </div>
+            <!--/span-->
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="control-label col-md-6"><b>Profession:</b></label>
+                    <div class="col-md-6">
+                        <p class="form-control-static" id="profession"></p>
+                    </div>
+                </div>
+            </div>
+            <!--/span-->
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="control-label col-md-6"><b>ID No:</b></label>
+                    <div class="col-md-6">
+                        <p class="form-control-static" id="id_no"></p>
+                    </div>
+                </div>
+            </div>
+            <!--/span-->
+        </div>
+    </div>
+    <div class="form-actions right">
+        <div class="row">
+            <div class="col-md-12">
+                <button id="saveBtn" type="button" class="btn green" onclick="getValidate()">Validate and Save</button>
+            </div>
+        </div>
+        <br>
+        <div class="raw">
+            <div class="col-md-12">
+                <button id="mrfDownloadBtn" type="button" class="btn red display-hide" onclick="downloadMrf()">Signed MRF <i class="fa fa-download"></i></button>
+                <button id="pdfDownloadBtn" type="button" class="btn red display-hide" onclick="downloadPdf()">Signed PDF <i class="fa fa-download"></i></button>
+            </div>
+        </div>
+    </div>
+</form>
+<!-- END FORM-->

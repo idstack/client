@@ -411,6 +411,10 @@
     //Call APIs to upload files
 
     $("form#extract-form").submit(function () {
+        if(!document.getElementById('extFileInput').value){
+            toastr.warning("Please select a pdf file!");
+            return false;
+        }
         var formData = new FormData($("#extract-form")[0]);
         $.ajax({
             url: formData.get("url") + "/api-extractor/v1/extract",
@@ -519,7 +523,6 @@
                 evalJSONText.json_list.push(JSON.parse(fr.result));
                 return;
             };
-            //fr.readAsText( file );
             fr.readAsText(file);
         });
         $("#evaluate-form-body").append(newGroup);
