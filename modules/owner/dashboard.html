@@ -416,6 +416,10 @@
             return false;
         }
         var formData = new FormData($("#extract-form")[0]);
+        App.blockUI({
+            target: '#extract-form',
+            animate: true
+        });
         $.ajax({
             url: formData.get("url") + "/api-extractor/v1/extract",
             data: formData,
@@ -439,6 +443,9 @@
                 } else {
                     toastr.error("Something went wrong");
                 }
+            },
+            complete: function () {
+                App.unblockUI('#extract-form');
             }
         });
 
@@ -460,6 +467,10 @@
     $("form#validate-form").submit(function () {
         var formData = new FormData($("#validate-form")[0]);
         formData.set("json", JSON.stringify(validateJSONText));
+        App.blockUI({
+            target: '#validate-form',
+            animate: true
+        });
         $.ajax({
             url: formData.get("url") + "/api-validator/v1/sign",
             data: formData,
@@ -487,6 +498,9 @@
                 } else {
                     toastr.error("Something went wrong");
                 }
+            },
+            complete: function () {
+                App.unblockUI('#validate-form');
             }
         });
 
@@ -530,6 +544,10 @@
 
     //submit evaluate form
     $("form#evaluate-form").submit(function () {
+        App.blockUI({
+            target: '#evaluate-form',
+            animate: true
+        });
         var formData = new FormData($("#evaluate-form")[0]);
         formData.set("json", JSON.stringify(evalJSONText));
         $.ajax({
@@ -555,6 +573,9 @@
                 } else {
                     toastr.error("Something went wrong");
                 }
+            },
+            complete: function () {
+                App.unblockUI('#evaluate-form');
             }
         });
 
