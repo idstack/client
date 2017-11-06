@@ -289,8 +289,8 @@
     }
 
     function saveJsonFile(json_doc) {
-        json_doc = JSON.stringify(json_doc, null, 4);
-        var file = new File([json_doc], "IDStack-validated-doc.json", {type: "text/json;charset=utf-8"});
+        string_json_doc = JSON.stringify(json_doc, null, 4);
+        var file = new File([string_json_doc], "idstack-validated-"+json_doc.meta_data.document_type+".json", {type: "text/json;charset=utf-8"});
         saveAs(file);
     }
 
