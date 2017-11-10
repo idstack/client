@@ -189,7 +189,9 @@
                                         {{each tests}}
                                         <!--<th class="text-center"> Document ${$index + 1}</th>-->
                                         <div class="alert ${tests[$index].alert}">
-                                            <i class="fa ${tests[$index].icon}"></i> ${tests[$index].message}
+                                            <i class="fa ${tests[$index].icon}"></i> <label
+                                                class="label ${tests[$index].label}">${tests[$index].labelname}</label>
+                                            ${tests[$index].message}
                                         </div>
                                         {{/each}}
                                     </div>
@@ -491,6 +493,8 @@
                 var test = response.tests[i];
                 test.icon = test.status ? "fa-check" : "fa-cross";
                 test.alert = test.status ? "alert-success" : "alert-danger";
+                test.label = test.status ? "label-success" : "label-danger";
+                test.labelname = test.status ? "PASSED" : "FAILED";
                 response.tests[i] = test;
             }
             clone.find("#confidence-test-template").tmpl(response).appendTo(clone.find("#confidence-test-list"));
