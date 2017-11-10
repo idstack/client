@@ -211,7 +211,7 @@
 
 <script>
     var url;
-    var request_id;
+    var json_url;
     var docType;
     var formObject ;
     var varProperties;
@@ -232,7 +232,7 @@
             varProperties = json;
         });
         url = getUrlParameter("url");
-        request_id = getUrlParameter("request_id");
+        json_url = getUrlParameter("json");
         docType= getUrlParameter("doctype");
         if (docType || 0 !== docType.length) {
             $("#tab_template").append(stringBeautify(docType));
@@ -327,12 +327,12 @@
 
     function getContentByRequest() {
         var form = new FormData();
-        form.append("request_id", request_id);
+        form.append("json_url", json_url);
 
         var settings = {
             "async": true,
             "crossDomain": true,
-            "url": "http://"+varProperties.validator.host+"/api-validator/"+varProperties.validator.apiVersion+"/"+varProperties.validator.apiKey+"/sign/request",
+            "url": "http://"+varProperties.validator.host+"/api-validator/"+varProperties.validator.apiVersion+"/"+varProperties.validator.apiKey+"/getdoc/url",
             "method": "POST",
             "headers": {
                 "authorization": "Basic "+ btoa(varProperties.validator.userName + ":" + varProperties.validator.password)

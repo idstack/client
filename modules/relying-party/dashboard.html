@@ -122,45 +122,14 @@
                             <i class="icon-list font-green-haze"></i>
                             <span class="caption-subject font-green bold uppercase">View Requests</span>
                         </div>
+                        <div class="actions">
+                            <a class="btn btn-circle btn-icon-only btn-default green" onclick="getRequestList()" data-toggle="tooltip" title="Reload" >
+                                <i class="icon-reload"></i>
+                            </a>
+
+                            <a class="btn btn-circle btn-icon-only btn-default fullscreen" href="javascript:;" data-original-title="" title=""> </a>
+                        </div>
                     </div>
-                    <!--<div class="portlet-body">-->
-                        <!--&lt;!&ndash;BEGIN PORTLET-BODY&ndash;&gt;-->
-                        <!--<div class="scroller" style="height: 290px;" data-always-visible="1" data-rail-visible1="1">-->
-                            <!--<ul class="feeds">-->
-                                <!--<li id="request_list">-->
-
-                            <!--<script id="request_template" type="text/html">-->
-                                <!--<a href="view.html?type=auto&request_id=${request_id}">-->
-                                    <!--<div class="col1">-->
-                                        <!--<div class="cont">-->
-                                            <!--<div class="cont-col1">-->
-                                                <!--<div class="label label-sm label-success">-->
-                                                    <!--<i class="fa fa-bell-o"></i>-->
-                                                <!--</div>-->
-                                            <!--</div>-->
-                                            <!--<div class="cont-col2">-->
-                                                <!--<div class="desc"> ${request_id}-->
-                                                    <!--<span class="label label-sm label-warning "> ${email}</span>-->
-                                                    <!--{{each files_list}}-->
-                                                    <!--<span class="label label-sm label-info "> ${files_list[$index].document_type} </span>-->
-                                                    <!--{{/each}}-->
-                                                <!--</div>-->
-                                            <!--</div>-->
-                                        <!--</div>-->
-                                    <!--</div>-->
-                                    <!--<div class="col2">-->
-                                        <!--<div class="desc"> ${timestamp}</div>-->
-                                    <!--</div>-->
-                                <!--</a>-->
-                            <!--</script>-->
-
-
-                                <!--</li>-->
-                            <!--</ul>-->
-                        <!--</div>-->
-
-                        <!--&lt;!&ndash;END PORTLET-BODY&ndash;&gt;-->
-                    <!--</div>-->
                     <div class="portlet-body">
                         <div>
                             <div class="panel-body" id="request_list">
@@ -210,6 +179,7 @@
                 </div>
                 <!-- END PORTLET-->
             </div>
+            <div style="color: transparent">.</div>
             <!-- END PAGE BASE CONTENT -->
         </div>
         <!-- END CONTENT BODY -->
@@ -253,6 +223,7 @@
 
         $.ajax(settings).done(function (response) {
             console.log(response);
+            $("#request_list").find(".list-group-item").remove();
             $("#request_template").tmpl(response.document_store).appendTo("#request_list");
         }).fail(function (jqXHR, errorStatus, errorThrown) {
             if (jqXHR.status && jqXHR.status == 400) {

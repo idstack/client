@@ -565,7 +565,7 @@
             console.log(response);
             response.white_list.forEach(function (item) {
                 whiteList.push(
-                    {"item": item}
+                    {"item": item.url}
                 );
             });
             whiteListUl.setList(whiteList);
@@ -593,7 +593,7 @@
             console.log(response);
             response.black_list.forEach(function (item) {
                 blackList.push(
-                    {"item": item}
+                    {"item": item.url}
                 );
             });
             blackListUl.setList(blackList);

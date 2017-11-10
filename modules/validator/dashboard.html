@@ -122,6 +122,15 @@
                             <i class="icon-list font-green-haze"></i>
                             <span class="caption-subject font-green bold uppercase">Validate Requests</span>
                         </div>
+                        <div class="actions">
+                            <a class="btn btn-circle btn-icon-only btn-default green" onclick="getRequestList()" data-toggle="tooltip" title="Reload" >
+                                <i class="icon-reload"></i>
+                            </a>
+                            <a class="btn btn-circle btn-icon-only red" onclick="clearDocStore()">
+                                <i class="icon-trash"></i>
+                            </a>
+                            <a class="btn btn-circle btn-icon-only btn-default fullscreen" href="javascript:;" data-original-title="" title=""> </a>
+                        </div>
                     </div>
                     <div class="portlet-body">
                         <div >
@@ -142,7 +151,7 @@
                                         </div>
                                     </div>
                                     <script id="request_template" type="text/html">
-                                        <a href="validate.html?doctype=${files_list[0].document_type}&resource=url&url=${files_list[0].pdf}&request_id=${request_id}"
+                                        <a href="validate.html?doctype=${files_list[0].document_type}&resource=url&url=${files_list[0].pdf}&json=${files_list[0].json}"
                                            class="list-group-item">
                                             <div class="row">
                                                 <div class="col-md-12">
@@ -213,7 +222,32 @@
 
         $.ajax(settings).done(function (response) {
             console.log(response);
+            $("#request_list").find(".list-group-item").remove();
             $("#request_template").tmpl(response.document_store).appendTo("#request_list");
+        }).fail(function (jqXHR, textStatus, errorThrown) {
+            if (jqXHR.status && jqXHR.status == 400) {
+                toastr.error(jqXHR.responseText);
+            } else {
+                toastr.error("Something went wrong");
+            }
+        });
+    }
+
+    function clearDocStore() {
+        var settings = {
+            "async": true,
+            "crossDomain": true,
+            "url": "http://" + varProperties.validator.host + "/api-validator/" + varProperties.validator.apiVersion + "/" + varProperties.validator.apiKey + "/cleardocstore/",
+            "method": "GET",
+            "headers": {
+                "Authorization": "Basic " + btoa(varProperties.validator.userName + ":" + varProperties.validator.password)
+            }
+        }
+
+        $.ajax(settings).done(function (response) {
+            console.log(response);
+            getRequestList();
+            toastr.success("Validator request list cleared successfully!");
         }).fail(function (jqXHR, textStatus, errorThrown) {
             if (jqXHR.status && jqXHR.status == 400) {
                 toastr.error(jqXHR.responseText);
