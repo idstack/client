@@ -21,7 +21,7 @@
           type="text/css"/>
     <!-- END GLOBAL MANDATORY STYLES -->
     <!-- BEGIN PAGE LEVEL PLUGINS -->
-
+    <link href="../../assets/global/plugins/bootstrap-toastr/toastr.min.css" rel="stylesheet" type="text/css"/>
 
     <!-- END PAGE LEVEL PLUGINS -->
     <!-- BEGIN THEME GLOBAL STYLES -->
@@ -128,7 +128,9 @@
                             <a class="btn btn-circle btn-icon-only btn-default green" onclick="getRequestList()" data-toggle="tooltip" title="Reload" >
                                 <i class="icon-reload"></i>
                             </a>
-
+                            <a class="btn btn-circle btn-icon-only red" onclick="clearDocStore()">
+                                <i class="icon-trash"></i>
+                            </a>
                             <a class="btn btn-circle btn-icon-only btn-default fullscreen" href="javascript:;" data-original-title="" title=""> </a>
                         </div>
                     </div>
@@ -227,6 +229,30 @@
             $("#request_list").find(".list-group-item").remove();
             $("#request_template").tmpl(response.document_store).appendTo("#request_list");
         }).fail(function (jqXHR, errorStatus, errorThrown) {
+            if (jqXHR.status && jqXHR.status == 400) {
+                toastr.error(jqXHR.responseText);
+            } else {
+                toastr.error("Something went wrong");
+            }
+        });
+    }
+
+    function clearDocStore() {
+        var settings = {
+            "async": true,
+            "crossDomain": true,
+            "url": "http://" + varProperties.extractor.host + "/api-extractor/" + varProperties.extractor.apiVersion + "/" + varProperties.extractor.apiKey + "/cleardocstore/",
+            "method": "GET",
+            "headers": {
+                "Authorization": "Basic " + btoa(varProperties.extractor.userName + ":" + varProperties.extractor.password)
+            }
+        }
+
+        $.ajax(settings).done(function (response) {
+            console.log(response);
+            getRequestList();
+            toastr.success("Extractor request list cleared successfully!");
+        }).fail(function (jqXHR, textStatus, errorThrown) {
             if (jqXHR.status && jqXHR.status == 400) {
                 toastr.error(jqXHR.responseText);
             } else {
