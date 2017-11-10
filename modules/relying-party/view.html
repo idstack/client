@@ -57,11 +57,9 @@
         <!-- DOC: Remove "hide" class to enable the page header actions -->
         <div class="page-actions">
             <a href="../home/main.html">
-                <img src="../../assets/logo-small.png" alt="logo" class="logo-default"/> </a>
-            <div class="btn-group">
-                <a class="btn btn-link disabled font-white" style="background-color: transparent;">
-                    <small> Common Protocol for Document Verification</small>
-                </a>
+                <img src="../../assets/logo-small.png" alt="logo" class="logo-default" /> </a>
+            <div class="btn-group" >
+                <a class="btn btn-link disabled font-white" style="background-color: transparent;"> <small> Common Protocol for Document Verification</small> </a>
                 <!--<span class="hidden-sm hidden-xs">idStack <small> Common Protocol for Document Verification </small></span>&nbsp;-->
             </div>
         </div>
@@ -73,8 +71,7 @@
                 <ul class="nav navbar-nav pull-right">
                     <!-- BEGIN NOTIFICATION DROPDOWN -->
                     <li class="dropdown dropdown-extended dropdown-notification" id="header_notification_bar">
-                        <h3 class="font-white bold uppercase" onclick="window.location.assign('dashboard.html')">Relying
-                            Party</h3>
+                        <h3 class="font-white bold uppercase" onclick="window.location.assign('dashboard.html')" >Relying Party</h3>
                     </li>
                     <!-- END NOTIFICATION DROPDOWN -->
                 </ul>
@@ -521,42 +518,40 @@
             "data": form
         }
 
-        $.ajax(settings).done(function (response) {
-            var response = JSON.parse(response);
-            console.log(response);
-            for (var key in response) {
-                if (response.hasOwnProperty(key)) {
-                    var stat = response[key].status;
-                    if (stat == "success") {
-                        stat = "#66BB2A";
-                    } else if (stat == "danger") {
-                        stat = "#F00501";
-                    } else {
-                        stat = "#EFD101";
+            $.ajax(settings).done(function (response) {
+                var response = JSON.parse(response);
+                console.log(response);
+                for (var key in response) {
+                    if (response.hasOwnProperty(key)) {
+                        var stat = response[key].status;
+                        if (stat == "success") {
+                            stat = "#66BB2A";
+                        } else if (stat == "danger") {
+                            stat = "#F00501";
+                        } else {
+                            stat = "#EFD101";
+                        }
+                        response[key].status = stat;
                     }
-                    response[key].status = stat;
                 }
-            }
-//            var temp = response.name.status == -1 ? "label-success" : "label-warning";
-//            response.name.values[0]["label"]=temp;
-
-            $("#correlation_table_template").tmpl(response).appendTo("#correlation_table");
-            $("#correlation_portlet").removeAttr('style');
-
-            $('.easy-pie-chart .number').each(function () {
-                $(this).easyPieChart({
-                    animate: 1000,
-                    size: 75,
-                    lineWidth: 3,
-                    barColor: App.getBrandColor('red')
+//              var temp = response.name.status == -1 ? "label-success" : "label-warning";
+//              response.name.values[0]["label"]=temp;
+                if (response.address.values.length > 1) {
+                    $("#correlation_table_template").tmpl(response).appendTo("#correlation_table");
+                    $("#correlation_portlet").removeAttr('style');
+                }
+                $('.easy-pie-chart .number').each(function () {
+                    $(this).easyPieChart({
+                        animate: 1000,
+                        size: 75,
+                        lineWidth: 3,
+                        barColor: App.getBrandColor('red')
+                    });
                 });
+            }).fail(function () {
+                toastr.warning("Can't access correlation api");
             });
-
-
-        }).fail(function () {
-            toastr.warning("Can't access correlation api");
-        });
-    }
+        }
 
     function getDocstoreByRequest(requestId) {
         var form = new FormData();
