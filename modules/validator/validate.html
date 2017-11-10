@@ -310,12 +310,6 @@
             console.log(response);
             formObject = $("form#form_validate_" + docType);
             formObject.loadJSON(response.json.content);
-            try {
-                formObject.loadJSON(response.json.content.name);
-                formObject.loadJSON(response.json.content.address);
-            }catch(err) {
-                //
-            }
             signedMrf = response.json;
             loadSignatureView();
             App.stopPageLoading();
