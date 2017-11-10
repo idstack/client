@@ -36,7 +36,46 @@
 
 <body class="page-header-fixed page-sidebar-closed-hide-logo page-container-bg-solid page-sidebar-closed page-md">
 <!-- BEGIN HEADER -->
-<div id="header"></div>
+<div class="page-header navbar navbar-fixed-top">
+    <!-- BEGIN HEADER INNER -->
+    <div class="page-header-inner">
+        <!-- BEGIN LOGO -->
+        <div class="page-logo bg-red bg-font-red">
+            <div class="menu-toggler sidebar-toggler">
+                <!-- DOC: Remove the above "hide" to enable the sidebar toggler button on header -->
+            </div>
+        </div>
+
+        <!-- END LOGO -->
+        <!-- BEGIN PAGE ACTIONS -->
+        <!-- DOC: Remove "hide" class to enable the page header actions -->
+        <div class="page-actions">
+            <a href="../home/main.html">
+                <img src="../../assets/logo-small.png" alt="logo" class="logo-default" /> </a>
+            <div class="btn-group" >
+                <a class="btn btn-link disabled font-white" style="background-color: transparent;"> <small> Common Protocol for Document Verification</small> </a>
+                <!--<span class="hidden-sm hidden-xs">idStack <small> Common Protocol for Document Verification </small></span>&nbsp;-->
+            </div>
+        </div>
+        <!-- END PAGE ACTIONS -->
+        <!-- BEGIN PAGE TOP -->
+        <div class="page-top bg-purple-studio">
+            <!-- BEGIN TOP NAVIGATION MENU -->
+            <div class="top-menu m-grid-col-md-6">
+                <ul class="nav navbar-nav pull-right">
+                    <!-- BEGIN NOTIFICATION DROPDOWN -->
+                    <li class="dropdown dropdown-extended dropdown-notification" id="header_notification_bar">
+                        <h3 class="font-white bold uppercase" onclick="window.location.assign('dashboard.html')" >Validator</h3>
+                    </li>
+                    <!-- END NOTIFICATION DROPDOWN -->
+                </ul>
+            </div>
+            <!-- END TOP NAVIGATION MENU -->
+        </div>
+        <!-- END PAGE TOP -->
+    </div>
+    <!-- END HEADER INNER -->
+</div>
 <!-- END HEADER -->
 <!-- BEGIN HEADER & CONTENT DIVIDER -->
 <div class="clearfix"> </div>
@@ -91,7 +130,7 @@
                     </div>
                 </div>
 
-                <div class="portlet light portlet-fit portlet-form">
+                <div class="portlet light portlet-fit portlet-form portlet-document display-hide">
                     <div class="portlet-title">
                         <div class="caption">
                             <i class="icon-pencil font-green"></i>
@@ -102,7 +141,7 @@
                         <div id="template"></div>
                     </div>
                 </div>
-                <div class="portlet light portlet-fit portlet-form">
+                <div class="portlet light portlet-fit portlet-form portlet-signature display-hide">
                     <div class="portlet-title">
                         <div class="caption">
                             <i class="icon-pencil font-green"></i>
@@ -185,7 +224,6 @@
     var signedMrf;
     var signedPdfUrl;
     $(function(){
-        $("#header").load("../../layout/header.html");
         $("#sidebar").load("../../layout/sidebar.html");
         $.getJSON("../../properties.json", function(json) {
             varProperties = json;
@@ -230,18 +268,14 @@
             docType = signedMrf.meta_data.document_type;
             loadContentView();
             loadSignatureView();
+            $(".portlet-document").removeClass("display-hide");
+            $(".portlet-signature").removeClass("display-hide");
         }
     }
     function loadContentView() {
         $("#document_type").text(stringBeautify(docType));
         $("#template").load("../../doc_templates/validate/"+docType+".html",function(){
             $("div#document").loadJSON(signedMrf.content);
-            try {
-                clone.find('div#document').loadJSON(signedMrf.content.name);
-                clone.find('div#document').loadJSON(signedMrf.content.address);
-            }catch(err) {
-                //
-            }
         });
     }
 
