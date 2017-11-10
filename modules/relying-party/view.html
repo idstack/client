@@ -320,12 +320,6 @@
         function loadContentView(clone,MRDoc) {
             setTimeout(function () {
                 clone.find('div#document').loadJSON(MRDoc.content);
-                try {
-                    clone.find('div#document').loadJSON(MRDoc.content.name);
-                    clone.find('div#document').loadJSON(MRDoc.content.address);
-                }catch(err) {
-                    //
-                }
             },1000)
         }
 
