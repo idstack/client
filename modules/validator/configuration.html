@@ -368,15 +368,53 @@
                                                            data-repeater-list="black_list">
                                                         <tbody>
                                                         <tr data-repeater-item class="mt-repeater-item">
-                                                            <td class="hidden-xs mt-repeater-input">
-                                                                <input type="text" name="item" class="form-control"
-                                                                       value=""/>
+                                                            <td class="hidden-xs mt-repeater-input" style="padding: 0px">
+                                                                <div class="portlet box red" style="margin-bottom: 0px">
+                                                                    <div class="portlet-title ">
+                                                                        <div class="caption font-green-haze col-md-10">
+                                                                            <!--<i class="icon-user font-green-haze"></i>-->
+                                                                            <div class="input-group">
+                                                                                <span class="input-group-addon"><i class="icon icon-user"></i> </span>
+                                                                                <input type="text" class="form-control" name="item" value="">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="tools">
+                                                                            <a href="javascript:;" class="expand"> </a>
+                                                                            <a href="javascript:;" data-repeater-delete class="remove"> </a>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="portlet-body portlet-collapsed">
+                                                                        <div class="input-group">
+                                                                            <span class="input-group-addon" >Country</span>
+                                                                            <input type="text" class="form-control" name="country" >
+                                                                        </div>
+                                                                        <div class="input-group">
+                                                                            <span class="input-group-addon" >Organization Unit</span>
+                                                                            <input type="text" class="form-control" name="organizationUnit" >
+                                                                        </div>
+                                                                        <div class="input-group">
+                                                                            <span class="input-group-addon" >Email</span>
+                                                                            <input type="text" class="form-control" name="ownerEmail" >
+                                                                        </div>
+                                                                        <div class="input-group">
+                                                                            <span class="input-group-addon" >Name</span>
+                                                                            <input type="text" class="form-control" name="ownerName" >
+                                                                        </div>
+                                                                        <div class="input-group">
+                                                                            <span class="input-group-addon" >Organization</span>
+                                                                            <input type="text" class="form-control" name="ownerOrganization" >
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
                                                             </td>
-                                                            <td class="mt-repeater-input">
-                                                                <a href="javascript:;" data-repeater-delete
-                                                                   class="btn btn-circle btn-sm red mt-repeater-delete">
-                                                                    <i class="fa fa-trash-o"></i> </a>
-                                                            </td>
+                                                            <!--<td class="mt-repeater-input">-->
+                                                            <!--<a href="javascript:;"-->
+                                                            <!--class="btn btn-circle btn-sm green mt-repeater-delete">-->
+                                                            <!--<i class="fa fa-info-circle" data-toggle="modal" data-target="#myModal"></i> </a>-->
+                                                            <!--<a href="javascript:;" data-repeater-delete-->
+                                                            <!--class="btn btn-circle btn-sm red mt-repeater-delete">-->
+                                                            <!--<i class="fa fa-trash-o"></i> </a>-->
+                                                            <!--</td>-->
                                                         </tr>
                                                         </tbody>
                                                     </table>
@@ -397,8 +435,8 @@
                                                            data-repeater-list="white_list">
                                                         <tbody>
                                                         <tr data-repeater-item class="mt-repeater-item">
-                                                            <td class="hidden-xs mt-repeater-input">
-                                                                <div class="portlet light portlet-form">
+                                                            <td class="hidden-xs mt-repeater-input" style="padding: 0px">
+                                                                <div class="portlet box green-dark" style="margin-bottom: 0px">
                                                                     <div class="portlet-title ">
                                                                         <div class="caption font-green-haze col-md-10">
                                                                             <!--<i class="icon-user font-green-haze"></i>-->
@@ -413,11 +451,26 @@
                                                                         </div>
                                                                     </div>
                                                                     <div class="portlet-body portlet-collapsed">
-                                                                        <input type="text" class="form-control" name="country" >
-                                                                        <input type="text" class="form-control" name="organizationUnit" >
-                                                                        <input type="text" class="form-control" name="ownerEmail" >
-                                                                        <input type="text" class="form-control" name="ownerName" >
-                                                                        <input type="text" class="form-control" name="ownerOrganization" >
+                                                                        <div class="input-group">
+                                                                            <span class="input-group-addon" >Country</span>
+                                                                            <input type="text" class="form-control" name="country" >
+                                                                        </div>
+                                                                        <div class="input-group">
+                                                                            <span class="input-group-addon" >Organization Unit</span>
+                                                                            <input type="text" class="form-control" name="organizationUnit" >
+                                                                        </div>
+                                                                        <div class="input-group">
+                                                                            <span class="input-group-addon" >Email</span>
+                                                                            <input type="text" class="form-control" name="ownerEmail" >
+                                                                        </div>
+                                                                        <div class="input-group">
+                                                                            <span class="input-group-addon" >Name</span>
+                                                                            <input type="text" class="form-control" name="ownerName" >
+                                                                        </div>
+                                                                        <div class="input-group">
+                                                                            <span class="input-group-addon" >Organization</span>
+                                                                            <input type="text" class="form-control" name="ownerOrganization" >
+                                                                        </div>
                                                                     </div>
                                                                 </div>
                                                             </td>
@@ -539,12 +592,16 @@
     function saveBlackWhiteList() {
         whiteList =[];
         blackList = [];
-        $('#whitelist_UI').repeaterVal().white_list.forEach(function (listItem) {
-            whiteList.push(listItem.item);
-        });
-        $('#blacklist_UI').repeaterVal().black_list.forEach(function (listItem) {
-            blackList.push(listItem.item);
-        });
+        try{
+            $('#whitelist_UI').repeaterVal().white_list.forEach(function (listItem) {
+                whiteList.push(listItem.item);
+            });
+            $('#blacklist_UI').repeaterVal().black_list.forEach(function (listItem) {
+                blackList.push(listItem.item);
+            });
+        }catch(err) {
+            Console.log(err.message);
+        }
 
         setWhiteList();
         setBlackList();
@@ -565,7 +622,7 @@
             console.log(response);
             response.white_list.forEach(function (item) {
                 whiteList.push(
-                    {"item": item.url}
+                    {"item": item.url,"country":item.cert_details["C"],"organizationUnit":item.cert_details["OU"],"ownerEmail":item.cert_details["EMAILADDRESS"],"ownerName":item.cert_details["CN"],"ownerOrganization":item.cert_details["O"]}
                 );
             });
             whiteListUl.setList(whiteList);
@@ -593,7 +650,7 @@
             console.log(response);
             response.black_list.forEach(function (item) {
                 blackList.push(
-                    {"item": item.url}
+                    {"item": item.url,"country":item.cert_details["C"],"organizationUnit":item.cert_details["OU"],"ownerEmail":item.cert_details["EMAILADDRESS"],"ownerName":item.cert_details["CN"],"ownerOrganization":item.cert_details["O"]}
                 );
             });
             blackListUl.setList(blackList);
