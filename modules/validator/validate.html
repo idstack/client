@@ -25,7 +25,7 @@
     <link rel="stylesheet" href="../../assets/global/plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css" />
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,500' rel='stylesheet' type='text/css'>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
+    <link href="../../assets/global/plugins/bootstrap-toastr/toastr.min.css" rel="stylesheet" type="text/css"/>
     <!-- END PAGE LEVEL PLUGINS -->
     <!-- BEGIN THEME GLOBAL STYLES -->
     <link href="../../assets/global/css/components-md.min.css" rel="stylesheet" id="style_components" type="text/css" />
@@ -311,10 +311,16 @@
         $.ajax(settings).done(function (response) {
             console.log(response);
             response = JSON.parse(response);
-            signedPdfUrl = response.pdf;
-            signedMrf = response.json;
-            $("#pdfDownloadBtn").removeClass("display-hide");
-            $("#mrfDownloadBtn").removeClass("display-hide");
+            if ("json" in response) {
+                signedPdfUrl = response.pdf;
+                signedMrf = response.json;
+                $("#pdfDownloadBtn").removeClass("display-hide");
+                $("#mrfDownloadBtn").removeClass("display-hide");
+            }
+            else {
+                console.log(response.status);
+                toastr.warning(response.status);
+            }
         }).fail( function (jqXHR, error, errorThrown) {
             if (jqXHR.status && jqXHR.status == 400) {
                 toastr.error(jqXHR.responseText);
