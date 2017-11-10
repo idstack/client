@@ -14,14 +14,17 @@
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet"
           type="text/css"/>
     <link href="../../assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
-    <link href="../../assets/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css"/>
+    <link href="../../assets/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet"
+          type="text/css"/>
     <link href="../../assets/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-    <link href="../../assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css"/>
+    <link href="../../assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet"
+          type="text/css"/>
     <!-- END GLOBAL MANDATORY STYLES -->
     <!-- BEGIN PAGE LEVEL PLUGINS -->
-    <link href="../../assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.css" rel="stylesheet" type="text/css"/>
+    <link href="../../assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.css" rel="stylesheet"
+          type="text/css"/>
     <link href="../../assets/global/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet" type="text/css"/>
-    <link href="../../assets/global/plugins/bootstrap-toastr/toastr.min.css" rel="stylesheet" type="text/css" />
+    <link href="../../assets/global/plugins/bootstrap-toastr/toastr.min.css" rel="stylesheet" type="text/css"/>
 
     <!-- END PAGE LEVEL PLUGINS -->
     <!-- BEGIN THEME GLOBAL STYLES -->
@@ -149,7 +152,7 @@
                                                 <!--<div class="mt-comment-text" id="expire_date"> ${expire_date}</div>-->
                                                 <div class="mt-comment-details">
                                                     <!--<span class="mt-comment-status mt-comment-status-approved"-->
-                                                          <!--id="validity">${validity}</span>-->
+                                                    <!--id="validity">${validity}</span>-->
                                                     <ul class="mt-comment-actions">
                                                         <li>
                                                             <a href="#">More</a>
@@ -197,90 +200,163 @@
 
                                         <script id="correlation_table_template" type="text/html">
                                             <table class="table table-hover table-bordered">
-                                                <thead >
+                                                <thead>
                                                 <tr>
-                                                    <th rowspan="2" class="col-md-1"> Attribute</th>
+                                                    <th class="col-md-1"> Attribute</th>
                                                     <th rowspan="2" class="col-md-2"> Average Correlation Score</th>
                                                     {{each name.values}}
-                                                    <th colspan="2" class="text-center"> Document ${$index + 1}</th>
+                                                    <th class="text-center"> Document ${$index + 1}</th>
                                                     {{/each}}
                                                 </tr>
-                                                <tr>
-                                                    {{each name.values}}
-                                                    <th class="col-md-2 "> Attribute Value</th>
-                                                    <th class="col-md-1">Attribute Score</th>
-                                                    {{/each}}
-                                                </tr>
+                                                <!--<tr>-->
+                                                <!--{{each name.values}}-->
+                                                <!--&lt;!&ndash;<th class="col-md-3 "> Attribute Value</th>&ndash;&gt;-->
+                                                <!--&lt;!&ndash;<th class="col-md-1">Attribute Score</th>&ndash;&gt;-->
+                                                <!--{{/each}}-->
+                                                <!--</tr>-->
                                                 </thead>
                                                 <tbody>
                                                 <tr>
                                                     <th> Name</th>
                                                     <th>
                                                         <div class="easy-pie-chart">
-                                                            <div class="number visits" data-percent="${name.avgScore}" data-scale-color="#ff1233">
-                                                                <span>+${name.avgScore}</span>%
+                                                            <div class="number visits" data-percent="${name.avgScore}"
+                                                                 data-scale-color="${name.status}"
+                                                                 data-bar-color="${name.status}">
+                                                                <span>${name.avgScore}</span>%
                                                             </div>
                                                         </div>
                                                     </th>
                                                     {{each name.values}}
-                                                    <td> ${name.values[$index].text}</td>
-                                                    <td><span class="label label-primary"> ${name.values[$index].score}% </span></td>
+                                                    <td>
+                                                        <div class="mt-element-ribbon">
+                                                            <div class="ribbon ribbon-right ribbon-vertical-right ribbon-shadow ribbon-border-dash-vert ribbon-color-${name.values[$index].status} uppercase">
+                                                                <div class="ribbon-sub ribbon-bookmark font-white">
+                                                                    ${name.values[$index].score}%
+                                                                </div>
+
+                                                            </div>
+                                                            <p class="ribbon-content">${name.values[$index].text}</p>
+                                                        </div>
+                                                    </td>
+                                                    <!--<td> ${name.values[$index].text}</td>-->
+                                                    <!--<td><span-->
+                                                    <!--class="label label-${name.values[$index].status}"> ${name.values[$index].score}% </span>-->
+                                                    <!--</td>-->
                                                     {{/each}}
                                                 </tr>
                                                 <tr>
                                                     <th>Address</th>
                                                     <th>
                                                         <div class="easy-pie-chart">
-                                                            <div class="number visits" data-percent="${address.avgScore}" data-scale-color="#ff1233">
-                                                                <span>+${address.avgScore}</span>%
+                                                            <div class="number visits"
+                                                                 data-percent="${address.avgScore}"
+                                                                 data-scale-color="${address.status}"
+                                                                 data-bar-color="${address.status}">
+                                                                <span>${address.avgScore}</span>%
                                                             </div>
                                                         </div>
                                                     </th>
                                                     {{each address.values}}
-                                                    <td> ${address.values[$index].text}</td>
-                                                    <td><span class="label label-primary"> ${address.values[$index].score}% </span></td>
+                                                    <td>
+                                                        <div class="mt-element-ribbon">
+                                                            <div class="ribbon ribbon-right ribbon-vertical-right ribbon-shadow ribbon-border-dash-vert ribbon-color-${address.values[$index].status} uppercase">
+                                                                <div class="ribbon-sub ribbon-bookmark font-white">
+                                                                    ${address.values[$index].score}%
+                                                                </div>
+
+                                                            </div>
+                                                            <p class="ribbon-content">${address.values[$index].text}</p>
+                                                        </div>
+                                                    </td>
+                                                    <!--<td> ${address.values[$index].text}</td>-->
+                                                    <!--<td><span class="label label-${address.values[$index].status}"> ${address.values[$index].score}% </span>-->
+                                                    <!--</td>-->
                                                     {{/each}}
                                                 </tr>
                                                 <tr>
                                                     <th>Date of Birth</th>
                                                     <th>
                                                         <div class="easy-pie-chart">
-                                                            <div class="number visits" data-percent="${dob.avgScore}" data-scale-color="#ff1233">
-                                                                <span>+${dob.avgScore}</span>%
+                                                            <div class="number visits" data-percent="${dob.avgScore}"
+                                                                 data-scale-color="${dob.status}"
+                                                                 data-bar-color="${dob.status}">
+                                                                <span>${dob.avgScore}</span>%
                                                             </div>
                                                         </div>
                                                     </th>
                                                     {{each dob.values}}
-                                                    <td> ${dob.values[$index].text}</td>
-                                                    <td><span class="label label-primary"> ${dob.values[$index].score}% </span></td>
+                                                    <td>
+                                                        <div class="mt-element-ribbon">
+                                                            <div class="ribbon ribbon-right ribbon-vertical-right ribbon-shadow ribbon-border-dash-vert ribbon-color-${dob.values[$index].status} uppercase">
+                                                                <div class="ribbon-sub ribbon-bookmark font-white">
+                                                                    ${dob.values[$index].score}%
+                                                                </div>
+
+                                                            </div>
+                                                            <p class="ribbon-content">${dob.values[$index].text}</p>
+                                                        </div>
+                                                    </td>
+                                                    <!--<td> ${dob.values[$index].text}</td>-->
+                                                    <!--<td><span-->
+                                                    <!--class="label label-${dob.values[$index].status}"> ${dob.values[$index].score}% </span>-->
+                                                    <!--</td>-->
                                                     {{/each}}
                                                 </tr>
                                                 <tr>
                                                     <th>Gender</th>
                                                     <th>
                                                         <div class="easy-pie-chart">
-                                                            <div class="number visits" data-percent="${gender.avgScore}" data-scale-color="#ff1233">
-                                                                <span>+${gender.avgScore}</span>%
+                                                            <div class="number visits" data-percent="${gender.avgScore}"
+                                                                 data-scale-color="${gender.status}"
+                                                                 data-bar-color="${gender.status}">
+                                                                <span>${gender.avgScore}</span>%
                                                             </div>
                                                         </div>
                                                     </th>
                                                     {{each gender.values}}
-                                                    <td> ${gender.values[$index].text}</td>
-                                                    <td><span class="label label-primary"> ${gender.values[$index].score}% </span></td>
+                                                    <td>
+                                                        <div class="mt-element-ribbon">
+                                                            <div class="ribbon ribbon-right ribbon-vertical-right ribbon-shadow ribbon-border-dash-vert ribbon-color-${gender.values[$index].status} uppercase">
+                                                                <div class="ribbon-sub ribbon-bookmark font-white">
+                                                                    ${gender.values[$index].score}%
+                                                                </div>
+
+                                                            </div>
+                                                            <p class="ribbon-content">${gender.values[$index].text}</p>
+                                                        </div>
+                                                    </td>
+                                                    <!--<td><span class="label label-${gender.values[$index].status}"> ${gender.values[$index].score}% </span>-->
+                                                    </td>
                                                     {{/each}}
                                                 </tr>
                                                 <tr>
                                                     <th>NIC</th>
                                                     <th>
                                                         <div class="easy-pie-chart">
-                                                            <div class="number visits" data-percent="${nic.avgScore}" data-scale-color="#ff1233">
-                                                                <span>+${nic.avgScore}</span>%
+                                                            <div class="number visits" data-percent="${nic.avgScore}"
+                                                                 data-scale-color="${nic.status}"
+                                                                 data-bar-color="${nic.status}">
+                                                                <span>${nic.avgScore}</span>%
                                                             </div>
                                                         </div>
                                                     </th>
                                                     {{each nic.values}}
-                                                    <td> ${nic.values[$index].text}</td>
-                                                    <td><span class="label label-primary"> ${nic.values[$index].score}% </span></td>
+                                                    <!--<td> ${nic.values[$index].text}</td>-->
+                                                    <td>
+                                                        <div class="mt-element-ribbon">
+                                                            <div class="ribbon ribbon-right ribbon-vertical-right ribbon-shadow ribbon-border-dash-vert ribbon-color-${nic.values[$index].status} uppercase">
+                                                                <div class="ribbon-sub ribbon-bookmark font-white">
+                                                                    ${nic.values[$index].score}%
+                                                                </div>
+
+                                                            </div>
+                                                            <p class="ribbon-content">${nic.values[$index].text}</p>
+                                                        </div>
+                                                    </td>
+                                                    <!--<td><span-->
+                                                    <!--class="label label-${nic.values[$index].status}"> ${nic.values[$index].score}% </span>-->
+                                                    <!--</td>-->
                                                     {{/each}}
                                                 </tr>
                                                 </tbody>
@@ -303,27 +379,27 @@
 </div>
 <!-- END CONTAINER -->
 
-    <!--<script type="text/javascript" src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.0.0.min.js"></script>-->
+<!--<script type="text/javascript" src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.0.0.min.js"></script>-->
 
-    <!-- Start wrapper for jquery script imports  -->
-    <script>if (typeof module === 'object') {
-        window.module = module;
-        module = undefined;
-    }</script>
+<!-- Start wrapper for jquery script imports  -->
+<script>if (typeof module === 'object') {
+    window.module = module;
+    module = undefined;
+}</script>
 
-    <script type="text/javascript" src="../../assets/global/plugins/jquery.min.js"></script>
+<script type="text/javascript" src="../../assets/global/plugins/jquery.min.js"></script>
 
-    <!-- End wrapper for jquery script imports -->
-    <script>if (window.module) module = window.module;</script>
+<!-- End wrapper for jquery script imports -->
+<script>if (window.module) module = window.module;</script>
 
-    <script>
-        var request_id;
-        var varProperties;
-        var docListResponse;
-        var docCount;
-        var jsonDocResponse ;
-        var confidenceResponse=[];
-        var correlationResponse ;
+<script>
+    var request_id;
+    var varProperties;
+    var docListResponse;
+    var docCount;
+    var jsonDocResponse;
+    var confidenceResponse = [];
+    var correlationResponse;
 
 
         $(function () {
@@ -416,20 +492,36 @@
                 "data": form
             }
 
-            $.ajax(settings).done(function (response) {
-                var response = JSON.parse(response);
-                console.log(response);
-                $("#correlation_table_template").tmpl(response).appendTo("#correlation_table");
-                $("#correlation_portlet").removeAttr('style');
+        $.ajax(settings).done(function (response) {
+            var response = JSON.parse(response);
+            console.log(response);
+            for (var key in response) {
+                if (response.hasOwnProperty(key)) {
+                    var stat = response[key].status;
+                    if (stat == "success") {
+                        stat = "#66BB2A";
+                    } else if (stat == "danger") {
+                        stat = "#F00501";
+                    } else {
+                        stat = "#EFD101";
+                    }
+                    response[key].status = stat;
+                }
+            }
+//            var temp = response.name.status == -1 ? "label-success" : "label-warning";
+//            response.name.values[0]["label"]=temp;
 
-                $('.easy-pie-chart .number').each(function() {
-                    $(this).easyPieChart({
-                        animate: 1000,
-                        size: 75,
-                        lineWidth: 3,
-                        barColor: App.getBrandColor('red')
-                    });
+            $("#correlation_table_template").tmpl(response).appendTo("#correlation_table");
+            $("#correlation_portlet").removeAttr('style');
+
+            $('.easy-pie-chart .number').each(function () {
+                $(this).easyPieChart({
+                    animate: 1000,
+                    size: 75,
+                    lineWidth: 3,
+                    barColor: App.getBrandColor('red')
                 });
+            });
 
 
             }).fail(function () {
