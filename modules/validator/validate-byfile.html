@@ -91,7 +91,7 @@
                     </div>
                 </div>
 
-                <div class="portlet light portlet-fit portlet-form">
+                <div class="portlet light portlet-fit portlet-form portlet-document display-hide">
                     <div class="portlet-title">
                         <div class="caption">
                             <i class="icon-pencil font-green"></i>
@@ -102,7 +102,7 @@
                         <div id="template"></div>
                     </div>
                 </div>
-                <div class="portlet light portlet-fit portlet-form">
+                <div class="portlet light portlet-fit portlet-form portlet-signature display-hide">
                     <div class="portlet-title">
                         <div class="caption">
                             <i class="icon-pencil font-green"></i>
@@ -230,18 +230,14 @@
             docType = signedMrf.meta_data.document_type;
             loadContentView();
             loadSignatureView();
+            $(".portlet-document").removeClass("display-hide");
+            $(".portlet-signature").removeClass("display-hide");
         }
     }
     function loadContentView() {
         $("#document_type").text(stringBeautify(docType));
         $("#template").load("../../doc_templates/validate/"+docType+".html",function(){
             $("div#document").loadJSON(signedMrf.content);
-            try {
-                clone.find('div#document').loadJSON(signedMrf.content.name);
-                clone.find('div#document').loadJSON(signedMrf.content.address);
-            }catch(err) {
-                //
-            }
         });
     }
 
