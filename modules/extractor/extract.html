@@ -166,10 +166,6 @@
         });
         // Load header and sidebar into DOM dynamically
         $("#sidebar").load("../../layout/sidebar.html");
-        $('.datePicker').bootstrapMaterialDatePicker({
-            time:false,
-            clearButton: true
-        });
         $.getJSON("../../properties.json", function(json) {
             varProperties = json;
         });
@@ -201,7 +197,6 @@
         }
     });
     function showPDFbyFile(){
-
     }
     function showPDFbyURL() {
         //show pdf using html object element
@@ -338,6 +333,10 @@
             formObject.loadJSON(response);
             App.stopPageLoading();
             toastr.info("Document extracted successfully!");
+            $('.datePicker').bootstrapMaterialDatePicker({
+                time:false,
+                clearButton: true
+            });
         }).fail(function (jqXHR, error, errorThrown) {
             if (jqXHR.status && jqXHR.status == 400) {
                 toastr.error(jqXHR.responseText);
