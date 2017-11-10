@@ -492,38 +492,36 @@
                 "data": form
             }
 
-        $.ajax(settings).done(function (response) {
-            var response = JSON.parse(response);
-            console.log(response);
-            for (var key in response) {
-                if (response.hasOwnProperty(key)) {
-                    var stat = response[key].status;
-                    if (stat == "success") {
-                        stat = "#66BB2A";
-                    } else if (stat == "danger") {
-                        stat = "#F00501";
-                    } else {
-                        stat = "#EFD101";
+            $.ajax(settings).done(function (response) {
+                var response = JSON.parse(response);
+                console.log(response);
+                for (var key in response) {
+                    if (response.hasOwnProperty(key)) {
+                        var stat = response[key].status;
+                        if (stat == "success") {
+                            stat = "#66BB2A";
+                        } else if (stat == "danger") {
+                            stat = "#F00501";
+                        } else {
+                            stat = "#EFD101";
+                        }
+                        response[key].status = stat;
                     }
-                    response[key].status = stat;
                 }
-            }
-//            var temp = response.name.status == -1 ? "label-success" : "label-warning";
-//            response.name.values[0]["label"]=temp;
-
-            $("#correlation_table_template").tmpl(response).appendTo("#correlation_table");
-            $("#correlation_portlet").removeAttr('style');
-
-            $('.easy-pie-chart .number').each(function () {
-                $(this).easyPieChart({
-                    animate: 1000,
-                    size: 75,
-                    lineWidth: 3,
-                    barColor: App.getBrandColor('red')
+//              var temp = response.name.status == -1 ? "label-success" : "label-warning";
+//              response.name.values[0]["label"]=temp;
+                if (response.address.values.length > 1) {
+                    $("#correlation_table_template").tmpl(response).appendTo("#correlation_table");
+                    $("#correlation_portlet").removeAttr('style');
+                }
+                $('.easy-pie-chart .number').each(function () {
+                    $(this).easyPieChart({
+                        animate: 1000,
+                        size: 75,
+                        lineWidth: 3,
+                        barColor: App.getBrandColor('red')
+                    });
                 });
-            });
-
-
             }).fail(function () {
                 toastr.warning("Can't access correlation api");
             });
