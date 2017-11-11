@@ -329,7 +329,7 @@
             animate: true
         });
         var form = new FormData();
-        form.append("json", JSON.stringify(signedMrf, 0, 4));
+        form.append("json", JSON.stringify(signedMrf.json, 0, 4));
         form.append("pdf", url);
 //        form.append("request_id", request_id);
 
@@ -424,7 +424,7 @@
     }
 
     function downloadMrf() {
-        saveJsonFile(signedMrf.json);
+        saveJsonFile(signedMrf);
     }
 
     //    function loadFile() {
