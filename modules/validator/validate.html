@@ -155,17 +155,12 @@
                                         </div>
                                         <div class="mt-comment-body">
                                             <div class="mt-comment-info">
-                                                <span class="mt-comment-author">${id}</span>
-                                                <!--<span class="mt-comment-author">${name}</span>-->
-
-                                                <!--<span class="mt-comment-date" id="signed_date">${signed_date}</span>-->
+                                                <span class="mt-comment-author">${cert_details.CN}</span>
+                                                <span class="mt-comment-date">${cert_details.EMAILADDRESS}</span>
                                             </div>
-                                            <!--<div class="mt-comment-text" id="email"> ${email}</div>-->
-                                            <!--<div class="mt-comment-text" id="type"> ${type}</div>-->
-                                            <!--<div class="mt-comment-text" id="expire_date"> ${expire_date}</div>-->
+                                            <div class="mt-comment-text"> ${cert_details.OU}</div>
                                             <div class="mt-comment-details">
-                                                <!--<span class="mt-comment-status mt-comment-status-approved"-->
-                                                <!--id="validity">${validity}</span>-->
+                                                <span class="mt-comment-status">${cert_details.O}</span>
                                                 <ul class="mt-comment-actions">
                                                     <li>
                                                         <a href="#">More</a>
@@ -173,6 +168,26 @@
                                                 </ul>
                                             </div>
                                         </div>
+                                        <!--<div class="mt-comment-body">-->
+                                            <!--<div class="mt-comment-info">-->
+                                                <!--<span class="mt-comment-author">${id}</span>-->
+                                                <!--&lt;!&ndash;<span class="mt-comment-author">${name}</span>&ndash;&gt;-->
+
+                                                <!--&lt;!&ndash;<span class="mt-comment-date" id="signed_date">${signed_date}</span>&ndash;&gt;-->
+                                            <!--</div>-->
+                                            <!--&lt;!&ndash;<div class="mt-comment-text" id="email"> ${email}</div>&ndash;&gt;-->
+                                            <!--&lt;!&ndash;<div class="mt-comment-text" id="type"> ${type}</div>&ndash;&gt;-->
+                                            <!--&lt;!&ndash;<div class="mt-comment-text" id="expire_date"> ${expire_date}</div>&ndash;&gt;-->
+                                            <!--<div class="mt-comment-details">-->
+                                                <!--&lt;!&ndash;<span class="mt-comment-status mt-comment-status-approved"&ndash;&gt;-->
+                                                <!--&lt;!&ndash;id="validity">${validity}</span>&ndash;&gt;-->
+                                                <!--<ul class="mt-comment-actions">-->
+                                                    <!--<li>-->
+                                                        <!--<a href="#">More</a>-->
+                                                    <!--</li>-->
+                                                <!--</ul>-->
+                                            <!--</div>-->
+                                        <!--</div>-->
                                     </div>
                                 </script>
                             </div>
@@ -381,7 +396,7 @@
             console.log(response);
             formObject = $("form#form_validate_" + docType);
             formObject.loadJSON(response.json.content);
-            signedMrf = response.json;
+            signedMrf = response;
             loadSignatureView();
             App.stopPageLoading();
         }).fail(function (jqXHR, error, errorThrown) {
@@ -394,9 +409,12 @@
     }
 
     function loadSignatureView() {
-        $("#signature_template").tmpl(signedMrf.extractor).appendTo($("#signature_list"));
-        for (var j = 0; j < signedMrf.validators.length; j++) {
-            $("#signature_template").tmpl(signedMrf.validators[j]).appendTo($("#signature_list"));
+//        $("#signature_template").tmpl(signedMrf.extractor).appendTo($("#signature_list"));
+//        for (var j = 0; j < signedMrf.validators.length; j++) {
+//            $("#signature_template").tmpl(signedMrf.validators[j]).appendTo($("#signature_list"));
+//        }
+        for (var j = 0; j < signedMrf.cert_details_list.length; j++) {
+            $("#signature_template").tmpl(signedMrf.cert_details_list[j]).appendTo($("#signature_list"));
         }
     }
 
@@ -407,7 +425,7 @@
     }
 
     function downloadMrf() {
-        saveJsonFile(signedMrf);
+        saveJsonFile(signedMrf.json);
     }
 
     //    function loadFile() {
