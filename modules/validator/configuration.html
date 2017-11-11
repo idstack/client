@@ -596,16 +596,18 @@
             $('#whitelist_UI').repeaterVal().white_list.forEach(function (listItem) {
                 whiteList.push(listItem.item);
             });
+        }catch(err) {
+            //
+        }
+        try {
             $('#blacklist_UI').repeaterVal().black_list.forEach(function (listItem) {
                 blackList.push(listItem.item);
             });
         }catch(err) {
-            Console.log(err.message);
+            //
         }
-
         setWhiteList();
         setBlackList();
-
     }
 
     function getWhiteList() {
