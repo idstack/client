@@ -286,6 +286,9 @@
 
     //Web service calls
     function getExtract() {
+        App.startPageLoading({
+            animate: true
+        });
         var form = new FormData();
         var json = extractContent();
         form.append("json", JSON.stringify(json, 0, 4));
@@ -319,6 +322,8 @@
             } else {
                 toastr.error("Something went wrong");
             }
+        }).always(function () {
+            App.stopPageLoading();
         });
 
     }

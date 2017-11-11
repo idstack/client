@@ -452,9 +452,9 @@
     }
 
     function loadSignatureView(clone, MRDoc) {
-        $("#signature_template").tmpl(MRDoc.extractor).appendTo(clone.find("#signature_list"));
-        for (var j = 0; j < MRDoc.validators.length; j++) {
-            $("#signature_template").tmpl(MRDoc.validators[j]).appendTo(clone.find("#signature_list"));
+        $("#signature_template").tmpl(MRDoc.json.extractor).appendTo(clone.find("#signature_list"));
+        for (var j = 0; j < MRDoc.json.validators.length; j++) {
+            $("#signature_template").tmpl(MRDoc.json.validators[j]).appendTo(clone.find("#signature_list"));
         }
     }
 
@@ -602,9 +602,9 @@
         }
 
         $.ajax(settings).done(function (MRresponse) {
-            var MRresponse = JSON.parse(MRresponse).json;
+            var MRresponse = JSON.parse(MRresponse);
             console.log(MRresponse);
-            clone.find("#template").load("../../doc_templates/view/" + MRresponse.meta_data.document_type + ".html", loadContentView(clone, MRresponse));
+            clone.find("#template").load("../../doc_templates/view/" + MRresponse.json.meta_data.document_type + ".html", loadContentView(clone, MRresponse.json));
             loadSignatureView(clone, MRresponse);
             getConfidenceByUrl(url, clone);
             $('#document_array').append(clone);
