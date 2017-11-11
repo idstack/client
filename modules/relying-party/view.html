@@ -142,24 +142,35 @@
                                             </div>
                                             <div class="mt-comment-body">
                                                 <div class="mt-comment-info">
-                                                    <span class="mt-comment-author">${id}</span>
-                                                    <!--<span class="mt-comment-author">${name}</span>-->
-
-                                                    <!--<span class="mt-comment-date" id="signed_date">${signed_date}</span>-->
+                                                    <span class="mt-comment-author">${cert_details.CN}</span>
+                                                    <span class="mt-comment-date">${cert_details.EMAILADDRESS}</span>
                                                 </div>
-                                                <!--<div class="mt-comment-text" id="email"> ${email}</div>-->
-                                                <!--<div class="mt-comment-text" id="type"> ${type}</div>-->
-                                                <!--<div class="mt-comment-text" id="expire_date"> ${expire_date}</div>-->
+                                                <div class="mt-comment-text"> ${cert_details.OU}</div>
                                                 <div class="mt-comment-details">
-                                                    <!--<span class="mt-comment-status mt-comment-status-approved"-->
-                                                    <!--id="validity">${validity}</span>-->
+                                                    <span class="mt-comment-status">${cert_details.O}</span>
                                                     <ul class="mt-comment-actions">
-                                                        <li>
-                                                            <a href="#">More</a>
-                                                        </li>
+                                                    <li>
+                                                    <a href="#">More</a>
+                                                    </li>
                                                     </ul>
                                                 </div>
                                             </div>
+                                            <!--<div class="mt-comment-body">-->
+                                                <!--<div class="mt-comment-info">-->
+                                                    <!--<span class="mt-comment-author">${cert_details.CN}</span>-->
+                                                    <!--<span class="mt-comment-date">${cert_details.EMAILADDRESS}</span>-->
+                                                <!--</div>-->
+                                                <!--<div class="mt-comment-details">-->
+
+                                                    <!--<span class="mt-comment-status">${cert_details.OU+", "} </span>-->
+                                                    <!--<span class="mt-comment-status">${cert_details.O}</span>-->
+                                                    <!--<ul class="mt-comment-actions">-->
+                                                        <!--<li>-->
+                                                            <!--<a href="#">More</a>-->
+                                                        <!--</li>-->
+                                                    <!--</ul>-->
+                                                <!--</div>-->
+                                            <!--</div>-->
                                         </div>
                                     </script>
                                     <!-- END: Signature list -->
@@ -452,9 +463,12 @@
     }
 
     function loadSignatureView(clone, MRDoc) {
-        $("#signature_template").tmpl(MRDoc.json.extractor).appendTo(clone.find("#signature_list"));
-        for (var j = 0; j < MRDoc.json.validators.length; j++) {
-            $("#signature_template").tmpl(MRDoc.json.validators[j]).appendTo(clone.find("#signature_list"));
+//        $("#signature_template").tmpl(MRDoc.json.extractor).appendTo(clone.find("#signature_list"));
+//        for (var j = 0; j < MRDoc.json.validators.length; j++) {
+//            $("#signature_template").tmpl(MRDoc.json.validators[j]).appendTo(clone.find("#signature_list"));
+//        }
+        for (var j = 0; j < MRDoc.cert_details_list.length; j++) {
+            $("#signature_template").tmpl(MRDoc.cert_details_list[j]).appendTo(clone.find("#signature_list"));
         }
     }
 
