@@ -311,9 +311,8 @@
     }
 
     function saveJsonFile(json_doc) {
-
-        json_doc = JSON.stringify(json_doc, null, 4);
-        var file = new File([json_doc], json_doc.meta_data.document_type + "-signed.json", {type: "text/json;charset=utf-8"});
+        var jsonString = JSON.stringify(json_doc, null, 4);
+        var file = new File([jsonString], json_doc.meta_data.document_type + "-signed.json", {type: "text/json;charset=utf-8"});
         saveAs(file);
         $("#downloadBtn").removeClass("display-hide");
     }
@@ -368,7 +367,7 @@
                 toastr.error("Something went wrong");
             }
         }).always(function () {
-           App.stopPageLoading();
+            App.stopPageLoading();
         });
 
     }
