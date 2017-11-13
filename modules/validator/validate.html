@@ -267,8 +267,6 @@
         $.getJSON("../../properties.json", function (json) {
             varProperties = json;
         });
-        //url = getUrlParameter("url");
-        url = "http://www.orimi.com/pdf-test.pdf";
         request_id = getUrlParameter("request_id");
         json_url = getUrlParameter("json");
         docType = getUrlParameter("doctype");
@@ -292,8 +290,6 @@
         //support pdf view in electron
         document.getElementById("pdf_viewer_obj").data = url;
         document.getElementById("pdf_viewer_iframe").src = "https://docs.google.com/viewer?url=" + url + "&embedded=true";
-        document.getElementById("pdf_viewer_down").href = url;
-
     }
 
     function saveJsonFile(json_doc) {
@@ -376,6 +372,8 @@
         $.ajax(settings).done(function (response) {
             response = JSON.parse(response);
             console.log(response);
+            url = response.pdf;
+            showPDFbyURL();
             formObject = $("form#form_validate_" + docType);
             formObject.loadJSON(response.json.content);
             signedMrf = response;
