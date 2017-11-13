@@ -210,27 +210,27 @@
                                 <form class="form-horizontal" id="validate-form"
                                       enctype="multipart/form-data">
                                     <div class="form-body">
-                                        <div class="form-group">
-                                            <label class="control-label col-md-3 font-grey-cascade">Select PDF</label>
-                                            <div class="col-md-3">
-                                                <div class="fileinput fileinput-new" data-provides="fileinput">
-                                                    <div class="input-group input-large">
-                                                        <div class="form-control uneditable-input input-fixed input-medium"
-                                                             data-trigger="fileinput">
-                                                            <i class="fa fa-file fileinput-exists"></i>&nbsp;
-                                                            <span class="fileinput-filename"> </span>
-                                                        </div>
-                                                        <span class="input-group-addon btn default btn-file">
-                                                                <span class="fileinput-new"> Select file </span>
-                                                                <span class="fileinput-exists"> Change </span>
-                                                                <input type="file" id="valFileInput" name="pdf"> </span>
-                                                        <a href="javascript:;"
-                                                           class="input-group-addon btn red fileinput-exists"
-                                                           data-dismiss="fileinput"> Remove </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        <!--<div class="form-group">-->
+                                            <!--<label class="control-label col-md-3 font-grey-cascade">Select PDF</label>-->
+                                            <!--<div class="col-md-3">-->
+                                                <!--<div class="fileinput fileinput-new" data-provides="fileinput">-->
+                                                    <!--<div class="input-group input-large">-->
+                                                        <!--<div class="form-control uneditable-input input-fixed input-medium"-->
+                                                             <!--data-trigger="fileinput">-->
+                                                            <!--<i class="fa fa-file fileinput-exists"></i>&nbsp;-->
+                                                            <!--<span class="fileinput-filename"> </span>-->
+                                                        <!--</div>-->
+                                                        <!--<span class="input-group-addon btn default btn-file">-->
+                                                                <!--<span class="fileinput-new"> Select file </span>-->
+                                                                <!--<span class="fileinput-exists"> Change </span>-->
+                                                                <!--<input type="file" id="valFileInput" name="pdf"> </span>-->
+                                                        <!--<a href="javascript:;"-->
+                                                           <!--class="input-group-addon btn red fileinput-exists"-->
+                                                           <!--data-dismiss="fileinput"> Remove </a>-->
+                                                    <!--</div>-->
+                                                <!--</div>-->
+                                            <!--</div>-->
+                                        <!--</div>-->
                                         <div class="form-group">
                                             <label class="control-label col-md-3 font-grey-cascade">Select MRF</label>
                                             <div class="col-md-3">
@@ -278,7 +278,6 @@
                                         <br>
                                         <div class="raw">
                                             <button id="mrfDownloadBtn" type="button" class="btn red display-hide" onclick="downloadMrf()">Signed MRF <i class="fa fa-download"></i></button>
-                                            <button id="pdfDownloadBtn" type="button" class="btn red display-hide" onclick="downloadPdf()">Signed PDF <i class="fa fa-download"></i></button>
                                         </div>
                                     </div>
                                 </form>
@@ -306,28 +305,28 @@
                                     <div class="form-body">
                                         <div id="evaluate-form-body">
                                             <div id="evaluate-pdf-template">
-                                                <div class="form-group">
-                                                    <label class="control-label col-md-3 font-grey-cascade">Select PDF</label>
-                                                    <div class="col-md-3">
-                                                        <div class="fileinput fileinput-new" data-provides="fileinput">
-                                                            <div class="input-group input-large">
-                                                                <div class="form-control uneditable-input input-fixed input-medium"
-                                                                     data-trigger="fileinput">
-                                                                    <i class="fa fa-file fileinput-exists"></i>&nbsp;
-                                                                    <span class="fileinput-filename"> </span>
-                                                                </div>
-                                                                <span class="input-group-addon btn default btn-file">
-                                                                <span class="fileinput-new"> Select file </span>
-                                                                <span class="fileinput-exists"> Change </span>
-                                                                <input type="file" id="evalFileInput" name="1"
-                                                                       class="eval-input"> </span>
-                                                                <a href="javascript:;"
-                                                                   class="input-group-addon btn red fileinput-exists"
-                                                                   data-dismiss="fileinput"> Remove </a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                                <!--<div class="form-group">-->
+                                                    <!--<label class="control-label col-md-3 font-grey-cascade">Select PDF</label>-->
+                                                    <!--<div class="col-md-3">-->
+                                                        <!--<div class="fileinput fileinput-new" data-provides="fileinput">-->
+                                                            <!--<div class="input-group input-large">-->
+                                                                <!--<div class="form-control uneditable-input input-fixed input-medium"-->
+                                                                     <!--data-trigger="fileinput">-->
+                                                                    <!--<i class="fa fa-file fileinput-exists"></i>&nbsp;-->
+                                                                    <!--<span class="fileinput-filename"> </span>-->
+                                                                <!--</div>-->
+                                                                <!--<span class="input-group-addon btn default btn-file">-->
+                                                                <!--<span class="fileinput-new"> Select file </span>-->
+                                                                <!--<span class="fileinput-exists"> Change </span>-->
+                                                                <!--<input type="file" id="evalFileInput" name="1"-->
+                                                                       <!--class="eval-input"> </span>-->
+                                                                <!--<a href="javascript:;"-->
+                                                                   <!--class="input-group-addon btn red fileinput-exists"-->
+                                                                   <!--data-dismiss="fileinput"> Remove </a>-->
+                                                            <!--</div>-->
+                                                        <!--</div>-->
+                                                    <!--</div>-->
+                                                <!--</div>-->
                                                 <div class="form-group">
                                                     <label class="control-label col-md-3 font-grey-cascade">Select MRF</label>
                                                     <div class="col-md-3">
@@ -519,10 +518,8 @@
             processData: false, // NEEDED, DON'T OMIT THIS
             success: function (data, status) {
                 console.log(data);
-                if ("json" in data) {
-                    signedPdfUrl = data.pdf;
-                    signedMdf = data.json;
-                    $("#pdfDownloadBtn").removeClass("display-hide");
+                if ("meta_data" in data) {
+                    signedMdf = data;
                     $("#mrfDownloadBtn").removeClass("display-hide");
                     toastr.success("Document successfully validated and sent back!");
                 }
@@ -626,10 +623,6 @@
         saveAs(file);
     }
 
-    function downloadPdf() {
-        console.log(signedPdfUrl);
-        window.open(signedPdfUrl, '_blank');
-    }
 
     function downloadMrf() {
         saveJsonFile(signedMdf);
