@@ -148,7 +148,7 @@
                             <!-- BEGIN: Signature list -->
                             <div class="mt-comments" id="signature_list">
                                 <script id="signature_template" type="text/html">
-                                    <div class="mt-comment mt-element-ribbon" id="signature-0">
+                                    <div class="mt-comment mt-element-ribbon signature-block" id="${id}-signature">
                                         <div class="ribbon ribbon-vertical-left ribbon-shadow ribbon-color-primary uppercase">
                                             <div class="ribbon-sub ribbon-bookmark"></div>
                                             <i class="fa fa-pencil-square-o"></i>
@@ -163,30 +163,30 @@
                                                 <span class="mt-comment-status">${cert_details.O}</span>
                                                 <ul class="mt-comment-actions">
                                                     <li>
-                                                        <a href="#">More</a>
+                                                        <a href="#" class="signature-more-button" id="${id}-signature-more-button">More</a>
                                                     </li>
                                                 </ul>
                                             </div>
                                         </div>
                                         <!--<div class="mt-comment-body">-->
-                                            <!--<div class="mt-comment-info">-->
-                                                <!--<span class="mt-comment-author">${id}</span>-->
-                                                <!--&lt;!&ndash;<span class="mt-comment-author">${name}</span>&ndash;&gt;-->
+                                        <!--<div class="mt-comment-info">-->
+                                        <!--<span class="mt-comment-author">${id}</span>-->
+                                        <!--&lt;!&ndash;<span class="mt-comment-author">${name}</span>&ndash;&gt;-->
 
-                                                <!--&lt;!&ndash;<span class="mt-comment-date" id="signed_date">${signed_date}</span>&ndash;&gt;-->
-                                            <!--</div>-->
-                                            <!--&lt;!&ndash;<div class="mt-comment-text" id="email"> ${email}</div>&ndash;&gt;-->
-                                            <!--&lt;!&ndash;<div class="mt-comment-text" id="type"> ${type}</div>&ndash;&gt;-->
-                                            <!--&lt;!&ndash;<div class="mt-comment-text" id="expire_date"> ${expire_date}</div>&ndash;&gt;-->
-                                            <!--<div class="mt-comment-details">-->
-                                                <!--&lt;!&ndash;<span class="mt-comment-status mt-comment-status-approved"&ndash;&gt;-->
-                                                <!--&lt;!&ndash;id="validity">${validity}</span>&ndash;&gt;-->
-                                                <!--<ul class="mt-comment-actions">-->
-                                                    <!--<li>-->
-                                                        <!--<a href="#">More</a>-->
-                                                    <!--</li>-->
-                                                <!--</ul>-->
-                                            <!--</div>-->
+                                        <!--&lt;!&ndash;<span class="mt-comment-date" id="signed_date">${signed_date}</span>&ndash;&gt;-->
+                                        <!--</div>-->
+                                        <!--&lt;!&ndash;<div class="mt-comment-text" id="email"> ${email}</div>&ndash;&gt;-->
+                                        <!--&lt;!&ndash;<div class="mt-comment-text" id="type"> ${type}</div>&ndash;&gt;-->
+                                        <!--&lt;!&ndash;<div class="mt-comment-text" id="expire_date"> ${expire_date}</div>&ndash;&gt;-->
+                                        <!--<div class="mt-comment-details">-->
+                                        <!--&lt;!&ndash;<span class="mt-comment-status mt-comment-status-approved"&ndash;&gt;-->
+                                        <!--&lt;!&ndash;id="validity">${validity}</span>&ndash;&gt;-->
+                                        <!--<ul class="mt-comment-actions">-->
+                                        <!--<li>-->
+                                        <!--<a href="#">More</a>-->
+                                        <!--</li>-->
+                                        <!--</ul>-->
+                                        <!--</div>-->
                                         <!--</div>-->
                                     </div>
                                 </script>
@@ -412,10 +412,47 @@
 //        for (var j = 0; j < signedMrf.validators.length; j++) {
 //            $("#signature_template").tmpl(signedMrf.validators[j]).appendTo($("#signature_list"));
 //        }
+//        var newSign = JSON.parse(JSON.stringify(signedMrf.cert_details_list[0]));
+//        newSign.id = "123456";
+//        signedMrf.cert_details_list.push(newSign);
+//
+//        signedMrf.json.validators.push({id: newSign.id, signed_content: true, signed_signatures: ["3d67d817"]});
+//        console.log(signedMrf.json.validators);
+
         for (var j = 0; j < signedMrf.cert_details_list.length; j++) {
             $("#signature_template").tmpl(signedMrf.cert_details_list[j]).appendTo($("#signature_list"));
         }
+        $(".signature-more-button").each(function (i, obj) {
+            var myId = $(this).attr("id").split("-")[0];
+            $(this).mouseenter(function () {
+                //check if I am extractor or content Signed
+                if (signedMrf.json.extractor.id == myId) {
+                    $("#form_template").addClass("bg-green");
+                } else {
+                    for (var i = 0; i < signedMrf.json.validators.length; i++) {
+                        var validator = signedMrf.json.validators[i];
+                        if (validator.id == myId) {
+                            if (validator.signed_content) {
+                                $("#form_template").addClass("bg-green");
+                            }
+                            for (var j = 0; j < validator.signed_signatures.length; j++) {
+
+                                $("#" + validator.signed_signatures[j] + "-signature").addClass("bg-red");
+                            }
+                            break;
+                        }
+                    }
+                }
+
+            });
+            $(this).mouseleave(function () {
+                $("#form_template").removeClass("bg-green");
+                $(".signature-block").removeClass("bg-red");
+            });
+        });
     }
+
+    04045648786204
 
 
     function downloadPdf() {

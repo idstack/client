@@ -57,9 +57,11 @@
         <!-- DOC: Remove "hide" class to enable the page header actions -->
         <div class="page-actions">
             <a href="../home/main.html">
-                <img src="../../assets/logo-small.png" alt="logo" class="logo-default" /> </a>
-            <div class="btn-group" >
-                <a class="btn btn-link disabled font-white" style="background-color: transparent;"> <small> Common Protocol for Document Verification</small> </a>
+                <img src="../../assets/logo-small.png" alt="logo" class="logo-default"/> </a>
+            <div class="btn-group">
+                <a class="btn btn-link disabled font-white" style="background-color: transparent;">
+                    <small> Common Protocol for Document Verification</small>
+                </a>
                 <!--<span class="hidden-sm hidden-xs">idStack <small> Common Protocol for Document Verification </small></span>&nbsp;-->
             </div>
         </div>
@@ -71,7 +73,8 @@
                 <ul class="nav navbar-nav pull-right">
                     <!-- BEGIN NOTIFICATION DROPDOWN -->
                     <li class="dropdown dropdown-extended dropdown-notification" id="header_notification_bar">
-                        <h3 class="font-white bold uppercase" onclick="window.location.assign('dashboard.html')" >Relying Party</h3>
+                        <h3 class="font-white bold uppercase" onclick="window.location.assign('dashboard.html')">Relying
+                            Party</h3>
                     </li>
                     <!-- END NOTIFICATION DROPDOWN -->
                 </ul>
@@ -135,7 +138,7 @@
 
                                     <!-- BEGIN: Signature template -->
                                     <script id="signature_template" type="text/html">
-                                        <div class="mt-comment mt-element-ribbon" id="signature-0">
+                                        <div class="mt-comment mt-element-ribbon signature-block" id="${id}-signature">
                                             <div class="ribbon ribbon-vertical-left ribbon-shadow ribbon-color-primary uppercase">
                                                 <div class="ribbon-sub ribbon-bookmark"></div>
                                                 <i class="fa fa-pencil-square-o"></i>
@@ -149,27 +152,28 @@
                                                 <div class="mt-comment-details">
                                                     <span class="mt-comment-status">${cert_details.O}</span>
                                                     <ul class="mt-comment-actions">
-                                                    <li>
-                                                    <a href="#">More</a>
-                                                    </li>
+                                                        <li>
+                                                            <a href="#" class="signature-more-button"
+                                                               id="${id}-signature-more-button">More</a>
+                                                        </li>
                                                     </ul>
                                                 </div>
                                             </div>
                                             <!--<div class="mt-comment-body">-->
-                                                <!--<div class="mt-comment-info">-->
-                                                    <!--<span class="mt-comment-author">${cert_details.CN}</span>-->
-                                                    <!--<span class="mt-comment-date">${cert_details.EMAILADDRESS}</span>-->
-                                                <!--</div>-->
-                                                <!--<div class="mt-comment-details">-->
+                                            <!--<div class="mt-comment-info">-->
+                                            <!--<span class="mt-comment-author">${cert_details.CN}</span>-->
+                                            <!--<span class="mt-comment-date">${cert_details.EMAILADDRESS}</span>-->
+                                            <!--</div>-->
+                                            <!--<div class="mt-comment-details">-->
 
-                                                    <!--<span class="mt-comment-status">${cert_details.OU+", "} </span>-->
-                                                    <!--<span class="mt-comment-status">${cert_details.O}</span>-->
-                                                    <!--<ul class="mt-comment-actions">-->
-                                                        <!--<li>-->
-                                                            <!--<a href="#">More</a>-->
-                                                        <!--</li>-->
-                                                    <!--</ul>-->
-                                                <!--</div>-->
+                                            <!--<span class="mt-comment-status">${cert_details.OU+", "} </span>-->
+                                            <!--<span class="mt-comment-status">${cert_details.O}</span>-->
+                                            <!--<ul class="mt-comment-actions">-->
+                                            <!--<li>-->
+                                            <!--<a href="#">More</a>-->
+                                            <!--</li>-->
+                                            <!--</ul>-->
+                                            <!--</div>-->
                                             <!--</div>-->
                                         </div>
                                     </script>
@@ -463,13 +467,39 @@
     }
 
     function loadSignatureView(clone, MRDoc) {
-//        $("#signature_template").tmpl(MRDoc.json.extractor).appendTo(clone.find("#signature_list"));
-//        for (var j = 0; j < MRDoc.json.validators.length; j++) {
-//            $("#signature_template").tmpl(MRDoc.json.validators[j]).appendTo(clone.find("#signature_list"));
-//        }
+    
         for (var j = 0; j < MRDoc.cert_details_list.length; j++) {
             $("#signature_template").tmpl(MRDoc.cert_details_list[j]).appendTo(clone.find("#signature_list"));
         }
+
+        clone.find(".signature-more-button").each(function (i, obj) {
+            var myId = $(this).attr("id").split("-")[0];
+            $(this).mouseenter(function () {
+                //check if I am extractor or content Signed
+                if (MRDoc.json.extractor.id == myId) {
+                    clone.find("#template").addClass("bg-green");
+                } else {
+                    for (var i = 0; i < MRDoc.json.validators.length; i++) {
+                        var validator = MRDoc.json.validators[i];
+                        if (validator.id == myId) {
+                            if (validator.signed_content) {
+                                clone.find("#template").addClass("bg-green");
+                            }
+                            for (var j = 0; j < validator.signed_signatures.length; j++) {
+
+                                clone.find("#" + validator.signed_signatures[j] + "-signature").addClass("bg-red");
+                            }
+                            break;
+                        }
+                    }
+                }
+
+            });
+            $(this).mouseleave(function () {
+                clone.find("#template").removeClass("bg-green");
+                clone.find(".signature-block").removeClass("bg-red");
+            });
+        });
     }
 
     // web service calls
@@ -531,40 +561,40 @@
             "data": form
         }
 
-            $.ajax(settings).done(function (response) {
-                var response = JSON.parse(response);
-                console.log(response);
-                for (var key in response) {
-                    if (response.hasOwnProperty(key)) {
-                        var stat = response[key].status;
-                        if (stat == "success") {
-                            stat = "#66BB2A";
-                        } else if (stat == "danger") {
-                            stat = "#F00501";
-                        } else {
-                            stat = "#EFD101";
-                        }
-                        response[key].status = stat;
+        $.ajax(settings).done(function (response) {
+            var response = JSON.parse(response);
+            console.log(response);
+            for (var key in response) {
+                if (response.hasOwnProperty(key)) {
+                    var stat = response[key].status;
+                    if (stat == "success") {
+                        stat = "#66BB2A";
+                    } else if (stat == "danger") {
+                        stat = "#F00501";
+                    } else {
+                        stat = "#EFD101";
                     }
+                    response[key].status = stat;
                 }
+            }
 //              var temp = response.name.status == -1 ? "label-success" : "label-warning";
 //              response.name.values[0]["label"]=temp;
-                if (response.address.values.length > 1) {
-                    $("#correlation_table_template").tmpl(response).appendTo("#correlation_table");
-                    $("#correlation_portlet").removeAttr('style');
-                }
-                $('.easy-pie-chart .number').each(function () {
-                    $(this).easyPieChart({
-                        animate: 1000,
-                        size: 75,
-                        lineWidth: 3,
-                        barColor: App.getBrandColor('red')
-                    });
+            if (response.address.values.length > 1) {
+                $("#correlation_table_template").tmpl(response).appendTo("#correlation_table");
+                $("#correlation_portlet").removeAttr('style');
+            }
+            $('.easy-pie-chart .number').each(function () {
+                $(this).easyPieChart({
+                    animate: 1000,
+                    size: 75,
+                    lineWidth: 3,
+                    barColor: App.getBrandColor('red')
                 });
-            }).fail(function () {
-                toastr.warning("Can't access correlation api");
             });
-        }
+        }).fail(function () {
+            toastr.warning("Can't access correlation api");
+        });
+    }
 
     function getDocstoreByRequest(requestId) {
         var form = new FormData();
