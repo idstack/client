@@ -247,6 +247,7 @@
 <script>
     var url;
     var json_url;
+    var request_id;
     var docType;
     var formObject;
     var varProperties;
@@ -266,7 +267,7 @@
         $.getJSON("../../properties.json", function (json) {
             varProperties = json;
         });
-        url = getUrlParameter("url");
+        request_id = getUrlParameter("request_id");
         json_url = getUrlParameter("json");
         docType = getUrlParameter("doctype");
         if (docType || 0 !== docType.length) {
@@ -282,32 +283,13 @@
             console.log("define docType uri parameter");
         }
 
-        switch (getUrlParameter("resource")) {
-            case "pdf":
-                showPDFbyFile();
-                break;
-            case "url":
-                showPDFbyURL();
-                break;
-            default:
 
-        }
     });
 
-    function showPDFbyFile() {
-
-    }
-
     function showPDFbyURL() {
-        //show pdf using html object element
-//        document.getElementById("pdf_viewer").data = url
-//        $("#pdf_viewer").append(url);
-
         //support pdf view in electron
         document.getElementById("pdf_viewer_obj").data = url;
         document.getElementById("pdf_viewer_iframe").src = "https://docs.google.com/viewer?url=" + url + "&embedded=true";
-        document.getElementById("pdf_viewer_down").href = url;
-
     }
 
     function saveJsonFile(json_doc) {
@@ -329,14 +311,13 @@
             animate: true
         });
         var form = new FormData();
-        form.append("json", JSON.stringify(signedMrf.json, 0, 4));
-        form.append("pdf", url);
+        form.append("request_id", request_id);
 //        form.append("request_id", request_id);
 
         var settings = {
             "async": true,
             "crossDomain": true,
-            "url": "http://" + varProperties.validator.host + "/api-validator/" + varProperties.validator.apiVersion + "/" + varProperties.validator.apiKey + "/sign/",
+            "url": "http://" + varProperties.validator.host + "/api-validator/" + varProperties.validator.apiVersion + "/" + varProperties.validator.apiKey + "/sign/request",
             "method": "POST",
             "headers": {
                 "authorization": "Basic " + btoa(varProperties.validator.userName + ":" + varProperties.validator.password)
@@ -350,10 +331,8 @@
         $.ajax(settings).done(function (response) {
             console.log(response);
             response = JSON.parse(response);
-            if ("json" in response) {
-                signedPdfUrl = response.pdf;
-                signedMrf = response.json;
-                $("#pdfDownloadBtn").removeClass("display-hide");
+            if ("meta_data" in response) {
+                signedMrf = response;
                 $("#mrfDownloadBtn").removeClass("display-hide");
             }
             else {
@@ -393,6 +372,8 @@
         $.ajax(settings).done(function (response) {
             response = JSON.parse(response);
             console.log(response);
+            url = response.pdf;
+            showPDFbyURL();
             formObject = $("form#form_validate_" + docType);
             formObject.loadJSON(response.json.content);
             signedMrf = response;
@@ -455,40 +436,11 @@
     04045648786204
 
 
-    function downloadPdf() {
-        console.log(signedPdfUrl);
-        window.open(signedPdfUrl, '_blank');
-    }
 
     function downloadMrf() {
         saveJsonFile(signedMrf);
     }
 
-    //    function loadFile() {
-    //        var input, file, fr;
-    //
-    //        if (typeof window.FileReader !== 'function') {
-    //            alert("The file API isn't supported on this browser yet.");
-    //            return;
-    //        }
-    //        input = document.getElementById('fileInput');
-    //        console.log(input.files[0]);
-    //        if (!input) {
-    //            alert("Um, couldn't find the fileinput element.");
-    //        }
-    //        else if (!input.files) {
-    //            alert("This browser doesn't seem to support the `files` property of file inputs.");
-    //        }
-    //        else if (!input.files[0]) {
-    //            alert("Please select a file before clicking 'Load'");
-    //        }
-    //        else {
-    //            file = input.files[0];
-    //            fr = new FileReader();
-    //
-    //        }
-    //        $('form#form_passport').loadJSON(response);
-    //    }
 
 </script>
 

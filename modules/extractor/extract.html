@@ -171,7 +171,6 @@
     var docType;
     var formObject;
     var varProperties;
-    var signedPdfUrl;
     var signedMdf;
 
     $(function () {
@@ -222,7 +221,6 @@
         //support pdf view in electron
         document.getElementById("pdf_viewer_obj").data = url;
         document.getElementById("pdf_viewer_iframe").src = "https://docs.google.com/viewer?url=" + url + "&embedded=true";
-        document.getElementById("pdf_viewer_down").href = url;
 
     }
 
@@ -312,9 +310,7 @@
         $.ajax(settings).done(function (response) {
             console.log(response);
             response = JSON.parse(response);
-            signedPdfUrl = response.pdf;
-            signedMdf = response.json;
-            $("#pdfDownloadBtn").removeClass("display-hide");
+            signedMdf = response;
             $("#mrfDownloadBtn").removeClass("display-hide");
         }).fail(function (jqXHR, error, errorThrown) {
             if (jqXHR.status && jqXHR.status == 400) {
@@ -367,11 +363,6 @@
         });
     }
 
-
-    function downloadPdf() {
-        console.log(signedPdfUrl);
-        window.open(signedPdfUrl, '_blank');
-    }
 
     function downloadMrf() {
         saveJsonFile(signedMdf);

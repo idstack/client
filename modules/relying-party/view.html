@@ -531,7 +531,7 @@
             }
             for (var i = 0; i < response.tests.length; i++) {
                 var test = response.tests[i];
-                test.icon = test.status ? "fa-check" : "fa-cross";
+                test.icon = test.status ? "fa-check" : "fa-times";
                 test.alert = test.status ? "alert-success" : "alert-danger";
                 test.label = test.status ? "label-success" : "label-danger";
                 test.labelname = test.status ? "PASSED" : "FAILED";
