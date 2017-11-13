@@ -477,17 +477,17 @@
             $(this).mouseenter(function () {
                 //check if I am extractor or content Signed
                 if (MRDoc.json.extractor.id == myId) {
-                    clone.find("#template").addClass("bg-green");
+                    clone.find("#template").addClass("bg-green-haze");
                 } else {
                     for (var i = 0; i < MRDoc.json.validators.length; i++) {
                         var validator = MRDoc.json.validators[i];
                         if (validator.id == myId) {
                             if (validator.signed_content) {
-                                clone.find("#template").addClass("bg-green");
+                                clone.find("#template").addClass("bg-green-haze");
                             }
                             for (var j = 0; j < validator.signed_signatures.length; j++) {
 
-                                clone.find("#" + validator.signed_signatures[j] + "-signature").addClass("bg-red");
+                                clone.find("#" + validator.signed_signatures[j] + "-signature").addClass("bg-red-pink");
                             }
                             break;
                         }
@@ -496,8 +496,8 @@
 
             });
             $(this).mouseleave(function () {
-                clone.find("#template").removeClass("bg-green");
-                clone.find(".signature-block").removeClass("bg-red");
+                clone.find("#template").removeClass("bg-green-haze");
+                clone.find(".signature-block").removeClass("bg-red-pink");
             });
         });
     }
