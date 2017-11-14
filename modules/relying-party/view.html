@@ -240,9 +240,9 @@
                                                 <thead>
                                                 <tr>
                                                     <th class="col-md-1"> Attribute</th>
-                                                    <th rowspan="2" class="col-md-2"> Average Correlation Score</th>
+                                                    <th rowspan="2" class="col-md-1"> Avg score</th>
                                                     {{each name.values}}
-                                                    <th class="text-center"> Document ${$index + 1}</th>
+                                                    <th class="text-center col-md-${Math.floor(10/docCount)}"> Document ${$index + 1}</th>
                                                     {{/each}}
                                                 </tr>
                                                 <!--<tr>-->
@@ -267,13 +267,13 @@
                                                     {{each name.values}}
                                                     <td>
                                                         <div class="mt-element-ribbon">
-                                                            <div class="ribbon ribbon-right ribbon-vertical-right ribbon-shadow ribbon-border-dash-vert ribbon-color-${name.values[$index].status} uppercase">
+                                                            <div class="ribbon ribbon-right ribbon-vertical-right ribbon-shadow ribbon-color-${name.values[$index].status} uppercase">
                                                                 <div class="ribbon-sub ribbon-bookmark font-white">
                                                                     ${name.values[$index].score}%
                                                                 </div>
 
                                                             </div>
-                                                            <p class="ribbon-content">${name.values[$index].text}</p>
+                                                            <p>${name.values[$index].text}</p>
                                                         </div>
                                                     </td>
                                                     <!--<td> ${name.values[$index].text}</td>-->
@@ -297,13 +297,13 @@
                                                     {{each address.values}}
                                                     <td>
                                                         <div class="mt-element-ribbon">
-                                                            <div class="ribbon ribbon-right ribbon-vertical-right ribbon-shadow ribbon-border-dash-vert ribbon-color-${address.values[$index].status} uppercase">
+                                                            <div class="ribbon ribbon-right ribbon-vertical-right ribbon-shadow  ribbon-color-${address.values[$index].status} uppercase">
                                                                 <div class="ribbon-sub ribbon-bookmark font-white">
                                                                     ${address.values[$index].score}%
                                                                 </div>
 
                                                             </div>
-                                                            <p class="ribbon-content">${address.values[$index].text}</p>
+                                                            <p>${address.values[$index].text}</p>
                                                         </div>
                                                     </td>
                                                     <!--<td> ${address.values[$index].text}</td>-->
@@ -325,13 +325,13 @@
                                                     {{each dob.values}}
                                                     <td>
                                                         <div class="mt-element-ribbon">
-                                                            <div class="ribbon ribbon-right ribbon-vertical-right ribbon-shadow ribbon-border-dash-vert ribbon-color-${dob.values[$index].status} uppercase">
+                                                            <div class="ribbon ribbon-right ribbon-vertical-right ribbon-shadow ribbon-color-${dob.values[$index].status} uppercase">
                                                                 <div class="ribbon-sub ribbon-bookmark font-white">
                                                                     ${dob.values[$index].score}%
                                                                 </div>
 
                                                             </div>
-                                                            <p class="ribbon-content">${dob.values[$index].text}</p>
+                                                            <p>${dob.values[$index].text}</p>
                                                         </div>
                                                     </td>
                                                     <!--<td> ${dob.values[$index].text}</td>-->
@@ -354,13 +354,13 @@
                                                     {{each gender.values}}
                                                     <td>
                                                         <div class="mt-element-ribbon">
-                                                            <div class="ribbon ribbon-right ribbon-vertical-right ribbon-shadow ribbon-border-dash-vert ribbon-color-${gender.values[$index].status} uppercase">
+                                                            <div class="ribbon ribbon-right ribbon-vertical-right ribbon-shadow ribbon-color-${gender.values[$index].status} uppercase">
                                                                 <div class="ribbon-sub ribbon-bookmark font-white">
                                                                     ${gender.values[$index].score}%
                                                                 </div>
 
                                                             </div>
-                                                            <p class="ribbon-content">${gender.values[$index].text}</p>
+                                                            <p>${gender.values[$index].text}</p>
                                                         </div>
                                                     </td>
                                                     <!--<td><span class="label label-${gender.values[$index].status}"> ${gender.values[$index].score}% </span>-->
@@ -382,13 +382,13 @@
                                                     <!--<td> ${nic.values[$index].text}</td>-->
                                                     <td>
                                                         <div class="mt-element-ribbon">
-                                                            <div class="ribbon ribbon-right ribbon-vertical-right ribbon-shadow ribbon-border-dash-vert ribbon-color-${nic.values[$index].status} uppercase">
+                                                            <div class="ribbon ribbon-right ribbon-vertical-right ribbon-shadow ribbon-color-${nic.values[$index].status} uppercase">
                                                                 <div class="ribbon-sub ribbon-bookmark font-white">
                                                                     ${nic.values[$index].score}%
                                                                 </div>
 
                                                             </div>
-                                                            <p class="ribbon-content">${nic.values[$index].text}</p>
+                                                            <p>${nic.values[$index].text}</p>
                                                         </div>
                                                     </td>
                                                     <!--<td><span-->
@@ -632,7 +632,7 @@
                 $(this).easyPieChart({
                     animate: 1000,
                     size: 75,
-                    lineWidth: 3,
+                    lineWidth: 5,
                     barColor: App.getBrandColor('red')
                 });
             });
