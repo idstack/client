@@ -18,7 +18,7 @@ function createWindow () {
       height: 600,
       title: 'IDStack',
       //backgroundColor: '#002b36',
-      icon: 'assets/logo-mini.png'
+      icon: path.join(__dirname, 'assets/icons/png/64x64.png')
   })
   mainWindow.maximize();
 
