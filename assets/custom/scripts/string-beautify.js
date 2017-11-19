@@ -4,7 +4,7 @@
 
 function stringBeautify(string) {
     "use strict";
-    string = string.charAt(0).toUpperCase() + string.slice(1);
+    string = string.toUpperCase();
     string = string.replace(/_/g, " ");
     return string;
 }
