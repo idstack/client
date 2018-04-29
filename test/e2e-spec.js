@@ -12,7 +12,7 @@ describe('Extractor ', function() {
         browser.get('/modules/extractor/configuration.html');
         $('#organization').sendKeys('University of Moratuwa');
         $('#email').sendKeys('info@mrt.ac.lk');
-        $('#web').sendKeys('http://139.59.74.146');
+        $('#web').sendKeys('http://18.236.162.244');
         $('#port').sendKeys('8080');
         $('#designation').sendKeys('University Registar');
         $('#name').sendKeys('A.B.C. Perera');
