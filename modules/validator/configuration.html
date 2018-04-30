@@ -738,6 +738,9 @@
         }
         $.ajax(settings).done(function (response) {
             console.log(response);
+            if (response == null) {
+                toastr.error("Please save your configurations to continue.");
+            }
             $('#organization').val(response.organization);
             $('#email').val(response.email);
             $('#web').val(response.web);

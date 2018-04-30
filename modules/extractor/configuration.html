@@ -307,6 +307,9 @@
             }
         }
         $.ajax(settings).done(function (response) {
+            if (response == null) {
+                toastr.error("Please save your configurations to continue.");
+            }
             console.log(response);
             $('#organization').val(response.organization);
             $('#email').val(response.email);
@@ -322,8 +325,8 @@
             }
         });
     }
-    
-    
+
+
     function setBasicDetails() {
         var settings = {
             "async": true,
