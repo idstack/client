@@ -222,6 +222,7 @@
                 "Authorization": "Basic " + btoa(varProperties.extractor.userName + ":" + varProperties.extractor.password)
             }
         }
+        console.log(settings);
         $.ajax(settings).done(function (response) {
             console.log(response);
             if (response == null || response.web == null) {
@@ -236,6 +237,7 @@
             }
             return false;
         });
+        return true;
     }
 
     function getRequestList() {
